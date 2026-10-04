@@ -1,6 +1,6 @@
 # Registers a new owner and returns the id of the owner.
 # Every call registers one more owner. After a call that failed or timed out, look for the owner with findOwners before calling this tool again.
-mutation AddOwner($firstName: String!, $lastName: String!, $address: String!, $city: String!, $telephone: String!) {
+mutation AddOwner($firstName: String!, $lastName: String!, $address: String!, $city: String!, $telephone: String!) @gatool(scopes: ["petclinic:write"]) {
   addOwner(input: {firstName: $firstName, lastName: $lastName, address: $address, city: $city, telephone: $telephone}) {
     id
   }

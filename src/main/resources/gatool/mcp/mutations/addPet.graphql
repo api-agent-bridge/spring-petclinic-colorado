@@ -1,7 +1,7 @@
 # Registers a new pet for an owner and returns the id of the pet.
 # findOwners gives the id of the owner, and listPetTypes gives the id of the pet type.
 # An owner cannot have two pets with the same name, so a second call with the same name is refused.
-mutation AddPet($ownerId: ID!, $name: String!, $birthDate: Date!, $typeId: ID!) {
+mutation AddPet($ownerId: ID!, $name: String!, $birthDate: Date!, $typeId: ID!) @gatool(scopes: ["petclinic:write"]) {
   addPet(input: {ownerId: $ownerId, name: $name, birthDate: $birthDate, typeId: $typeId}) {
     id
   }

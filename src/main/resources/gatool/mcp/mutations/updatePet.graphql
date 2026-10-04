@@ -1,7 +1,7 @@
 # Replaces the name, the birth date and the type of a pet and returns the id of the pet.
 # Read the current details with findPets or getOwnerDetails first, and send the details that stay the same as they are. listPetTypes gives the id of a type.
 # Calling it again with the same details leaves the pet unchanged.
-mutation UpdatePet($id: ID!, $name: String!, $birthDate: Date!, $typeId: ID!) {
+mutation UpdatePet($id: ID!, $name: String!, $birthDate: Date!, $typeId: ID!) @gatool(scopes: ["petclinic:write"]) {
   updatePet(input: {id: $id, name: $name, birthDate: $birthDate, typeId: $typeId}) {
     id
   }

@@ -1,7 +1,7 @@
 # Books a visit for a pet and returns the id and the date of the visit.
 # Usee findPets or getOwnerDetails to find the petId. Leave the date out to book the visit for tomorrow.
 # Every call books one more visit. After a call that failed or timed out, check the visits of the pet with getOwnerDetails before calling this tool again.
-mutation AddVisit($petId: ID!, $date: Date, $description: String!) {
+mutation AddVisit($petId: ID!, $date: Date, $description: String!) @gatool(scopes: ["petclinic:write"]) {
   addVisit(input: {petId: $petId, date: $date, description: $description}) {
     id
     date

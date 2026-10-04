@@ -1,0 +1,167 @@
+{
+  "realm": "petclinic",
+  "displayName": "Petclinic",
+  "enabled": true,
+  "accessTokenLifespan": 1800,
+  "roles": {
+    "realm": [
+      {
+        "name": "petclinic-writer",
+        "description": "May add and change owners, pets and visits through the Petclinic MCP server."
+      }
+    ]
+  },
+  "clientScopes": [
+    {
+      "name": "basic",
+      "description": "The subject and the username, which Keycloak's own basic and profile scopes would add.",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "sub",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        },
+        {
+          "name": "username",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "username",
+            "claim.name": "preferred_username",
+            "jsonType.label": "String",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "mcp:tools",
+      "description": "Call the tools of the Petclinic MCP server.",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "false"
+      },
+      "protocolMappers": [
+        {
+          "name": "Petclinic MCP server audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.custom.audience": "http://localhost:8080/mcp",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    },
+    {
+      "name": "petclinic:write",
+      "description": "Add and change owners, pets and visits through the Petclinic MCP server.",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "display.on.consent.screen": "false"
+      }
+    }
+  ],
+  "scopeMappings": [
+    {
+      "clientScope": "petclinic:write",
+      "roles": [
+        "petclinic-writer"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "mcp-inspector",
+      "name": "MCP Inspector",
+      "description": "A public client for the MCP Inspector and MCPJam Inspector, which run in the browser on port 6274 or 6284.",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "http://localhost:6274/*",
+        "http://127.0.0.1:6274/*",
+        "http://localhost:6284/*",
+        "http://127.0.0.1:6284/*"
+      ],
+      "webOrigins": [
+        "http://localhost:6274",
+        "http://127.0.0.1:6274",
+        "http://localhost:6284",
+        "http://127.0.0.1:6284"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "+"
+      },
+      "defaultClientScopes": [
+        "basic"
+      ],
+      "optionalClientScopes": [
+        "mcp:tools",
+        "petclinic:write",
+        "offline_access"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "read",
+      "enabled": true,
+      "email": "read@example.com",
+      "emailVerified": true,
+      "firstName": "Read",
+      "lastName": "Oxx",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "read",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "offline_access"
+      ]
+    },
+    {
+      "username": "write",
+      "enabled": true,
+      "email": "write@example.com",
+      "emailVerified": true,
+      "firstName": "Write",
+      "lastName": "Oxx",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "write",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "offline_access",
+        "petclinic-writer"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Replaces every detail of an owner and returns the id of the owner.
 # Read the current details with getOwnerDetails first, and send the details that stay the same as they are.
 # Calling it again with the same details leaves the owner unchanged.
-mutation UpdateOwner($id: ID!, $firstName: String!, $lastName: String!, $address: String!, $city: String!, $telephone: String!) {
+mutation UpdateOwner($id: ID!, $firstName: String!, $lastName: String!, $address: String!, $city: String!, $telephone: String!) @gatool(scopes: ["petclinic:write"]) {
   updateOwner(input: {id: $id, firstName: $firstName, lastName: $lastName, address: $address, city: $city, telephone: $telephone}) {
     id
   }
