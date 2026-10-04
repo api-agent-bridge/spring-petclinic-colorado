@@ -100,10 +100,12 @@
       "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "redirectUris": [
-        "http://localhost:6274/*",
-        "http://127.0.0.1:6274/*",
-        "http://localhost:6284/*",
-        "http://127.0.0.1:6284/*"
+        "http://localhost:6274/oauth/callback",
+        "http://localhost:6274/oauth/callback/debug",
+        "http://127.0.0.1:6274/oauth/callback",
+        "http://127.0.0.1:6274/oauth/callback/debug",
+        "http://localhost:6284/oauth/callback",
+        "http://127.0.0.1:6284/oauth/callback"
       ],
       "webOrigins": [
         "http://localhost:6274",
@@ -120,8 +122,7 @@
       ],
       "optionalClientScopes": [
         "mcp:tools",
-        "petclinic:write",
-        "offline_access"
+        "petclinic:write"
       ]
     }
   ],
@@ -139,9 +140,6 @@
           "value": "read",
           "temporary": false
         }
-      ],
-      "realmRoles": [
-        "offline_access"
       ]
     },
     {
@@ -159,7 +157,6 @@
         }
       ],
       "realmRoles": [
-        "offline_access",
         "petclinic-writer"
       ]
     }
