@@ -26,4 +26,10 @@ Keycloak runs at <http://localhost:8180> with the realm `petclinic`. To connect 
 | `read` | `read` | `mcp:tools`: the read tools |
 | `write` | `write` | `mcp:tools` and `petclinic:write`: the read and the write tools |
 
+To connect MCPJam, in the server's settings:
+
+1. Set Authentication to OAuth.
+2. Under Advanced Settings, set Registration Strategy to "Preregistration (Client Credentials)".
+3. Set the Client ID to `mcp-inspector`, leave the Client Secret empty, and connect.
+
 Keycloak reads `keycloak/petclinic-realm.json` at the first start only. After a change to that file, recreate the container with `docker compose -f keycloak/compose.yaml down` and start it again.
