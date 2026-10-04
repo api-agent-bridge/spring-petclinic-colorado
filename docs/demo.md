@@ -13,6 +13,8 @@
 docker compose -f keycloak/compose.yaml up -d
 ```
 
+To log out of Keycloak, open <http://localhost:8180/realms/petclinic/protocol/openid-connect/logout> and confirm.
+
 Keycloak runs at <http://localhost:8180> with the realm `petclinic`. The MCP client connects to `http://localhost:8080/mcp` with the OAuth client ID `mcp-inspector`, and signs in as one of two users:
 
 | User | Password | Gets |
