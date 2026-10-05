@@ -59,15 +59,14 @@ class ChatControllerTests {
 	private RecordingChatModel model;
 
 	@Test
-	void answersWithTheCuratedOperationsAsTools() throws Exception {
+	void answersWithTheThreeDynamicTools() throws Exception {
 		this.mvc.perform(post("/chat").contentType(MediaType.TEXT_PLAIN).content("Where does George Franklin live?"))
 			.andExpect(status().isOk())
 			.andExpect(content().string(ANSWER));
 
 		ToolCallingChatOptions options = (ToolCallingChatOptions) this.model.lastPrompt().getOptions();
 		assertThat(options.getToolCallbacks()).extracting((tool) -> tool.getToolDefinition().name())
-			.containsExactlyInAnyOrder("findOwners", "findPets", "getOwnerDetails", "listPetTypes", "listVets",
-					"addOwner", "addPet", "addVisit", "updateOwner", "updatePet");
+			.containsExactlyInAnyOrder("searchSchema", "introspectType", "executeGraphql");
 	}
 
 	@Test
