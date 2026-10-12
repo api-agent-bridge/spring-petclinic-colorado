@@ -4,7 +4,7 @@ These evals ask local models the questions of [`docs/mcp-queries.md`](../docs/mc
 
 ## Why there is a provider of our own
 
-promptfoo's own MCP support, the `mcp:` block of its OpenAI provider, runs one round. It calls the tools of the model's first answer and returns their results as the output, and those results stay out of the conversation with the model. That is enough to check which tool a model picks first, which is what the promptfoo sandbox does for the movie API.
+promptfoo's own MCP support, the `mcp:` block of its OpenAI provider, runs one round. It calls the tools of the model's first answer and returns their results as the output, and those results stay out of the conversation with the model. That is enough to check which tool a model picks first.
 
 Most Petclinic questions need a search and then the details, so `mcp-agent.mjs` runs the loop an agent runs. It sends the question with the tools from the server's `tools/list`, calls every tool the model asks for through MCP, sends the results back, and stops when the model answers in text, or after 25 rounds. The models run in Ollama, through its own chat endpoint at `http://localhost:11434/api/chat`.
 
@@ -14,7 +14,7 @@ Every model runs the way Ollama ships it, the way `ollama run` runs it, and the 
 
 - **Sampling.** The provider leaves the sampling options out of its requests. Ollama starts from its defaults (temperature 0.8, top_k 40, top_p 0.9) and applies the parameters of the model's Modelfile over them, which `ollama show --parameters <model>` lists. Ollama's OpenAI-compatible endpoint, `/v1/chat/completions`, sets temperature 1.0 and top_p 1.0 when a request leaves them out (`openai/openai.go` in Ollama 0.32.15), so the provider calls `/api/chat` instead.
 - **Thinking.** Ollama turns thinking on for every model that supports it ([docs](https://docs.ollama.com/capabilities/thinking)). Each answer goes back into the conversation with its thinking, as Ollama's [tool calling docs](https://docs.ollama.com/capabilities/tool-calling) do it.
-- **Context.** On this Mac, with more than 48 GiB of GPU memory, Ollama gives each model 262,144 tokens of context, or the model's maximum where that is smaller ([docs](https://docs.ollama.com/context-length)). The `CONTEXT` column of `ollama ps` shows it. The largest request of a full run was 6,410 tokens.
+- **Context.** On a Mac with more than 48 GiB of GPU memory, Ollama gives each model 262,144 tokens of context, or the model's maximum where that is smaller ([docs](https://docs.ollama.com/context-length)). The `CONTEXT` column of `ollama ps` shows it. The largest request of a full run was 6,410 tokens.
 - **Quantization.** The default Ollama tag of each model: `qwen3.5:0.8b` is 8-bit, `gpt-oss:20b` is MXFP4, and the other nine are 4-bit (`Q4_K_M`).
 - **System prompt.** Ours says the assistant works for a veterinary clinic and gives today's date. It replaces the system prompt a model brings, such as Ornith's "agentic coding assistant" or Mistral's default one.
 - **Loading.** The provider loads the model before the 60 seconds of a question start, so a large model keeps all of its time for the question. The grid shows the loading time in a column of its own.
@@ -53,7 +53,7 @@ A run passes only when both marks pass. Its score shows the half that passed, so
 The tool mark reads like this for each kind of question:
 
 - A read question needs a call of a tool that holds its data, so an answer made up without tools fails. Where two tools hold the data, such as the pets in `findPets` and in `getOwnerDetails`, either one counts, and the calls grid shows what each way costs. For the address of George Franklin and the visits of Jean Coleman, the check also reads the id the agent passed to `getOwnerDetails`, so a call with the id `"Jean Coleman"` fails.
-- A read question fails when the agent calls a tool that writes. GATool marks the five write tools with `readOnlyHint: false`, and on the read questions the provider declines their calls, the way a client that asks before a write answers when the user says no. The model reads "The user declined the call of updatePet.", and the data stays the same for the runs after it. In a run before this rule, `qwen3.5:0.8b` answered "Which pets have not visited the clinic yet?" by renaming three pets to "Orphan Pet No-Visit", and the models after it answered from the renamed pets.
+- A read question fails when the agent calls a tool that writes. GATool marks the five write tools with `readOnlyHint: false`, and on the read questions the provider declines their calls, the way a client that asks before a write answers when the user says no. The model reads "The user declined the call of updatePet.", and the data stays the same for the runs after it. Without it, `qwen3.5:0.8b` answered "Which pets have not visited the clinic yet?" by renaming three pets to "Orphan Pet No-Visit", and the models after it answered from the renamed pets.
 - A write question checks the write, how often it happened, and the arguments of its first call.
 - The last three read questions pass only without a tool call: a question about a capital city, a greeting, and the opening hours.
 - Three write questions pass only when the agent leaves every write alone: two because it has to ask the user first, and one because it asks for a delete that the tools cannot do.
@@ -68,14 +68,7 @@ Every run keeps the answer and, in its metadata, everything the agent did on the
 
 Five named scores sit on every run, and `npm run view` averages them for each model: `tools` and `answer` (the two marks), `toolCalls`, `rounds` (requests to the model, the last one being the answer) and `repeatedCalls` (calls with the same tool and the same arguments as an earlier call). Click a cell for the answer, the reason of each check and the metadata.
 
-`npm run grid` prints the same results in the terminal: the two marks for each question and model, the tool calls and rounds for each question and model, and a table for each model with runs passed, tools right, answers right, provider errors, prompt and completion tokens, total time, time loading the model, time in the model and in the tools, rounds, tool calls, repeated calls, and characters of tool results. From a trial run:
-
-```
-checks passed, T for the tools and A for the answer
-                   llama3.2-3b   qwen3-8b
-q14-off-topic      T0/1 A1/1     T1/1 A1/1
-q16-opening-hours  T0/1 A0/1     T1/1 A1/1
-```
+`npm run grid` prints the same results in the terminal: the two marks for each question and model, the tool calls and rounds for each question and model, and a table for each model with runs passed, tools right, answers right, provider errors, prompt and completion tokens, total time, time loading the model, time in the model and in the tools, rounds, tool calls, repeated calls, and characters of tool results.
 
 ## Running
 
@@ -89,9 +82,6 @@ Then, in this folder:
 
 ```bash
 npm install
-
-# one question on one model, about a minute
-npx promptfoo eval -c queries.yaml --filter-providers '^qwen3-8b$' --filter-pattern q05 --no-cache
 
 # every read question on every model
 npm run queries
@@ -110,9 +100,9 @@ npm run view                           # the grid in a browser, with every answe
 
 ## How long it takes
 
-On a trial run, `qwen3:8b` took 54 seconds for six read questions and `llama3.2` took 5 seconds, because `qwen3:8b` reasons before each answer. The sixteen read questions on 22 models took 72 minutes. `laguna-s-2.1` took 23 of those minutes, because Ollama loads its 66 GB again for every question. `models.yaml` now keeps one model for each maker apart from Meta. `llama3.2` called a tool for the greeting and for the capital of Croatia in every run, and passed 16 of 48 runs in the three-repeat run of 6 October 2026, so it left the list. The read questions on the 11 models take about 30 minutes, and about 90 with `--repeat 3`. Run the full grid before the talk.
+The read questions on the 11 models take about 30 minutes, and about 90 with `--repeat 3`.
 
-The agent has 60 seconds for each question, counted from the moment the model is in memory. A model that runs out of time ends the run with an error, which the grid shows as `E1`. `timeoutSeconds` in the `config` of a provider changes the limit. `promptfoo view` keeps every run in `~/.promptfoo` and works without an account or a network, so the grid is ready on stage, and one question on two models runs live in a minute or two.
+The agent has 60 seconds for each question, counted from the moment the model is in memory. A model that runs out of time ends the run with an error, which the grid shows as `E1`. `timeoutSeconds` in the `config` of a provider changes the limit. `promptfoo view` keeps every run in `~/.promptfoo` and works without an account or a network.
 
 ## The writes change the data
 
@@ -130,4 +120,4 @@ Every model writes to the same app. After the first model, Harold Davis already 
 | `assert-no-visits.mjs` | The answer check of "Which pets have not visited the clinic yet?", which accepts a list and an exception |
 | `summarise.mjs` | Collapses repeats into a pass grid and a grid of tool calls |
 
-promptfoo 0.123.1 and the MCP SDK 1.30.0 are pinned to exact versions, the same promptfoo as the sandbox.
+promptfoo 0.123.1 and the MCP SDK 1.30.0 are pinned to exact versions.
