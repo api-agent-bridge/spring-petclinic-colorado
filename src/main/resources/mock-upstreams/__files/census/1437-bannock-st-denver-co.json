@@ -1,0 +1,42 @@
+{
+  "result": {
+    "input": {
+      "address": {
+        "address": "1437 Bannock St, Denver, CO"
+      },
+      "benchmark": {
+        "isDefault": true,
+        "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+        "id": "4",
+        "benchmarkName": "Public_AR_Current"
+      }
+    },
+    "addressMatches": [
+      {
+        "tigerLine": {
+          "side": "L",
+          "tigerLineId": "606055981"
+        },
+        "coordinates": {
+          "x": -104.990311950936,
+          "y": 39.739040016914
+        },
+        "addressComponents": {
+          "zip": "80202",
+          "streetName": "BANNOCK",
+          "preType": "",
+          "city": "DENVER",
+          "preDirection": "",
+          "suffixDirection": "",
+          "fromAddress": "1401",
+          "state": "CO",
+          "suffixType": "ST",
+          "toAddress": "1499",
+          "suffixQualifier": "",
+          "preQualifier": ""
+        },
+        "matchedAddress": "1437 BANNOCK ST, DENVER, CO, 80202"
+      }
+    ]
+  }
+}

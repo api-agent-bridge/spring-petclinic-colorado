@@ -1,0 +1,421 @@
+{
+ "operations": [
+  {
+   "field": "npsParks",
+   "path": "/api/v1/parks",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsAlerts",
+   "path": "/api/v1/alerts",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsRoadEvents",
+   "path": "/api/v1/roadevents",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "npsWebcams",
+   "path": "/api/v1/webcams",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsThingsToDo",
+   "path": "/api/v1/thingstodo",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsCampgrounds",
+   "path": "/api/v1/campgrounds",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsVisitorCenters",
+   "path": "/api/v1/visitorcenters",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsFeesAndPasses",
+   "path": "/api/v1/feespasses",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "statecode",
+     "parameter": "statecode",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsEvents",
+   "path": "/api/v1/events",
+   "arguments": [
+    {
+     "name": "parkCode",
+     "parameter": "parkCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "organization",
+     "parameter": "organization",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "subject",
+     "parameter": "subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "portal",
+     "parameter": "portal",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "tagsAll",
+     "parameter": "tagsAll",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "tagsOne",
+     "parameter": "tagsOne",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "tagsNone",
+     "parameter": "tagsNone",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stateCode",
+     "parameter": "stateCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dateStart",
+     "parameter": "dateStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dateEnd",
+     "parameter": "dateEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "eventType",
+     "parameter": "eventType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expandRecurring",
+     "parameter": "expandRecurring",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageNumber",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "npsActivities",
+   "path": "/api/v1/activities",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "npsActivityParks",
+   "path": "/api/v1/activities/parks",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sort",
+     "parameter": "sort",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "offset",
+    "start": "start",
+    "size": "limit"
+   }
+  }
+ ],
+ "mapFields": {}
+}

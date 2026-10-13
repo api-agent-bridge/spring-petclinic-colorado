@@ -35,6 +35,7 @@
     <maven-checkstyle.version>3.6.0</maven-checkstyle.version>
     <nohttp-checkstyle.version>0.0.11</nohttp-checkstyle.version>
     <spring-format.version>0.0.47</spring-format.version>
+    <wiremock.version>3.13.2</wiremock.version>
     <spring-ai.version>2.0.1</spring-ai.version>
   </properties>
 
@@ -95,10 +96,27 @@
       <artifactId>jakarta.xml.bind-api</artifactId>
     </dependency>
 
+    <!-- REST clients for the external services behind the GraphQL schema -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-restclient</artifactId>
+    </dependency>
+    <!-- SOAP client for the external services behind the GraphQL schema -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webservices</artifactId>
+    </dependency>
     <!-- Makes the MCP endpoint an OAuth 2.1 resource server -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security-oauth2-resource-server</artifactId>
+    </dependency>
+    <!-- Serves recorded responses of the external services when the "mock" profile is active -->
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock-standalone</artifactId>
+      <version>${wiremock.version}</version>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
@@ -154,11 +172,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-graphql-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-restclient</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

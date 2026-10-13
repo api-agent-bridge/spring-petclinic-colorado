@@ -1,0 +1,3375 @@
+{
+ "operations": [
+  {
+   "field": "dwrTelemetryStations",
+   "path": "/api/v2/telemetrystations/telemetrystation",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisId",
+     "parameter": "gnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeHistoric",
+     "parameter": "includeHistoric",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeThirdParty",
+     "parameter": "includeThirdParty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationPorEnd",
+     "parameter": "stationPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minStationPorEnd",
+     "parameter": "min-stationPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxStationPorEnd",
+     "parameter": "max-stationPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationPorStart",
+     "parameter": "stationPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minStationPorStart",
+     "parameter": "min-stationPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxStationPorStart",
+     "parameter": "max-stationPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationType",
+     "parameter": "stationType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsStationId",
+     "parameter": "usgsStationId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSource",
+     "parameter": "waterSource",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryStationDataTypes",
+   "path": "/api/v2/telemetrystations/telemetrystationdatatypes",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisId",
+     "parameter": "gnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeHistoric",
+     "parameter": "includeHistoric",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeThirdParty",
+     "parameter": "includeThirdParty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameterPorEnd",
+     "parameter": "parameterPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minParameterPorEnd",
+     "parameter": "min-parameterPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxParameterPorEnd",
+     "parameter": "max-parameterPorEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameterPorStart",
+     "parameter": "parameterPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minParameterPorStart",
+     "parameter": "min-parameterPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxParameterPorStart",
+     "parameter": "max-parameterPorStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationType",
+     "parameter": "stationType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsStationId",
+     "parameter": "usgsStationId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSource",
+     "parameter": "waterSource",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryReadings",
+   "path": "/api/v2/telemetrystations/telemetrytimeseriesraw",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeThirdParty",
+     "parameter": "includeThirdParty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "modified",
+     "parameter": "modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "startDate",
+     "parameter": "startDate",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryHourlyReadings",
+   "path": "/api/v2/telemetrystations/telemetrytimeserieshour",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeThirdParty",
+     "parameter": "includeThirdParty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "modified",
+     "parameter": "modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "startDate",
+     "parameter": "startDate",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryDailyReadings",
+   "path": "/api/v2/telemetrystations/telemetrytimeseriesday",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "includeThirdParty",
+     "parameter": "includeThirdParty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "modified",
+     "parameter": "modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "startDate",
+     "parameter": "startDate",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryDischargeMeasurements",
+   "path": "/api/v2/telemetrystations/telemetrydischargemeasurement",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measDateTime",
+     "parameter": "measDateTime",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasDateTime",
+     "parameter": "min-measDateTime",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasDateTime",
+     "parameter": "max-measDateTime",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryDecodeSettings",
+   "path": "/api/v2/telemetrystations/telemetrydecodesettings",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "rating_start_date",
+     "parameter": "rating_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minRatingStartDate",
+     "parameter": "min-rating_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxRatingStartDate",
+     "parameter": "max-rating_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "shift_start_date",
+     "parameter": "shift_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minShiftStartDate",
+     "parameter": "min-shift_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxShiftStartDate",
+     "parameter": "max-shift_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "shiftcurve_start_date",
+     "parameter": "shiftcurve_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minShiftcurveStartDate",
+     "parameter": "min-shiftcurve_start_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxShiftcurveStartDate",
+     "parameter": "max-shiftcurve_start_date",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryRatingTables",
+   "path": "/api/v2/telemetrystations/telemetryratingtable",
+   "arguments": [
+    {
+     "name": "ratingTableName",
+     "parameter": "ratingTableName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryShiftAdjustedRatingTable",
+   "path": "/api/v2/telemetrystations/telemetryshiftadjustedratingtable",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryShiftCurves",
+   "path": "/api/v2/telemetrystations/telemetryshiftcurve",
+   "arguments": [
+    {
+     "name": "shiftCurveName",
+     "parameter": "shiftCurveName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrSurfaceWaterStations",
+   "path": "/api/v2/surfacewater/surfacewaterstations",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationName",
+     "parameter": "stationName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsSiteId",
+     "parameter": "usgsSiteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrSurfaceWaterStationDataTypes",
+   "path": "/api/v2/surfacewater/surfacewaterstationdatatypes",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorLastModified",
+     "parameter": "min-porLastModified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationName",
+     "parameter": "stationName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsSiteId",
+     "parameter": "usgsSiteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrSurfaceWaterDailyValues",
+   "path": "/api/v2/surfacewater/surfacewatertsday",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measDate",
+     "parameter": "measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasDate",
+     "parameter": "min-measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasDate",
+     "parameter": "max-measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsSiteId",
+     "parameter": "usgsSiteId",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrSurfaceWaterMonthlyValues",
+   "path": "/api/v2/surfacewater/surfacewatertsmonth",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "calYear",
+     "parameter": "calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minCalYear",
+     "parameter": "min-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxCalYear",
+     "parameter": "max-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsSiteId",
+     "parameter": "usgsSiteId",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrSurfaceWaterWaterYearValues",
+   "path": "/api/v2/surfacewater/surfacewatertswateryear",
+   "arguments": [
+    {
+     "name": "abbrev",
+     "parameter": "abbrev",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "usgsSiteId",
+     "parameter": "usgsSiteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterYear",
+     "parameter": "waterYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minWaterYear",
+     "parameter": "min-waterYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxWaterYear",
+     "parameter": "max-waterYear",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrActiveAdministrativeCalls",
+   "path": "/api/v2/administrativecalls/active",
+   "arguments": [
+    {
+     "name": "callNumber",
+     "parameter": "callNumber",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dateTimeSet",
+     "parameter": "dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDateTimeSet",
+     "parameter": "min-dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDateTimeSet",
+     "parameter": "max-dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locationWdid",
+     "parameter": "locationWdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSourceName",
+     "parameter": "waterSourceName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrHistoricalAdministrativeCalls",
+   "path": "/api/v2/administrativecalls/historical",
+   "arguments": [
+    {
+     "name": "callNumber",
+     "parameter": "callNumber",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dateTimeSet",
+     "parameter": "dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDateTimeSet",
+     "parameter": "min-dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDateTimeSet",
+     "parameter": "max-dateTimeSet",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locationWdid",
+     "parameter": "locationWdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSourceName",
+     "parameter": "waterSourceName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrCallAnalysisByStructure",
+   "path": "/api/v2/analysisservices/callanalysisbywdid",
+   "arguments": [
+    {
+     "name": "adminNo",
+     "parameter": "adminNo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "startDate",
+     "parameter": "startDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrCallAnalysisByStreamLocation",
+   "path": "/api/v2/analysisservices/callanalysisbygnisid",
+   "arguments": [
+    {
+     "name": "adminNo",
+     "parameter": "adminNo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisId",
+     "parameter": "gnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "startDate",
+     "parameter": "startDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "streamMile",
+     "parameter": "streamMile",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterSourceRouteAnalysis",
+   "path": "/api/v2/analysisservices/watersourcerouteanalysis",
+   "arguments": [
+    {
+     "name": "ltGnisId",
+     "parameter": "ltGnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ltStreamMile",
+     "parameter": "ltStreamMile",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "utGnisId",
+     "parameter": "utGnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "utStreamMile",
+     "parameter": "utStreamMile",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterSourceRouteFramework",
+   "path": "/api/v2/analysisservices/watersourcerouteframework",
+   "arguments": [
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisName",
+     "parameter": "gnisName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterRightNetAmounts",
+   "path": "/api/v2/waterrights/netamount",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minLastModified",
+     "parameter": "min-lastModified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterRightTransactions",
+   "path": "/api/v2/waterrights/transaction",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minLastModified",
+     "parameter": "min-lastModified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrStructures",
+   "path": "/api/v2/structures",
+   "arguments": [
+    {
+     "name": "ciuCode",
+     "parameter": "ciuCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisId",
+     "parameter": "gnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porEnd",
+     "parameter": "porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorEnd",
+     "parameter": "min-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorEnd",
+     "parameter": "max-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porStart",
+     "parameter": "porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorStart",
+     "parameter": "min-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorStart",
+     "parameter": "max-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSource",
+     "parameter": "waterSource",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDailyDiversionRecords",
+   "path": "/api/v2/structures/divrec/divrecday",
+   "arguments": [
+    {
+     "name": "approvalStatus",
+     "parameter": "approvalStatus",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataMeasDate",
+     "parameter": "dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataMeasDate",
+     "parameter": "min-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataMeasDate",
+     "parameter": "max-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataValue",
+     "parameter": "dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataValue",
+     "parameter": "min-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataValue",
+     "parameter": "max-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measInterval",
+     "parameter": "measInterval",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measUnits",
+     "parameter": "measUnits",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "obsCode",
+     "parameter": "obsCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterClassNum",
+     "parameter": "waterClassNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wcIdentifier",
+     "parameter": "wcIdentifier",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrMonthlyDiversionRecords",
+   "path": "/api/v2/structures/divrec/divrecmonth",
+   "arguments": [
+    {
+     "name": "approvalStatus",
+     "parameter": "approvalStatus",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataMeasDate",
+     "parameter": "dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataMeasDate",
+     "parameter": "min-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataMeasDate",
+     "parameter": "max-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataValue",
+     "parameter": "dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataValue",
+     "parameter": "min-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataValue",
+     "parameter": "max-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measCount",
+     "parameter": "measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasCount",
+     "parameter": "min-measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasCount",
+     "parameter": "max-measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measInterval",
+     "parameter": "measInterval",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measUnits",
+     "parameter": "measUnits",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "obsCode",
+     "parameter": "obsCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterClassNum",
+     "parameter": "waterClassNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wcIdentifier",
+     "parameter": "wcIdentifier",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrYearlyDiversionRecords",
+   "path": "/api/v2/structures/divrec/divrecyear",
+   "arguments": [
+    {
+     "name": "approvalStatus",
+     "parameter": "approvalStatus",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataMeasDate",
+     "parameter": "dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataMeasDate",
+     "parameter": "min-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataMeasDate",
+     "parameter": "max-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dataValue",
+     "parameter": "dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataValue",
+     "parameter": "min-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataValue",
+     "parameter": "max-dataValue",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measCount",
+     "parameter": "measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasCount",
+     "parameter": "min-measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasCount",
+     "parameter": "max-measCount",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measInterval",
+     "parameter": "measInterval",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measUnits",
+     "parameter": "measUnits",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "obsCode",
+     "parameter": "obsCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterClassNum",
+     "parameter": "waterClassNum",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wcIdentifier",
+     "parameter": "wcIdentifier",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDiversionRecordComments",
+   "path": "/api/v2/structures/divrec/comments",
+   "arguments": [
+    {
+     "name": "irrYear",
+     "parameter": "irrYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minIrrYear",
+     "parameter": "min-irrYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxIrrYear",
+     "parameter": "max-irrYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrReservoirStageVolumes",
+   "path": "/api/v2/structures/divrec/stagevolume",
+   "arguments": [
+    {
+     "name": "dataMeasDate",
+     "parameter": "dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minDataMeasDate",
+     "parameter": "min-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxDataMeasDate",
+     "parameter": "max-dataMeasDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterClasses",
+   "path": "/api/v2/structures/divrec/waterclasses",
+   "arguments": [
+    {
+     "name": "ciuCode",
+     "parameter": "ciuCode",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "divrectype",
+     "parameter": "divrectype",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "gnisId",
+     "parameter": "gnisId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porEnd",
+     "parameter": "porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorEnd",
+     "parameter": "min-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorEnd",
+     "parameter": "max-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorLastModified",
+     "parameter": "min-porLastModified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porStart",
+     "parameter": "porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorStart",
+     "parameter": "min-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorStart",
+     "parameter": "max-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "structureName",
+     "parameter": "structureName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterSource",
+     "parameter": "waterSource",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wcIdentifier",
+     "parameter": "wcIdentifier",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrParcelUseTimeSeries",
+   "path": "/api/v2/structures/parcelusets",
+   "arguments": [
+    {
+     "name": "calYear",
+     "parameter": "calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minCalYear",
+     "parameter": "min-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxCalYear",
+     "parameter": "max-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWellPermits",
+   "path": "/api/v2/wellpermits/wellpermit",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "designatedBasinName",
+     "parameter": "designatedBasinName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "managementDistrictName",
+     "parameter": "managementDistrictName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "receipt",
+     "parameter": "receipt",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWellPermitActions",
+   "path": "/api/v2/wellpermits/wellpermitactionhistory",
+   "arguments": [
+    {
+     "name": "actionDate",
+     "parameter": "actionDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minActionDate",
+     "parameter": "min-actionDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxActionDate",
+     "parameter": "max-actionDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "actionName",
+     "parameter": "actionName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "designatedBasinName",
+     "parameter": "designatedBasinName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "managementDistrictName",
+     "parameter": "managementDistrictName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "receipt",
+     "parameter": "receipt",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrGroundwaterLevelWells",
+   "path": "/api/v2/groundwater/waterlevels/wells",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "designatedBasin",
+     "parameter": "designatedBasin",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "managementDistrict",
+     "parameter": "managementDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porEnd",
+     "parameter": "porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorEnd",
+     "parameter": "min-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorEnd",
+     "parameter": "max-porEnd",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "porStart",
+     "parameter": "porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorStart",
+     "parameter": "min-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxPorStart",
+     "parameter": "max-porStart",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "publicationName",
+     "parameter": "publicationName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wellId",
+     "parameter": "wellId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrGroundwaterLevelMeasurements",
+   "path": "/api/v2/groundwater/waterlevels/wellmeasurements",
+   "arguments": [
+    {
+     "name": "measurementDate",
+     "parameter": "measurementDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasurementDate",
+     "parameter": "min-measurementDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasurementDate",
+     "parameter": "max-measurementDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wellId",
+     "parameter": "wellId",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrGeophysicalLogWells",
+   "path": "/api/v2/groundwater/geophysicallogs/wells",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "designatedBasin",
+     "parameter": "designatedBasin",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "managementDistrict",
+     "parameter": "managementDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wellId",
+     "parameter": "wellId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrGeophysicalLogPicks",
+   "path": "/api/v2/groundwater/geophysicallogs/geoplogpicks",
+   "arguments": [
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wellId",
+     "parameter": "wellId",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrMeterReadings",
+   "path": "/api/v2/meterreadings/readings",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "meterSerialNo",
+     "parameter": "meterSerialNo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "readingDate",
+     "parameter": "readingDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minReadingDate",
+     "parameter": "min-readingDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxReadingDate",
+     "parameter": "max-readingDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "submissionType",
+     "parameter": "submissionType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "submittedBy",
+     "parameter": "submittedBy",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wdid",
+     "parameter": "wdid",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrJurisdictionalDams",
+   "path": "/api/v2/damsafety/damsafetydaminfojd",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "damId",
+     "parameter": "damId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrNonJurisdictionalDams",
+   "path": "/api/v2/damsafety/damsafetydaminfonjd",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "damId",
+     "parameter": "damId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrLivestockAndErosionControlDams",
+   "path": "/api/v2/damsafety/damsafetydaminfolswtecd",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "receipt",
+     "parameter": "receipt",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStations",
+   "path": "/api/v2/climatedata/climatestations",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "siteId",
+     "parameter": "siteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationName",
+     "parameter": "stationName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStationDataTypes",
+   "path": "/api/v2/climatedata/climatestationsdatatypes",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minPorLastModified",
+     "parameter": "min-porLastModified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "siteId",
+     "parameter": "siteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationName",
+     "parameter": "stationName",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStationDailyValues",
+   "path": "/api/v2/climatedata/climatestationtsday",
+   "arguments": [
+    {
+     "name": "measDate",
+     "parameter": "measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minMeasDate",
+     "parameter": "min-measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxMeasDate",
+     "parameter": "max-measDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "siteId",
+     "parameter": "siteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStationMonthlyValues",
+   "path": "/api/v2/climatedata/climatestationtsmonth",
+   "arguments": [
+    {
+     "name": "calYear",
+     "parameter": "calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minCalYear",
+     "parameter": "min-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxCalYear",
+     "parameter": "max-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minModified",
+     "parameter": "min-modified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "siteId",
+     "parameter": "siteId",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStationFrostDates",
+   "path": "/api/v2/climatedata/climatestationfrostdates",
+   "arguments": [
+    {
+     "name": "calYear",
+     "parameter": "calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "minCalYear",
+     "parameter": "min-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "maxCalYear",
+     "parameter": "max-calYear",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNum",
+     "parameter": "stationNum",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrCounties",
+   "path": "/api/v2/referencetables/county",
+   "arguments": [
+    {
+     "name": "county",
+     "parameter": "county",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterDivisions",
+   "path": "/api/v2/referencetables/waterdivision",
+   "arguments": [
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrWaterDistricts",
+   "path": "/api/v2/referencetables/waterdistrict",
+   "arguments": [
+    {
+     "name": "division",
+     "parameter": "division",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "waterDistrict",
+     "parameter": "waterDistrict",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDesignatedBasins",
+   "path": "/api/v2/referencetables/designatedbasin",
+   "arguments": [
+    {
+     "name": "designatedBasinName",
+     "parameter": "designatedBasinName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrManagementDistricts",
+   "path": "/api/v2/referencetables/managementdistrict",
+   "arguments": [
+    {
+     "name": "managementDistrictName",
+     "parameter": "managementDistrictName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrGroundwaterPublications",
+   "path": "/api/v2/referencetables/groundwaterpublication",
+   "arguments": [
+    {
+     "name": "publicationName",
+     "parameter": "publicationName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrPermitActionNames",
+   "path": "/api/v2/referencetables/permitactionname",
+   "arguments": [
+    {
+     "name": "actionName",
+     "parameter": "actionName",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrTelemetryParameters",
+   "path": "/api/v2/referencetables/telemetryparams",
+   "arguments": [
+    {
+     "name": "parameter",
+     "parameter": "parameter",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrClimateStationMeasurementTypes",
+   "path": "/api/v2/referencetables/climatestationmeastype",
+   "arguments": [
+    {
+     "name": "measType",
+     "parameter": "measType",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrCurrentInUseCodes",
+   "path": "/api/v2/referencetables/currentinusecodes",
+   "arguments": [
+    {
+     "name": "ciuCode",
+     "parameter": "ciuCode",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDiversionRecordObservationCodes",
+   "path": "/api/v2/referencetables/divrecobservationcodes",
+   "arguments": [
+    {
+     "name": "obsCode",
+     "parameter": "obsCode",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDiversionRecordTypes",
+   "path": "/api/v2/referencetables/divrectypes",
+   "arguments": [
+    {
+     "name": "divRecType",
+     "parameter": "divRecType",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrDiversionNotUsedCodes",
+   "path": "/api/v2/referencetables/diversionnotusedcodes",
+   "arguments": [
+    {
+     "name": "notUsedCode",
+     "parameter": "notUsedCode",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrStationFlags",
+   "path": "/api/v2/referencetables/stationflags",
+   "arguments": [
+    {
+     "name": "dataSource",
+     "parameter": "dataSource",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "description",
+     "parameter": "description",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "flag",
+     "parameter": "flag",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "flagColumn",
+     "parameter": "flagColumn",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  },
+  {
+   "field": "dwrMeterReadingSubmissionTypes",
+   "path": "/api/v2/referencetables/meterreadingsubmissiontypes",
+   "arguments": [
+    {
+     "name": "submissionType",
+     "parameter": "submissionType",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "pageIndex",
+    "size": "pageSize"
+   }
+  }
+ ]
+}

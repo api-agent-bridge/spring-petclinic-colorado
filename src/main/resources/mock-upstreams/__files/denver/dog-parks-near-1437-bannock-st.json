@@ -1,0 +1,364 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "GLOBALID",
+  "geometryType": "esriGeometryPolygon",
+  "spatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LOCATION",
+      "type": "esriFieldTypeString",
+      "alias": "LOCATION",
+      "sqlType": "sqlTypeOther",
+      "length": 250,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LOC_CODE",
+      "type": "esriFieldTypeString",
+      "alias": "LOC_CODE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FENCED",
+      "type": "esriFieldTypeString",
+      "alias": "FENCED",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": {
+        "type": "codedValue",
+        "name": "Yes_No_Domain",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Yes or No Values",
+        "codedValues": [
+          {
+            "name": "Yes",
+            "code": "Yes"
+          },
+          {
+            "name": "No",
+            "code": "No"
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SHADE",
+      "type": "esriFieldTypeString",
+      "alias": "SHADE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": {
+        "type": "codedValue",
+        "name": "Yes_No_Domain",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Yes or No Values",
+        "codedValues": [
+          {
+            "name": "Yes",
+            "code": "Yes"
+          },
+          {
+            "name": "No",
+            "code": "No"
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WATER",
+      "type": "esriFieldTypeString",
+      "alias": "WATER",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": {
+        "type": "codedValue",
+        "name": "Yes_No_Domain",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Yes or No Values",
+        "codedValues": [
+          {
+            "name": "Yes",
+            "code": "Yes"
+          },
+          {
+            "name": "No",
+            "code": "No"
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "GIS_ACRES",
+      "type": "esriFieldTypeDouble",
+      "alias": "GIS_ACRES",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "YEAR_BUILT",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "YEAR_BUILT",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FCA_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "FCA_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ASSET_CONDITION",
+      "type": "esriFieldTypeString",
+      "alias": "ASSET_CONDITION",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "domain": {
+        "type": "codedValue",
+        "name": "Condition_1",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Condition",
+        "codedValues": [
+          {
+            "name": "Dead",
+            "code": "0"
+          },
+          {
+            "name": "Very Poor",
+            "code": "20"
+          },
+          {
+            "name": "Poor",
+            "code": "40"
+          },
+          {
+            "name": "Fair",
+            "code": "60"
+          },
+          {
+            "name": "Good",
+            "code": "80"
+          },
+          {
+            "name": "Excellent",
+            "code": "100"
+          }
+        ]
+      },
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 816,
+        "LOCATION": "Central St Dog Park",
+        "LOC_CODE": "015",
+        "FENCED": "Yes",
+        "SHADE": null,
+        "WATER": null,
+        "GIS_ACRES": 0.18081711,
+        "YEAR_BUILT": 2025,
+        "FCA_DATE": 1769126400000,
+        "ASSET_CONDITION": "100"
+      },
+      "centroid": {
+        "x": -105.00772129375413,
+        "y": 39.75936391297804
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "LOCATION": "Skyline Park",
+        "LOC_CODE": "332",
+        "FENCED": "Yes",
+        "SHADE": null,
+        "WATER": null,
+        "GIS_ACRES": 0.15671017,
+        "YEAR_BUILT": 2016,
+        "FCA_DATE": 1712620800000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -104.99428383699461,
+        "y": 39.74924133996786
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "LOCATION": "Barnum Park",
+        "LOC_CODE": "804",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": "No",
+        "GIS_ACRES": 0.74120396,
+        "YEAR_BUILT": 2017,
+        "FCA_DATE": 1709251200000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -105.03031851657232,
+        "y": 39.723872186779
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 416,
+        "LOCATION": "Sanchez (Paco) Park",
+        "LOC_CODE": "028",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": "No",
+        "GIS_ACRES": 0.6818125,
+        "YEAR_BUILT": 2025,
+        "FCA_DATE": 1747612800000,
+        "ASSET_CONDITION": "80"
+      },
+      "centroid": {
+        "x": -105.02604109000396,
+        "y": 39.73706218165217
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "LOCATION": "Fuller Park",
+        "LOC_CODE": "205",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": null,
+        "GIS_ACRES": 0.72526793,
+        "YEAR_BUILT": 2012,
+        "FCA_DATE": 1701907200000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -104.96774104248856,
+        "y": 39.75761534784034
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 13,
+        "LOCATION": "Lawson (Sonny) Park",
+        "LOC_CODE": "208",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": "No",
+        "GIS_ACRES": 0.15618961,
+        "YEAR_BUILT": 2016,
+        "FCA_DATE": 1712620800000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -104.98259980467276,
+        "y": 39.752187488756334
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "LOCATION": "Railyard Dog Park",
+        "LOC_CODE": "922",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": "Yes",
+        "GIS_ACRES": 0.56666776,
+        "YEAR_BUILT": 2010,
+        "FCA_DATE": 1702512000000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -105.00130526145398,
+        "y": 39.75821135711727
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "LOCATION": "Carla Madison Rec Center",
+        "LOC_CODE": "250",
+        "FENCED": "Yes",
+        "SHADE": "No",
+        "WATER": "No",
+        "GIS_ACRES": 0.23295467,
+        "YEAR_BUILT": 2018,
+        "FCA_DATE": 1702944000000,
+        "ASSET_CONDITION": "Excellent"
+      },
+      "centroid": {
+        "x": -104.95881428871846,
+        "y": 39.74136444593793
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 415,
+        "LOCATION": "Zeckendorf Place",
+        "LOC_CODE": "355",
+        "FENCED": "Yes",
+        "SHADE": "Yes",
+        "WATER": "No",
+        "GIS_ACRES": 0.32107437,
+        "YEAR_BUILT": 2023,
+        "FCA_DATE": 1728518400000,
+        "ASSET_CONDITION": "80"
+      },
+      "centroid": {
+        "x": -104.98653566273461,
+        "y": 39.7270421957392
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "LOCATION": "Little Boxcar",
+        "LOC_CODE": "385",
+        "FENCED": "Yes",
+        "SHADE": "No",
+        "WATER": "No",
+        "GIS_ACRES": 0.07675346,
+        "YEAR_BUILT": 2014,
+        "FCA_DATE": 1702512000000,
+        "ASSET_CONDITION": "Good"
+      },
+      "centroid": {
+        "x": -104.98717415601222,
+        "y": 39.75601431297355
+      }
+    }
+  ]
+}

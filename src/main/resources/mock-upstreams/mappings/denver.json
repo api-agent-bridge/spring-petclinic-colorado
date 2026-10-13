@@ -1,0 +1,216 @@
+{
+  "mappings": [
+    {
+      "name": "Denver dog parks: within 5 km of 1437 Bannock St",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_PARK_DOGPARKS_A/FeatureServer/84/query",
+        "queryParameters": {
+          "geometry": {
+            "equalTo": "-104.990312,39.739040"
+          },
+          "distance": {
+            "equalTo": "5000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/dog-parks-near-1437-bannock-st.json"
+      },
+      "metadata": {
+        "description": "The parks within 5 km of Dev2 Next's address, in the order the service sends them"
+      }
+    },
+    {
+      "name": "Denver dog parks: every park",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_PARK_DOGPARKS_A/FeatureServer/84/query"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/dog-parks.json"
+      },
+      "metadata": {
+        "description": "All 18 parks sorted by name. It also answers a distance query around any other point, so the app still sorts every park by its distance from that point"
+      }
+    },
+    {
+      "name": "Denver 311: barking dogs in September 2026",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query",
+        "queryParameters": {
+          "where": {
+            "equalTo": "Case_Summary IN ('Barking Dog') AND Case_Created_Date >= DATE '2026-09-01' AND Case_Created_Date < DATE '2026-10-01'"
+          },
+          "returnCountOnly": {
+            "absent": true
+          },
+          "outStatistics": {
+            "absent": true
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-cases-barking-dog-2026-09.json"
+      },
+      "metadata": {
+        "description": "The 10 most recent barking dog cases created in September 2026, for any page size"
+      }
+    },
+    {
+      "name": "Denver 311: number of barking dogs in September 2026",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query",
+        "queryParameters": {
+          "where": {
+            "equalTo": "Case_Summary IN ('Barking Dog') AND Case_Created_Date >= DATE '2026-09-01' AND Case_Created_Date < DATE '2026-10-01'"
+          },
+          "returnCountOnly": {
+            "equalTo": "true"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-cases-barking-dog-2026-09-count.json"
+      },
+      "metadata": {
+        "description": "The number of barking dog cases created in September 2026"
+      }
+    },
+    {
+      "name": "Denver 311: animal cases by type in September 2026",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query",
+        "queryParameters": {
+          "where": {
+            "equalTo": "Case_Summary IN ('Animal Adoption/Hold Inquiry','Lost my Pet','Barking Dog','Pet Surrender','Loose Animal','Loose Dog (With owner)','Holding Stray Animal','Denver Animal Protection 720-913-2080','Injured Wildlife','Wildlife','Pet Redemption','Animal Excrement','Pet License/Micro Chip','Dangerous/Aggressive (Not a Bite)','Pet Food Manufacturing','Injured Domestic Animal','Dead Animal','Bite/Attack (Broken the skin)','Animal Bite (non human)','Dog Parks','Too many animals','Breeding Animals / Service Animals','Animal in Vehicle','Non-Service Animal Complaint','Animal Complaint') AND Case_Created_Date >= DATE '2026-09-01' AND Case_Created_Date < DATE '2026-10-01'"
+          },
+          "outStatistics": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-case-counts-2026-09.json"
+      },
+      "metadata": {
+        "description": "The animal cases created in September 2026, counted by case summary"
+      }
+    },
+    {
+      "name": "Denver 311: animal cases by type, any other filter",
+      "priority": 4,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query",
+        "queryParameters": {
+          "outStatistics": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-case-counts.json"
+      },
+      "metadata": {
+        "description": "Every animal case of the 12 months up to the recording, counted by case summary. It answers a count by type with any other filter"
+      }
+    },
+    {
+      "name": "Denver 311: number of animal cases, any other filter",
+      "priority": 4,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query",
+        "queryParameters": {
+          "returnCountOnly": {
+            "equalTo": "true"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-cases-count.json"
+      },
+      "metadata": {
+        "description": "The number of every animal case of the 12 months up to the recording. It answers a count with any other filter"
+      }
+    },
+    {
+      "name": "Denver 311: the latest animal cases, any other filter",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_service_requests_311/FeatureServer/53/query"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/animal-cases-latest.json"
+      },
+      "metadata": {
+        "description": "The 10 most recent animal cases at the time of the recording. It answers a page with any other filter, page or size"
+      }
+    },
+    {
+      "name": "Denver business licenses: the kennel licenses",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/denver/arcgis/rest/services/ODC_active_business_licenses/FeatureServer/42/query",
+        "queryParameters": {
+          "where": {
+            "equalTo": "LICENSE_TYPE = 'Kennel'"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "denver/kennel-licenses.json"
+      },
+      "metadata": {
+        "description": "Every active kennel license, sorted by business name. The name of the one sole proprietor is replaced"
+      }
+    }
+  ]
+}

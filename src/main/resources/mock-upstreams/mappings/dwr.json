@@ -1,0 +1,1125 @@
+{
+  "mappings": [
+    {
+      "name": "DWR dwrTelemetryStations",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrystation"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryStations.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrystation?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryStationDataTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrystationdatatypes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryStationDataTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrystationdatatypes?abbrev=PLADENCO&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryReadings",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrytimeseriesraw"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryReadings.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeseriesraw?abbrev=PLADENCO&parameter=DISCHRG&startDate=2026-10-11&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryHourlyReadings",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryHourlyReadings.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour?abbrev=PLADENCO&parameter=DISCHRG&startDate=2026-10-11&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryDailyReadings",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrytimeseriesday"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryDailyReadings.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeseriesday?abbrev=PLADENCO&parameter=DISCHRG&startDate=2026-10-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryDischargeMeasurements",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrydischargemeasurement"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryDischargeMeasurements.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrydischargemeasurement?abbrev=PLADENCO&min-measDateTime=2026-01-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryDecodeSettings",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetrydecodesettings"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryDecodeSettings.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrydecodesettings?abbrev=PLADENCO&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryRatingTables",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetryratingtable"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryRatingTables.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetryratingtable?ratingTableName=PLADENCO36&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryShiftAdjustedRatingTable",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetryshiftadjustedratingtable"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryShiftAdjustedRatingTable.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetryshiftadjustedratingtable?abbrev=PLADENCO&parameter=DISCHRG&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryShiftCurves",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/telemetrystations/telemetryshiftcurve"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryShiftCurves.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetryshiftcurve?shiftCurveName=2200632A_VSC&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrSurfaceWaterStations",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/surfacewater/surfacewaterstations"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrSurfaceWaterStations.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/surfacewater/surfacewaterstations?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrSurfaceWaterStationDataTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/surfacewater/surfacewaterstationdatatypes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrSurfaceWaterStationDataTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/surfacewater/surfacewaterstationdatatypes?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrSurfaceWaterDailyValues",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/surfacewater/surfacewatertsday"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrSurfaceWaterDailyValues.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/surfacewater/surfacewatertsday?abbrev=PLADENCO&min-measDate=2026-09-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrSurfaceWaterMonthlyValues",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/surfacewater/surfacewatertsmonth"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrSurfaceWaterMonthlyValues.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/surfacewater/surfacewatertsmonth?abbrev=PLADENCO&calYear=2025&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrSurfaceWaterWaterYearValues",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/surfacewater/surfacewatertswateryear"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrSurfaceWaterWaterYearValues.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/surfacewater/surfacewatertswateryear?abbrev=PLADENCO&min-waterYear=2020&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrActiveAdministrativeCalls",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/administrativecalls/active"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrActiveAdministrativeCalls.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/administrativecalls/active?division=1&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrHistoricalAdministrativeCalls",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/administrativecalls/historical"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrHistoricalAdministrativeCalls.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/administrativecalls/historical?division=1&min-dateTimeSet=2026-09-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrCallAnalysisByStructure",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/analysisservices/callanalysisbywdid"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrCallAnalysisByStructure.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/analysisservices/callanalysisbywdid?wdid=0200802&adminNo=10411.00000&startDate=2026-07-01&endDate=2026-07-03&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrCallAnalysisByStreamLocation",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/analysisservices/callanalysisbygnisid"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrCallAnalysisByStreamLocation.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/analysisservices/callanalysisbygnisid?gnisId=00201759&streamMile=240.83&adminNo=10411.00000&startDate=2026-07-01&endDate=2026-07-03&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterSourceRouteAnalysis",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/analysisservices/watersourcerouteanalysis"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterSourceRouteAnalysis.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/analysisservices/watersourcerouteanalysis?utGnisId=00201759&utStreamMile=246.7&ltGnisId=00201759&ltStreamMile=240.8&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterSourceRouteFramework",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/analysisservices/watersourcerouteframework"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterSourceRouteFramework.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/analysisservices/watersourcerouteframework?gnisName=Clear%20Creek&division=1&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterRightNetAmounts",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/waterrights/netamount"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterRightNetAmounts.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/waterrights/netamount?wdid=0200802&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterRightTransactions",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/waterrights/transaction"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterRightTransactions.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/waterrights/transaction?wdid=0200802&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrStructures",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrStructures.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures?wdid=0200802&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDailyDiversionRecords",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/divrecday"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDailyDiversionRecords.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/divrecday?wdid=0200802&min-dataMeasDate=2026-07-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrMonthlyDiversionRecords",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/divrecmonth"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrMonthlyDiversionRecords.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/divrecmonth?wdid=0200802&min-dataMeasDate=01/2025&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrYearlyDiversionRecords",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/divrecyear"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrYearlyDiversionRecords.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/divrecyear?wdid=0200802&min-dataMeasDate=2020&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDiversionRecordComments",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/comments"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDiversionRecordComments.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/comments?wdid=0200802&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrReservoirStageVolumes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/stagevolume"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrReservoirStageVolumes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/stagevolume?wdid=0903501&min-dataMeasDate=2026-01-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterClasses",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/waterclasses"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterClasses.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/divrec/waterclasses?wdid=0200802&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrParcelUseTimeSeries",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/parcelusets"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrParcelUseTimeSeries.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/structures/parcelusets?wdid=0200805&calYear=2020&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWellPermits",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/wellpermits/wellpermit"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWellPermits.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/wellpermits/wellpermit?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWellPermitActions",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/wellpermits/wellpermitactionhistory"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWellPermitActions.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/wellpermits/wellpermitactionhistory?county=DENVER&actionName=Application%20Received&min-actionDate=2026-09-01&max-actionDate=2026-09-30&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrGroundwaterLevelWells",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/groundwater/waterlevels/wells"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrGroundwaterLevelWells.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/groundwater/waterlevels/wells?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrGroundwaterLevelMeasurements",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/groundwater/waterlevels/wellmeasurements"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrGroundwaterLevelMeasurements.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/groundwater/waterlevels/wellmeasurements?wellId=94&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrGeophysicalLogWells",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/groundwater/geophysicallogs/wells"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrGeophysicalLogWells.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/groundwater/geophysicallogs/wells?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrGeophysicalLogPicks",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/groundwater/geophysicallogs/geoplogpicks"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrGeophysicalLogPicks.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/groundwater/geophysicallogs/geoplogpicks?wellId=3173&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrMeterReadings",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/meterreadings/readings"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrMeterReadings.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/meterreadings/readings?wdid=0105749&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrJurisdictionalDams",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/damsafety/damsafetydaminfojd"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrJurisdictionalDams.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/damsafety/damsafetydaminfojd?county=BOULDER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrNonJurisdictionalDams",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/damsafety/damsafetydaminfonjd"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrNonJurisdictionalDams.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/damsafety/damsafetydaminfonjd?county=BOULDER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrLivestockAndErosionControlDams",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/damsafety/damsafetydaminfolswtecd"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrLivestockAndErosionControlDams.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/damsafety/damsafetydaminfolswtecd?county=ELBERT&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStations",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/climatedata/climatestations"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStations.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/climatedata/climatestations?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStationDataTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/climatedata/climatestationsdatatypes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStationDataTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/climatedata/climatestationsdatatypes?county=DENVER&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStationDailyValues",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/climatedata/climatestationtsday"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStationDailyValues.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/climatedata/climatestationtsday?stationNum=62&measType=MaxTemp&min-measDate=2026-07-01&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStationMonthlyValues",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/climatedata/climatestationtsmonth"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStationMonthlyValues.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/climatedata/climatestationtsmonth?stationNum=62&measType=Precip&calYear=2025&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStationFrostDates",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/climatedata/climatestationfrostdates"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStationFrostDates.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/climatedata/climatestationfrostdates?stationNum=62&min-calYear=2023&pageSize=10, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrCounties",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/county"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrCounties.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/county?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterDivisions",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/waterdivision"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterDivisions.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/waterdivision?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrWaterDistricts",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/waterdistrict"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrWaterDistricts.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/waterdistrict?division=1&pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDesignatedBasins",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/designatedbasin"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDesignatedBasins.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/designatedbasin?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrManagementDistricts",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/managementdistrict"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrManagementDistricts.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/managementdistrict?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrGroundwaterPublications",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/groundwaterpublication"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrGroundwaterPublications.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/groundwaterpublication?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrPermitActionNames",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/permitactionname"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrPermitActionNames.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/permitactionname?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrTelemetryParameters",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/telemetryparams"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrTelemetryParameters.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/telemetryparams?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrClimateStationMeasurementTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/climatestationmeastype"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrClimateStationMeasurementTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/climatestationmeastype?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrCurrentInUseCodes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/currentinusecodes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrCurrentInUseCodes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/currentinusecodes?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDiversionRecordObservationCodes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/divrecobservationcodes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDiversionRecordObservationCodes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/divrecobservationcodes?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDiversionRecordTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/divrectypes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDiversionRecordTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/divrectypes?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrDiversionNotUsedCodes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/diversionnotusedcodes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrDiversionNotUsedCodes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/diversionnotusedcodes?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrStationFlags",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/stationflags"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrStationFlags.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/stationflags?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR dwrMeterReadingSubmissionTypes",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/referencetables/meterreadingsubmissiontypes"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "bodyFileName": "dwr/dwrMeterReadingSubmissionTypes.json"
+      },
+      "metadata": {
+        "description": "The answer of https://dwr.state.co.us/Rest/GET/api/v2/referencetables/meterreadingsubmissiontypes?pageSize=50, recorded on 2026-10-12. The names of people are replaced."
+      }
+    },
+    {
+      "name": "DWR monthly diversion records with a month written as a date",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/dwr/Rest/GET/api/v2/structures/divrec/divrecmonth",
+        "queryParameters": {
+          "min-dataMeasDate": {
+            "matches": "[0-9]{4}-.*"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": "\"dataMeasDate formatted incorrectly, should be 'MM/yyyy'\""
+      },
+      "metadata": {
+        "description": "How DWR answers a month written 2025-01 in place of 01/2025, recorded for wdid=0200802&min-dataMeasDate=2025-01"
+      }
+    }
+  ]
+}

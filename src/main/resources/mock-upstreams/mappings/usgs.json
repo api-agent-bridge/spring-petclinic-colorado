@@ -1,0 +1,172 @@
+{
+  "mappings": [
+    {
+      "name": "USGS: count, colorado-2026",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/count",
+        "queryParameters": {}
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/count-colorado-2026.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://earthquake.usgs.gov/fdsnws/event/1/count with {'starttime': '2026-01-01', 'minlatitude': '36.99', 'maxlatitude': '41.0', 'minlongitude': '-109.06', 'maxlongitude': '-102.04'}. Answers every other search as well."
+      }
+    },
+    {
+      "name": "USGS: query, colorado-2026",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/query",
+        "queryParameters": {}
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/query-colorado-2026.json"
+      },
+      "metadata": {
+        "description": "The first 10 earthquakes by time, recorded from https://earthquake.usgs.gov/fdsnws/event/1/query with {'starttime': '2026-01-01', 'minlatitude': '36.99', 'maxlatitude': '41.0', 'minlongitude': '-109.06', 'maxlongitude': '-102.04'}. Answers every other search as well."
+      }
+    },
+    {
+      "name": "USGS: query, colorado-2024-strongest",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/query",
+        "queryParameters": {
+          "starttime": {
+            "equalTo": "2024-01-01"
+          },
+          "orderby": {
+            "equalTo": "magnitude"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/query-colorado-2024-strongest.json"
+      },
+      "metadata": {
+        "description": "The first 10 earthquakes by magnitude, recorded from https://earthquake.usgs.gov/fdsnws/event/1/query with {'starttime': '2024-01-01', 'minlatitude': '36.99', 'maxlatitude': '41.0', 'minlongitude': '-109.06', 'maxlongitude': '-102.04'}"
+      }
+    },
+    {
+      "name": "USGS: count, colorado-2024",
+      "priority": 3,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/count",
+        "queryParameters": {
+          "starttime": {
+            "equalTo": "2024-01-01"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/count-colorado-2024.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://earthquake.usgs.gov/fdsnws/event/1/count with {'starttime': '2024-01-01', 'minlatitude': '36.99', 'maxlatitude': '41.0', 'minlongitude': '-109.06', 'maxlongitude': '-102.04'}"
+      }
+    },
+    {
+      "name": "USGS: query, colorado-2024",
+      "priority": 3,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/query",
+        "queryParameters": {
+          "starttime": {
+            "equalTo": "2024-01-01"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/query-colorado-2024.json"
+      },
+      "metadata": {
+        "description": "The first 10 earthquakes by time, recorded from https://earthquake.usgs.gov/fdsnws/event/1/query with {'starttime': '2024-01-01', 'minlatitude': '36.99', 'maxlatitude': '41.0', 'minlongitude': '-109.06', 'maxlongitude': '-102.04'}"
+      }
+    },
+    {
+      "name": "USGS: count, denver-since-2024",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/count",
+        "queryParameters": {
+          "starttime": {
+            "equalTo": "2024-01-01"
+          },
+          "latitude": {
+            "matches": "39\\.7[0-9]*"
+          },
+          "longitude": {
+            "matches": "-104\\.9[0-9]*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/count-denver-since-2024.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://earthquake.usgs.gov/fdsnws/event/1/count with {'starttime': '2024-01-01', 'latitude': '39.7392', 'longitude': '-104.9903', 'maxradiuskm': '100.0'} It matches any point in downtown Denver, so the point the Census geocoder gives for an owner finds it too."
+      }
+    },
+    {
+      "name": "USGS: query, denver-since-2024",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/usgs/fdsnws/event/1/query",
+        "queryParameters": {
+          "starttime": {
+            "equalTo": "2024-01-01"
+          },
+          "latitude": {
+            "matches": "39\\.7[0-9]*"
+          },
+          "longitude": {
+            "matches": "-104\\.9[0-9]*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "usgs/query-denver-since-2024.json"
+      },
+      "metadata": {
+        "description": "The first 10 earthquakes by time, recorded from https://earthquake.usgs.gov/fdsnws/event/1/query with {'starttime': '2024-01-01', 'latitude': '39.7392', 'longitude': '-104.9903', 'maxradiuskm': '100.0'} It matches any point in downtown Denver, so the point the Census geocoder gives for an owner finds it too."
+      }
+    }
+  ]
+}

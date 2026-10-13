@@ -1,0 +1,1250 @@
+# The National Park Service API (https://www.nps.gov/subjects/developer/api-documentation.htm), with data about
+# the national parks, monuments and historic sites of the United States. The fields and types below are generated
+# from its Swagger document and from answers recorded from the live API, with hand-written descriptions. Each
+# field is one GET operation, and RestOperationFetcher calls it with the operation table in nps/operations.json.
+# Every call needs a key from api.data.gov.
+
+extend type Query {
+	# The parks themselves, and what happens in them right now.
+
+	"""
+	The national parks, monuments and historic sites of the National Park Service in the United States, with their
+	description, location, opening hours, entrance fees, contacts, activities and photos. Colorado has 17 sites,
+	among them Rocky Mountain National Park (romo), Great Sand Dunes (grsa), Mesa Verde (meve) and Black Canyon of
+	the Gunnison (blca). A park with every field is about 2,300 tokens, so narrow the list with parkCode or
+	stateCode and select only the fields the question needs.
+	Returns information about National Park Service parks and sites, with optional filters for park codes, state
+	codes, or a search term.
+	"""
+	npsParks(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsParkPage
+
+	"""
+	Notices that national park staff post about their park: closures of roads, trails and campgrounds, dangers such
+	as toxic algae or fire restrictions, and visitor information, each in the category Park Closure, Danger, Caution
+	or Information, for example the alerts of the national parks in Colorado (stateCode CO). Park staff write them;
+	weather watches and warnings come from the National Weather Service.
+	Returns park alerts, with optional filters for park codes, state codes, or a search term.
+	"""
+	npsAlerts(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsAlertPage
+
+	"""
+	Incidents and work zones on the roads of a national park, as a GeoJSON feed in the Work Zone Data Exchange
+	format. A park without current road events answers an empty list of features.
+	Returns road events, optionally filtered by park code and event type.
+	"""
+	npsRoadEvents(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"incident or workzone. Leave it out for both."
+		type: String
+	): NpsRoadEventFeed
+
+	"""
+	The webcams of national parks, with what each one shows, whether it streams video or shows still images, and the
+	link to watch it, for example the views of Longs Peak and the Continental Divide in Rocky Mountain National Park
+	(parkCode romo).
+	Returns metadata for National Park Service webcams, with optional filters for park codes, state codes, webcam
+	IDs, or a search term.
+	"""
+	npsWebcams(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A comma delimited list of webcam IDs."
+		id: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsWebcamPage
+
+	# Planning a visit: where to stay, where to park, what to do, and what it costs.
+
+	"""
+	Things visitors can do in national parks, such as hikes, scenic drives, wildlife viewing and ranger programs,
+	each with its season, duration, fees, accessibility, and whether pets may come along: arePetsPermitted and
+	arePetsPermittedWithRestrictions say yes or no, and petsDescription gives the rules. Use it for questions such
+	as "can I take my dog on a trail in Rocky Mountain National Park" (parkCode romo, where pets may join the scenic
+	drives and picnics, and stay off every trail).
+	Returns activities and experiences visitors can do at National Park Service sites, with optional filters for
+	IDs, park codes, state codes, or a search term.
+	"""
+	npsThingsToDo(
+		"A comma delimited list of things to do IDs."
+		id: String
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsThingToDoPage
+
+	"""
+	The campgrounds of national parks, with their number of sites, reservations, fees, amenities such as toilets,
+	showers and potable water, accessibility, and opening seasons, for example the five campgrounds of Rocky
+	Mountain National Park (parkCode romo).
+	Returns campground information, with optional filters for park codes, state codes, or a search term.
+	"""
+	npsCampgrounds(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsCampgroundPage
+
+	"""
+	The visitor centers and contact stations of national parks, with their opening hours, address, directions and
+	amenities.
+	Returns information about National Park Service visitor centers, with optional filters for park codes, state
+	codes, or a search term.
+	"""
+	npsVisitorCenters(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsVisitorCenterPage
+
+	"""
+	What a visit to a national park costs: entrance fees per vehicle, person or motorcycle, the passes a park sells
+	or accepts, timed entry reservations, and parking fees, for example the timed entry permits of Rocky Mountain
+	National Park (parkCode romo).
+	Returns information about fees and passes, with optional filters for park codes, state codes, or a search term.
+	"""
+	npsFeesAndPasses(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		statecode: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsFeesAndPassesPage
+
+	"""
+	Events in national parks, such as ranger talks, guided walks and night sky programs, with their dates, times,
+	place, fees and whether they need a registration. dateStart and dateEnd limit the dates.
+	Returns events associated with National Park Service sites, with optional filters for location, date, event
+	type, tags, or search term.
+	"""
+	npsEvents(
+		"""
+		One park code, or several separated by commas: romo for Rocky Mountain National Park, grsa for Great Sand Dunes,
+		meve for Mesa Verde, blca for Black Canyon of the Gunnison. npsParks with stateCode CO lists the codes of every
+		site in Colorado.
+		"""
+		parkCode: String
+		"A comma delimited list of organization site codes."
+		organization: String
+		"A comma delimited list of subject site codes."
+		subject: String
+		"A comma delimited list of portal site codes."
+		portal: String
+		"A comma delimited list of tags that must be included."
+		tagsAll: String
+		"A comma delimited list of tags that may be included."
+		tagsOne: String
+		"A comma delimited list of tags that must not be included."
+		tagsNone: String
+		"One two-letter state code, or several separated by commas, for example CO for Colorado."
+		stateCode: String
+		"The first day of the events, as YYYY-MM-DD."
+		dateStart: String
+		"The last day of the events, as YYYY-MM-DD."
+		dateEnd: String
+		"A comma delimited list of event types."
+		eventType: String
+		"A unique ID string for an event."
+		id: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		A flag to denote whether or not to expand the recurring events out into multiple records (one per event date).
+		Default is false.
+		"""
+		expandRecurring: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsEventPage
+
+	# The lists the other NPS fields refer to: activities, amenities and topics.
+
+	"""
+	The 40 kinds of activity the National Park Service names for its parks, such as hiking, camping, wildlife
+	watching, astronomy and dog sledding, each with its id.
+	Returns activities available at National Park Service sites, with optional filters for activity IDs or a search
+	term.
+	"""
+	npsActivities(
+		"One or more activity unique IDs."
+		id: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsActivityPage
+
+	"""
+	The national parks that offer an activity, for each kind of activity, such as every park where visitors can go
+	dog sledding or horse trekking. An activity can list hundreds of parks, so narrow it with id or q.
+	Returns activites parks information.
+	"""
+	npsActivityParks(
+		"A comma delimited list of activity IDs."
+		id: String
+		"A text to search for in the records, for example elk."
+		q: String
+		"""
+		The fields to sort by, separated by commas. A field starting with a minus sign sorts in descending order, for
+		example -relevanceScore.
+		"""
+		sort: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NpsActivityParkPage
+}
+
+"The answer of npsParks, as the National Park Service sends it."
+type NpsParkPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsPark]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"""
+A national park, monument or historic site of the National Park Service, with its park code, description,
+location, opening hours, fees and contacts.
+"""
+type NpsPark {
+	activities: [NpsActivity]
+	"Park addresses (physical and mailing)"
+	addresses: [NpsAddress]
+	"Information about contacting the park"
+	contacts: NpsContacts
+	"Introductory paragraph from the park homepage"
+	description: String
+	"Type of designation (eg, national park, national monument, national recreation area, etc)"
+	designation: String
+	"General overview of how to get to the park"
+	directionsInfo: String
+	"Link to page, if available, that provides additional detail on getting to the park"
+	directionsUrl: String
+	"Fee for entering the park"
+	entranceFees: [NpsFee]
+	"Passes available to provide entry into the park"
+	entrancePasses: [NpsPass]
+	"Additional fees associated with the park"
+	fees: [NpsParkFee]
+	"Full park name (with designation)"
+	fullName: String
+	"Park identification string"
+	id: String
+	"Park images"
+	images: [NpsImage]
+	"The latitude and longitude as text, for example lat:40.3556924, long:-105.6972879."
+	latLong: String
+	latitude: String
+	longitude: String
+	multimedia: [NpsMultimediaReference]
+	"Short park name (no designation)"
+	name: String
+	"Hours and seasons when the park is open or closed"
+	operatingHours: [NpsOperatingHours]
+	"The code of the park, such as romo for Rocky Mountain National Park."
+	parkCode: String
+	"""
+	The relevance score is a numeric calculation of how much your item meets the criteria of your q (query text)
+	search. This is normally coupled with a sort value of -relevanceScore. A higher value means that your item meets
+	the criteria of the q search with a higher frequency and accuracy.
+	"""
+	relevanceScore: Float
+	"State(s) the park is located in (comma-delimited list)"
+	states: String
+	topics: [NpsTopic]
+	"Park Website"
+	url: String
+	"General description of the weather in the park over the course of a year"
+	weatherInfo: String
+}
+
+"The activities of a park, as the National Park Service sends it."
+type NpsActivity {
+	"UUID for this activity"
+	id: String
+	"name for this activity"
+	name: String
+}
+
+"The addresses of a park, as the National Park Service sends it."
+type NpsAddress {
+	postalCode: String
+	city: String
+	stateCode: String
+	countryCode: String
+	provinceTerritoryCode: String
+	line1: String
+	type: String
+	line3: String
+	line2: String
+}
+
+"Information about contacting the park"
+type NpsContacts {
+	phoneNumbers: [NpsPhoneNumber]
+	emailAddresses: [NpsEmailAddress]
+}
+
+"The phoneNumbers of a contacts, as the National Park Service sends it."
+type NpsPhoneNumber {
+	phoneNumber: String
+	description: String
+	extension: String
+	type: String
+}
+
+"The emailAddresses of a contacts, as the National Park Service sends it."
+type NpsEmailAddress {
+	emailAddress: String
+	description: String
+}
+
+"One fee, with its cost in US dollars as text."
+type NpsFee {
+	cost: String
+	description: String
+	title: String
+}
+
+"The entrancePasses of a park, as the National Park Service sends it."
+type NpsPass {
+	cost: String
+	description: String
+	title: String
+}
+
+"The fees of a park, as the National Park Service sends it."
+type NpsParkFee {
+	cost: String
+	description: String
+	title: String
+}
+
+"""
+A photo of the National Park Service, with its caption, credit and the text that describes it for people who
+cannot see it.
+"""
+type NpsImage {
+	"credit for this image"
+	credit: String
+	"alternate text for this image"
+	altText: String
+	"title for this image"
+	title: String
+	"caption for this image"
+	caption: String
+	"URL to this image"
+	url: String
+	"description for this image"
+	description: String
+	crops: [NpsImageCrop]
+	imageId: String
+	ordinal: String
+	path: String
+	imageid: String
+	id: String
+}
+
+"The multimedia of a park, as the National Park Service sends it."
+type NpsMultimediaReference {
+	"title of multimedia asset"
+	title: String
+	"UUID for multimedia asset"
+	id: String
+	"the kind of asset"
+	type: String
+	"The URL of the multimedia asset"
+	url: String
+}
+
+"""
+When a place in a national park is open, as standard hours for each day of the week and exceptions for given
+dates.
+"""
+type NpsOperatingHours {
+	name: String
+	description: String
+	standardHours: NpsStandardHours
+	exceptions: [NpsHoursException]
+}
+
+"The standardHours of an operating hours, as the National Park Service sends it."
+type NpsStandardHours {
+	sunday: String
+	monday: String
+	tuesday: String
+	wednesday: String
+	thursday: String
+	friday: String
+	saturday: String
+}
+
+"The exceptions of an operating hours, as the National Park Service sends it."
+type NpsHoursException {
+	name: String
+	startDate: String
+	endDate: String
+	exceptionHours: NpsStandardHours
+}
+
+"The topics of a park, as the National Park Service sends it."
+type NpsTopic {
+	"UUID for this topic"
+	id: String
+	"name for this topic"
+	name: String
+}
+
+"The answer of npsAlerts, as the National Park Service sends it."
+type NpsAlertPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsAlert]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"""
+A notice that national park staff posted about their park, in the category Park Closure, Danger, Caution or
+Information. It is a park notice, written by the park.
+"""
+type NpsAlert {
+	"Park Closure, Danger, Caution or Information."
+	category: String
+	"Alert description"
+	description: String
+	"Unique identifier for an alert record"
+	id: String
+	"A variable width character code that uniquely identifies a specific park"
+	parkCode: String
+	"Alert title"
+	title: String
+	"Link to more information about the alert, if available"
+	url: String
+	"date/time stamp of when this alert was last indexed"
+	lastIndexedDate: String
+	"more information about a road event related to this alert (if any)"
+	relatedRoadEvents: [NpsRelatedRoadEvent]
+}
+
+"The relatedRoadEvents of an alert, as the National Park Service sends it."
+type NpsRelatedRoadEvent {
+	"title of this related road event"
+	title: String
+	"UUID for this related road event"
+	id: String
+	"what type of related road event is this"
+	type: String
+	"URL for more information about this related road event"
+	url: String
+}
+
+"The answer of npsRoadEvents, as the National Park Service sends it."
+type NpsRoadEventFeed {
+	features: [NpsRoadEventFeedFeature]
+	road_event_feed_info: NpsRoadEventFeedRoadEventFeedInfo
+	type: String
+}
+
+"The features of a road event feed, as the National Park Service sends it."
+type NpsRoadEventFeedFeature {
+	geometry: NpsRoadEventFeedFeatureGeometry
+	"UUID for this feature"
+	id: String
+	properties: NpsRoadEventFeedFeatureProperty
+	type: String
+}
+
+"The geometry of a road event feed feature, as the National Park Service sends it."
+type NpsRoadEventFeedFeatureGeometry {
+	coordinates: [[Float]]
+	type: String
+}
+
+"The properties of a road event feed feature, as the National Park Service sends it."
+type NpsRoadEventFeedFeatureProperty {
+	core_details: NpsRoadEventFeedFeaturePropertyCoreDetail
+	end_date: String
+	is_end_date_verified: Boolean
+	is_end_position_verified: Boolean
+	is_start_date_verified: Boolean
+	is_start_position_verified: Boolean
+	location_method: String
+	start_date: String
+	types_of_work: [NpsRoadEventFeedFeaturePropertyTypesOfWork]
+	vehicle_impact: String
+	Id: String
+	_id: Int
+	beginning_accuracy: String
+	end_date_accuracy: String
+	ending_accuracy: String
+	start_date_accuracy: String
+	types_of_incident: [NpsRoadEventFeedFeaturePropertyTypesOfIncident]
+}
+
+"The core details of a road event feed feature property, as the National Park Service sends it."
+type NpsRoadEventFeedFeaturePropertyCoreDetail {
+	data_source_id: String
+	description: String
+	direction: String
+	event_type: String
+	name: String
+	road_names: [String]
+}
+
+"The types of work of a road event feed feature property, as the National Park Service sends it."
+type NpsRoadEventFeedFeaturePropertyTypesOfWork {
+	type_name: String
+	description: String
+	incident_category: String
+	incident_type: String
+}
+
+"The types of incident of a road event feed feature property, as the National Park Service sends it."
+type NpsRoadEventFeedFeaturePropertyTypesOfIncident {
+	description: String
+	incident_category: String
+	incident_type: String
+}
+
+"The road event feed info of a road event feed, as the National Park Service sends it."
+type NpsRoadEventFeedRoadEventFeedInfo {
+	contact_email: String
+	contact_name: String
+	data_sources: [NpsRoadEventFeedRoadEventFeedInfoDataSource]
+	id: String
+	license: String
+	publisher: String
+	update_date: String
+	update_frequency: Float
+	version: String
+}
+
+"The data sources of a road event feed road event feed info, as the National Park Service sends it."
+type NpsRoadEventFeedRoadEventFeedInfoDataSource {
+	contact_email: String
+	contact_name: String
+	data_source_id: String
+	organization_name: String
+	update_date: String
+	update_frequency: Float
+}
+
+"The answer of npsWebcams, as the National Park Service sends it."
+type NpsWebcamPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsWebcam]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"A webcam in a national park."
+type NpsWebcam {
+	"URL corresponding to this webcam"
+	url: String
+	title: String
+	"Id for Geometry Point of Interest"
+	geometryPoiId: String
+	id: String
+	description: String
+	images: [NpsImage]
+	relatedParks: [NpsRelatedPark]
+	status: String
+	statusMessage: String
+	isStreaming: Boolean
+	tags: [String]
+	latitude: Float
+	longitude: Float
+	credit: String
+}
+
+"The crops of an image, as the National Park Service sends it."
+type NpsImageCrop {
+	"the image ratio for this cropped image"
+	aspectRatio: String
+	"URL for this cropped image"
+	url: String
+	aspectratio: Int
+}
+
+"A national park that a record relates to, with its park code and full name."
+type NpsRelatedPark {
+	"comma separated list of state codes"
+	states: String
+	"four letter park code"
+	parkCode: String
+	"designation of related park"
+	designation: String
+	"full name of related park"
+	fullName: String
+	"URL of related park website"
+	url: String
+	"name of related park"
+	name: String
+}
+
+"The answer of npsThingsToDo, as the National Park Service sends it."
+type NpsThingToDoPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsThingToDo]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"""
+Something visitors can do in a national park, with its season, duration, fees, and the rules for pets.
+"""
+type NpsThingToDo {
+	location: String
+	seasonDescription: String
+	accessibilityInformation: String
+	longitude: String
+	"Id for Geometry Point of Interest"
+	geometryPoiId: String
+	relatedParks: [NpsRelatedPark]
+	"true or false"
+	isReservationRequired: String
+	ageDescription: String
+	"URL for this Thing To Do"
+	url: String
+	"The rules for pets, as HTML or plain text, and empty for some activities."
+	petsDescription: String
+	timeOfDayDescription: String
+	images: [NpsImage]
+	feeDescription: String
+	"UUID for this Thing To Do"
+	id: String
+	age: String
+	"Whether pets may come along under rules, such as a leash, as the text true or false."
+	arePetsPermittedWithRestrictions: String
+	amenities: [String]
+	credit: String
+	activities: [NpsActivity]
+	activityDescription: String
+	locationDescription: String
+	"true or false"
+	doFeesApply: String
+	longDescription: String
+	reservationDescription: String
+	season: [String]
+	topics: [NpsTopic]
+	durationDescription: String
+	"Whether pets may come along, as the text true or false."
+	arePetsPermitted: String
+	timeOfDay: [String]
+	title: String
+	latitude: String
+	shortDescription: String
+	"estimated duration of this Thing To Do"
+	duration: String
+	"comma separated list of tags"
+	tags: [String]
+	"""
+	The relevance score is a numeric calculation of how much your item meets the criteria of your q (query text)
+	search. This is normally coupled with a sort value of -relevanceScore. A higher value means that your item meets
+	the criteria of the q search with a higher frequency and accuracy.
+	"""
+	relevanceScore: Float
+}
+
+"The answer of npsCampgrounds, as the National Park Service sends it."
+type NpsCampgroundPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsCampground]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"A campground in a national park, with its sites, reservations, fees and amenities."
+type NpsCampground {
+	"Campground identification string"
+	id: String
+	"Link to more information about the campground"
+	url: String
+	"Campground name"
+	name: String
+	"A variable width character code used to identify a specific park"
+	parkCode: String
+	"General description of the campground"
+	description: String
+	latitude: String
+	longitude: String
+	"The latitude and longitude as text, for example lat:40.3556924, long:-105.6972879."
+	latLong: String
+	"Audio description of the campground"
+	audioDescription: String
+	"Indicates whether this campground is a passport stamp location"
+	isPassportStampLocation: String
+	"Information about the nearest passport stamp location"
+	passportStampLocationDescription: String
+	"Images associated with the passport stamp location"
+	passportStampImages: [NpsImage]
+	"Id for Geometry Point of Interest"
+	geometryPoiId: String
+	"General information about the reservation process, if applicable"
+	reservationInfo: String
+	"Link to website where reservations can be made"
+	reservationUrl: String
+	"Link to additional information about campground regulations, if available"
+	regulationsurl: String
+	"Information about campground regulations"
+	regulationsOverview: String
+	"Detailed information about amenities available in the campground"
+	amenities: NpsCampgroundAmenities
+	"Information about contacting the park regarding this campground"
+	contacts: NpsContacts
+	"Information about the cost of camping"
+	fees: [NpsFee]
+	"General overview of how to get to the campground"
+	directionsOverview: String
+	"Link to page, if available, that provides additional detail on getting to the campground"
+	directionsUrl: String
+	"Hours and seasons when the campground is open or closed"
+	operatingHours: [NpsOperatingHours]
+	"Campground addresses (physical and mailing)"
+	addresses: [NpsAddress]
+	"Campground images"
+	images: [NpsImage]
+	"General description of the weather in the campground over the course of a year"
+	weatherOverview: String
+	"Number of sites that can be booked in advance"
+	numberOfSitesReservable: String
+	"Number of sites that are first come, first served"
+	numberOfSitesFirstComeFirstServe: String
+	"Detailed information about campsites"
+	campsites: NpsCampgroundSites
+	"Detailed information about accessibility in the campground"
+	accessibility: NpsCampgroundAccessibility
+	multimedia: [NpsMultimediaReference]
+	"The relevance score is a numeric calculation of how much the item meets query-text search criteria"
+	relevanceScore: Float
+	"When this match was last indexed"
+	lastIndexedDate: String
+}
+
+"Detailed information about amenities available in the campground"
+type NpsCampgroundAmenities {
+	trashRecyclingCollection: String
+	toilets: [String]
+	internetConnectivity: String
+	showers: [String]
+	cellPhoneReception: String
+	laundry: String
+	amphitheater: String
+	dumpStation: String
+	campStore: String
+	staffOrVolunteerHostOnsite: String
+	potableWater: [String]
+	iceAvailableForSale: String
+	firewoodForSale: String
+	foodStorageLockers: String
+}
+
+"Detailed information about campsites"
+type NpsCampgroundSites {
+	totalSites: String
+	group: String
+	horse: String
+	tentOnly: String
+	electricalHookups: String
+	rvOnly: String
+	walkBoatTo: String
+	other: String
+}
+
+"Detailed information about accessibility in the campground"
+type NpsCampgroundAccessibility {
+	wheelchairAccess: String
+	internetInfo: String
+	cellPhoneInfo: String
+	fireStovePolicy: String
+	rvAllowed: String
+	rvInfo: String
+	rvMaxLength: String
+	additionalInfo: String
+	trailerMaxLength: String
+	adaInfo: String
+	trailerAllowed: String
+	accessRoads: [String]
+	classifications: [String]
+}
+
+"The answer of npsVisitorCenters, as the National Park Service sends it."
+type NpsVisitorCenterPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsVisitorCenter]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"A visitor center or contact station in a national park."
+type NpsVisitorCenter {
+	"Visitor Center addresses (physical and mailing)"
+	addresses: [NpsAddress]
+	amenities: [String]
+	"audio description of the facility"
+	audioDescription: String
+	"Information about contacting staff at the facility"
+	contacts: NpsContacts
+	"General description of the facility"
+	description: String
+	"General overview of how to get to the facility"
+	directionsInfo: String
+	"Link to page, if available, that provides additional detail on getting to the facility"
+	directionsUrl: String
+	"Id for Geometry Point of Interest"
+	geometryPoiId: String
+	"ID"
+	id: String
+	images: [NpsImage]
+	"0 or 1"
+	isPassportStampLocation: String
+	lastIndexedDate: String
+	"The latitude and longitude as text, for example lat:40.3556924, long:-105.6972879."
+	latLong: String
+	latitude: String
+	longitude: String
+	multimedia: [NpsMultimediaReference]
+	"Facility name"
+	name: String
+	"Hours and seasons when the facility is open or closed"
+	operatingHours: [NpsOperatingHours]
+	"A variable width character code used to identify a specific park"
+	parkCode: String
+	passportStampLocationDescription: String
+	passportStampImages: [NpsImage]
+	"""
+	The relevance score is a numeric calculation of how much your item meets the criteria of your q (query text)
+	search. This is normally coupled with a sort value of -relevanceScore. A higher value means that your item meets
+	the criteria of the q search with a higher frequency and accuracy.
+	"""
+	relevanceScore: Float
+	"The URL corresponding to the visitor center"
+	url: String
+}
+
+"The answer of npsFeesAndPasses, as the National Park Service sends it."
+type NpsFeesAndPassesPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsFeesAndPasses]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"What a visit to one national park costs, and the passes it accepts."
+type NpsFeesAndPasses {
+	cashless: String
+	entranceFeeDescription: String
+	entrancePassDescription: String
+	fees: [NpsFeesAndPassesFee]
+	feesAtWorkUrl: String
+	isFeeFreePark: Boolean
+	isInteragencyPassAccepted: Boolean
+	isParkingFeePossible: Boolean
+	parkCode: String
+	parkingDetailsUrl: String
+	passes: [NpsFeesAndPassesPass]
+	timedEntryHeading: String
+	timedEntryDescription: String
+	isParkingOrTransportationFeePossible: Boolean
+	paidParkingHeading: String
+	paidParkingDescription: String
+	customFeeHeading: String
+	customFeeDescription: String
+	customFeeLinkUrl: String
+	customFeeLinkText: String
+	contentOrderOrdinals: NpsFeesAndPassesContentOrderOrdinal
+	relatedMultiSitePasses: [NpsFeesAndPassesRelatedMultiSitePass]
+}
+
+"The fees of a fees and passes, as the National Park Service sends it."
+type NpsFeesAndPassesFee {
+	cost: String
+	description: String
+	endDate: NpsFeesAndPassesFeeEndDate
+	entranceFeeType: String
+	exceptions: String
+	id: String
+	informationUrl: String
+	npsGovPurchaseUrl: String
+	payGovPurchaseUrl: String
+	paymentDescription: String
+	purchaseUrl: String
+	recGovPurchaseUrl: String
+	startDate: NpsFeesAndPassesFeeStartDate
+	timedEntryLocation: String
+	timedEntryShortDescription: String
+}
+
+"The endDate of a fees and passes fee, as the National Park Service sends it."
+type NpsFeesAndPassesFeeEndDate {
+	day: Int
+	"Holiday name when the fee period is defined by a holiday."
+	holiday: String
+	month: Int
+}
+
+"The startDate of a fees and passes fee, as the National Park Service sends it."
+type NpsFeesAndPassesFeeStartDate {
+	day: Int
+	"Holiday name when the fee period is defined by a holiday."
+	holiday: String
+	month: Int
+}
+
+"The passes of a fees and passes, as the National Park Service sends it."
+type NpsFeesAndPassesPass {
+	category: String
+	cost: String
+	description: String
+	exceptions: String
+	id: String
+	image: [NpsFeesAndPassesPassImage]
+	informationUrl: String
+	payGovPurchaseUrl: String
+	paymentDescription: String
+	npsGovPurchaseUrl: String
+	recGovPurchaseUrl: String
+}
+
+"The image of a fees and passes pass, as the National Park Service sends it."
+type NpsFeesAndPassesPassImage {
+	altText: String
+	caption: String
+	credit: String
+	title: String
+	url: String
+}
+
+"The contentOrderOrdinals of a fees and passes, as the National Park Service sends it."
+type NpsFeesAndPassesContentOrderOrdinal {
+	entranceFee: Int
+	timedEntry: Int
+	paidParking: Int
+	customFee: Int
+}
+
+"The relatedMultiSitePasses of a fees and passes, as the National Park Service sends it."
+type NpsFeesAndPassesRelatedMultiSitePass {
+	title: String
+	audience: String
+	type: String
+	cost: String
+	description: String
+	images: [NpsImage]
+	purchaseLocations: [NpsFeesAndPassesRelatedMultiSitePassPurchaseLocation]
+	relatedParks: [NpsRelatedPark]
+}
+
+"""
+The purchaseLocations of a fees and passes related multi site pass, as the National Park Service sends it.
+"""
+type NpsFeesAndPassesRelatedMultiSitePassPurchaseLocation {
+	type: String
+	id: String
+	title: String
+	paymentMethod: String
+}
+
+"The answer of npsEvents, as the National Park Service sends it."
+type NpsEventPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsEvent]
+	dates: String
+	pagenumber: String
+	pagesize: String
+}
+
+"""
+An event in a national park, such as a ranger talk or a guided walk. The NPS writes its fields in lower case and
+sends yes and no as the texts true and false.
+"""
+type NpsEvent {
+	"Email address for event contact"
+	contactemailaddress: String
+	"Name of event contact"
+	contactname: String
+	"Phone number for event contact"
+	contacttelephonenumber: String
+	"Category for event"
+	category: String
+	categoryid: String
+	createuser: String
+	"End date for event"
+	dateend: String
+	"Date of next upcoming event"
+	date: String
+	"Array of event dates"
+	dates: [String]
+	"Start date for event"
+	datestart: String
+	datetimecreated: String
+	datetimeupdated: String
+	"Event description"
+	description: String
+	eventid: String
+	"Fee information for event"
+	feeinfo: String
+	"Id for Geometry Point of Interest"
+	geometryPoiId: String
+	"Unique identifier for this event"
+	id: String
+	imageidlist: String
+	images: [NpsImage]
+	"URL for more information about the event"
+	infourl: String
+	"The event takes place all day"
+	isallday: String
+	"The event is free"
+	isfree: String
+	"The event has recurrence"
+	isrecurring: String
+	"The event requires registration or reservation"
+	isregresrequired: String
+	"The latitude of the event location"
+	latitude: String
+	"The location the event takes place"
+	location: String
+	"The longitude of the event location"
+	longitude: String
+	"Name of the organization associated with event"
+	organizationname: String
+	"Name and designation of the park associated with event"
+	parkfullname: String
+	"Name of the portal site associated with event"
+	portalname: String
+	"Date the event recurrence ends"
+	recurrencedateend: String
+	"Date the event recurrence starts"
+	recurrencedatestart: String
+	"Recurrence rule for event"
+	recurrencerule: String
+	"Additional information on required reservation or registration for event"
+	regresinfo: String
+	"URL for required reservation or registration for event"
+	regresurl: String
+	"Site code of the associated site for event"
+	sitecode: String
+	"Site type of the associated site for event"
+	sitetype: String
+	"Name of associated subject site for event"
+	subjectname: String
+	"Tags associated with event"
+	tags: [String]
+	"Additional information about times for event"
+	timeinfo: String
+	"Time information for event"
+	times: [NpsEventTime]
+	"Event title"
+	title: String
+	"Type(s) of event"
+	types: [String]
+	risdpoiid: String
+}
+
+"The times of an event, as the National Park Service sends it."
+type NpsEventTime {
+	"Event begins at sunrise"
+	sunrisestart: String
+	"Event ends at sunset"
+	sunsetend: String
+	"Time event begins"
+	timestart: String
+	"Time event ends"
+	timeend: String
+}
+
+"The answer of npsActivities, as the National Park Service sends it."
+type NpsActivityPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsActivity]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"The answer of npsActivityParks, as the National Park Service sends it."
+type NpsActivityParkPage {
+	"The number of results across all pages, as text."
+	total: String
+	data: [NpsActivityParks]
+	"The number of results the service was asked for, as text."
+	limit: String
+	"The number of results skipped before this page, as text."
+	start: String
+}
+
+"The data of an activity park page, as the National Park Service sends it."
+type NpsActivityParks {
+	"Unique identifier for activity park record."
+	id: String
+	"Name for activity park record."
+	name: String
+	parks: [NpsRelatedPark]
+}

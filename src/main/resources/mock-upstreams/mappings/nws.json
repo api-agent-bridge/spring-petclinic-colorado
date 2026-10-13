@@ -1,0 +1,976 @@
+{
+ "mappings": [
+  {
+   "name": "National Weather Service nwsAlerts",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/alerts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsAlerts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts, recorded from https://api.weather.gov/alerts?area=CO&limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsActiveAlerts",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/alerts/active"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsActiveAlerts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/active, recorded from https://api.weather.gov/alerts/active?area=CO"
+   }
+  },
+  {
+   "name": "National Weather Service nwsActiveAlertCounts",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/alerts/active/count"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsActiveAlertCounts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/active/count, recorded from https://api.weather.gov/alerts/active/count"
+   }
+  },
+  {
+   "name": "National Weather Service nwsActiveAlertsForZone",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/alerts/active/zone/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsActiveAlertsForZone.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/active/zone/{zoneId}, recorded from https://api.weather.gov/alerts/active/zone/COZ040"
+   }
+  },
+  {
+   "name": "National Weather Service nwsActiveAlertsForArea",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/alerts/active/area/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsActiveAlertsForArea.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/active/area/{area}, recorded from https://api.weather.gov/alerts/active/area/CO"
+   }
+  },
+  {
+   "name": "National Weather Service nwsActiveAlertsForMarineRegion",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/alerts/active/region/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsActiveAlertsForMarineRegion.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/active/region/{region}, recorded from https://api.weather.gov/alerts/active/region/PA, with features cut from 18 to the first 10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsAlertTypes",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/alerts/types"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsAlertTypes.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/types, recorded from https://api.weather.gov/alerts/types"
+   }
+  },
+  {
+   "name": "National Weather Service nwsAlert",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/alerts/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsAlert.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /alerts/{id}, recorded from https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.8b109db81c92fdd7d1590169e160f8f5f77bfd6a.001.1"
+   }
+  },
+  {
+   "name": "National Weather Service nwsCenterWeatherServiceUnit",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/aviation/cwsus/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsCenterWeatherServiceUnit.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/cwsus/{cwsuId}, recorded from https://api.weather.gov/aviation/cwsus/ZDV"
+   }
+  },
+  {
+   "name": "National Weather Service nwsCenterWeatherAdvisories",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/aviation/cwsus/[^/]+/cwas"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsCenterWeatherAdvisories.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/cwsus/{cwsuId}/cwas, recorded from https://api.weather.gov/aviation/cwsus/ZDV/cwas"
+   }
+  },
+  {
+   "name": "National Weather Service nwsSigmets",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/aviation/sigmets"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsSigmets.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/sigmets, recorded from https://api.weather.gov/aviation/sigmets?atsu=KKCI&date=2026-10-12, with features cut from 37 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsSigmetsOfAirTrafficServiceUnit",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/aviation/sigmets/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsSigmetsOfAirTrafficServiceUnit.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/sigmets/{atsu}, recorded from https://api.weather.gov/aviation/sigmets/KKCI, with features cut from 524 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsSigmetsOfAirTrafficServiceUnitOnDate",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/aviation/sigmets/[^/]+/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsSigmetsOfAirTrafficServiceUnitOnDate.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/sigmets/{atsu}/{date}, recorded from https://api.weather.gov/aviation/sigmets/KKCI/2026-10-12, with features cut from 37 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsSigmet",
+   "priority": 4,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/aviation/sigmets/[^/]+/[^/]+/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsSigmet.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /aviation/sigmets/{atsu}/{date}/{time}, recorded from https://api.weather.gov/aviation/sigmets/KKCI/2026-10-12/1155"
+   }
+  },
+  {
+   "name": "National Weather Service nwsGlossary",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/glossary"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsGlossary.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /glossary, recorded from https://api.weather.gov/glossary, with glossary cut from 3183 to the first 20 and Blizzard, Chinook, Graupel, Heat Index, Microburst, Red Flag Warning, Squall, Virga, Wind Chill"
+   }
+  },
+  {
+   "name": "National Weather Service nwsGridpointRawForecastData",
+   "priority": 4,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/gridpoints/[^/]+/[^/]+,[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsGridpointRawForecastData.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /gridpoints/{wfo}/{x},{y}, recorded from https://api.weather.gov/gridpoints/BOU/63,62, with every layer cut to its first 12 values"
+   }
+  },
+  {
+   "name": "National Weather Service nwsGridpointForecast",
+   "priority": 4,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/gridpoints/[^/]+/[^/]+,[^/]+/forecast"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsGridpointForecast.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /gridpoints/{wfo}/{x},{y}/forecast, recorded from https://api.weather.gov/gridpoints/BOU/63,62/forecast"
+   }
+  },
+  {
+   "name": "National Weather Service nwsGridpointHourlyForecast",
+   "priority": 4,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/gridpoints/[^/]+/[^/]+,[^/]+/forecast/hourly"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsGridpointHourlyForecast.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /gridpoints/{wfo}/{x},{y}/forecast/hourly, recorded from https://api.weather.gov/gridpoints/BOU/63,62/forecast/hourly, with periods cut from 156 to the first 48"
+   }
+  },
+  {
+   "name": "National Weather Service nwsGridpointObservationStations",
+   "priority": 4,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/gridpoints/[^/]+/[^/]+,[^/]+/stations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsGridpointObservationStations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /gridpoints/{wfo}/{x},{y}/stations, recorded from https://api.weather.gov/gridpoints/BOU/63,62/stations?limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsIconConditions",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/icons"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsIconConditions.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /icons, recorded from https://api.weather.gov/icons"
+   }
+  },
+  {
+   "name": "National Weather Service nwsStationObservations",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/stations/[^/]+/observations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsStationObservations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations/{stationId}/observations, recorded from https://api.weather.gov/stations/KDEN/observations?limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsLatestStationObservation",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/stations/[^/]+/observations/latest"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsLatestStationObservation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations/{stationId}/observations/latest, recorded from https://api.weather.gov/stations/KDEN/observations/latest"
+   }
+  },
+  {
+   "name": "National Weather Service nwsStationObservationAtTime",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/stations/[^/]+/observations/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsStationObservationAtTime.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations/{stationId}/observations/{time}, recorded from https://api.weather.gov/stations/KDEN/observations/2026-10-12T12:05:00+00:00"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTerminalAerodromeForecasts",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/stations/[^/]+/tafs"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTerminalAerodromeForecasts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations/{stationId}/tafs, recorded from https://api.weather.gov/stations/KDEN/tafs"
+   }
+  },
+  {
+   "name": "National Weather Service nwsObservationStations",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/stations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsObservationStations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations, recorded from https://api.weather.gov/stations?state=CO&limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsObservationStation",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/stations/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsObservationStation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /stations/{stationId}, recorded from https://api.weather.gov/stations/KDEN"
+   }
+  },
+  {
+   "name": "National Weather Service nwsOffice",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/offices/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsOffice.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /offices/{officeId}, recorded from https://api.weather.gov/offices/BOU"
+   }
+  },
+  {
+   "name": "National Weather Service nwsOfficeBriefing",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/offices/[^/]+/briefing"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsOfficeBriefing.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /offices/{officeId}/briefing, recorded from https://api.weather.gov/offices/BOU/briefing"
+   }
+  },
+  {
+   "name": "National Weather Service nwsOfficeHeadline",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/offices/[^/]+/headlines/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsOfficeHeadline.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /offices/{officeId}/headlines/{headlineId}, recorded from https://api.weather.gov/offices/BOU/headlines/cc5fb2bcdd6096cc684cd0053f6818e8"
+   }
+  },
+  {
+   "name": "National Weather Service nwsOfficeHeadlines",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/offices/[^/]+/headlines"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsOfficeHeadlines.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /offices/{officeId}/headlines, recorded from https://api.weather.gov/offices/BOU/headlines"
+   }
+  },
+  {
+   "name": "National Weather Service nwsOfficeWeatherStories",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/offices/[^/]+/weatherstories"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsOfficeWeatherStories.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /offices/{officeId}/weatherstories, recorded from https://api.weather.gov/offices/BOU/weatherstories"
+   }
+  },
+  {
+   "name": "National Weather Service nwsPoint",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/points/[^/]+,[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsPoint.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /points/{latitude},{longitude}, recorded from https://api.weather.gov/points/39.7392,-104.9903"
+   }
+  },
+  {
+   "name": "National Weather Service nwsRadarStations",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/radar/stations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsRadarStations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radar/stations, recorded from https://api.weather.gov/radar/stations?stationType=WSR-88D, with features cut from 159 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsRadarStation",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/radar/stations/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsRadarStation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radar/stations/{stationId}, recorded from https://api.weather.gov/radar/stations/KFTG"
+   }
+  },
+  {
+   "name": "National Weather Service nwsRadarStationAlarms",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/radar/stations/[^/]+/alarms"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsRadarStationAlarms.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radar/stations/{stationId}/alarms, recorded from https://api.weather.gov/radar/stations/KFTG/alarms"
+   }
+  },
+  {
+   "name": "National Weather Service nwsRadarQueue",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/radar/queues/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsRadarQueue.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radar/queues/{host}, recorded from https://api.weather.gov/radar/queues/rds?station=KFTG&limit=5"
+   }
+  },
+  {
+   "name": "National Weather Service nwsWeatherRadioTransmitters",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/radio"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsWeatherRadioTransmitters.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radio, recorded from https://api.weather.gov/radio, with @graph cut from 500 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsWeatherRadioTransmitter",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/radio/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsWeatherRadioTransmitter.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /radio/{callSign}, recorded from https://api.weather.gov/radio/KEC76"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProducts",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/products"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProducts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products, recorded from https://api.weather.gov/products?location=BOU&type=AFD&limit=5"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductLocations",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/products/locations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductLocations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/locations, recorded from https://api.weather.gov/products/locations"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductTypes",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/products/types"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductTypes.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/types, recorded from https://api.weather.gov/products/types"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProduct",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProduct.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/{productId}, recorded from https://api.weather.gov/products/36818f87-914e-4afa-b243-a0f43d60309d"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductsOfType",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/types/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductsOfType.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/types/{typeId}, recorded from https://api.weather.gov/products/types/AFD, with @graph cut from 4607 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductTypeLocations",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/types/[^/]+/locations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductTypeLocations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/types/{typeId}/locations, recorded from https://api.weather.gov/products/types/AFD/locations"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductTypesAtLocation",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/locations/[^/]+/types"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductTypesAtLocation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/locations/{locationId}/types, recorded from https://api.weather.gov/products/locations/BOU/types"
+   }
+  },
+  {
+   "name": "National Weather Service nwsTextProductsOfTypeAtLocation",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/types/[^/]+/locations/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsTextProductsOfTypeAtLocation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/types/{typeId}/locations/{locationId}, recorded from https://api.weather.gov/products/types/AFD/locations/BOU"
+   }
+  },
+  {
+   "name": "National Weather Service nwsLatestTextProduct",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/products/types/[^/]+/locations/[^/]+/latest"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsLatestTextProduct.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /products/types/{typeId}/locations/{locationId}/latest, recorded from https://api.weather.gov/products/types/AFD/locations/BOU/latest"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZones",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/nws/zones"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZones.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones, recorded from https://api.weather.gov/zones?area=CO&type=forecast&limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZonesOfType",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZonesOfType.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/{type}, recorded from https://api.weather.gov/zones/forecast?area=CO&limit=10"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZone",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/[^/]+/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZone.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/{type}/{zoneId}, recorded from https://api.weather.gov/zones/forecast/COZ040, with the geometry, which the schema leaves out, replaced with null"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZoneForecast",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/[^/]+/[^/]+/forecast"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZoneForecast.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/{type}/{zoneId}/forecast, recorded from https://api.weather.gov/zones/forecast/COZ040/forecast, with the geometry, which the schema leaves out, replaced with null"
+   }
+  },
+  {
+   "name": "National Weather Service nwsCountyWeatherRadioTransmitters",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/[^/]+/[^/]+/radio"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/ld+json"
+    },
+    "bodyFileName": "nws/nwsCountyWeatherRadioTransmitters.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/{type}/{zoneId}/radio, recorded from https://api.weather.gov/zones/county/COC031/radio, with @graph cut from 256 to the first 20"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZoneObservations",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/forecast/[^/]+/observations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZoneObservations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/forecast/{zoneId}/observations, recorded from https://api.weather.gov/zones/forecast/COZ040/observations?limit=5"
+   }
+  },
+  {
+   "name": "National Weather Service nwsZoneObservationStations",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nws/zones/forecast/[^/]+/stations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/geo+json"
+    },
+    "bodyFileName": "nws/nwsZoneObservationStations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /zones/forecast/{zoneId}/stations, recorded from https://api.weather.gov/zones/forecast/COZ040/stations?limit=10"
+   }
+  }
+ ]
+}

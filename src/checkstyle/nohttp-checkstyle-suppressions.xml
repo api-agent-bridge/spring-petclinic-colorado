@@ -8,4 +8,6 @@
 	<suppress files="build[\\/].*" checks=".*"/>
 	<suppress files="target[\\/].*" checks=".*"/>
 	<suppress files=".+\.(jar|git|ico|p12|gif|jks|jpg|svg|log)" checks="NoHttp"/>
+	<!-- responses recorded from external services, kept as the services sent them -->
+	<suppress files="mock-upstreams[\\/]__files[\\/].*" checks="NoHttp"/>
 </suppressions>

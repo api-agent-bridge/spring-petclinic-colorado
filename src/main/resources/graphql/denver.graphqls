@@ -1,0 +1,295 @@
+# The open data of the City and County of Denver on ArcGIS Online: the off-leash dog parks, the
+# animal cases of the 311 service requests, and the kennel licenses. The fields and types are
+# written by hand over the ArcGIS REST query operation of each layer and table.
+
+extend type Query {
+	"""
+	The off-leash dog parks of the City and County of Denver, sorted by name, with whether each one is fenced, has
+	shade and has drinking water, its size, the year it was built and its condition. Denver has 18 of them. These
+	are city dog parks in Denver, Colorado. The national parks and their trails are in the nps fields. To find the
+	parks nearest to a clinic owner, select nearestDogParks on the owner. One query to Denver's open data.
+	"""
+	denverDogParks(
+		"Only the parks that are fenced (true) or open (false). Leave it out for every park. All 18 parks are fenced."
+		fenced: Boolean
+		"Only the parks with shade (true) or without (false). Both leave out the parks without a recorded value."
+		shade: Boolean
+		"""
+		Only the parks with drinking water for dogs (true) or without (false). Both leave out the parks without a
+		recorded value.
+		"""
+		water: Boolean
+	): [DenverDogPark!]!
+
+	"""
+	Animal cases that people reported to Denver 311, the city's service line, such as barking dogs, loose animals,
+	strays, lost pets, animal bites and injured wildlife, the most recent first, one page at a time. The table
+	holds the cases of the last 12 months, about 10,800 animal cases. About four in five come without an address
+	or coordinates, and most of those were closed as Closed - Answer Provided.
+	To count cases by type, use denverAnimalServiceRequestCounts. To count cases without reading them, select only
+	totalRequests. Selecting totalPages or totalRequests costs a second query.
+	"""
+	denverAnimalServiceRequests(
+		"Only cases of these types, for example [BARKING_DOG, LOOSE_ANIMAL]. Leave it out for every animal case."
+		caseTypes: [DenverAnimalCaseType!]
+		"Only cases at an incident address in this five-digit ZIP code, for example 80204. It also matches a ZIP+4 code."
+		zipCode: String
+		"Only cases in this Denver city council district, from 1 to 11."
+		councilDistrict: Int
+		"Only cases created on this day or later, for example 2026-09-01."
+		createdFrom: Date
+		"Only cases created on this day or earlier, for example 2026-09-30."
+		createdTo: Date
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of cases on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): DenverAnimalServiceRequestPage!
+
+	"""
+	The number of animal cases that people reported to Denver 311, by type of case, the largest count first, for
+	example how many barking dog complaints Denver had in a month. Types without a case are left out. The table
+	holds the cases of the last 12 months. One query to Denver's open data.
+	"""
+	denverAnimalServiceRequestCounts(
+		"Only cases created on this day or later, for example 2026-09-01."
+		createdFrom: Date
+		"Only cases created on this day or earlier, for example 2026-09-30."
+		createdTo: Date
+		"Only cases at an incident address in this five-digit ZIP code, for example 80204. It also matches a ZIP+4 code."
+		zipCode: String
+		"Only cases in this Denver city council district, from 1 to 11."
+		councilDistrict: Int
+	): [DenverAnimalCaseCount!]!
+
+	"""
+	Where to board a dog or cat in Denver: the dog boarding, doggie daycare, grooming and training businesses, pet
+	stores, shelters and animal hospitals that hold an active kennel license from the City and County of Denver,
+	sorted by name, one page at a time, such as Daily Wag Doggie Daycare, Woof Resorts, Grand Central Grooming, Pavlov
+	Dog Training, Petco, the Dumb Friends League shelter and Tender Touch Animal Hospital. Denver has about 70 of
+	them. One query to Denver's open data.
+	"""
+	denverKennelLicenses(
+		"""
+		Text that the business name, the trade name or the address contains, in upper or lower case, for example
+		animal hospital or Kalamath. Leave it out for every license.
+		"""
+		search: String = ""
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of licenses on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): DenverKennelLicensePage!
+}
+
+extend type Owner {
+	"""
+	The off-leash dog parks of the City and County of Denver nearest to the owner's address, nearest first, within
+	5 km, with the distance to the centre of each park. The US Census geocoder finds the address and Denver's dog
+	park layer lists the parks around it. The list is empty for an owner who lives outside Denver, without a call,
+	and when the geocoder cannot find the address. It is null when a service cannot be reached.
+	"""
+	nearestDogParks(
+		"How many parks to return, from 1 to 10."
+		first: Int! = 3
+	): [DenverDogPark!]
+}
+
+"""
+An off-leash dog park of the City and County of Denver, Colorado. The city records whether it is fenced, has shade
+and has water as yes or no, and leaves some of them empty.
+"""
+type DenverDogPark {
+	"The city's identifier of the park in its dog park layer."
+	id: ID!
+	"The name of the park, for example Railyard Dog Park."
+	name: String!
+	"The city's code for the park location, for example 922."
+	locationCode: String
+	"Whether the park is fenced. Null when the city has not recorded it."
+	fenced: Boolean
+	"Whether the park has shade. Null when the city has not recorded it."
+	shade: Boolean
+	"Whether the park has drinking water. Null when the city has not recorded it."
+	water: Boolean
+	"The size of the park in acres, for example 0.57."
+	acres: Float
+	"The year the dog park was built, for example 2010."
+	yearBuilt: Int
+	"""
+	The condition of the park as the city assessed it. The city writes it as a word, such as Good or Excellent, or
+	as a score out of 100, such as 80, and the text is passed on as the city wrote it.
+	"""
+	condition: String
+	"The day of the assessment that the condition comes from."
+	conditionAssessedDate: Date
+	"The latitude of the centre of the park, in degrees."
+	latitude: Float
+	"The longitude of the centre of the park, in degrees."
+	longitude: Float
+	"""
+	The distance from the owner's address to the centre of the park, in metres. Null in denverDogParks, which lists
+	the parks without an address.
+	"""
+	distanceInMetres: Int
+}
+
+"""
+One page of Denver 311 animal cases. The cases are sorted by the day they were created, the most recent first.
+"""
+type DenverAnimalServiceRequestPage {
+	"The cases on this page."
+	requests: [DenverAnimalServiceRequest!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of cases that match the filters, counted across every page."
+	totalRequests: Int!
+}
+
+"""
+An animal case that someone reported to Denver 311, the city's service line, by phone, in the PocketGov app or by
+email. Denver leaves the neighbourhood, division, type and topic of these cases empty, so the case type is their
+only classification, and about four in five cases come without an address or coordinates.
+"""
+type DenverAnimalServiceRequest {
+	"The identifier of the case in the 311 table."
+	id: ID!
+	"The type of case."
+	caseType: DenverAnimalCaseType
+	"The case summary as 311 wrote it, for example Barking Dog."
+	summary: String!
+	"How far the case got, for example New, Closed - Answer Provided or Closed - Transferred to External Agency."
+	status: String
+	"How the case reached 311, for example Phone, PocketGov or Email - 311."
+	source: String
+	"The day the case was created."
+	createdDate: Date
+	"The time the case was created, in Denver's local time and the US format 311 uses, for example 9/30/2026 11:42:51 AM."
+	createdAt: String
+	"The day the case was closed, or null while it is open."
+	closedDate: Date
+	"The time the case was closed, in the same format as createdAt."
+	closedAt: String
+	"The city agency the case was filed under, for example Public Health & Environment or Safety."
+	agency: String
+	"The address of the incident, for example 511 N Lowell Blvd. Null for most cases."
+	address: String
+	"The intersection of the incident, as two streets joined with and, for a case reported at a corner."
+	intersection: String
+	"The ZIP code of the incident, with five digits or as a ZIP+4 code, for example 80219 or 80239-4053."
+	zipCode: String
+	"The Denver city council district of the incident, from 1 to 11."
+	councilDistrict: Int
+	"The Denver police district of the incident."
+	policeDistrict: Int
+	"The latitude of the incident, in degrees. Null for most cases."
+	latitude: Float
+	"The longitude of the incident, in degrees. Null for most cases."
+	longitude: Float
+}
+
+"The number of Denver 311 animal cases of one type."
+type DenverAnimalCaseCount {
+	"The type of case."
+	caseType: DenverAnimalCaseType!
+	"The number of cases."
+	cases: Int!
+}
+
+"The types of animal case in Denver's 311 service requests. Each one stands for one case summary that 311 uses."
+enum DenverAnimalCaseType {
+	"A question about adopting an animal or about an animal on hold. Filed as Animal Adoption/Hold Inquiry."
+	ADOPTION_OR_HOLD_INQUIRY
+	"Someone lost a pet. Filed as Lost my Pet."
+	LOST_PET
+	"A complaint about a barking dog. Filed as Barking Dog."
+	BARKING_DOG
+	"Someone wants to give up a pet. Filed as Pet Surrender."
+	PET_SURRENDER
+	"An animal running loose. Filed as Loose Animal."
+	LOOSE_ANIMAL
+	"A dog off its leash with its owner nearby. Filed as Loose Dog (With owner)."
+	LOOSE_DOG_WITH_OWNER
+	"Someone is holding a stray animal they found. Filed as Holding Stray Animal."
+	HOLDING_STRAY_ANIMAL
+	"A call passed to Denver Animal Protection. Filed as Denver Animal Protection 720-913-2080."
+	ANIMAL_PROTECTION_CALL
+	"A wild animal that is hurt. Filed as Injured Wildlife."
+	INJURED_WILDLIFE
+	"A question or complaint about a wild animal. Filed as Wildlife."
+	WILDLIFE
+	"An owner wants to pick up a pet from the shelter. Filed as Pet Redemption."
+	PET_REDEMPTION
+	"Animal droppings left behind. Filed as Animal Excrement."
+	ANIMAL_EXCREMENT
+	"A question about a pet license or a microchip. Filed as Pet License/Micro Chip."
+	PET_LICENSE_OR_MICROCHIP
+	"A dangerous or aggressive animal that has not bitten anyone. Filed as Dangerous/Aggressive (Not a Bite)."
+	DANGEROUS_OR_AGGRESSIVE_ANIMAL
+	"A case about a business that makes pet food. Filed as Pet Food Manufacturing."
+	PET_FOOD_MANUFACTURING
+	"A pet or another domestic animal that is hurt. Filed as Injured Domestic Animal."
+	INJURED_DOMESTIC_ANIMAL
+	"A dead animal to be removed. Filed as Dead Animal."
+	DEAD_ANIMAL
+	"A bite or attack that broke the skin. Filed as Bite/Attack (Broken the skin)."
+	BITE_OR_ATTACK
+	"Filed as Animal Bite (non human)."
+	ANIMAL_BITE_NON_HUMAN
+	"A case about a city dog park. Filed as Dog Parks."
+	DOG_PARK
+	"Too many animals kept at one place. Filed as Too many animals."
+	TOO_MANY_ANIMALS
+	"A case about breeding animals or service animals. Filed as Breeding Animals / Service Animals."
+	BREEDING_OR_SERVICE_ANIMALS
+	"An animal left in a vehicle. Filed as Animal in Vehicle."
+	ANIMAL_IN_VEHICLE
+	"A complaint about an animal presented as a service animal. Filed as Non-Service Animal Complaint."
+	NON_SERVICE_ANIMAL_COMPLAINT
+	"Another complaint about an animal. Filed as Animal Complaint."
+	ANIMAL_COMPLAINT
+}
+
+"""
+One page of Denver kennel licenses. The licenses are sorted by the name of the business.
+"""
+type DenverKennelLicensePage {
+	"The licenses on this page."
+	licenses: [DenverKennelLicense!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same search and size."
+	totalPages: Int!
+	"The number of licenses that match the search, counted across every page."
+	totalLicenses: Int!
+}
+
+"""
+An active kennel license that the City and County of Denver issued to a business, such as a doggie day care, a
+groomer, a pet store, an animal shelter or an animal hospital.
+"""
+type DenverKennelLicense {
+	"The city's business file number of the license, for example 2001-BFN-63777."
+	licenseNumber: String!
+	"The legal name of the business, for example TENDER TOUCH ANIMAL HOSPITAL."
+	entityName: String
+	"The name the business trades under, for example TENDER TOUCH. Denver leaves it empty for some businesses."
+	tradeName: String
+	"The status of the license, for example License Issued - Active."
+	status: String
+	"The day the license expires."
+	expirationDate: Date
+	"The address of the business, for example 350 KALAMATH ST."
+	address: String
+	"The five-digit ZIP code of the business."
+	zipCode: String
+	"""
+	The latitude of the business in degrees, converted from the State Plane coordinates Denver stores. Null for a
+	license without a position.
+	"""
+	latitude: Float
+	"The longitude of the business in degrees, converted in the same way. Null for a license without a position."
+	longitude: Float
+}

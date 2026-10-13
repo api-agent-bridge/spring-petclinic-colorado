@@ -1,0 +1,812 @@
+{
+  "mappings": [
+    {
+      "name": "Colorado vet licenses: count, helen-leary",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "equalTo": "licensetype in ('VET', 'VT', 'AV', 'PVT') AND starts_with(upper(lastname), 'LEARY') AND starts_with(upper(firstname), 'HELEN')"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-count-helen-leary.json"
+      },
+      "metadata": {
+        "description": "The number of veterinary rows for helen-leary, recorded from https://data.colorado.gov/resource/7s5z-vewr.json"
+      }
+    },
+    {
+      "name": "Colorado vet licenses: count, leary",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "equalTo": "licensetype in ('VET', 'VT', 'AV', 'PVT') AND starts_with(upper(lastname), 'LEARY')"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-count-leary.json"
+      },
+      "metadata": {
+        "description": "The number of veterinary rows for leary, recorded from https://data.colorado.gov/resource/7s5z-vewr.json"
+      }
+    },
+    {
+      "name": "Colorado vet licenses: page, leary",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$where": {
+            "equalTo": "licensetype in ('VET', 'VT', 'AV', 'PVT') AND starts_with(upper(lastname), 'LEARY')"
+          },
+          "$order": {
+            "equalTo": "lastname, firstname, licensenumber, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-leary.json"
+      },
+      "metadata": {
+        "description": "The first 10 veterinary rows for leary, recorded from https://data.colorado.gov/resource/7s5z-vewr.json. The names, license numbers, case numbers and lookup links of the license holders are replaced with placeholders."
+      }
+    },
+    {
+      "name": "Colorado vet licenses: count, denver-active-veterinarians",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "equalTo": "licensetype = 'VET' AND upper(city) = 'DENVER' AND upper(licensestatusdescription) = 'ACTIVE'"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-count-denver-active-veterinarians.json"
+      },
+      "metadata": {
+        "description": "The number of veterinary rows for denver-active-veterinarians, recorded from https://data.colorado.gov/resource/7s5z-vewr.json"
+      }
+    },
+    {
+      "name": "Colorado vet licenses: page, denver-active-veterinarians",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$where": {
+            "equalTo": "licensetype = 'VET' AND upper(city) = 'DENVER' AND upper(licensestatusdescription) = 'ACTIVE'"
+          },
+          "$order": {
+            "equalTo": "lastname, firstname, licensenumber, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-denver-active-veterinarians.json"
+      },
+      "metadata": {
+        "description": "The first 10 veterinary rows for denver-active-veterinarians, recorded from https://data.colorado.gov/resource/7s5z-vewr.json. The names, license numbers, case numbers and lookup links of the license holders are replaced with placeholders."
+      }
+    },
+    {
+      "name": "Colorado vet licenses: count, all",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-count-all.json"
+      },
+      "metadata": {
+        "description": "The number of veterinary rows for all, recorded from https://data.colorado.gov/resource/7s5z-vewr.json"
+      }
+    },
+    {
+      "name": "Colorado vet licenses: page, all",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/7s5z-vewr.json",
+        "queryParameters": {
+          "$where": {
+            "matches": ".*"
+          },
+          "$order": {
+            "equalTo": "lastname, firstname, licensenumber, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/vet-licenses-all.json"
+      },
+      "metadata": {
+        "description": "The first 10 veterinary rows for all, recorded from https://data.colorado.gov/resource/7s5z-vewr.json. The names, license numbers, case numbers and lookup links of the license holders are replaced with placeholders."
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2020",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/uwsx-t9fx.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2020.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2020 dataset, recorded from https://data.colorado.gov/api/views/uwsx-t9fx.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2020",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/uwsx-t9fx.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2020.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2020, recorded from https://data.colorado.gov/resource/uwsx-t9fx.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2020",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/uwsx-t9fx.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2020.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2020, recorded from https://data.colorado.gov/resource/uwsx-t9fx.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2020",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/uwsx-t9fx.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2020.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2020 by name, recorded from https://data.colorado.gov/resource/uwsx-t9fx.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2021",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/bn35-a8hy.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2021.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2021 dataset, recorded from https://data.colorado.gov/api/views/bn35-a8hy.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2021",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/bn35-a8hy.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2021.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2021, recorded from https://data.colorado.gov/resource/bn35-a8hy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2021",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/bn35-a8hy.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2021.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2021, recorded from https://data.colorado.gov/resource/bn35-a8hy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2021",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/bn35-a8hy.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2021.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2021 by name, recorded from https://data.colorado.gov/resource/bn35-a8hy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2022",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/trsh-h2mc.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2022.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2022 dataset, recorded from https://data.colorado.gov/api/views/trsh-h2mc.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2022",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/trsh-h2mc.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2022.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2022, recorded from https://data.colorado.gov/resource/trsh-h2mc.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2022",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/trsh-h2mc.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2022.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2022, recorded from https://data.colorado.gov/resource/trsh-h2mc.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2022",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/trsh-h2mc.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2022.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2022 by name, recorded from https://data.colorado.gov/resource/trsh-h2mc.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2023",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/4crp-zpa9.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2023.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2023 dataset, recorded from https://data.colorado.gov/api/views/4crp-zpa9.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2023",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/4crp-zpa9.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2023.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2023, recorded from https://data.colorado.gov/resource/4crp-zpa9.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2023",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/4crp-zpa9.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2023.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2023, recorded from https://data.colorado.gov/resource/4crp-zpa9.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2023",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/4crp-zpa9.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2023.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2023 by name, recorded from https://data.colorado.gov/resource/4crp-zpa9.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2024",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/timh-w9dy.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2024.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2024 dataset, recorded from https://data.colorado.gov/api/views/timh-w9dy.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2024",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/timh-w9dy.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2024.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2024, recorded from https://data.colorado.gov/resource/timh-w9dy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2024",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/timh-w9dy.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2024.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2024, recorded from https://data.colorado.gov/resource/timh-w9dy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2024",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/timh-w9dy.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2024.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2024 by name, recorded from https://data.colorado.gov/resource/timh-w9dy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: dataset 2025",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/api/views/wngd-z7w6.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-dataset-2025.json"
+      },
+      "metadata": {
+        "description": "The columns of the 2025 dataset, recorded from https://data.colorado.gov/api/views/wngd-z7w6.json and trimmed to the name and the columns"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: totals 2025",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/wngd-z7w6.json",
+        "queryParameters": {
+          "$select": {
+            "matches": "sum\\(.*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-totals-2025.json"
+      },
+      "metadata": {
+        "description": "The sums of every count of 2025, recorded from https://data.colorado.gov/resource/wngd-z7w6.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count 2025",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/wngd-z7w6.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-2025.json"
+      },
+      "metadata": {
+        "description": "The number of facilities of 2025, recorded from https://data.colorado.gov/resource/wngd-z7w6.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page 2025",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/wngd-z7w6.json",
+        "queryParameters": {
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-2025.json"
+      },
+      "metadata": {
+        "description": "The first 10 facilities of 2025 by name, recorded from https://data.colorado.gov/resource/wngd-z7w6.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count, DENVER ANIMAL PROTECTION 2025",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/wngd-z7w6.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "equalTo": "upper(facility_name) like '%DENVER ANIMAL PROTECTION%'"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-denver-animal-protection-2025.json"
+      },
+      "metadata": {
+        "description": "The number of facilities named like DENVER ANIMAL PROTECTION in 2025, recorded from https://data.colorado.gov/resource/wngd-z7w6.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page, DENVER ANIMAL PROTECTION 2025",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/wngd-z7w6.json",
+        "queryParameters": {
+          "$where": {
+            "equalTo": "upper(facility_name) like '%DENVER ANIMAL PROTECTION%'"
+          },
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-denver-animal-protection-2025.json"
+      },
+      "metadata": {
+        "description": "The facilities named like DENVER ANIMAL PROTECTION in 2025, recorded from https://data.colorado.gov/resource/wngd-z7w6.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: count, DENVER 2024",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/timh-w9dy.json",
+        "queryParameters": {
+          "$select": {
+            "equalTo": "count(*)"
+          },
+          "$where": {
+            "equalTo": "upper(facility_name) like '%DENVER%'"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-count-denver-2024.json"
+      },
+      "metadata": {
+        "description": "The number of facilities named like DENVER in 2024, recorded from https://data.colorado.gov/resource/timh-w9dy.json"
+      }
+    },
+    {
+      "name": "Colorado shelter reports: page, DENVER 2024",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/colorado/resource/timh-w9dy.json",
+        "queryParameters": {
+          "$where": {
+            "equalTo": "upper(facility_name) like '%DENVER%'"
+          },
+          "$order": {
+            "equalTo": "facility_name, :id"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "colorado/shelter-reports-denver-2024.json"
+      },
+      "metadata": {
+        "description": "The facilities named like DENVER in 2024, recorded from https://data.colorado.gov/resource/timh-w9dy.json"
+      }
+    }
+  ]
+}

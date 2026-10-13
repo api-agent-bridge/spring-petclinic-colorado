@@ -1,0 +1,218 @@
+# openFDA publishes the adverse event reports that the US Food and Drug Administration's Center
+# for Veterinary Medicine receives about animal drugs, for the United States as a whole. These
+# fields are written by hand.
+
+extend type Query {
+	"""
+	Reports of side effects and other adverse events in pets and other animals after an animal drug, such as a
+	flea, tick or heartworm medicine, from openFDA, the US Food and Drug Administration's public data. Each report
+	names the animal, its breed, the drugs with their active ingredients, the reactions and the outcome. Use it to
+	find which reactions dogs or cats had after a drug, or what was reported for a breed. One page at a time, the
+	most recently received first.
+	The reports cover the whole United States and do not say which state the animal lived in. openFDA masks the brand
+	name of every drug in the dog reports as MSK, so search by the active ingredient.
+	A report with every field is about 300 tokens. Narrow the search, and to count reports select only totalEvents.
+	To rank reactions, breeds or ingredients, use openFdaAnimalAdverseEventCounts.
+	"""
+	openFdaAnimalAdverseEvents(
+		"The species of the animal, for example Dog, Cat or Horse. Leave it out for every species."
+		species: String
+		"A word or words of the breed, for example Labrador, Beagle or Domestic Shorthair. Leave it out for every breed."
+		breed: String
+		"A word or words of an active ingredient of the drug, for example Sarolaner, Selamectin or Carprofen. Leave it out for every drug."
+		drug: String
+		"A word or words of a reaction, for example Vomiting, Lethargy or Seizure. Leave it out for every reaction."
+		reaction: String
+		"The first day the FDA received a report, for example 2026-01-01. Leave it out to start from the oldest report."
+		from: Date
+		"The last day the FDA received a report. Leave it out to search up to the latest report."
+		to: Date
+		"The page to return, starting at 1. A value below 1 returns the first page. openFDA pages through the first 25,000 reports only."
+		page: Int! = 1
+		"The number of reports on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): OpenFdaAnimalAdverseEventPage!
+
+	"""
+	The most frequent values of one field across the openFDA animal drug adverse event reports that match a search,
+	with the number of reports for each, most frequent first: for example the most common reactions of cats, the
+	breeds of dogs with the most reports, or the active ingredients most reported for vomiting. The counts cover the
+	whole United States. An empty list means that no report matches.
+	"""
+	openFdaAnimalAdverseEventCounts(
+		"The field whose values are counted."
+		countBy: OpenFdaAnimalAdverseEventCountField!
+		"The species of the animal, for example Dog or Cat. Leave it out for every species."
+		species: String
+		"A word or words of the breed, for example Labrador. Leave it out for every breed."
+		breed: String
+		"A word or words of an active ingredient, for example Sarolaner. Leave it out for every drug."
+		drug: String
+		"A word or words of a reaction, for example Vomiting. Leave it out for every reaction."
+		reaction: String
+		"The first day the FDA received a report. Leave it out to start from the oldest report."
+		from: Date
+		"The last day the FDA received a report. Leave it out to search up to the latest report."
+		to: Date
+		"How many values to return, from 1 to 100."
+		first: Int! = 10
+	): [OpenFdaCount!]!
+}
+
+"One page of openFDA animal drug adverse event reports."
+type OpenFdaAnimalAdverseEventPage {
+	"The reports on this page, the most recently received first."
+	events: [OpenFdaAnimalAdverseEvent!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same search and size."
+	totalPages: Int!
+	"The number of reports that match the search, counted across every page."
+	totalEvents: Int!
+}
+
+"""
+A report of an adverse event in an animal after an animal drug, as the FDA's Center for Veterinary Medicine
+received it.
+"""
+type OpenFdaAnimalAdverseEvent {
+	"The id of the report, for example USA-USFDACVM-2026-US-035636."
+	id: ID!
+	"The day the FDA first received the report."
+	receivedDate: Date
+	"The day the adverse event began."
+	onsetDate: Date
+	"Whether the reporter judged the event serious."
+	serious: Boolean
+	"What the report is about, for example Safety Issue or Lack Of Expected Effectiveness."
+	typeOfInformation: String
+	"Who reported the event, for example Veterinarian or Animal Owner."
+	primaryReporter: String
+	"The number of animals affected."
+	animalsAffected: Int
+	"The number of animals that received the drug."
+	animalsTreated: Int
+	animal: OpenFdaAnimal
+	"The drugs the animal received."
+	drugs: [OpenFdaDrug!]!
+	"The adverse reactions."
+	reactions: [OpenFdaReaction!]!
+	"What happened to the animals afterwards."
+	outcomes: [OpenFdaOutcome!]!
+	"The animal's health before it received the drug."
+	healthBeforeExposure: OpenFdaHealthAssessment
+}
+
+"The animal of an openFDA adverse event report."
+type OpenFdaAnimal {
+	"The species, for example Dog or Cat."
+	species: String
+	"The gender, for example Female, Male or Unknown."
+	gender: String
+	"Whether the animal was neutered: Neutered, Intact or Unknown."
+	reproductiveStatus: String
+	age: OpenFdaMeasure
+	weight: OpenFdaMeasure
+	breed: OpenFdaBreed
+}
+
+"An age or a weight, which a report gives as one value or as a range."
+type OpenFdaMeasure {
+	"The value, or the lower end of the range."
+	min: Float
+	"The upper end of the range, or null for one value."
+	max: Float
+	"The unit, for example Year, Month or Kilogram."
+	unit: String
+	"Whether the value was measured or estimated."
+	qualifier: String
+}
+
+"The breed of the animal of a report."
+type OpenFdaBreed {
+	"Whether the animal is a crossbreed."
+	crossbred: Boolean
+	"The breeds, for example Retriever - Labrador, or two breeds for a crossbreed."
+	components: [String!]!
+}
+
+"A drug that the animal of a report received."
+type OpenFdaDrug {
+	"The brand name. openFDA masks it as MSK in the reports about dogs."
+	brandName: String
+	activeIngredients: [OpenFdaActiveIngredient!]!
+	"The ATCvet code that classifies the drug, for example QP54AB52."
+	atcVetCode: String
+	"The form of the drug, for example Tablet, chewable."
+	dosageForm: String
+	"How the drug was given, for example Oral, Topical or Subcutaneous."
+	route: String
+	"Who gave the drug, for example Animal Owner or Veterinarian."
+	administeredBy: String
+	"Whether the drug was used as its label says."
+	usedAccordingToLabel: Boolean
+}
+
+"An active ingredient of a drug."
+type OpenFdaActiveIngredient {
+	"The name, for example Selamectin, or several names separated by semicolons, for example Pyrantel Pamoate;Sarolaner."
+	name: String
+}
+
+"""
+An adverse reaction of a report. Older reports use terms in capitals, such as INEFFECTIVE, HEARTWORM LARVAE, and
+newer ones the Veterinary Dictionary for Drug Regulatory Activities (VeDDRA), such as Lack of efficacy
+(endoparasite) - heartworm.
+"""
+type OpenFdaReaction {
+	"The term, for example Vomiting."
+	name: String
+	"The VeDDRA code of the term."
+	code: String
+	"The number of animals with the reaction."
+	animalsAffected: Int
+}
+
+"What happened to the animals of a report."
+type OpenFdaOutcome {
+	"The outcome, for example Recovered/Normal, Ongoing, Died, Euthanized or Outcome Unknown."
+	medicalStatus: String
+	"The number of animals with that outcome."
+	animalsAffected: Int
+}
+
+"The health of the animal before it received the drug."
+type OpenFdaHealthAssessment {
+	"The condition, for example Good or Fair."
+	condition: String
+	"Who assessed it, for example Veterinarian."
+	assessedBy: String
+}
+
+"One value of a field and the number of openFDA reports that have it."
+type OpenFdaCount {
+	"The value, for example Vomiting or Retriever - Labrador."
+	term: String!
+	"The number of matching reports with that value."
+	count: Long!
+}
+
+"The fields of an openFDA animal adverse event report that can be counted."
+enum OpenFdaAnimalAdverseEventCountField {
+	"The reactions."
+	REACTION
+	"The breeds of the animals."
+	BREED
+	"The active ingredients of the drugs."
+	ACTIVE_INGREDIENT
+	"The species of the animals."
+	SPECIES
+	"How the drugs were given, for example Oral or Topical."
+	ROUTE
+	"The outcomes, for example Recovered/Normal or Died."
+	OUTCOME
+	"The gender of the animals."
+	GENDER
+	"Who reported, for example Veterinarian or Animal Owner."
+	REPORTER
+}

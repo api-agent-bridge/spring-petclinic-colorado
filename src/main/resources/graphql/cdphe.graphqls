@@ -1,0 +1,197 @@
+# The Colorado Department of Public Health and Environment (CDPHE) publishes its disease data on
+# its own ArcGIS Server. The two fields below call it over SOAP, with requests written by hand
+# against the Esri schema that the server's WSDL declares.
+
+extend type Query {
+	"""
+	Animals in Colorado that tested positive in 2017 for rabies, plague, tularemia or West Nile virus, from the
+	Colorado Department of Public Health and Environment (CDPHE), one page at a time, the earliest collected first.
+	It answers questions about animal diseases that can pass to pets and people, such as which cats caught plague,
+	where dogs had rabies, and where rabid bats and skunks were found. The 341 records are 7 cats (6 with plague and
+	1 with tularemia), 2 dogs with rabies, 63 rabid bats, 93 rabid skunks, other wildlife, birds, horses and 126
+	pools of mosquitoes with West Nile virus. The state publishes this map for 2017 only. For the yearly number of
+	animals with rabies, plague or tularemia per county up to 2025, use cdpheAnimalDiseaseCases.
+	"""
+	cdpheAnimalsTestedPositive(
+		"Only animals that tested positive for this disease. Leave it out for every disease."
+		disease: CdpheZoonoticDisease
+		"Only animals of this group, for example DOMESTIC_ANIMAL for the cats and dogs. Leave it out for every group."
+		specimenType: CdpheSpecimenType
+		"""
+		Text that the species contains, in upper or lower case, for example cat, skunk or bat. The text can match part
+		of a name, so dog also finds prairie dogs: pass specimenType DOMESTIC_ANIMAL for pets. Leave it out for every
+		species.
+		"""
+		species: String = ""
+		"The Colorado county the animal was found in, for example Boulder or La Plata, in upper or lower case. Leave it out for every county."
+		county: String = ""
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of animals on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): CdpheAnimalTestedPositivePage!
+
+	"""
+	The number of animals in Colorado that tested positive for rabies, plague or tularemia in each year from 2016 to
+	2025, per county, for the whole state, or per month, from the reportable disease dataset of the Colorado
+	Department of Public Health and Environment (CDPHE). It answers questions such as how many rabid animals were
+	found in Denver last year, whether plague turned up in a county where an owner lives, or in which months rabies
+	peaks. In 2025, 69 animals tested positive for rabies across Colorado, 5 of them in Denver County.
+	The counts come sorted by year, newest first, then by disease, then by count, highest first, or by month in
+	calendar order. The dataset has a row for every county, year and disease, zeros included, so pass onlyWithCases
+	to keep the rows that have cases, and narrow the years to keep the answer small.
+	"""
+	cdpheAnimalDiseaseCases(
+		"Only this disease. Leave it out for rabies, plague and tularemia."
+		disease: CdpheAnimalDisease
+		"Whether to count per county, for the whole state, or per month of the year."
+		groupedBy: CdpheCaseGrouping! = COUNTY
+		"""
+		The Colorado county, for example Denver, Jefferson or El Paso, in upper or lower case. It applies to counts
+		grouped by COUNTY. Leave it out for every county.
+		"""
+		county: String = ""
+		"The first year to count, for example 2023. The dataset starts in 2016. Leave it out to start there."
+		fromYear: Int
+		"The last year to count, for example 2025, the latest year in the dataset. Leave it out to end there."
+		toYear: Int
+		"Keep only the rows with at least one animal that tested positive."
+		onlyWithCases: Boolean! = false
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of counts on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): CdpheAnimalDiseaseCountPage!
+}
+
+"One page of animals in Colorado that tested positive for a disease, from CDPHE."
+type CdpheAnimalTestedPositivePage {
+	"The animals on this page."
+	animals: [CdpheAnimalTestedPositive!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of animals that match the filters, counted across every page."
+	totalAnimals: Int!
+}
+
+"""
+An animal, or a pool of mosquitoes caught in a trap, that tested positive in Colorado in 2017 for a disease that
+animals can pass to pets and people.
+"""
+type CdpheAnimalTestedPositive {
+	"The identifier of the record in the state's map."
+	id: ID!
+	"The species as the state recorded it, for example Cat, Skunk or Big brown bat, Eptesicus fuscus."
+	species: String
+	"The group the animal belongs to, such as a domestic animal or wildlife."
+	specimenType: CdpheSpecimenType
+	"The disease the animal tested positive for."
+	disease: CdpheZoonoticDisease
+	"The Colorado county the animal was found in, for example Larimer."
+	county: String
+	"The day the sample was collected. The state left it out for 165 of the 341 records, among them every rabid animal."
+	collectedDate: Date
+	"The ZIP code where the animal was found, for example 80524. The state left it out for 18 records."
+	zipCode: String
+	"""
+	The latitude where the animal was found, rounded to two decimals of a degree, about one kilometre, because the
+	point can be the home of a pet.
+	"""
+	latitude: Float
+	"The longitude where the animal was found, rounded to two decimals of a degree, about one kilometre."
+	longitude: Float
+}
+
+"The diseases on CDPHE's map of the animals that tested positive in Colorado in 2017."
+enum CdpheZoonoticDisease {
+	"Rabies, found in bats, skunks, foxes, a raccoon, a coyote and two dogs."
+	RABIES
+	"Plague, found in cats, prairie dogs, foxes and a flea."
+	PLAGUE
+	"Tularemia, also called rabbit fever, found in rabbits, a fox and a cat."
+	TULAREMIA
+	"West Nile virus, found in pools of mosquitoes, birds and horses."
+	WEST_NILE_VIRUS
+}
+
+"The groups of animals on CDPHE's map of the animals that tested positive."
+enum CdpheSpecimenType {
+	"Pets: the cats and dogs."
+	DOMESTIC_ANIMAL
+	"Wild mammals other than bats and rodents: skunks, foxes, rabbits, a raccoon and a coyote."
+	WILDLIFE
+	"Bats of several species, such as the big brown bat."
+	BAT
+	"Birds such as hawks, owls, crows and a bald eagle."
+	BIRD
+	"Horses."
+	HORSE
+	"Rodents such as prairie dogs."
+	RODENT
+	"Pools of mosquitoes caught in traps."
+	MOSQUITO_POOL
+	"Fleas."
+	FLEA
+}
+
+"One page of yearly counts of animals that tested positive in Colorado, from CDPHE."
+type CdpheAnimalDiseaseCountPage {
+	"The counts on this page."
+	counts: [CdpheAnimalDiseaseCount!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of counts that match the filters, counted across every page."
+	totalCounts: Int!
+}
+
+"""
+The number of animals that tested positive for one disease in Colorado in one year, in one county, in the whole
+state, or in one month, from CDPHE's reportable disease dataset.
+"""
+type CdpheAnimalDiseaseCount {
+	"The disease."
+	disease: CdpheAnimalDisease
+	"The year, from 2016 to 2025."
+	year: Int!
+	"What the count covers: a county, the whole state, or a month."
+	groupedBy: CdpheCaseGrouping
+	"The county, for example Denver, for a count grouped by COUNTY. Unknown holds the animals without a county."
+	county: String
+	"The month, for example August, for a count grouped by ONSET_MONTH."
+	month: String
+	"The number of animals that tested positive. Null when the state suppressed the count or left it out."
+	total: Int
+	"Whether the state suppressed the count, which the dataset shows as **."
+	suppressed: Boolean!
+	"The number of people living in the county that year, for a count grouped by COUNTY."
+	population: Int
+	"""
+	The animals that tested positive for every 100,000 people living in the county, rounded to two decimals. The
+	state divides the animal count by the human population, so Denver's 5 rabid animals in 2025 give 0.68.
+	"""
+	ratePer100kPeople: Float
+}
+
+"The animal diseases in CDPHE's reportable disease dataset."
+enum CdpheAnimalDisease {
+	"Animals with rabies. On the 2017 map, these were mostly bats and skunks."
+	RABIES
+	"Animals with plague. On the 2017 map, these were cats, prairie dogs and foxes."
+	PLAGUE
+	"Animals with tularemia, also called rabbit fever. On the 2017 map, these were rabbits, a fox and a cat."
+	TULAREMIA
+}
+
+"What a count in CDPHE's reportable disease dataset covers."
+enum CdpheCaseGrouping {
+	"One count for each Colorado county, and Unknown for the animals without a county."
+	COUNTY
+	"One count for the whole of Colorado."
+	STATE
+	"One count for each month of the year."
+	ONSET_MONTH
+}

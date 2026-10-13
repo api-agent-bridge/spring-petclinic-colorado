@@ -1,0 +1,2870 @@
+# The fields of the National Weather Service (NWS), api.weather.gov. A generator wrote them, their types
+# and src/main/resources/nws/operations.json from the OpenAPI document of the service, one field for each
+# read operation that answers JSON. The descriptions are written by hand. Each field is fetched by a
+# RestOperationFetcher, see NwsConfiguration.
+
+extend type Query {
+	# The National Weather Service (NWS) publishes the forecasts, observations and weather alerts of the United
+	# States at api.weather.gov. The fields below are generated from its OpenAPI document, one field for each read
+	# operation that answers JSON. These first ones read the weather alerts: watches, warnings and advisories.
+
+	"""
+	The weather watches, warnings and advisories of the National Weather Service in force now, such as a winter
+	storm warning, a red flag warning for fire danger or a flood advisory, filtered by state, zone, point, event,
+	urgency, severity or certainty. Pass area CO for every active weather alert in Colorado, or point
+	39.7392,-104.9903 for the alerts that cover downtown Denver. These are weather alerts: the National Park Service
+	publishes the alerts about closures inside national parks.
+	"""
+	nwsActiveAlerts(
+		"Only alerts with this status. Real alerts have the status actual."
+		status: NwsAlertStatus
+		"Only alerts of this kind: a new alert, an update of an earlier one, or a cancellation."
+		messageType: NwsAlertMessageType
+		"""
+		Event names as nwsAlertTypes lists them, for example Winter Storm Warning. Separate several names with commas.
+		"""
+		event: String
+		"""
+		Three-letter event codes, for example WSW for a winter storm warning. Separate several codes with commas.
+		"""
+		code: String
+		"A state or territory code, or a marine area code, for example CO for Colorado."
+		area: NwsAreaCode
+		"A point as latitude,longitude, for example 39.7392,-104.9903 for downtown Denver."
+		point: String
+		"A marine region code, for example PA for the Pacific."
+		region: NwsMarineRegion
+		"Only alerts for land, or only alerts for marine areas."
+		regionType: NwsAlertRegionType
+		"""
+		Zone or county codes, for example COZ040 for the forecast zone of Denver or COC031 for Denver County. Separate
+		several codes with commas.
+		"""
+		zone: String
+		"Only alerts with this urgency."
+		urgency: NwsAlertUrgency
+		"Only alerts with this severity."
+		severity: NwsAlertSeverity
+		"Only alerts with this certainty."
+		certainty: NwsAlertCertainty
+	): NwsActiveAlertCollection
+
+	"""
+	The weather alerts of the National Weather Service in force now for one US state or territory, or one marine
+	area, by its code, for example CO for Colorado.
+	"""
+	nwsActiveAlertsForArea(
+		"A state or territory code, or a marine area code, for example CO for Colorado."
+		area: NwsAreaCode!
+	): NwsActiveAlertCollection
+
+	"""
+	The weather alerts of the National Weather Service in force now for one forecast zone or county, by its code.
+	Downtown Denver lies in the forecast zone COZ040 and in Denver County, COC031. nwsPoint gives the zone and
+	county of any point.
+	"""
+	nwsActiveAlertsForZone(
+		"""
+		The code of a forecast zone or county, for example COZ040 for the city of Denver or COC031 for Denver County.
+		"""
+		zoneId: String!
+	): NwsActiveAlertCollection
+
+	"""
+	The number of weather alerts of the National Weather Service in force now: in total, on land and at sea, and
+	counted by state, by marine region and by zone. The areas entry with the key CO holds the count for Colorado.
+	"""
+	nwsActiveAlertCounts: NwsActiveAlertCounts
+
+	"""
+	Weather watches, warnings and advisories of the National Weather Service, active and expired, newest first,
+	filtered by state, zone, point, event or severity. For the alerts in force now, nwsActiveAlerts is simpler. Pass
+	area CO for the alerts of Colorado. The size argument sets how many alerts come back, and cursor moves to the
+	next page.
+	"""
+	nwsAlerts(
+		"The start of the time range, in ISO 8601, for example 2026-10-01T00:00:00Z."
+		start: String
+		"The end of the time range, in ISO 8601, for example 2026-10-12T00:00:00Z."
+		end: String
+		"Only alerts with this status. Real alerts have the status actual."
+		status: NwsAlertStatus
+		"Only alerts of this kind: a new alert, an update of an earlier one, or a cancellation."
+		messageType: NwsAlertMessageType
+		"""
+		Event names as nwsAlertTypes lists them, for example Winter Storm Warning. Separate several names with commas.
+		"""
+		event: String
+		"""
+		Three-letter event codes, for example WSW for a winter storm warning. Separate several codes with commas.
+		"""
+		code: String
+		"A state or territory code, or a marine area code, for example CO for Colorado."
+		area: NwsAreaCode
+		"A point as latitude,longitude, for example 39.7392,-104.9903 for downtown Denver."
+		point: String
+		"A marine region code, for example PA for the Pacific."
+		region: NwsMarineRegion
+		"Only alerts for land, or only alerts for marine areas."
+		regionType: NwsAlertRegionType
+		"""
+		Zone or county codes, for example COZ040 for the forecast zone of Denver or COC031 for Denver County. Separate
+		several codes with commas.
+		"""
+		zone: String
+		"Only alerts with this urgency."
+		urgency: NwsAlertUrgency
+		"Only alerts with this severity."
+		severity: NwsAlertSeverity
+		"Only alerts with this certainty."
+		certainty: NwsAlertCertainty
+		"""
+		The cursor of the next page: the value after cursor= in the pagination.next link of the previous answer, with
+		%3D written as =.
+		"""
+		cursor: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsAlertCollection
+
+	"""
+	One weather alert of the National Weather Service by its id, with its headline, description, instructions for
+	the public, severity, timing and affected zones. The id is the properties.id of an alert in nwsActiveAlerts, a
+	text that starts with urn:oid:.
+	"""
+	nwsAlert(
+		"""
+		The id of the alert: the properties.id that the alert lists return, a text that starts with urn:oid:.
+		"""
+		id: String!
+	): NwsAlertFeature
+
+	"""
+	The names of every kind of weather alert that the National Weather Service issues, such as Winter Storm Warning,
+	Red Flag Warning, Air Quality Alert or Avalanche Warning. A name is a value for the event argument of
+	nwsActiveAlerts.
+	"""
+	nwsAlertTypes: NwsAlertTypes
+
+	"""
+	The weather alerts of the National Weather Service in force now for one marine region, such as the Pacific (PA)
+	or the Gulf of Mexico (GM). Marine regions cover the seas around the United States, so this field answers
+	questions about the weather at sea.
+	"""
+	nwsActiveAlertsForMarineRegion(
+		"A marine region code, for example PA for the Pacific or GM for the Gulf of Mexico."
+		region: NwsMarineRegion!
+	): NwsActiveAlertCollection
+
+	# NWS forecasts. A forecast belongs to a gridpoint, a square of 2.5 km that a forecast office manages. nwsPoint
+	# turns a latitude and longitude into the office and the gridpoint.
+
+	"""
+	The forecast office, forecast gridpoint, forecast zone, county, fire weather zone, nearest radar, time zone,
+	sunrise and sunset for a latitude and longitude in the United States. Call it first to get the weather forecast
+	for an address or a place: its gridId, gridX and gridY are the wfo, x and y arguments of nwsGridpointForecast.
+	Downtown Denver, 39.7392,-104.9903, is gridpoint BOU 63,62 in the forecast zone COZ040.
+	"""
+	nwsPoint(
+		"The latitude, with at most four decimals, for example 39.7392 for downtown Denver."
+		latitude: Float!
+		"The longitude, with at most four decimals, for example -104.9903 for downtown Denver."
+		longitude: Float!
+	): NwsPointFeature
+
+	"""
+	The seven-day weather forecast for one gridpoint of the National Weather Service, in twelve-hour periods such as
+	Tonight or Tuesday, with the temperature, wind, chance of rain or snow, and the forecast in words. The gridpoint
+	comes from nwsPoint: downtown Denver is wfo BOU, x 63, y 62.
+	"""
+	nwsGridpointForecast(
+		"""
+		The forecast office: the gridId of nwsPoint, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		wfo: NwsForecastOfficeId!
+		"The x coordinate of the gridpoint: the gridX of nwsPoint, for example 63 for downtown Denver."
+		x: Int!
+		"The y coordinate of the gridpoint: the gridY of nwsPoint, for example 62 for downtown Denver."
+		y: Int!
+		"""
+		us for US customary units such as Fahrenheit and miles per hour, or si for metric units. Leave it out for us.
+		"""
+		units: NwsForecastUnits
+	): NwsGridpointForecastFeature
+
+	"""
+	The hourly weather forecast for one gridpoint for the next seven days, with the temperature, dewpoint, humidity,
+	wind and chance of precipitation of every hour: 156 periods. Select only the fields the question needs. The
+	gridpoint comes from nwsPoint: downtown Denver is wfo BOU, x 63, y 62.
+	"""
+	nwsGridpointHourlyForecast(
+		"""
+		The forecast office: the gridId of nwsPoint, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		wfo: NwsForecastOfficeId!
+		"The x coordinate of the gridpoint: the gridX of nwsPoint, for example 63 for downtown Denver."
+		x: Int!
+		"The y coordinate of the gridpoint: the gridY of nwsPoint, for example 62 for downtown Denver."
+		y: Int!
+		"""
+		us for US customary units such as Fahrenheit and miles per hour, or si for metric units. Leave it out for us.
+		"""
+		units: NwsForecastUnits
+	): NwsGridpointHourlyForecastFeature
+
+	"""
+	The raw forecast data of one gridpoint: about sixty layers, such as temperature, wind gust, snowfall amount, sky
+	cover, heat risk and fire weather indices, each as values over time intervals in metric units. The answer is
+	about 250 KB, so select only the layers the question needs. nwsGridpointForecast gives the same forecast in
+	words.
+	"""
+	nwsGridpointRawForecastData(
+		"""
+		The forecast office: the gridId of nwsPoint, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		wfo: NwsForecastOfficeId!
+		"The x coordinate of the gridpoint: the gridX of nwsPoint, for example 63 for downtown Denver."
+		x: Int!
+		"The y coordinate of the gridpoint: the gridY of nwsPoint, for example 62 for downtown Denver."
+		y: Int!
+	): NwsGridpointFeature
+
+	"""
+	The forecast in words for one forecast zone, in twelve-hour periods, as the forecast office writes it for the
+	whole zone. COZ040 is the zone of the city of Denver. nwsGridpointForecast is more precise for one place.
+	"""
+	nwsZoneForecast(
+		"The type of zone, which is forecast."
+		type: String!
+		"The code of a forecast zone, for example COZ040 for the city of Denver."
+		zoneId: String!
+	): NwsZoneForecastFeature
+
+	"""
+	The weather conditions that the forecast icons stand for, such as skc for fair or clear and tsra for
+	thunderstorms, keyed by the code in the icon URL of a forecast period.
+	"""
+	nwsIconConditions: NwsIconConditions
+
+	"""
+	The weather glossary of the National Weather Service: 3,183 terms with their definitions, such as Chinook or
+	Graupel. The whole glossary comes back in one answer of about 900 KB.
+	"""
+	nwsGlossary: NwsGlossary
+
+	# NWS observations: what the weather stations measured. KDEN is the station at Denver International Airport.
+
+	"""
+	The latest weather observation of one station: temperature, dewpoint, humidity, wind, gusts, pressure,
+	visibility, clouds, wind chill or heat index, and a description such as Clear, in metric units. Use it for the
+	current weather at a place. KDEN is Denver International Airport.
+	"""
+	nwsLatestStationObservation(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+		"Whether the observation must have passed quality control."
+		requireQc: Boolean
+	): NwsObservationFeature
+
+	"""
+	The weather observations that one station reported over a time range, newest first, such as the reports of
+	Denver International Airport (KDEN), which come every few minutes. Each observation carries the same
+	measurements as nwsLatestStationObservation. The size argument sets how many come back, and cursor moves to the
+	next page.
+	"""
+	nwsStationObservations(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+		"The start of the time range, in ISO 8601, for example 2026-10-11T00:00:00Z."
+		start: String
+		"The end of the time range, in ISO 8601, for example 2026-10-12T00:00:00Z."
+		end: String
+		"""
+		The cursor of the next page: the value after cursor= in the pagination.next link of the previous answer, with
+		%3D written as =.
+		"""
+		cursor: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsObservationCollection
+
+	"""
+	The weather observation that one station reported at one exact time, as the timestamp of an observation in
+	nwsStationObservations gives it.
+	"""
+	nwsStationObservationAtTime(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+		"The time of the observation, as its timestamp, for example 2026-10-12T12:05:00+00:00."
+		time: String!
+	): NwsObservationFeature
+
+	"""
+	One weather observation station of the National Weather Service by its id, with its name, elevation, time zone,
+	county and forecast zone. KDEN is Denver International Airport.
+	"""
+	nwsObservationStation(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+	): NwsObservationStationFeature
+
+	"""
+	Weather observation stations of the National Weather Service, filtered by state or by station id, such as the
+	stations in Colorado (state CO), with their name, elevation, time zone, county and forecast zone. The id of a
+	station, such as KDEN, is the stationId of the observation fields.
+	"""
+	nwsObservationStations(
+		"Station ids, for example KDEN. Separate several ids with commas."
+		id: String
+		"A state code, for example CO for Colorado."
+		state: NwsAreaCode
+		"""
+		The cursor of the next page: the value after cursor= in the pagination.next link of the previous answer, with
+		%3D written as =.
+		"""
+		cursor: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsObservationStationCollection
+
+	"""
+	The weather observation stations near one forecast gridpoint, nearest first, with their distance. For downtown
+	Denver (BOU 63,62) the first ones are KBJC, the Rocky Mountain Metropolitan Airport, and KBKF, Buckley Space
+	Force Base.
+	"""
+	nwsGridpointObservationStations(
+		"""
+		The forecast office: the gridId of nwsPoint, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		wfo: NwsForecastOfficeId!
+		"The x coordinate of the gridpoint: the gridX of nwsPoint, for example 63 for downtown Denver."
+		x: Int!
+		"The y coordinate of the gridpoint: the gridY of nwsPoint, for example 62 for downtown Denver."
+		y: Int!
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsObservationStationCollection
+
+	"""
+	The latest weather observations from the stations in one forecast zone, such as COZ040 for the city of Denver.
+	"""
+	nwsZoneObservations(
+		"The code of a forecast zone, for example COZ040 for the city of Denver."
+		zoneId: String!
+		"The start of the time range, in ISO 8601, for example 2026-10-11T00:00:00Z."
+		start: String
+		"The end of the time range, in ISO 8601, for example 2026-10-12T00:00:00Z."
+		end: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsObservationCollection
+
+	"The weather observation stations in one forecast zone, such as COZ040 for the city of Denver."
+	nwsZoneObservationStations(
+		"The code of a forecast zone, for example COZ040 for the city of Denver."
+		zoneId: String!
+		"""
+		The cursor of the next page: the value after cursor= in the pagination.next link of the previous answer, with
+		%3D written as =.
+		"""
+		cursor: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsObservationStationCollection
+
+	"""
+	The terminal aerodrome forecasts (TAF) of one airport: the forecasts for pilots of wind, visibility and clouds
+	at the airport for the next day or so. The service sends the text of a forecast as XML, so this field lists when
+	each forecast was issued and the period it covers. KDEN is Denver International Airport.
+	"""
+	nwsTerminalAerodromeForecasts(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+	): NwsTafCollection
+
+	# NWS forecast offices. The Boulder office (BOU) forecasts for Denver and northeastern Colorado, and the offices
+	# of Pueblo (PUB) and Grand Junction (GJT) cover most of the rest of the state.
+
+	"""
+	One office of the National Weather Service by its id, with its address, telephone and email, and the counties,
+	forecast zones, fire weather zones and observation stations it is responsible for. BOU is the Boulder office,
+	which forecasts for Denver.
+	"""
+	nwsOffice(
+		"""
+		The id of a National Weather Service office, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		officeId: NwsOfficeId!
+	): NwsOffice
+
+	"""
+	The news headlines that one forecast office publishes on its website, such as a summary of a recent storm. BOU
+	is the Boulder office, which forecasts for Denver.
+	"""
+	nwsOfficeHeadlines(
+		"""
+		The id of a National Weather Service office, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		officeId: NwsOfficeId!
+	): NwsOfficeHeadlineCollection
+
+	"One news headline of a forecast office by its id, with its full text."
+	nwsOfficeHeadline(
+		"""
+		The id of a National Weather Service office, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		officeId: NwsOfficeId!
+		"The id of a headline, as nwsOfficeHeadlines returns it."
+		headlineId: String!
+	): NwsOfficeHeadline
+
+	"""
+	The weather stories of one forecast office: short graphical summaries of the coming days, such as a three-day
+	outlook, each with a title, a description and the text of its image. BOU is the Boulder office, which forecasts
+	for Denver.
+	"""
+	nwsOfficeWeatherStories(
+		"""
+		The id of a National Weather Service office, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		officeId: NwsOfficeId!
+	): NwsOfficeWeatherStoryCollection
+
+	"""
+	The latest weather briefing of one forecast office, a summary for emergency managers and partners. The briefing
+	is null while the office has not published one.
+	"""
+	nwsOfficeBriefing(
+		"""
+		The id of a National Weather Service office, for example BOU for Boulder, which forecasts for Denver.
+		"""
+		officeId: NwsOfficeId!
+	): NwsOfficeLatestBriefing
+
+	# NWS text bulletins, such as the Area Forecast Discussion (AFD), in which the forecasters explain their reasoning.
+
+	"""
+	Why the forecasters expect the weather they forecast, in their own words: the latest text bulletin of one type
+	from one location, with its full text. The latest Area Forecast Discussion of the Boulder office (type AFD,
+	location BOU) explains the reasoning behind the Denver forecast, such as an approaching cold front or snow in
+	the mountains, and its Hazardous Weather Outlook (type HWO) lists the hazards of the coming days.
+	"""
+	nwsLatestTextProduct(
+		"""
+		A product type code, for example AFD for the Area Forecast Discussion or HWO for the Hazardous Weather Outlook.
+		"""
+		typeId: String!
+		"A location code, for example BOU for the Boulder office."
+		locationId: String!
+	): NwsTextProduct
+
+	"""
+	Text bulletins of the National Weather Service, newest first, filtered by location, office, type or time. Pass
+	location BOU and type AFD for the latest Area Forecast Discussions of the Boulder office, in which the
+	forecasters explain the reasoning behind the Denver forecast. The list gives ids and times, and nwsTextProduct
+	gives the text.
+	"""
+	nwsTextProducts(
+		"Location codes, for example BOU for the Boulder office. Separate several codes with commas."
+		location: String
+		"The start of the time range, in ISO 8601, for example 2026-10-11T00:00:00Z."
+		start: String
+		"The end of the time range, in ISO 8601, for example 2026-10-12T00:00:00Z."
+		end: String
+		"""
+		Four-letter codes of issuing offices, for example KBOU for Boulder. Separate several codes with commas.
+		"""
+		office: String
+		"WMO collective ids, for example FXUS65. Separate several ids with commas."
+		wmoid: String
+		"""
+		Product type codes, for example AFD for the Area Forecast Discussion. Separate several codes with commas.
+		"""
+		type: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsTextProductCollection
+
+	"One text bulletin of the National Weather Service by its id, with its full text in productText."
+	nwsTextProduct(
+		"The id of a text bulletin, as nwsTextProducts returns it."
+		productId: String!
+	): NwsTextProduct
+
+	"""
+	The text bulletins of one type from one location, newest first, such as every Area Forecast Discussion of the
+	Boulder office (type AFD, location BOU). The list gives ids and times, and nwsTextProduct gives the text.
+	"""
+	nwsTextProductsOfTypeAtLocation(
+		"""
+		A product type code, for example AFD for the Area Forecast Discussion or HWO for the Hazardous Weather Outlook.
+		"""
+		typeId: String!
+		"A location code, for example BOU for the Boulder office."
+		locationId: String!
+	): NwsTextProductCollection
+
+	"""
+	Every text bulletin of one type from all locations, such as every Area Forecast Discussion in the country. The
+	answer is large, about 1.8 MB for AFD, so nwsTextProductsOfTypeAtLocation, which narrows it to one location, is
+	usually the better field.
+	"""
+	nwsTextProductsOfType(
+		"""
+		A product type code, for example AFD for the Area Forecast Discussion or HWO for the Hazardous Weather Outlook.
+		"""
+		typeId: String!
+	): NwsTextProductCollection
+
+	"""
+	The types of text bulletin of the National Weather Service, by code and name, such as AFD (Area Forecast
+	Discussion) or HWO (Hazardous Weather Outlook).
+	"""
+	nwsTextProductTypes: NwsTextProductTypeCollection
+
+	"""
+	The types of text bulletin that one location issues, such as the bulletins of the Boulder office (BOU).
+	"""
+	nwsTextProductTypesAtLocation(
+		"A location code, for example BOU for the Boulder office."
+		locationId: String!
+	): NwsTextProductTypeCollection
+
+	"The locations that issue text bulletins, by code with their name."
+	nwsTextProductLocations: NwsTextProductLocationCollection
+
+	"""
+	The locations that issue one type of text bulletin, by code with their name, such as the offices that write an
+	Area Forecast Discussion (AFD).
+	"""
+	nwsTextProductTypeLocations(
+		"""
+		A product type code, for example AFD for the Area Forecast Discussion or HWO for the Hazardous Weather Outlook.
+		"""
+		typeId: String!
+	): NwsTextProductLocationCollection
+
+	# NWS zones: the forecast zones, counties and fire weather zones that forecasts and alerts refer to.
+
+	"""
+	One zone of the National Weather Service by its type and code, with its name, forecast offices, time zone,
+	observation stations and radar. The forecast zone COZ040 is the city of Denver, and the county COC031 is Denver
+	County.
+	"""
+	nwsZone(
+		"The type of zone, for example forecast or county."
+		type: NwsZoneType!
+		"""
+		The zone code, for example COZ040 for the city of Denver, or COC031 for Denver County with the type county.
+		"""
+		zoneId: String!
+		"The date and time at which the zone is valid, in ISO 8601."
+		effective: String
+	): NwsZoneFeature
+
+	"""
+	Forecast zones, counties, fire weather zones and marine zones of the National Weather Service, filtered by
+	state, type, point or id, such as the forecast zones of Colorado (area CO, type forecast).
+	"""
+	nwsZones(
+		"Zone codes, for example COZ040. Separate several codes with commas."
+		id: String
+		"A state or territory code, or a marine area code, for example CO for Colorado."
+		area: NwsAreaCode
+		"Only zones of this region."
+		region: NwsRegion
+		"Only zones of this type, for example forecast or county."
+		type: NwsZoneType
+		"A point as latitude,longitude, for example 39.7392,-104.9903 for downtown Denver."
+		point: String
+		"The date and time at which the zones are valid, in ISO 8601."
+		effective: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsZoneCollection
+
+	"""
+	The zones of the National Weather Service of one type, such as forecast, county or fire, filtered by state,
+	point or id.
+	"""
+	nwsZonesOfType(
+		"The type of zone, for example forecast, county or fire."
+		type: NwsZoneType!
+		"Zone codes, for example COZ040. Separate several codes with commas."
+		id: String
+		"A state or territory code, or a marine area code, for example CO for Colorado."
+		area: NwsAreaCode
+		"Only zones of this region."
+		region: NwsRegion
+		"A point as latitude,longitude, for example 39.7392,-104.9903 for downtown Denver."
+		point: String
+		"The date and time at which the zones are valid, in ISO 8601."
+		effective: String
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsZoneCollection
+
+	# NWS weather radars. KFTG, east of Denver, is the radar that covers the city.
+
+	"""
+	One weather radar station of the National Weather Service by its id, with its location, data latency and the
+	status of its radar data acquisition unit, such as whether it is operating. KFTG is the radar that covers
+	Denver.
+	"""
+	nwsRadarStation(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+		"Only the data that this radar data server reports, for example rds."
+		reportingHost: String
+		"Only the data that this radar data server received, for example rds."
+		host: String
+	): NwsRadarStationFeature
+
+	"""
+	The weather radar stations of the National Weather Service, filtered by type such as WSR-88D, with their
+	location, elevation, data latency and operating status.
+	"""
+	nwsRadarStations(
+		"""
+		Radar types, for example WSR-88D for the weather radars of the national network or TDWR for the terminal Doppler
+		radars at airports. Separate several types with commas.
+		"""
+		stationType: String
+		"Only the data that this radar data server reports, for example rds."
+		reportingHost: String
+		"Only the data that this radar data server received, for example rds."
+		host: String
+	): NwsRadarStationCollection
+
+	"""
+	The recent alarms of one weather radar station, with their message, status and time. KFTG is the radar that
+	covers Denver.
+	"""
+	nwsRadarStationAlarms(
+		"The id of an observation station, for example KDEN for Denver International Airport."
+		stationId: String!
+	): NwsRadarStationAlarmCollection
+
+	"""
+	The radar data files that one radar data server received most recently, by station, for checking whether a radar
+	delivers data. Pass host rds and station KFTG for the radar that covers Denver.
+	"""
+	nwsRadarQueue(
+		"The radar data server, for example rds."
+		host: NwsRadarDataServer!
+		"The time range in which the files arrived, as an ISO 8601 interval."
+		arrived: String
+		"The time range in which the files were created, as an ISO 8601 interval."
+		created: String
+		"The time range in which the files were published, as an ISO 8601 interval."
+		published: String
+		"Only files from this radar station, for example KFTG for the radar that covers Denver."
+		station: String
+		"Only files of this type, for example intermediate."
+		type: String
+		"Only files of this feed, for example NEXRAD2."
+		feed: String
+		"Only files of this resolution version, for example 6."
+		resolution: Int
+		"""
+		The number of results to return, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): NwsRadarQueue
+
+	# NOAA Weather Radio: the transmitters that broadcast forecasts and alerts on VHF.
+
+	"""
+	One NOAA Weather Radio transmitter by its call sign, with its frequency, site and the counties it covers. KEC76
+	broadcasts for Denver on 162.550 MHz.
+	"""
+	nwsWeatherRadioTransmitter(
+		"The call sign of a NOAA Weather Radio transmitter, for example KEC76 for Denver."
+		callSign: String!
+	): NwsTransmitter
+
+	"""
+	The NOAA Weather Radio transmitters that cover one county, such as COC031 for Denver County. The service repeats
+	each transmitter many times: 256 entries for the 4 transmitters that cover Denver County.
+	"""
+	nwsCountyWeatherRadioTransmitters(
+		"The type of zone, which is county."
+		type: NwsCountyZoneType!
+		"The code of a county, for example COC031 for Denver County."
+		zoneId: String!
+	): NwsTransmitterCollection
+
+	"""
+	The transmitters of NOAA Weather Radio, which broadcast forecasts and alerts on VHF, 500 to a page, with their
+	call sign, frequency, site and the counties they cover. The cursor argument moves to the next page.
+	"""
+	nwsWeatherRadioTransmitters(
+		"""
+		The cursor of the next page: the value after cursor= in the pagination.next link of the previous answer, with
+		%3D written as =.
+		"""
+		cursor: String
+	): NwsTransmitterCollection
+
+	# NWS aviation weather: the advisories of the Center Weather Service Units at the air traffic control centers,
+	# and SIGMETs, the warnings of hazards to aircraft in flight.
+
+	"""
+	One Center Weather Service Unit, the team of National Weather Service forecasters at an air route traffic
+	control center, by its id, with its address and contact details. ZDV is the Denver center in Longmont, which
+	covers the airspace over Colorado.
+	"""
+	nwsCenterWeatherServiceUnit(
+		"The id of a Center Weather Service Unit, for example ZDV for the Denver center."
+		cwsuId: NwsCenterWeatherServiceUnitId!
+	): NwsOffice
+
+	"""
+	The Center Weather Advisories that one Center Weather Service Unit issued: short warnings for pilots about
+	thunderstorms, turbulence or icing in its airspace, valid for a few hours. ZDV is the Denver center, which
+	covers Colorado.
+	"""
+	nwsCenterWeatherAdvisories(
+		"The id of a Center Weather Service Unit, for example ZDV for the Denver center."
+		cwsuId: NwsCenterWeatherServiceUnitId!
+	): NwsCenterWeatherAdvisoryCollection
+
+	"""
+	The SIGMETs that one air traffic service unit issued on one day, for example KKCI, the Aviation Weather Center,
+	on 2026-10-12.
+	"""
+	nwsSigmetsOfAirTrafficServiceUnitOnDate(
+		"An air traffic service unit, for example KKCI for the Aviation Weather Center."
+		atsu: String!
+		"A day as YYYY-MM-DD, for example 2026-10-12."
+		date: String!
+	): NwsSigmetCollection
+
+	"""
+	SIGMETs, the warnings to aircraft in flight about hazards such as severe turbulence, icing, thunderstorms or
+	volcanic ash, filtered by issuing unit, day, time range or sequence. KKCI is the Aviation Weather Center, which
+	issues the SIGMETs for the continental United States.
+	"""
+	nwsSigmets(
+		"The start of the time range, in ISO 8601, for example 2026-10-12T00:00:00Z."
+		start: String
+		"The end of the time range, in ISO 8601, for example 2026-10-12T12:00:00Z."
+		end: String
+		"A day as YYYY-MM-DD, for example 2026-10-12."
+		date: String
+		"An air traffic service unit, for example KKCI for the Aviation Weather Center."
+		atsu: String
+		"The sequence number of a SIGMET, for example 36E."
+		sequence: String
+	): NwsSigmetCollection
+
+	"""
+	Every SIGMET that one air traffic service unit issued in the past seven days, for example KKCI, the Aviation
+	Weather Center. For KKCI that is several hundred SIGMETs and about 600 KB, so
+	nwsSigmetsOfAirTrafficServiceUnitOnDate, which narrows the list to one day, is usually the better field.
+	"""
+	nwsSigmetsOfAirTrafficServiceUnit(
+		"An air traffic service unit, for example KKCI for the Aviation Weather Center."
+		atsu: String!
+	): NwsSigmetCollection
+
+	"""
+	One SIGMET by its issuing unit, its day and its time of issue, the three parts at the end of the properties.id
+	of a SIGMET in the lists.
+	"""
+	nwsSigmet(
+		"An air traffic service unit, for example KKCI for the Aviation Weather Center."
+		atsu: String!
+		"A day as YYYY-MM-DD, for example 2026-10-12."
+		date: String!
+		"The time of issue as HHMM in UTC, for example 1155."
+		time: String!
+	): NwsSigmetFeature
+}
+
+"A page of weather alerts of the National Weather Service, with the link to the next page."
+type NwsAlertCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsAlertFeature]
+	"A title describing the alert collection"
+	title: String
+	"The last time a change occurred to this collection"
+	updated: String
+	"Links for retrieving more data from paged data sets"
+	pagination: NwsPaginationInfo
+}
+
+"A weather alert as a GeoJSON feature. The alert itself is under properties."
+type NwsAlertFeature {
+	id: String
+	type: String
+	"The alert."
+	properties: NwsAlert
+}
+
+"""
+A weather alert of the National Weather Service: a watch, a warning, an advisory or a statement, in the Common
+Alerting Protocol (CAP).
+"""
+type NwsAlert {
+	"The identifier of the alert message."
+	id: String
+	"A textual description of the area affected by the alert."
+	areaDesc: String
+	"Lists of codes for NWS public zones and counties affected by the alert."
+	geocode: NwsAlertGeocode
+	"""
+	An array of API links for zones affected by the alert. This is an API-specific extension field and is not part
+	of the CAP specification.
+	"""
+	affectedZones: [String]
+	"A list of prior alerts that this alert updates or replaces."
+	references: [NwsAlertReference]
+	"The time of the origination of the alert message."
+	sent: String
+	"The effective time of the information of the alert message."
+	effective: String
+	"The expected time of the beginning of the subject event of the alert message."
+	onset: String
+	"The expiry time of the information of the alert message."
+	expires: String
+	"The expected end time of the subject event of the alert message."
+	ends: String
+	status: String
+	messageType: String
+	"The code denoting the category of the subject event of the alert message."
+	category: String
+	severity: String
+	certainty: String
+	urgency: String
+	"The text denoting the type of the subject event of the alert message."
+	event: String
+	"Email address of the NWS webmaster."
+	sender: String
+	"The text naming the originator of the alert message."
+	senderName: String
+	"The text headline of the alert message."
+	headline: String
+	"The text describing the subject event of the alert message."
+	description: String
+	"The text describing the recommended action to be taken by recipients of the alert message."
+	instruction: String
+	"""
+	The text note accompanying the alert message. Per CAP spec, this should accompany alerts with a status of
+	"Test".
+	"""
+	note: String
+	"""
+	The code denoting the type of action recommended for the target audience.
+	This corresponds to responseType in the CAP specification.
+	"""
+	response: String
+	"""
+	Further parameters of the alert from the NWS CAP specification, such as NWSheadline, VTEC and eventEndingTime.
+	"""
+	parameters: [NwsStringListEntry]
+	"The code denoting the intended distribution of the alert message."
+	scope: String
+	"The code denoting the special handling of the alert message."
+	code: String
+	"The code denoting the language of the info sub-element of the alert message."
+	language: String
+	"The identifier of the hyperlink associating additional information within the alert message."
+	web: String
+	"The codes of the kind of event, such as the SAME code and the NWS code."
+	eventCode: [NwsStringListEntry]
+	"The id of the alert that replaced this one, when one did."
+	replacedBy: String
+	"When this alert was replaced, when it was."
+	replacedAt: String
+}
+
+"The codes of the zones and counties an alert covers."
+type NwsAlertGeocode {
+	"A list of NWS public zone or county identifiers."
+	UGC: [String]
+	"A list of SAME (Specific Area Message Encoding) codes for affected counties."
+	SAME: [String]
+}
+
+"An earlier alert that this alert updates or replaces."
+type NwsAlertReference {
+	"The identifier of the alert message."
+	identifier: String
+	"The sender of the prior alert."
+	sender: String
+	"The time the prior alert was sent."
+	sent: String
+}
+
+"A parameter of an alert with its values, such as NWSheadline or VTEC."
+type NwsStringListEntry {
+	"The key."
+	key: String
+	"The value of the key."
+	value: [String]
+}
+
+"The link to the next page of a list."
+type NwsPaginationInfo {
+	"A link to the next page of records"
+	next: String
+}
+
+"The weather alerts of the National Weather Service in force now."
+type NwsActiveAlertCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsAlertFeature]
+	"A title describing the alert collection"
+	title: String
+	"The last time a change occurred to this collection"
+	updated: String
+}
+
+"How many weather alerts are in force now, in total and by area."
+type NwsActiveAlertCounts {
+	"The total number of active alerts"
+	total: Int
+	"The total number of active alerts affecting land zones"
+	land: Int
+	"The total number of active alerts affecting marine zones"
+	marine: Int
+	"The number of alerts in force by marine region."
+	regions: [NwsIntEntry]
+	"The number of alerts in force by state or marine area, such as CO for Colorado."
+	areas: [NwsIntEntry]
+	"The number of alerts in force by zone or county code."
+	zones: [NwsIntEntry]
+}
+
+"A count with the code it counts for, such as the number of alerts in force for the area CO."
+type NwsIntEntry {
+	"The key."
+	key: String
+	"The value of the key."
+	value: Int
+}
+
+"The names of the kinds of weather alert."
+type NwsAlertTypes {
+	"A list of recognized event types"
+	eventTypes: [String]
+}
+
+"""
+An office of the National Weather Service, such as a forecast office or a Center Weather Service Unit.
+"""
+type NwsOffice {
+	id: String
+	name: String
+	address: NwsOfficeAddress
+	telephone: String
+	faxNumber: String
+	email: String
+	sameAs: String
+	nwsRegion: String
+	parentOrganization: String
+	responsibleCounties: [String]
+	responsibleForecastZones: [String]
+	responsibleFireZones: [String]
+	approvedObservationStations: [String]
+}
+
+"The postal address of an office."
+type NwsOfficeAddress {
+	streetAddress: String
+	addressLocality: String
+	addressRegion: String
+	postalCode: String
+}
+
+"The Center Weather Advisories of one Center Weather Service Unit."
+type NwsCenterWeatherAdvisoryCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsCenterWeatherAdvisoryFeature]
+}
+
+"A Center Weather Advisory as a GeoJSON feature. The advisory itself is under properties."
+type NwsCenterWeatherAdvisoryFeature {
+	id: String
+	type: String
+	properties: NwsCenterWeatherAdvisory
+}
+
+"An object of the service, as its OpenAPI document describes it."
+type NwsCenterWeatherAdvisory {
+	id: String
+	issueTime: String
+	"Three-letter identifier for a Center Weather Service Unit (CWSU)."
+	cwsu: String
+	sequence: Int
+	start: String
+	end: String
+	observedProperty: String
+	text: String
+}
+
+"A list of SIGMETs."
+type NwsSigmetCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsSigmetFeature]
+}
+
+"A SIGMET as a GeoJSON feature. The SIGMET itself is under properties."
+type NwsSigmetFeature {
+	id: String
+	type: String
+	properties: NwsSigmet
+}
+
+"An object of the service, as its OpenAPI document describes it."
+type NwsSigmet {
+	id: String
+	issueTime: String
+	fir: String
+	"ATSU Identifier"
+	atsu: String
+	sequence: String
+	phenomenon: String
+	start: String
+	end: String
+}
+
+"The weather glossary of the National Weather Service."
+type NwsGlossary {
+	"A list of glossary terms"
+	glossary: [NwsGlossaryTerm]
+}
+
+"A term of the weather glossary with its definition."
+type NwsGlossaryTerm {
+	"The term being defined"
+	term: String
+	"A definition for the term"
+	definition: String
+}
+
+"The raw forecast data of a gridpoint, as a GeoJSON feature. The data is under properties."
+type NwsGridpointFeature {
+	id: String
+	type: String
+	"""
+	Raw forecast data for a 2.5km grid square.
+	This is a list of all potential data layers that may appear. Some layers may not be present in all areas.
+	* temperature
+	* dewpoint
+	* maxTemperature
+	* minTemperature
+	* relativeHumidity
+	* apparentTemperature
+	* heatIndex
+	* windChill
+	* wetBulbGlobeTemperature
+	* skyCover
+	* windDirection
+	* windSpeed
+	* windGust
+	* weather
+	* hazards: Watch and advisory products in effect
+	* heatRisk
+	* probabilityOfPrecipitation
+	* quantitativePrecipitation
+	* iceAccumulation
+	* snowfallAmount
+	* snowLevel
+	* ceilingHeight
+	* visibility
+	* transportWindSpeed
+	* transportWindDirection
+	* mixingHeight
+	* hainesIndex
+	* lightningActivityLevel
+	* twentyFootWindSpeed
+	* twentyFootWindDirection
+	* waveHeight
+	* wavePeriod
+	* waveDirection
+	* primarySwellHeight
+	* primarySwellDirection
+	* secondarySwellHeight
+	* secondarySwellDirection
+	* wavePeriod2
+	* windWaveHeight
+	* dispersionIndex
+	* pressure: Barometric pressure
+	* probabilityOfTropicalStormWinds
+	* probabilityOfHurricaneWinds
+	* potentialOf15mphWinds
+	* potentialOf25mphWinds
+	* potentialOf35mphWinds
+	* potentialOf45mphWinds
+	* potentialOf20mphWindGusts
+	* potentialOf30mphWindGusts
+	* potentialOf40mphWindGusts
+	* potentialOf50mphWindGusts
+	* potentialOf60mphWindGusts
+	* grasslandFireDangerIndex
+	* probabilityOfThunder
+	* davisStabilityIndex
+	* atmosphericDispersionIndex
+	* lowVisibilityOccurrenceRiskIndex
+	* stability
+	* redFlagThreatIndex
+	"""
+	properties: NwsGridpoint
+}
+
+"""
+The raw forecast data of a gridpoint: one layer for each forecast quantity, each with values over time
+intervals.
+"""
+type NwsGridpoint {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	updateTime: String
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTimes: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	forecastOffice: String
+	gridId: String
+	gridX: Int
+	gridY: Int
+	weather: NwsGridpointWeatherLayer
+	hazards: NwsGridpointHazardLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	temperature: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	dewpoint: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	maxTemperature: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	minTemperature: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	relativeHumidity: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	apparentTemperature: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	wetBulbGlobeTemperature: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	heatIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	windChill: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	skyCover: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	windDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	windSpeed: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	windGust: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	heatRisk: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	probabilityOfPrecipitation: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	quantitativePrecipitation: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	iceAccumulation: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	snowfallAmount: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	snowLevel: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	ceilingHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	visibility: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	transportWindSpeed: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	transportWindDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	mixingHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	hainesIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	lightningActivityLevel: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	twentyFootWindSpeed: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	twentyFootWindDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	waveHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	wavePeriod: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	waveDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	primarySwellHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	primarySwellDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	secondarySwellHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	secondarySwellDirection: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	wavePeriod2: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	windWaveHeight: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	dispersionIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	pressure: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	probabilityOfTropicalStormWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	probabilityOfHurricaneWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf15mphWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf25mphWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf35mphWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf45mphWinds: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf20mphWindGusts: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf30mphWindGusts: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf40mphWindGusts: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf50mphWindGusts: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	potentialOf60mphWindGusts: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	grasslandFireDangerIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	probabilityOfThunder: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	davisStabilityIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	atmosphericDispersionIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	lowVisibilityOccurrenceRiskIndex: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	stability: NwsGridpointLayer
+	"""
+	A gridpoint layer consisting of quantitative values (numeric values with associated units of measure).
+	"""
+	redFlagThreatIndex: NwsGridpointLayer
+}
+
+"A measured or forecast value with its unit, such as 21.1 with the unit wmoUnit:degC."
+type NwsQuantitativeValue {
+	"A measured value"
+	value: Float
+	"The maximum value of a range of measured values"
+	maxValue: Float
+	"The minimum value of a range of measured values"
+	minValue: Float
+	"""
+	The unit of the value, such as wmoUnit:degC for degrees Celsius, wmoUnit:km_h-1 for kilometres per hour or
+	wmoUnit:percent.
+	"""
+	unitCode: String
+	"""
+	For values in observation records, the quality control flag from the MADIS system. The definitions of these
+	flags can be found at https://madis.ncep.noaa.gov/madis_sfc_qc_notes.shtml
+	"""
+	qualityControl: String
+}
+
+"The forecast weather conditions of a gridpoint over time."
+type NwsGridpointWeatherLayer {
+	values: [NwsGridpointWeatherPeriod]
+}
+
+"The weather conditions forecast for one time interval."
+type NwsGridpointWeatherPeriod {
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTime: String
+	value: [NwsGridpointWeatherCondition]
+}
+
+"One forecast weather condition, such as a chance of light rain showers."
+type NwsGridpointWeatherCondition {
+	coverage: String
+	weather: String
+	intensity: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	visibility: NwsQuantitativeValue
+	attributes: [String]
+}
+
+"The watches, warnings and advisories that the forecast expects over time."
+type NwsGridpointHazardLayer {
+	values: [NwsGridpointHazardPeriod]
+}
+
+"The hazards forecast for one time interval."
+type NwsGridpointHazardPeriod {
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTime: String
+	value: [NwsGridpointHazard]
+}
+
+"One hazard of the forecast, by its VTEC phenomenon and significance codes."
+type NwsGridpointHazard {
+	"""
+	Hazard code. This value will correspond to a P-VTEC phenomenon code as defined in NWS Directive 10-1703.
+	"""
+	phenomenon: String
+	"""
+	Significance code. This value will correspond to a P-VTEC significance code as defined in NWS Directive 10-1703.
+	This will most frequently be "A" for a watch or "Y" for an advisory.
+	"""
+	significance: String
+	"""
+	Event number. If this hazard refers to a national or regional center product (such as a Storm Prediction Center
+	convective watch), this value will be the sequence number of that product.
+	"""
+	event_number: Int
+}
+
+"One quantity of the raw forecast, such as the temperature, with its unit and its values over time."
+type NwsGridpointLayer {
+	"The unit of the values, such as wmoUnit:degC for degrees Celsius."
+	uom: String
+	values: [NwsGridpointLayerValue]
+}
+
+"""
+The value of a forecast quantity over a time interval, written in ISO 8601 as a start and a duration, such as
+2026-10-12T12:00:00+00:00/PT1H.
+"""
+type NwsGridpointLayerValue {
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTime: String
+	value: Float
+}
+
+"""
+The forecast of a gridpoint in twelve-hour periods, as a GeoJSON feature. The forecast is under properties.
+"""
+type NwsGridpointForecastFeature {
+	id: String
+	type: String
+	"A multi-day forecast for a 2.5km grid square."
+	properties: NwsGridpointForecast
+}
+
+"The forecast of a gridpoint in twelve-hour periods."
+type NwsGridpointForecast {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"Denotes the units used in the textual portions of the forecast."
+	units: String
+	"The internal generator class used to create the forecast text (used for NWS debugging)."
+	forecastGenerator: String
+	"The time this forecast data was generated."
+	generatedAt: String
+	"The last update time of the data this forecast was generated from."
+	updateTime: String
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTimes: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	"An array of forecast periods."
+	periods: [NwsGridpointForecastPeriod]
+}
+
+"One period of a forecast, such as Tonight or Tuesday, with the forecast in words."
+type NwsGridpointForecastPeriod {
+	"Sequential period number."
+	number: Int
+	"A textual identifier for the period. This value will not be present for hourly forecasts."
+	name: String
+	"The starting time that this forecast period is valid for."
+	startTime: String
+	"The ending time that this forecast period is valid for."
+	endTime: String
+	"Indicates whether this period is daytime or nighttime."
+	isDaytime: Boolean
+	"""
+	High/low temperature for the period, depending on whether the period is day or night.
+	This property as an integer value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_temperature_qv" feature flag on the
+	request.
+	"""
+	temperature: Int
+	"""
+	The unit of the temperature value (Fahrenheit or Celsius).
+	This property is deprecated. Future versions will indicate the unit within the quantitative value object for the
+	temperature property. To make use of the future standard format now, set the "forecast_temperature_qv" feature
+	flag on the request.
+	"""
+	temperatureUnit: String
+	"""
+	If not null, indicates a non-diurnal temperature trend for the period (either rising temperature overnight, or
+	falling temperature during the day)
+	"""
+	temperatureTrend: String
+	"Probability of precipitation for the period."
+	probabilityOfPrecipitation: NwsQuantitativeValue
+	"""
+	Wind speed for the period.
+	This property as an string value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_wind_speed_qv" feature flag on the
+	request.
+	"""
+	windSpeed: String
+	"""
+	Peak wind gust for the period.
+	This property as an string value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_wind_speed_qv" feature flag on the
+	request.
+	"""
+	windGust: String
+	"The prevailing direction of the wind for the period, using a 16-point compass."
+	windDirection: String
+	"A link to an icon representing the forecast summary."
+	icon: String
+	"A brief textual forecast summary for the period."
+	shortForecast: String
+	"A detailed textual forecast for the period."
+	detailedForecast: String
+}
+
+"The hourly forecast of a gridpoint, as a GeoJSON feature. The forecast is under properties."
+type NwsGridpointHourlyForecastFeature {
+	id: String
+	type: String
+	"An hourly forecast for a 2.5km grid square."
+	properties: NwsGridpointHourlyForecast
+}
+
+"The hourly forecast of a gridpoint."
+type NwsGridpointHourlyForecast {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"Denotes the units used in the textual portions of the forecast."
+	units: String
+	"The internal generator class used to create the forecast text (used for NWS debugging)."
+	forecastGenerator: String
+	"The time this forecast data was generated."
+	generatedAt: String
+	"The last update time of the data this forecast was generated from."
+	updateTime: String
+	"""
+	A time interval in ISO 8601 format. This can be one of:
+	1. Start and end time
+	2. Start time and duration
+	3. Duration and end time
+	The string "NOW" can also be used in place of a start/end time.
+	"""
+	validTimes: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	"An array of forecast periods."
+	periods: [NwsGridpointHourlyForecastPeriod]
+}
+
+"One hour of a forecast."
+type NwsGridpointHourlyForecastPeriod {
+	"Sequential period number."
+	number: Int
+	"A textual identifier for the period. This value will not be present for hourly forecasts."
+	name: String
+	"The starting time that this forecast period is valid for."
+	startTime: String
+	"The ending time that this forecast period is valid for."
+	endTime: String
+	"Indicates whether this period is daytime or nighttime."
+	isDaytime: Boolean
+	"""
+	High/low temperature for the period, depending on whether the period is day or night.
+	This property as an integer value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_temperature_qv" feature flag on the
+	request.
+	"""
+	temperature: Int
+	"""
+	The unit of the temperature value (Fahrenheit or Celsius).
+	This property is deprecated. Future versions will indicate the unit within the quantitative value object for the
+	temperature property. To make use of the future standard format now, set the "forecast_temperature_qv" feature
+	flag on the request.
+	"""
+	temperatureUnit: String
+	"""
+	If not null, indicates a non-diurnal temperature trend for the period (either rising temperature overnight, or
+	falling temperature during the day)
+	"""
+	temperatureTrend: String
+	"Probability of precipitation for the period."
+	probabilityOfPrecipitation: NwsQuantitativeValue
+	"Dewpoint. Only provided in hourly forecasts."
+	dewpoint: NwsQuantitativeValue
+	"Relative humidity. Only provided in hourly forecasts."
+	relativeHumidity: NwsQuantitativeValue
+	"""
+	Wind speed for the period.
+	This property as an string value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_wind_speed_qv" feature flag on the
+	request.
+	"""
+	windSpeed: String
+	"""
+	Peak wind gust for the period.
+	This property as an string value is deprecated. Future versions will express this value as a quantitative value
+	object. To make use of the future standard format now, set the "forecast_wind_speed_qv" feature flag on the
+	request.
+	"""
+	windGust: String
+	"The prevailing direction of the wind for the period, using a 16-point compass."
+	windDirection: String
+	"A link to an icon representing the forecast summary."
+	icon: String
+	"A brief textual forecast summary for the period."
+	shortForecast: String
+	"A detailed textual forecast for the period."
+	detailedForecast: String
+}
+
+"A list of weather observation stations."
+type NwsObservationStationCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsObservationStationFeature]
+	observationStations: [String]
+	"Links for retrieving more data from paged data sets"
+	pagination: NwsPaginationInfo
+}
+
+"A weather observation station as a GeoJSON feature. The station is under properties."
+type NwsObservationStationFeature {
+	id: String
+	type: String
+	properties: NwsObservationStation
+}
+
+"A weather observation station of the National Weather Service."
+type NwsObservationStation {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	stationIdentifier: String
+	name: String
+	timeZone: String
+	"""
+	The data provider for this station. E.g., "ASOS," "MesoWest," etc.
+	"""
+	provider: String
+	"""
+	The sub-provider of for this station. E.g., "FAA," "DOT," etc.
+	"""
+	subProvider: String
+	"A link to the NWS public forecast zone containing this station."
+	forecast: String
+	"A link to the NWS county zone containing this station."
+	county: String
+	"A link to the NWS fire weather forecast zone containing this station."
+	fireWeatherZone: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	distance: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	bearing: NwsQuantitativeValue
+}
+
+"The weather conditions that the forecast icons stand for."
+type NwsIconConditions {
+	"The conditions keyed by the code in the icon URLs, such as skc or tsra."
+	icons: [NwsIconConditionEntry]
+}
+
+"A weather condition of the forecast icons."
+type NwsIconCondition {
+	description: String
+}
+
+"The code of a forecast icon and the condition it stands for."
+type NwsIconConditionEntry {
+	"The key."
+	key: String
+	"The value of the key."
+	value: NwsIconCondition
+}
+
+"A list of weather observations, with the link to the next page."
+type NwsObservationCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsObservationFeature]
+	"Links for retrieving more data from paged data sets"
+	pagination: NwsPaginationInfo
+}
+
+"A weather observation as a GeoJSON feature. The observation itself is under properties."
+type NwsObservationFeature {
+	id: String
+	type: String
+	properties: NwsObservation
+}
+
+"What a weather station measured at one time, in metric units."
+type NwsObservation {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	station: String
+	stationId: String
+	stationName: String
+	timestamp: String
+	rawMessage: String
+	textDescription: String
+	icon: String
+	presentWeather: [NwsMetarPhenomenon]
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	temperature: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	dewpoint: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	windDirection: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	windSpeed: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	windGust: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	barometricPressure: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	seaLevelPressure: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	visibility: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	maxTemperatureLast24Hours: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	minTemperatureLast24Hours: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	precipitationLastHour: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	precipitationLast3Hours: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	precipitationLast6Hours: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	relativeHumidity: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	windChill: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	heatIndex: NwsQuantitativeValue
+	cloudLayers: [NwsObservationCloudLayer]
+}
+
+"A weather phenomenon in an observation, such as light rain, decoded from the METAR report."
+type NwsMetarPhenomenon {
+	intensity: String
+	modifier: String
+	weather: String
+	rawString: String
+	inVicinity: Boolean
+}
+
+"A layer of clouds in an observation, with its base and how much of the sky it covers."
+type NwsObservationCloudLayer {
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	base: NwsQuantitativeValue
+	amount: String
+}
+
+"The terminal aerodrome forecasts of one airport."
+type NwsTafCollection {
+	"The items of the list."
+	items: [NwsTaf]
+}
+
+"A terminal aerodrome forecast: when it was issued and the period it covers."
+type NwsTaf {
+	id: String
+	issueTime: String
+	location: String
+	start: String
+	end: String
+	geometry: String
+}
+
+"The latest briefing of a forecast office."
+type NwsOfficeLatestBriefing {
+	"The briefing, or null while the office has not published one."
+	briefing: NwsOfficeBriefing
+}
+
+"A weather briefing of a forecast office for emergency managers and partners."
+type NwsOfficeBriefing {
+	id: String
+	"The time when the document becomes active. ISO8601 datetime."
+	startTime: String
+	"The time when the document becomes inactive. ISO8601 datetime."
+	endTime: String
+	"When the document was last updated. ISO8601 datetime."
+	updateTime: String
+	"A short title."
+	title: String
+	"A longer description and/or caption."
+	description: String
+	"An indicator that a weather story should be emphasized."
+	priority: Boolean
+	"The URL of the media content for the weather story."
+	download: String
+}
+
+"A news headline of a forecast office."
+type NwsOfficeHeadline {
+	id: String
+	office: String
+	important: Boolean
+	issuanceTime: String
+	link: String
+	name: String
+	title: String
+	summary: String
+	content: String
+}
+
+"The news headlines of a forecast office."
+type NwsOfficeHeadlineCollection {
+	"The items of the list."
+	items: [NwsOfficeHeadline]
+}
+
+"The weather stories of a forecast office."
+type NwsOfficeWeatherStoryCollection {
+	stories: [NwsOfficeWeatherStory]
+}
+
+"A weather story: a short graphical summary of the coming days by a forecast office."
+type NwsOfficeWeatherStory {
+	"The id of the office, for example BOU."
+	officeId: String
+	id: String
+	"The time when the document becomes active. ISO8601 datetime."
+	startTime: String
+	"The time when the document becomes inactive. ISO8601 datetime."
+	endTime: String
+	"When the document was last updated. ISO8601 datetime."
+	updateTime: String
+	"A short title."
+	title: String
+	"A longer description and/or caption."
+	description: String
+	"An indicator that a weather story should be emphasized."
+	priority: Boolean
+	"The URL of the media content for the weather story."
+	download: String
+	"Alternative text description of the content of the image for assistive technology."
+	altText: String
+	"The order in which a weather story should be displayed. Unique for each object."
+	order: Int
+}
+
+"The forecast metadata of a point as a GeoJSON feature. The metadata is under properties."
+type NwsPointFeature {
+	id: String
+	type: String
+	properties: NwsPoint
+}
+
+"""
+What the National Weather Service knows about a point: its forecast office and gridpoint, its zones, its nearest
+radar and the links to its forecasts.
+"""
+type NwsPoint {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"Three-letter identifier for a NWS office."
+	cwa: String
+	"Whether the specific point is on land or marine"
+	type: String
+	forecastOffice: String
+	"Three-letter identifier for a NWS office."
+	gridId: String
+	gridX: Int
+	gridY: Int
+	forecast: String
+	forecastHourly: String
+	forecastGridData: String
+	observationStations: String
+	relativeLocation: NwsRelativeLocationFeature
+	forecastZone: String
+	county: String
+	fireWeatherZone: String
+	timeZone: String
+	radarStation: String
+	"An object representing sunrise, sunset, and twilight information for a location."
+	astronomicalData: NwsAstronomicalData
+	"NOAA Weather Radio metadata for this point"
+	nwr: NwsPointWeatherRadio
+}
+
+"The nearest city to a point, as a GeoJSON feature. The city is under properties."
+type NwsRelativeLocationFeature {
+	id: String
+	type: String
+	properties: NwsRelativeLocation
+}
+
+"The nearest city to a point, with the distance and the bearing from it."
+type NwsRelativeLocation {
+	city: String
+	state: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	distance: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	bearing: NwsQuantitativeValue
+}
+
+"The times of sunrise, sunset and twilight at a point, for today."
+type NwsAstronomicalData {
+	"The timestamp of sunrise, defined as when the sun angle is 90°35' from vertical."
+	sunrise: String
+	"The timestamp of sunset, defined as when the sun angle is 90°35' from vertical."
+	sunset: String
+	"The timestamp when the sun reaches its zenith."
+	transit: String
+	"""
+	The timestamp of the onset of civil twilight, defined as when the sun angle is 96° from vertical. This is the
+	beginning of civil dawn and lasts until sunrise.
+	"""
+	civilTwilightBegin: String
+	"""
+	The timestamp of the end of civil twilight, defined as when the sun angle is 96° from vertical. This is the end
+	of civil dusk, which begins at sunset.
+	"""
+	civilTwilightEnd: String
+	"""
+	The timestamp of the onset of nautical twilight, defined as when the sun angle is 102° from vertical. This is
+	the beginning of nautical dawn and lasts until the civil dawn.
+	"""
+	nauticalTwilightBegin: String
+	"""
+	The timestamp of the end of nautical twilight, defined as when the sun angle is 102° from vertical. This is the
+	end of nautical dusk, which begins at the end of civil twilight.
+	"""
+	nauticalTwilightEnd: String
+	"""
+	The timestamp of the onset of astronomical twilight, defined as when the sun angle is 108° from vertical. This
+	is the beginning of astronomical dawn and lasts until the nautical dawn.
+	"""
+	astronomicalTwilightBegin: String
+	"""
+	The timestamp of the end of astronomical twilight, defined as when the sun angle is 108° from vertical. This is
+	the end of astronomical dusk, which begins at the end of nautical twilight.
+	"""
+	astronomicalTwilightEnd: String
+}
+
+"The NOAA Weather Radio transmitter that covers a point."
+type NwsPointWeatherRadio {
+	"Transmitter callsign"
+	transmitter: String
+	"The SAME code of this point's county"
+	sameCode: String
+	"A link to the area NWR broadcast from this transmitter"
+	areaBroadcast: String
+	"A link to the local NWR broadcast for this point"
+	pointBroadcast: String
+}
+
+"A list of weather radar stations."
+type NwsRadarStationCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsRadarStationFeature]
+}
+
+"""
+A weather radar station as a GeoJSON feature. The station is under properties and its location under geometry.
+"""
+type NwsRadarStationFeature {
+	id: String
+	type: String
+	geometry: NwsRadarStationLocation
+	properties: NwsRadarStation
+}
+
+"""
+The location of a radar station as a GeoJSON point: the coordinates are the longitude and the latitude.
+"""
+type NwsRadarStationLocation {
+	type: String
+	coordinates: [Float]
+}
+
+"A weather radar station of the National Weather Service."
+type NwsRadarStation {
+	id: String
+	name: String
+	stationType: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	elevation: NwsQuantitativeValue
+	timeZone: String
+	latency: NwsRadarStationLatency
+	rda: NwsRadarDataAcquisition
+}
+
+"How long the data of a radar station takes to arrive."
+type NwsRadarStationLatency {
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	current: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	average: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	max: NwsQuantitativeValue
+	levelTwoLastReceivedTime: String
+	maxLatencyTime: String
+	reportingHost: String
+	host: String
+}
+
+"The latest report of the radar data acquisition unit of a station."
+type NwsRadarDataAcquisition {
+	timestamp: String
+	reportingHost: String
+	properties: NwsRadarDataAcquisitionStatus
+}
+
+"The state of the radar data acquisition unit of a station, such as whether it is operating."
+type NwsRadarDataAcquisitionStatus {
+	resolutionVersion: Int
+	nl2Path: String
+	volumeCoveragePattern: String
+	controlStatus: String
+	buildNumber: Float
+	alarmSummary: String
+	mode: String
+	generatorState: String
+	superResolutionStatus: String
+	operabilityStatus: String
+	status: String
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	averageTransmitterPower: NwsQuantitativeValue
+	"""
+	A structured value representing a measurement and its unit of measure. This object is a slightly modified
+	version of the schema.org definition at https://schema.org/QuantitativeValue
+	"""
+	reflectivityCalibrationCorrection: NwsQuantitativeValue
+}
+
+"The recent alarms of a weather radar station."
+type NwsRadarStationAlarmCollection {
+	"The items of the list."
+	items: [NwsRadarStationAlarm]
+}
+
+"An alarm of a weather radar station."
+type NwsRadarStationAlarm {
+	stationId: String
+	status: String
+	activeChannel: Int
+	message: String
+	timestamp: String
+}
+
+"The radar data files that a radar data server received."
+type NwsRadarQueue {
+	"The items of the list."
+	items: [NwsRadarQueueFile]
+}
+
+"A radar data file that a radar data server received."
+type NwsRadarQueueFile {
+	host: String
+	arrivalTime: String
+	creationTime: String
+	stationId: String
+	type: String
+	feed: String
+	resolutionVersion: Int
+	sequenceNumber: String
+	size: Int
+}
+
+"A list of NOAA Weather Radio transmitters, with the link to the next page."
+type NwsTransmitterCollection {
+	"The items of the list."
+	items: [NwsTransmitter]
+	"Links for retrieving more data from paged data sets"
+	pagination: NwsPaginationInfo
+}
+
+"""
+A NOAA Weather Radio transmitter, with its frequency and the counties it covers, by NWS county code and SAME
+code.
+"""
+type NwsTransmitter {
+	setId: String
+	callSign: String
+	transmitterFrequency: String
+	siteName: String
+	siteCity: String
+	siteState: String
+	"The SAME codes of the counties the transmitter covers, such as 008031 for Denver County."
+	sameCodes: [String]
+	"The codes of the counties the transmitter covers, such as COC031 for Denver County."
+	counties: [String]
+}
+
+"A list of text bulletins."
+type NwsTextProductCollection {
+	"The items of the list."
+	items: [NwsTextProduct]
+}
+
+"A text bulletin of the National Weather Service, such as an Area Forecast Discussion."
+type NwsTextProduct {
+	id: String
+	wmoCollectiveId: String
+	issuingOffice: String
+	issuanceTime: String
+	productCode: String
+	productName: String
+	productText: String
+}
+
+"The locations that issue text bulletins, by code with their name."
+type NwsTextProductLocationCollection {
+	"The locations by code, with their name. The name is null for some codes."
+	locations: [NwsStringEntry]
+}
+
+"A code with its name."
+type NwsStringEntry {
+	"The key."
+	key: String
+	"The value of the key."
+	value: String
+}
+
+"A list of types of text bulletin."
+type NwsTextProductTypeCollection {
+	"The items of the list."
+	items: [NwsTextProductType]
+}
+
+"A type of text bulletin, by code and name."
+type NwsTextProductType {
+	productCode: String
+	productName: String
+}
+
+"A list of zones of the National Weather Service."
+type NwsZoneCollection {
+	type: String
+	"The items of the list, each a GeoJSON feature with the item under properties."
+	features: [NwsZoneFeature]
+}
+
+"A zone as a GeoJSON feature. The zone itself is under properties."
+type NwsZoneFeature {
+	id: String
+	type: String
+	properties: NwsZone
+}
+
+"""
+A zone of the National Weather Service: a forecast zone, a county, a fire weather zone or a marine zone.
+"""
+type NwsZone {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"""
+	UGC identifier for a NWS forecast zone or county.
+	The first two letters will correspond to either a state code or marine area code (see
+	#/components/schemas/StateTerritoryCode and #/components/schemas/MarineAreaCode for lists of valid letter
+	combinations).
+	The third letter will be Z for public/fire zone or C for county.
+	"""
+	id: String
+	type: String
+	name: String
+	effectiveDate: String
+	expirationDate: String
+	state: String
+	forecastOffice: String
+	gridIdentifier: String
+	awipsLocationIdentifier: String
+	cwa: [String]
+	forecastOffices: [String]
+	timeZone: [String]
+	observationStations: [String]
+	radarStation: String
+}
+
+"The forecast of a zone in words, as a GeoJSON feature. The forecast is under properties."
+type NwsZoneForecastFeature {
+	id: String
+	type: String
+	"An object representing a zone area forecast."
+	properties: NwsZoneForecast
+}
+
+"The forecast of a zone in words."
+type NwsZoneForecast {
+	"A geometry represented in Well-Known Text (WKT) format."
+	geometry: String
+	"An API link to the zone this forecast is for."
+	zone: String
+	"The time this zone forecast product was published."
+	updated: String
+	"An array of forecast periods."
+	periods: [NwsZoneForecastPeriod]
+}
+
+"One period of a zone forecast, such as Tonight, with the forecast in words."
+type NwsZoneForecastPeriod {
+	"A sequential identifier number."
+	number: Int
+	"A textual description of the period."
+	name: String
+	"A detailed textual forecast for the period."
+	detailedForecast: String
+}
+
+"The values that the service accepts for alertStatus."
+enum NwsAlertStatus {
+	actual
+	exercise
+	system
+	test
+	draft
+}
+
+"The values that the service accepts for alertMessageType."
+enum NwsAlertMessageType {
+	alert
+	update
+	cancel
+}
+
+"The values that the service accepts for areaCode."
+enum NwsAreaCode {
+	AL
+	AK
+	AS
+	AR
+	AZ
+	CA
+	CO
+	CT
+	DE
+	DC
+	FL
+	GA
+	GU
+	HI
+	ID
+	IL
+	IN
+	IA
+	KS
+	KY
+	LA
+	ME
+	MD
+	MA
+	MI
+	MN
+	MS
+	MO
+	MT
+	NE
+	NV
+	NH
+	NJ
+	NM
+	NY
+	NC
+	ND
+	OH
+	OK
+	OR
+	PA
+	PR
+	RI
+	SC
+	SD
+	TN
+	TX
+	UT
+	VT
+	VI
+	VA
+	WA
+	WV
+	WI
+	WY
+	MP
+	PW
+	FM
+	MH
+	AM
+	AN
+	GM
+	LC
+	LE
+	LH
+	LM
+	LO
+	LS
+	PH
+	PK
+	PM
+	PS
+	PZ
+	SL
+}
+
+"The values that the service accepts for marineRegion."
+enum NwsMarineRegion {
+	AL
+	AT
+	GL
+	GM
+	PA
+	PI
+}
+
+"The values that the service accepts for alertRegionType."
+enum NwsAlertRegionType {
+	land
+	marine
+}
+
+"The values that the service accepts for alertUrgency."
+enum NwsAlertUrgency {
+	Immediate
+	Expected
+	Future
+	Past
+	Unknown
+}
+
+"The values that the service accepts for alertSeverity."
+enum NwsAlertSeverity {
+	Extreme
+	Severe
+	Moderate
+	Minor
+	Unknown
+}
+
+"The values that the service accepts for alertCertainty."
+enum NwsAlertCertainty {
+	Observed
+	Likely
+	Possible
+	Unlikely
+	Unknown
+}
+
+"The values that the service accepts for centerWeatherServiceUnitId."
+enum NwsCenterWeatherServiceUnitId {
+	ZAB
+	ZAN
+	ZAU
+	ZBW
+	ZDC
+	ZDV
+	ZFA
+	ZFW
+	ZHU
+	ZID
+	ZJX
+	ZKC
+	ZLA
+	ZLC
+	ZMA
+	ZME
+	ZMP
+	ZNY
+	ZOA
+	ZOB
+	ZSE
+	ZTL
+}
+
+"The values that the service accepts for forecastOfficeId."
+enum NwsForecastOfficeId {
+	AKQ
+	ALY
+	BGM
+	BOX
+	BTV
+	BUF
+	CAE
+	CAR
+	CHS
+	CLE
+	CTP
+	GSP
+	GYX
+	ILM
+	ILN
+	LWX
+	MHX
+	OKX
+	PBZ
+	PHI
+	RAH
+	RLX
+	RNK
+	ABQ
+	AMA
+	BMX
+	BRO
+	CRP
+	EPZ
+	EWX
+	FFC
+	FWD
+	HGX
+	HUN
+	JAN
+	JAX
+	KEY
+	LCH
+	LIX
+	LUB
+	LZK
+	MAF
+	MEG
+	MFL
+	MLB
+	MOB
+	MRX
+	OHX
+	OUN
+	SHV
+	SJT
+	SJU
+	TAE
+	TBW
+	TSA
+	ABR
+	APX
+	ARX
+	BIS
+	BOU
+	CYS
+	DDC
+	DLH
+	DMX
+	DTX
+	DVN
+	EAX
+	FGF
+	FSD
+	GID
+	GJT
+	GLD
+	GRB
+	GRR
+	ICT
+	ILX
+	IND
+	IWX
+	JKL
+	LBF
+	LMK
+	LOT
+	LSX
+	MKX
+	MPX
+	MQT
+	OAX
+	PAH
+	PUB
+	RIW
+	SGF
+	TOP
+	UNR
+	BOI
+	BYZ
+	EKA
+	FGZ
+	GGW
+	HNX
+	LKN
+	LOX
+	MFR
+	MSO
+	MTR
+	OTX
+	PDT
+	PIH
+	PQR
+	PSR
+	REV
+	SEW
+	SGX
+	SLC
+	STO
+	TFX
+	TWC
+	VEF
+	AER
+	AFC
+	AFG
+	AJK
+	ALU
+	GUM
+	HPA
+	HFO
+	PPG
+	PQE
+	PQW
+	STU
+	NH1
+	NH2
+	ONA
+	ONP
+}
+
+"The values that the service accepts for forecastUnits."
+enum NwsForecastUnits {
+	us
+	si
+}
+
+"The values that the service accepts for officeId."
+enum NwsOfficeId {
+	AKQ
+	ALY
+	BGM
+	BOX
+	BTV
+	BUF
+	CAE
+	CAR
+	CHS
+	CLE
+	CTP
+	GSP
+	GYX
+	ILM
+	ILN
+	LWX
+	MHX
+	OKX
+	PBZ
+	PHI
+	RAH
+	RLX
+	RNK
+	ABQ
+	AMA
+	BMX
+	BRO
+	CRP
+	EPZ
+	EWX
+	FFC
+	FWD
+	HGX
+	HUN
+	JAN
+	JAX
+	KEY
+	LCH
+	LIX
+	LUB
+	LZK
+	MAF
+	MEG
+	MFL
+	MLB
+	MOB
+	MRX
+	OHX
+	OUN
+	SHV
+	SJT
+	SJU
+	TAE
+	TBW
+	TSA
+	ABR
+	APX
+	ARX
+	BIS
+	BOU
+	CYS
+	DDC
+	DLH
+	DMX
+	DTX
+	DVN
+	EAX
+	FGF
+	FSD
+	GID
+	GJT
+	GLD
+	GRB
+	GRR
+	ICT
+	ILX
+	IND
+	IWX
+	JKL
+	LBF
+	LMK
+	LOT
+	LSX
+	MKX
+	MPX
+	MQT
+	OAX
+	PAH
+	PUB
+	RIW
+	SGF
+	TOP
+	UNR
+	BOI
+	BYZ
+	EKA
+	FGZ
+	GGW
+	HNX
+	LKN
+	LOX
+	MFR
+	MSO
+	MTR
+	OTX
+	PDT
+	PIH
+	PQR
+	PSR
+	REV
+	SEW
+	SGX
+	SLC
+	STO
+	TFX
+	TWC
+	VEF
+	AER
+	AFC
+	AFG
+	AJK
+	ALU
+	GUM
+	HPA
+	HFO
+	PPG
+	PQE
+	PQW
+	STU
+	NH1
+	NH2
+	ONA
+	ONP
+	ARH
+	CRH
+	ERH
+	PRH
+	SRH
+	WRH
+	NWS
+}
+
+"The values that the service accepts for radarDataServer."
+enum NwsRadarDataServer {
+	rds
+	tds
+}
+
+"The values that the service accepts for region."
+enum NwsRegion {
+	AR
+	CR
+	ER
+	PR
+	SR
+	WR
+	AL
+	AT
+	GL
+	GM
+	PA
+	PI
+}
+
+"The values that the service accepts for zoneType."
+enum NwsZoneType {
+	land
+	marine
+	forecast
+	public
+	coastal
+	offshore
+	fire
+	county
+}
+
+"The values that the service accepts for countyZoneType."
+enum NwsCountyZoneType {
+	county
+}

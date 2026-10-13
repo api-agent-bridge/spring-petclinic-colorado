@@ -1,0 +1,1040 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "fields": [
+    {
+      "name": "BFN",
+      "type": "esriFieldTypeString",
+      "alias": "BFN",
+      "sqlType": "sqlTypeOther",
+      "length": 24,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LICENSE_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "LICENSE_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENTITY_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "ENTITY_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TRADE_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Expiration_Date",
+      "type": "esriFieldTypeDate",
+      "alias": "Expiration_Date",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "AddressNoUnit",
+      "type": "esriFieldTypeString",
+      "alias": "AddressNoUnit",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ZIP",
+      "type": "esriFieldTypeString",
+      "alias": "ZIP",
+      "sqlType": "sqlTypeOther",
+      "length": 12,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "X_COORD",
+      "type": "esriFieldTypeDouble",
+      "alias": "X_COORD",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Y_COORD",
+      "type": "esriFieldTypeDouble",
+      "alias": "Y_COORD",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0014367",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "BARK & PLAY, INC",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1825286400000,
+        "AddressNoUnit": "131 N KALAMATH St",
+        "ZIP": "80223",
+        "X_COORD": 3140551,
+        "Y_COORD": 1687209
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2015-BFN-0007626",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "BEAR VALLEY VETERINARY CLINIC, P.C.",
+        "TRADE_NAME": "BEAR VALLEY VETERINARY CLINIIC",
+        "Expiration_Date": 1795132800000,
+        "AddressNoUnit": "2111 S SHERIDAN BLVD",
+        "ZIP": "80227",
+        "X_COORD": null,
+        "Y_COORD": null
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2019-BFN-0001889",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "BELCARO ANIMAL HOSPITAL P.C.",
+        "TRADE_NAME": "BELCARO ANIMAL HOSPITAL P.C.",
+        "Expiration_Date": 1810339200000,
+        "AddressNoUnit": "5023 LEETSDALE Dr",
+        "ZIP": "80246",
+        "X_COORD": 3160682,
+        "Y_COORD": 1683588
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2015-BFN-0003671",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "BROCKER LLC",
+        "TRADE_NAME": "EARTHDOG DENVER",
+        "Expiration_Date": 1814400000000,
+        "AddressNoUnit": "370 N KALAMATH ST",
+        "ZIP": "80223",
+        "X_COORD": 3140725,
+        "Y_COORD": 1688318
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2021-BFN-0007993",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "BRUN / REYNOLDS INC",
+        "TRADE_NAME": "DAILY WAG DOGGIE DAYCARE",
+        "Expiration_Date": 1795910400000,
+        "AddressNoUnit": "1190 N YUMA St",
+        "ZIP": "80204",
+        "X_COORD": 3136573,
+        "Y_COORD": 1692900
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2026-BFN-0010103",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Cat People Company",
+        "TRADE_NAME": "Cat People",
+        "Expiration_Date": 1812499200000,
+        "AddressNoUnit": "5075 LEETSDALE Dr",
+        "ZIP": "80246",
+        "X_COORD": 3160826,
+        "Y_COORD": 1683597
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0024030",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "CHEWY VET CARE COLORADO, LLC",
+        "TRADE_NAME": "CHEWY VET CARE LITTLETON",
+        "Expiration_Date": 1828569600000,
+        "AddressNoUnit": "8555 W BELLEVIEW Ave",
+        "ZIP": "80123",
+        "X_COORD": 3114530,
+        "Y_COORD": 1652981
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0027199",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Chewy Vet Care Colorado, LLC",
+        "TRADE_NAME": "Chewy Vet Care 9+CO",
+        "Expiration_Date": 1812326400000,
+        "AddressNoUnit": "4193 E 8TH Ave",
+        "ZIP": "80220",
+        "X_COORD": 3157924,
+        "Y_COORD": 1691045
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2003-BFN-1006614",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "CHEWYS BONETIQUE",
+        "TRADE_NAME": "CHEWY'S BONETIQUE",
+        "Expiration_Date": 1805241600000,
+        "AddressNoUnit": "200 QUEBEC ST",
+        "ZIP": "80230",
+        "X_COORD": 3167904,
+        "Y_COORD": 1687999
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2008-BFN-1031321",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "CITY BARK",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1802044800000,
+        "AddressNoUnit": "2000 W 8TH AVE",
+        "ZIP": "80204",
+        "X_COORD": 3137367,
+        "Y_COORD": 1690825
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2005-BFN-1016735",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "CITY BARK LODO",
+        "TRADE_NAME": "CITY BARK LO DO",
+        "Expiration_Date": 1823299200000,
+        "AddressNoUnit": "3150 N BRIGHTON BLVD",
+        "ZIP": "80216",
+        "X_COORD": 3145574,
+        "Y_COORD": 1704635
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0013112",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "COLORADO EXOTIC ANIMAL HOSPITAL LLC",
+        "TRADE_NAME": "COLORADO EXOTIC ANIMAL HOSPITAL LLC",
+        "Expiration_Date": 1797120000000,
+        "AddressNoUnit": "7120 E HAMPDEN AVE",
+        "ZIP": "80224",
+        "X_COORD": null,
+        "Y_COORD": null
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0030643",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Crystal’s Grooming",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1821657600000,
+        "AddressNoUnit": "3280 N DOWNING St",
+        "ZIP": "80205",
+        "X_COORD": 3148094,
+        "Y_COORD": 1703242
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0000054",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "DENVER DUMB FRIENDS LEAGUE",
+        "TRADE_NAME": "DENVER DUMB FRIENDS LEAGUE",
+        "Expiration_Date": 1800489600000,
+        "AddressNoUnit": "4817 PACKING HOUSE Rd",
+        "ZIP": null,
+        "X_COORD": 3147998,
+        "Y_COORD": 1710807
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0004351",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "DESTINATION PET, LLC",
+        "TRADE_NAME": "CANINE FITNESS AND FUN",
+        "Expiration_Date": 1807747200000,
+        "AddressNoUnit": "5390 E EVANS Ave",
+        "ZIP": "80222",
+        "X_COORD": 3161703,
+        "Y_COORD": 1672414
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0043458",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "DOG COUNTRY DAY SCHOOL LLC",
+        "TRADE_NAME": "DOG COUNTRY DAY SCHOOL",
+        "Expiration_Date": 1795824000000,
+        "AddressNoUnit": "341 S LINCOLN St",
+        "ZIP": "80209",
+        "X_COORD": 3144403,
+        "Y_COORD": 1683959
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0001347",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "DOG HOUSE DENVER LLC",
+        "TRADE_NAME": "DOG HOUSE DENVER LLC",
+        "Expiration_Date": 1805241600000,
+        "AddressNoUnit": "1480 N ELM St",
+        "ZIP": null,
+        "X_COORD": 3160601,
+        "Y_COORD": 1694879
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2026-BFN-0006463",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "DOGGIE PAUSE LLC",
+        "TRADE_NAME": "DOGGIE PAUSE",
+        "Expiration_Date": 1811376000000,
+        "AddressNoUnit": "4040 E WARREN Ave",
+        "ZIP": "80222",
+        "X_COORD": 3157680,
+        "Y_COORD": 1671745
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2015-BFN-0002811",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "E&J VETERINARY SERVICES, PC",
+        "TRADE_NAME": "GREEN VALLEY RANCH PET CENTER",
+        "Expiration_Date": 1818201600000,
+        "AddressNoUnit": "18607 GREEN VALLEY RANCH BLVD",
+        "ZIP": "80249",
+        "X_COORD": null,
+        "Y_COORD": null
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2019-BFN-0010553",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODHEART BROAD WAY LLC",
+        "TRADE_NAME": "GOODHEART ANIMAL HEALTH CENTER",
+        "Expiration_Date": 1826841600000,
+        "AddressNoUnit": "389 S BROADWAY",
+        "ZIP": "80209",
+        "X_COORD": 3143993,
+        "Y_COORD": 1683722
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2021-BFN-0008561",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODHEART CHERRY CREEK LLC",
+        "TRADE_NAME": "GOODHEART ANIMAL HEALTH CENTER CHERRY CREEK",
+        "Expiration_Date": 1829347200000,
+        "AddressNoUnit": "2306 E 6TH Ave",
+        "ZIP": "80206",
+        "X_COORD": 3152120,
+        "Y_COORD": 1689592
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0009067",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODHEART LOWRY, LLC",
+        "TRADE_NAME": "GOODHEART ANIMAL HEALTH CENTER",
+        "Expiration_Date": 1818288000000,
+        "AddressNoUnit": "7581 E ACADEMY Blvd",
+        "ZIP": null,
+        "X_COORD": 3169597,
+        "Y_COORD": 1687562
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0029758",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GoodVets Services of Golden Triangle, LLC",
+        "TRADE_NAME": "GoodVets",
+        "Expiration_Date": 1799798400000,
+        "AddressNoUnit": "180 W 10TH Ave",
+        "ZIP": "80204",
+        "X_COORD": 3143415,
+        "Y_COORD": 1691804
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0025267",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODVETS SERVICES OF HIGHLANDS LLC",
+        "TRADE_NAME": "GOODVETS SERVICES OF HIGHLANDS LLC",
+        "Expiration_Date": 1799798400000,
+        "AddressNoUnit": "3231 N LOWELL Blvd",
+        "ZIP": "80211",
+        "X_COORD": 3130808,
+        "Y_COORD": 1703033
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0011546",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODVETS SERVICES OF LOHI LLC",
+        "TRADE_NAME": "GOODVETS",
+        "Expiration_Date": 1807833600000,
+        "AddressNoUnit": "1615 PLATTE St",
+        "ZIP": "80202",
+        "X_COORD": 3138374,
+        "Y_COORD": 1701266
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0000730",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GOODVETS SERVICES OF RINO LLC",
+        "TRADE_NAME": "GOODVETS",
+        "Expiration_Date": 1815004800000,
+        "AddressNoUnit": "2819 LARIMER St",
+        "ZIP": "80205",
+        "X_COORD": 3145443,
+        "Y_COORD": 1702416
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0054001",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GoodVets Services of South Denver LLC",
+        "TRADE_NAME": "GoodVets",
+        "Expiration_Date": 1804982400000,
+        "AddressNoUnit": "1316 E EVANS Ave",
+        "ZIP": "80210",
+        "X_COORD": 3148596,
+        "Y_COORD": 1672351
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2018-BFN-0001661",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "GRAND CENTRAL GROOMING",
+        "TRADE_NAME": "GRAND CENTRAL GROOMING",
+        "Expiration_Date": 1811030400000,
+        "AddressNoUnit": "2914 W JEWELL Ave",
+        "ZIP": "80219",
+        "X_COORD": 3133939,
+        "Y_COORD": 1673660
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0023713",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "HAPPY TAIL HAPPY DOG, LLC",
+        "TRADE_NAME": "HAPPY TAIL HAPPY DOG, LLC",
+        "Expiration_Date": 1804809600000,
+        "AddressNoUnit": "4352 N CHEROKEE St",
+        "ZIP": "80216",
+        "X_COORD": 3143061,
+        "Y_COORD": 1707997
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0009622",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Indian Tree II Operating, LLC",
+        "TRADE_NAME": "5280 Veterinary Care",
+        "Expiration_Date": 1804464000000,
+        "AddressNoUnit": "3100 N GILPIN St",
+        "ZIP": "80205",
+        "X_COORD": 3149842,
+        "Y_COORD": 1702503
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0041139",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "K-9 CASTLE",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1816819200000,
+        "AddressNoUnit": "2555 S SANTA FE Dr",
+        "ZIP": "80223",
+        "X_COORD": 3141575,
+        "Y_COORD": 1669471
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2002-BFN-94822",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "LIFT YOUR LEG",
+        "TRADE_NAME": "LIFT YOUR LEG",
+        "Expiration_Date": 1811289600000,
+        "AddressNoUnit": "1221 S CHEROKEE ST",
+        "ZIP": "80223",
+        "X_COORD": 3143053,
+        "Y_COORD": 1678241
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0000328",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "MEDICAL MANAGEMENT INTERNATIONAL, INC",
+        "TRADE_NAME": "BANFIELD PET HOSPITAL",
+        "Expiration_Date": 1807920000000,
+        "AddressNoUnit": "8500 W CRESTLINE Ave",
+        "ZIP": "80123",
+        "X_COORD": 3114534,
+        "Y_COORD": 1650083
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0000230",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Medical Management International, Inc.",
+        "TRADE_NAME": "Banfield Pet Hospital",
+        "Expiration_Date": 1819411200000,
+        "AddressNoUnit": "7505 E 35TH Ave",
+        "ZIP": "80238",
+        "X_COORD": 3168541,
+        "Y_COORD": 1704510
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0019920",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "MIDWEST VETERINARY PARTNERS, LLC",
+        "TRADE_NAME": "GOLDSMITH VETERINARY CLINIC",
+        "Expiration_Date": 1819411200000,
+        "AddressNoUnit": "6777 E HAMPDEN Ave",
+        "ZIP": "80224",
+        "X_COORD": 3166034,
+        "Y_COORD": 1663459
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0020166",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Midwest Veterinary Partners, LLC",
+        "TRADE_NAME": "Vida Veterinary Care",
+        "Expiration_Date": 1818460800000,
+        "AddressNoUnit": "4175 E WARREN Ave",
+        "ZIP": "80222",
+        "X_COORD": 3157959,
+        "Y_COORD": 1671903
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0005657",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "MODERN ANIMAL INC",
+        "TRADE_NAME": "MODERN AMINAL",
+        "Expiration_Date": 1807142400000,
+        "AddressNoUnit": "3370 E 1ST Ave",
+        "ZIP": "80206",
+        "X_COORD": 3155348,
+        "Y_COORD": 1686764
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2019-BFN-0009796",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "MY BEST FRIEND PET SUPPLY INC",
+        "TRADE_NAME": "PET STATION",
+        "Expiration_Date": 1824940800000,
+        "AddressNoUnit": "2300 S COLORADO BLVD",
+        "ZIP": "80222",
+        "X_COORD": null,
+        "Y_COORD": null
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2026-BFN-0009132",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PAVLOV DOG TRAINING, INC",
+        "TRADE_NAME": "PAVLOV DOG TRAINING, INC",
+        "Expiration_Date": 1809734400000,
+        "AddressNoUnit": "1295 S JASON St",
+        "ZIP": "80223",
+        "X_COORD": 3140898,
+        "Y_COORD": 1677782
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0000468",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PAWTENTIAL PET SALON",
+        "TRADE_NAME": "PAWTENTIAL PET SALON",
+        "Expiration_Date": 1804291200000,
+        "AddressNoUnit": "600 S HOLLY St",
+        "ZIP": "80246",
+        "X_COORD": 3162765,
+        "Y_COORD": 1682528
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2009-BFN-1040030",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETCO #1497",
+        "TRADE_NAME": "PETCO #1497",
+        "Expiration_Date": 1807833600000,
+        "AddressNoUnit": "4100 E MEXICO AVE",
+        "ZIP": "80222",
+        "X_COORD": 3157840,
+        "Y_COORD": 1675062
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2002-BFN-80060",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETCO #938",
+        "TRADE_NAME": "PETCO #938",
+        "Expiration_Date": 1808784000000,
+        "AddressNoUnit": "8100 W CRESTLINE AVE",
+        "ZIP": "80123",
+        "X_COORD": 3115859.62,
+        "Y_COORD": 1650078.44
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2002-BFN-90842",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETS ON BROADWAY",
+        "TRADE_NAME": "PETS ON BROADWAY",
+        "Expiration_Date": 1817337600000,
+        "AddressNoUnit": "2232 S BROADWAY",
+        "ZIP": "80210",
+        "X_COORD": 3144351,
+        "Y_COORD": 1671522
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0017264",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETSMART LLC",
+        "TRADE_NAME": "PETSMART",
+        "Expiration_Date": 1812931200000,
+        "AddressNoUnit": "8500 W CRESTLINE Ave",
+        "ZIP": "80123",
+        "X_COORD": 3114534,
+        "Y_COORD": 1650083
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0017902",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETSMART LLC",
+        "TRADE_NAME": "PETSMART",
+        "Expiration_Date": 1813276800000,
+        "AddressNoUnit": "7505 E 35TH Ave",
+        "ZIP": "80238",
+        "X_COORD": 3168541,
+        "Y_COORD": 1704510
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0019073",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETSMART LLC",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1809820800000,
+        "AddressNoUnit": "2780 S COLORADO Blvd",
+        "ZIP": "80222",
+        "X_COORD": 3157947,
+        "Y_COORD": 1668013
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0052722",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "PETVET OPERATING, LLC",
+        "TRADE_NAME": "DOWNTOWN ANIMAL CARE CENTER",
+        "Expiration_Date": 1808265600000,
+        "AddressNoUnit": "1041 N GALAPAGO St",
+        "ZIP": "80204",
+        "X_COORD": 3141536,
+        "Y_COORD": 1692199
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2025-BFN-0026645",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Quinnys LLC",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1799712000000,
+        "AddressNoUnit": "1540 S HOLLY",
+        "ZIP": "80222",
+        "X_COORD": 3162631,
+        "Y_COORD": 1676254
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0010798",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "ROCKY MOUNTAIN FELINE RESCUE",
+        "TRADE_NAME": "ROCKY MOUNTAIN FELINE RESCUE",
+        "Expiration_Date": 1808352000000,
+        "AddressNoUnit": "2390 S DELAWARE St",
+        "ZIP": "80223",
+        "X_COORD": 3142953,
+        "Y_COORD": 1670487
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0038379",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SKIPPER SOCIAL DEN, LLC",
+        "TRADE_NAME": "Skiptown",
+        "Expiration_Date": 1820620800000,
+        "AddressNoUnit": "3833 N STEELE St",
+        "ZIP": "80205",
+        "X_COORD": 3153182,
+        "Y_COORD": 1705798
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0040128",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SOUTHERN VETERINARY PARTNERS LLC",
+        "TRADE_NAME": "LIVEWELL ANIMAL HOSPITAL OF RINO",
+        "Expiration_Date": 1821312000000,
+        "AddressNoUnit": "3299 N BRIGHTON Blvd",
+        "ZIP": "80216",
+        "X_COORD": 3145576,
+        "Y_COORD": 1705049
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2026-BFN-0012923",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SOUTHERN VETERINARY PARTNERS LLC",
+        "TRADE_NAME": "LIVEWELL ANIMAL HOSPITAL OF GREEN VALLEY",
+        "Expiration_Date": 1817596800000,
+        "AddressNoUnit": "18692 E MAXWELL Pl",
+        "ZIP": null,
+        "X_COORD": 3205094,
+        "Y_COORD": 1715723
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0001425",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SOUTHERN VETERINARY PARTNERS LLC",
+        "TRADE_NAME": "GENTLE TOUCH ANIMAL HOSPITAL",
+        "Expiration_Date": 1817683200000,
+        "AddressNoUnit": "8941 E HAMPDEN Ave",
+        "ZIP": "80231",
+        "X_COORD": 3173793,
+        "Y_COORD": 1663651
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2021-BFN-0009637",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SOUTHERN VETERINARY PARTNERS LLC",
+        "TRADE_NAME": "RISING SUN ANIMAL CARE",
+        "Expiration_Date": 1806796800000,
+        "AddressNoUnit": "100 N SPRUCE St",
+        "ZIP": "80230",
+        "X_COORD": 3170181,
+        "Y_COORD": 1688712
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0047268",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Southern Veterinary Partners, LLC",
+        "TRADE_NAME": "CVCA Alameda East",
+        "Expiration_Date": 1806537600000,
+        "AddressNoUnit": "9770 E ALAMEDA Ave",
+        "ZIP": "80247",
+        "X_COORD": 3176086,
+        "Y_COORD": 1683488
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2012-BFN-1060449",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "NAME OF THE OWNER REPLACED",
+        "TRADE_NAME": "THE PUT TOGETHER POOCH",
+        "Expiration_Date": 1813622400000,
+        "AddressNoUnit": "1438 E 22ND AVE",
+        "ZIP": "80205",
+        "X_COORD": 3149066,
+        "Y_COORD": 1698235
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0018750",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "SVP CENTAW LLC",
+        "TRADE_NAME": "THE CENTER FOR ANIMAL WELLNESS",
+        "Expiration_Date": 1803772800000,
+        "AddressNoUnit": "1167 N SANTA FE Dr",
+        "ZIP": "80204",
+        "X_COORD": 3140888,
+        "Y_COORD": 1692910
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2001-BFN-63777",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "TENDER TOUCH ANIMAL HOSPITAL",
+        "TRADE_NAME": "TENDER TOUCH",
+        "Expiration_Date": 1823644800000,
+        "AddressNoUnit": "350 KALAMATH ST",
+        "ZIP": "80223",
+        "X_COORD": 3140732,
+        "Y_COORD": 1688199
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2001-BFN-92061",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "THE BIG BACK YARD, INC",
+        "TRADE_NAME": "THE BIG BACK YARD",
+        "Expiration_Date": 1823990400000,
+        "AddressNoUnit": "5310 PACIFIC PL",
+        "ZIP": "80222",
+        "X_COORD": 3161911,
+        "Y_COORD": 1672721
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0030505",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "The Neighborhood Vets, LLC",
+        "TRADE_NAME": "Washington Park Veterinary Clinic",
+        "Expiration_Date": 1814400000000,
+        "AddressNoUnit": "393 S PEARL St",
+        "ZIP": "80209",
+        "X_COORD": 3146142,
+        "Y_COORD": 1683723
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2020-BFN-0002363",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "URBAN VETERINARY CARE",
+        "TRADE_NAME": "URBAN VET CARE",
+        "Expiration_Date": 1814313600000,
+        "AddressNoUnit": "2815 N CLAY St",
+        "ZIP": "80211",
+        "X_COORD": 3134712,
+        "Y_COORD": 1701147
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2007-BFN-1025247",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "VCA ANIMAL HOSPITALS INC",
+        "TRADE_NAME": "VCA FIREHOUSE ANIMAL HOSPITAL",
+        "Expiration_Date": 1803859200000,
+        "AddressNoUnit": "1038 E 6TH AVE",
+        "ZIP": "80218",
+        "X_COORD": 3147841,
+        "Y_COORD": 1689522
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0010254",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "VETERINARY EMERGENCY GROUP LLC",
+        "TRADE_NAME": "VETERINARY EMERGENCY GROUP",
+        "Expiration_Date": 1800662400000,
+        "AddressNoUnit": "3845 E COLFAX Ave",
+        "ZIP": "80206",
+        "X_COORD": 3156757,
+        "Y_COORD": 1695029
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0015549",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "VETERINARY EMERGENCY GROUP, LLC",
+        "TRADE_NAME": "VETERINARY EMERGENCY GROUP",
+        "Expiration_Date": 1811289600000,
+        "AddressNoUnit": "6305 E HAMPDEN Ave",
+        "ZIP": "80222",
+        "X_COORD": 3164137,
+        "Y_COORD": 1663471
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0064224",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WAG DENVER LLC",
+        "TRADE_NAME": "WAG DENVER LLC",
+        "Expiration_Date": 1817683200000,
+        "AddressNoUnit": "24735 E 75TH Ave",
+        "ZIP": "80249",
+        "X_COORD": 3225256,
+        "Y_COORD": 1728986
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2019-BFN-0001419",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WELLHAVEN PET HEALTH CO, LLC",
+        "TRADE_NAME": "WELLHAVEN PET HEALTH",
+        "Expiration_Date": 1804723200000,
+        "AddressNoUnit": "2305 S COLORADO",
+        "ZIP": "80222",
+        "X_COORD": 3157303,
+        "Y_COORD": 1671076
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2023-BFN-0012448",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WESTWOOD ANIMAL HOSPITAL",
+        "TRADE_NAME": "WESTWOOD ANIMAL HOSPITAL",
+        "Expiration_Date": 1814227200000,
+        "AddressNoUnit": "5015 MORRISON Rd",
+        "ZIP": "80219",
+        "X_COORD": 3126292,
+        "Y_COORD": 1679640
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2020-BFN-0005328",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WOOF HAUS LLC",
+        "TRADE_NAME": null,
+        "Expiration_Date": 1810771200000,
+        "AddressNoUnit": "1556 S BROADWAY",
+        "ZIP": "80210",
+        "X_COORD": 3144287,
+        "Y_COORD": 1676028
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2024-BFN-0011451",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "Woof Resorts LLC",
+        "TRADE_NAME": "Woof Resorts LLC",
+        "Expiration_Date": 1804291200000,
+        "AddressNoUnit": "2733 W 8TH Ave",
+        "ZIP": "80204",
+        "X_COORD": 3134652,
+        "Y_COORD": 1690986
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2017-BFN-0003298",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WOOFHAUS, LLC",
+        "TRADE_NAME": "WOOFHAUS",
+        "Expiration_Date": 1815868800000,
+        "AddressNoUnit": "1540 S BROADWAY",
+        "ZIP": "80210",
+        "X_COORD": 3144340,
+        "Y_COORD": 1676106
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0016794",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WVP of Colorado LLC",
+        "TRADE_NAME": "VetCare Animal Hospital",
+        "Expiration_Date": 1827964800000,
+        "AddressNoUnit": "560 S HOLLY St",
+        "ZIP": "80246",
+        "X_COORD": 3162756,
+        "Y_COORD": 1682753
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2022-BFN-0017112",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "WVP OF COLORADO LLC",
+        "TRADE_NAME": "WELLSHIRE ANIMAL HOSPITAL",
+        "Expiration_Date": 1797897600000,
+        "AddressNoUnit": "2553 S COLORADO Blvd",
+        "ZIP": "80222",
+        "X_COORD": 3157228,
+        "Y_COORD": 1669637
+      }
+    },
+    {
+      "attributes": {
+        "BFN": "2021-BFN-0009068",
+        "LICENSE_STATUS": "License Issued - Active",
+        "ENTITY_NAME": "YOU LUCKY DOG DAYCARE, INC",
+        "TRADE_NAME": "CLUB ULD",
+        "Expiration_Date": 1793577600000,
+        "AddressNoUnit": "4125 N ELATI St",
+        "ZIP": "80216",
+        "X_COORD": 3142276,
+        "Y_COORD": 1706985
+      }
+    }
+  ]
+}

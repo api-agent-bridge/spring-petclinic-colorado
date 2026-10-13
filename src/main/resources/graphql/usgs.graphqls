@@ -1,0 +1,132 @@
+# The US Geological Survey publishes earthquakes worldwide through the standard FDSN event web
+# service, run by the National Earthquake Information Center in Golden, Colorado. These fields are
+# written by hand and search the box around Colorado unless a query gives a point or a box.
+
+extend type Query {
+	"""
+	Earthquakes recorded by the US Geological Survey (USGS), in Colorado unless the query gives another area, with
+	their magnitude, place, time and depth, one page at a time. The USGS National Earthquake Information Center in
+	Golden, Colorado, runs the catalogue. Use it to answer whether the ground shook near Denver or anywhere in
+	Colorado, and how strong the latest earthquakes were.
+	Without a point or a box, the field searches the box around Colorado, from latitude 36.99 to 41.0 and longitude
+	-109.06 to -102.04. Without a startTime, it searches the last 30 days. The box around Colorado had 145
+	earthquakes in 2025 and 221 in 2024, the strongest of magnitude 3.8 since 2024, and a search within 100 km of
+	downtown Denver found 3 since the start of 2024.
+	The catalogue can take 10 to 40 seconds to answer a search it has not seen before. Selecting totalEarthquakes or
+	totalPages costs a second call, so leave them out unless the question needs them.
+	"""
+	usgsEarthquakes(
+		"The first day to search, for example 2026-01-01. Leave it out for the last 30 days."
+		startTime: Date
+		"The last day to search, included. Leave it out to search until now."
+		endTime: Date
+		"The smallest magnitude to return, for example 2.5. Leave it out for every magnitude."
+		minMagnitude: Float
+		"The latitude of a point to search around, for example 39.7392 for downtown Denver. Give longitude as well."
+		latitude: Float
+		"The longitude of the point, negative in Colorado, for example -104.9903 for downtown Denver."
+		longitude: Float
+		"How far from the point to search, in kilometres. Leave it out for 100 km."
+		maxRadiusKm: Float
+		"A box of latitudes and longitudes to search in, in place of a point. Leave both out for the box around Colorado."
+		box: UsgsBox
+		"The order of the earthquakes. Leave it out for the most recent first."
+		orderBy: UsgsEarthquakeOrder = TIME
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of earthquakes on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): UsgsEarthquakePage!
+
+	"""
+	The number of earthquakes in the US Geological Survey catalogue that match the filters, in Colorado unless the
+	query gives another area, in one small call. Use it for questions such as how many earthquakes Colorado had this
+	year. The filters work as for usgsEarthquakes.
+	"""
+	usgsEarthquakeCount(
+		"The first day to search, for example 2026-01-01. Leave it out for the last 30 days."
+		startTime: Date
+		"The last day to search, included. Leave it out to search until now."
+		endTime: Date
+		"The smallest magnitude to count, for example 2.5. Leave it out for every magnitude."
+		minMagnitude: Float
+		"The latitude of a point to search around. Give longitude as well."
+		latitude: Float
+		"The longitude of the point, negative in Colorado."
+		longitude: Float
+		"How far from the point to search, in kilometres. Leave it out for 100 km."
+		maxRadiusKm: Float
+		"A box of latitudes and longitudes to search in, in place of a point. Leave both out for the box around Colorado."
+		box: UsgsBox
+	): Int!
+}
+
+"""
+A box of latitudes and longitudes for the USGS earthquake search. Colorado's box runs from latitude 36.99 to 41.0
+and from longitude -109.06 to -102.04.
+"""
+input UsgsBox {
+	"The southern edge, for example 36.99 for Colorado."
+	minLatitude: Float!
+	"The northern edge, for example 41.0 for Colorado."
+	maxLatitude: Float!
+	"The western edge, for example -109.06 for Colorado."
+	minLongitude: Float!
+	"The eastern edge, for example -102.04 for Colorado."
+	maxLongitude: Float!
+}
+
+"The orders of the USGS earthquake search."
+enum UsgsEarthquakeOrder {
+	"The most recent first."
+	TIME
+	"The strongest first."
+	MAGNITUDE
+}
+
+"One page of earthquakes from the USGS catalogue."
+type UsgsEarthquakePage {
+	"The earthquakes on this page."
+	earthquakes: [UsgsEarthquake!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of earthquakes that match the filters, counted across every page."
+	totalEarthquakes: Int!
+}
+
+"An earthquake or another seismic event from the US Geological Survey catalogue."
+type UsgsEarthquake {
+	"The id of the event, for example us7000thsk."
+	id: ID!
+	"The magnitude and the place, for example M 1.8 - 28 km WSW of Yampa, Colorado."
+	title: String
+	magnitude: Float
+	"How the magnitude was measured, for example ml for local magnitude."
+	magnitudeType: String
+	"The place, described by its distance from a town, for example 28 km WSW of Yampa, Colorado."
+	place: String
+	"When the earthquake happened, in UTC in ISO-8601, for example 2026-09-16T06:46:53.706Z."
+	time: String
+	"When the USGS last updated the event, in UTC in ISO-8601."
+	updated: String
+	"The latitude of the epicentre."
+	latitude: Float
+	"The longitude of the epicentre."
+	longitude: Float
+	"The depth of the focus below the surface, in kilometres."
+	depthInKilometres: Float
+	"The kind of event, for example earthquake or mining explosion."
+	type: String
+	"Whether a seismologist has reviewed the event: automatic or reviewed."
+	status: String
+	"How significant the event is, from 0 to about 1,000, from its magnitude, felt reports and estimated impact."
+	significance: Int
+	"The number of people who told the USGS that they felt it. Null until someone reports feeling it."
+	feltReports: Int
+	"The alert level of the USGS PAGER system for shaking damage, for example green. Null for the small events of Colorado."
+	alert: String
+	"The page of the event on the USGS website."
+	url: String
+}

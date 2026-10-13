@@ -1,0 +1,533 @@
+# The fields of the Air and Water Database (AWDB) of the Natural Resources Conservation Service (NRCS).
+# A generator wrote them, their types and src/main/resources/awdb/operations.json from the OpenAPI
+# document of its REST API, one field for each read operation. The descriptions are written by hand.
+# Each field is fetched by a RestOperationFetcher, see AwdbConfiguration.
+
+extend type Query {
+	# The Air and Water Database (AWDB) of the Natural Resources Conservation Service (NRCS) holds the readings
+	# of automated snow stations in the western mountains (SNOTEL), snow courses, soil climate stations and
+	# reservoirs, and the water supply forecasts for western rivers.
+
+	"""
+	Snow, soil, weather and streamflow stations of the Air and Water Database of the Natural Resources Conservation
+	Service (NRCS), with their name, location, elevation, county and watershed, such as the automated SNOTEL snow
+	stations in the Colorado mountains. stationTriplets *:CO:SNTL lists the 118 SNOTEL stations of Colorado, and
+	countyNames narrows the list to a county. Without a filter the answer holds all 4,398 stations of the United
+	States, about 1.6 MB.
+	"""
+	awdbStations(
+		"""
+		Station triplets, each written stationId:stateCode:networkCode, for example 335:CO:SNTL for Berthoud Summit,
+		separated by commas. A part can be the wildcard *: *:CO:SNTL is every SNOTEL station in Colorado.
+		"""
+		stationTriplets: String
+		"Station names, separated by commas, for example Berthoud Summit. A name can contain the wildcard *."
+		stationNames: String
+		"The codes of the data collection offices, separated by commas, for example CO."
+		dcoCodes: String
+		"""
+		County names, separated by commas, for example Grand or Clear Creek. A name can contain the wildcard *.
+		"""
+		countyNames: String
+		"""
+		Only stations that measure one of these elements, written elementCode:heightDepth:ordinal and separated by
+		commas, for example WTEQ for snow water equivalent. The height or depth and the ordinal are optional.
+		"""
+		elements: String
+		"""
+		Only stations with data of one of these durations, separated by commas, for example DAILY or HOURLY.
+		"""
+		durations: String
+		"Hydrologic unit codes of watersheds, separated by commas. A code can contain the wildcard *."
+		hucs: String
+		"If true, return forecast point metadata for stations that are forecast points"
+		returnForecastPointMetadata: Boolean
+		"If true, return reservoir metadata for reservoir stations"
+		returnReservoirMetadata: Boolean
+		"If true, return the list of station elements for each station"
+		returnStationElements: Boolean
+		"If true, only return active stations and station elements"
+		activeOnly: Boolean
+	): [AwdbStation]
+
+	"""
+	How deep the snow is and how much water it holds at a mountain snow station (SNOTEL) of the NRCS, as daily,
+	hourly, monthly or yearly readings for a date range: the snow depth (element SNWD), the snow water equivalent
+	(WTEQ), the air temperature (TOBS) and the precipitation (PREC), for example at Berthoud Summit, station
+	335:CO:SNTL, on the road over Berthoud Pass west of Denver. centralTendencyType adds the 30-year median or average of each value. By default
+	each daily value carries the date at the end of its period, a day later than the AWDB SOAP service dates the
+	same value; periodRef START gives the dates that SOAP gives.
+	"""
+	awdbData(
+		"""
+		Station triplets, each written stationId:stateCode:networkCode, for example 335:CO:SNTL for Berthoud Summit,
+		separated by commas. A part can be the wildcard *.
+		"""
+		stationTriplets: String!
+		"""
+		The elements to read, written elementCode:heightDepth:ordinal and separated by commas, for example WTEQ,SNWD for
+		snow water equivalent and snow depth, or PREC for precipitation. The height or depth and the ordinal are
+		optional.
+		"""
+		elements: String!
+		"How long each value covers. Leave it out for DAILY."
+		duration: AwdbDurationName
+		"""
+		The first date to read, as yyyy-MM-dd, for example 2026-04-01, or a date relative to today in units of the
+		duration, such as -7 for seven days ago.
+		"""
+		beginDate: String
+		"The last date to read, as yyyy-MM-dd, for example 2026-04-07, or 0 for today."
+		endDate: String
+		"""
+		The date from which to retrieve new or changed data. Expects either yyyy-MM-dd HH:mm or MM/dd/yyyy HH:mm format.
+		Hours and minutes are optional and will be considered as 00 if not specified.
+		"""
+		insertOrUpdateBeginDate: String
+		"""
+		Whether a value carries the date at the START or at the END of the period it covers. Leave it out for END, which
+		dates a daily value one day later than the AWDB SOAP service.
+		"""
+		periodRef: AwdbPeriodReference
+		"Also return the 30-year median, the average, or both with each value."
+		centralTendencyType: AwdbCentralTendency
+		"If true, return the flags with each data value"
+		returnFlags: Boolean
+		"If true, return original values (and original flags if returnFlags=true)"
+		returnOriginalValues: Boolean
+		"If true, data marked as suspect will not be filtered out"
+		returnSuspectData: Boolean
+	): [AwdbStationData]
+
+	"""
+	How much water a river of the western United States will carry this spring and summer, as snow melts: the
+	seasonal water supply forecasts of the NRCS, such as the April to July streamflow volume of the Big Thompson
+	River at the canyon mouth, station 06738000:CO:USGS, in thousands of acre-feet, with a value for each exceedance
+	probability and the normal for the period.
+	"""
+	awdbForecasts(
+		"""
+		Station triplets of forecast points, each written stationId:stateCode:networkCode, for example 06738000:CO:USGS
+		for the Big Thompson River at the canyon mouth, separated by commas. A part can be the wildcard *.
+		"""
+		stationTriplets: String!
+		"A comma separated list of element codes. Examples: RESC, SRVO, SRVOO, JDAY, REST"
+		elementCodes: String
+		"""
+		The beginning of the publication date period for which to retrieve data. Expects either 'yyyy-MM-dd' or
+		'MM/dd/yyyy' format. Defaulted to the start of the current water year, if not specified.
+		"""
+		beginPublicationDate: String
+		"""
+		The end of the publication date period for which to retrieve data. Expects either 'yyyy-MM-dd' or 'MM/dd/yyyy'
+		format. Defaulted to current day, if not specified.
+		"""
+		endPublicationDate: String
+		"""
+		A comma separated list of exceedence probabilities. Example: "10,30,50"
+		"""
+		exceedenceProbabilities: String
+		"""
+		A comma separated list of forecast periods. Examples: 03-01,07-31 or [03-01,07-31] or [,07-31] or [03-01,]
+		"""
+		forecastPeriods: String
+	): [AwdbForecast]
+
+	"""
+	The codes that the NRCS Air and Water Database uses, with their names and units: elements such as WTEQ (snow
+	water equivalent) and SNWD (snow depth), networks such as SNTL (SNOTEL), durations, states, units, instruments
+	and forecast periods. referenceLists chooses the lists; without it every list comes back.
+	"""
+	awdbReferenceData(
+		"""
+		A comma-separated list of reference data to return. Options include: dcos, durations, elements, forecastPeriods,
+		functions, instruments, networks, physicalElements, states, and units. If not specified, all the lists are
+		returned.
+		"""
+		referenceLists: String
+	): AwdbReferenceData
+}
+
+"A station of the NRCS Air and Water Database, such as a SNOTEL snow station."
+type AwdbStation {
+	"The station triplet of the station"
+	stationTriplet: String
+	"The id of the station"
+	stationId: String
+	"The 2-character state code of the station"
+	stateCode: String
+	"The network code of the station"
+	networkCode: String
+	"The name of the station"
+	name: String
+	"The DCO code of the station"
+	dcoCode: String
+	"The name of the county that the station is located in"
+	countyName: String
+	"The hydrologic unit code of the station"
+	huc: String
+	"The elevation of the station in feet."
+	elevation: Float
+	"The latitude of the station"
+	latitude: Float
+	"The longitude of the station"
+	longitude: Float
+	"The timezone offset from GMT of the data for the station"
+	dataTimeZone: Float
+	"The NRCS pedon code for the station"
+	pedonCode: String
+	"The SHEF id of the station"
+	shefId: String
+	"The entity in charge of the station"
+	operator: String
+	"The date that the station was put into service"
+	beginDate: String
+	"The date that the station was taken out of service or 2100-01-01 if still in service"
+	endDate: String
+	"Contains information about a forecast point"
+	forecastPoint: AwdbForecastPoint
+	"Contains reservoir metadata"
+	reservoirMetadata: AwdbReservoirMetadata
+	"The station elements of the station"
+	stationElements: [AwdbStationElement]
+	"Hydrologic units within 5000m of this station"
+	associatedHucs: [String]
+}
+
+"Contains information about a forecast point"
+type AwdbForecastPoint {
+	"The name of the forecast point"
+	name: String
+	"The user name of the forecaster who forecasts for this station"
+	forecaster: String
+	"The name to display in the UI for the profile type"
+	exceedenceProbabilities: [Int]
+}
+
+"Contains reservoir metadata"
+type AwdbReservoirMetadata {
+	"The capacity of the reservoir in acre-feet"
+	capacity: Float
+	"The elevation of the reservoir (in feet) when it is at capacity"
+	elevationAtCapacity: Float
+	"The usable capacity of the reservoir in acre-feet"
+	usableCapacity: Float
+}
+
+"Contains information about a station element"
+type AwdbStationElement {
+	"The element code"
+	elementCode: String
+	"The ordinal of the station element"
+	ordinal: Int
+	"The height/depth of the station element in inches"
+	heightDepth: Int
+	"The duration name of the station element"
+	durationName: String
+	"The data precision of the data for the station element"
+	dataPrecision: Int
+	"The units that the data is stored in"
+	storedUnitCode: String
+	"The units that the data was collected in"
+	originalUnitCode: String
+	"The date that the station element was put into service"
+	beginDate: String
+	"The date that the station element was taken out of service or 2100-01-01 if still in service"
+	endDate: String
+	"true/false if the station element data is derived"
+	derivedData: Boolean
+}
+
+"The codes of the Air and Water Database, one list for each kind."
+type AwdbReferenceData {
+	"Contains DCO reference data."
+	dcos: [AwdbDco]
+	"Contains duration reference data."
+	durations: [AwdbDuration]
+	"Contains element reference data."
+	elements: [AwdbElement]
+	"Contains forecast period reference data."
+	forecastPeriods: [AwdbForecastPeriod]
+	"Contains function reference data."
+	functions: [AwdbFunction]
+	"Contains instrument reference data."
+	instruments: [AwdbInstrument]
+	"Contains network reference data."
+	networks: [AwdbNetwork]
+	"Contains physical element reference data."
+	physicalElements: [AwdbPhysicalElement]
+	"Contains State reference data."
+	states: [AwdbState]
+	"Contains unit reference data."
+	units: [AwdbUnit]
+}
+
+"Contains DCO reference data."
+type AwdbDco {
+	"The DCO code"
+	code: String
+	"The DCO Name"
+	name: String
+}
+
+"Contains duration reference data."
+type AwdbDuration {
+	"The duration code"
+	code: String
+	"The duration name"
+	name: String
+	"The duration in minutes"
+	durationMinutes: String
+}
+
+"Contains element reference data."
+type AwdbElement {
+	"The element code"
+	code: String
+	"The element name"
+	name: String
+	"The physical element name"
+	physicalElementName: String
+	"The function code"
+	functionCode: String
+	"The precision of the data"
+	dataPrecision: Int
+	"The element description"
+	description: String
+	"The stored unit code"
+	storedUnitCode: String
+	"The english unit code"
+	englishUnitCode: String
+	"The metric unit code"
+	metricUnitCode: String
+}
+
+"Contains forecast period reference data."
+type AwdbForecastPeriod {
+	"The forecast period code"
+	code: String
+	"The forecast period name"
+	name: String
+	"The forecast period description"
+	description: String
+	"The beginning month and day for the forecast period"
+	beginMonthDay: String
+	"The ending month and day for the forecast period"
+	endMonthDay: String
+}
+
+"Contains function reference data."
+type AwdbFunction {
+	"The function code"
+	code: String
+	"The abbreviation"
+	abbreviation: String
+	"The name"
+	name: String
+}
+
+"Contains instrument reference data."
+type AwdbInstrument {
+	"The instrument name"
+	name: String
+	"The transducer length"
+	transducerLength: Int
+	"The data precision adjustment"
+	dataPrecisionAdjustment: Int
+	"The manufacturer"
+	manufacturer: String
+	"The model"
+	model: String
+	"Is this instrument active"
+	active: Boolean
+}
+
+"Contains network reference data."
+type AwdbNetwork {
+	"The network code"
+	code: String
+	"The network name"
+	name: String
+	"The network description"
+	description: String
+}
+
+"Contains physical element reference data."
+type AwdbPhysicalElement {
+	"The physical element name"
+	name: String
+	"The SHEF physical element code"
+	shefPhysicalElementCode: String
+}
+
+"Contains state reference data."
+type AwdbState {
+	"The state code"
+	code: String
+	"The state FIPS number code"
+	fipsNumber: String
+	"The state name"
+	name: String
+	"The country code"
+	countryCode: String
+}
+
+"Contains unit reference data."
+type AwdbUnit {
+	"The unit code"
+	code: String
+	"The singular unit name"
+	singularName: String
+	"The plural unit name"
+	pluralName: String
+	"The unit description"
+	description: String
+}
+
+"The water supply forecasts of one forecast point on a river."
+type AwdbForecast {
+	"The station triplet of the forecast point."
+	stationTriplet: String
+	"The name of the forecast point."
+	forecastPointName: String
+	"Contains forecast data for a forecast point."
+	data: [AwdbForecastValue]
+}
+
+"One water supply forecast for a period, with a value for each exceedance probability."
+type AwdbForecastValue {
+	"The element code related to the forecast record."
+	elementCode: String
+	"The start (MM-DD) and end (MM-DD) of the forecast period that the forecast is for."
+	forecastPeriod: [String]
+	"Indicates the status of the Forecast."
+	forecastStatus: String
+	"The issue date of the forecast."
+	issueDate: String
+	"The forecast period normal."
+	periodNormal: Float
+	"The publication date of the forecast value."
+	publicationDate: String
+	"The unit code of a forecast."
+	unitCode: String
+	"The forecast values keyed by exceedance probability in percent, such as 10, 30, 50, 70 and 90."
+	forecastValues: [AwdbFloatEntry]
+}
+
+"""
+A forecast value with its exceedance probability: the key 50 holds the value with a 50 percent chance of being
+exceeded.
+"""
+type AwdbFloatEntry {
+	"The key."
+	key: String
+	"The value of the key."
+	value: Float
+}
+
+"The readings of one station, one list for each element."
+type AwdbStationData {
+	"The station triplet of the station"
+	stationTriplet: String
+	data: [AwdbElementData]
+}
+
+"The readings of one element of one station, such as its daily snow water equivalent."
+type AwdbElementData {
+	"Contains information about a station element"
+	stationElement: AwdbStationElement
+	timingCentralTendencies: AwdbTimingCentralTendencies
+	values: [AwdbDataValue]
+	error: String
+}
+
+"An object of the service, as its OpenAPI document describes it."
+type AwdbTimingCentralTendencies {
+	"Median month, day and value in which snow water equivalent peak occurs"
+	medianPeak: AwdbTimingWithValue
+	"Median month and day in which snow water equivalent onset occurs"
+	medianOnset: AwdbTiming
+	"Median month and day in which snow water equivalent meltout occurs"
+	medianMeltout: AwdbTiming
+	"Average month, day and value in which snow water equivalent peak occurs"
+	averagePeak: AwdbTimingWithValue
+	"Average month and day in which snow water equivalent onset occurs"
+	averageOnset: AwdbTiming
+	"Average month and day in which snow water equivalent meltout occurs"
+	averageMeltout: AwdbTiming
+}
+
+"Median month, day and value in which snow water equivalent peak occurs"
+type AwdbTimingWithValue {
+	"The month"
+	month: Int
+	"The day"
+	day: Int
+	"The value"
+	value: Float
+}
+
+"Median month and day in which snow water equivalent onset occurs"
+type AwdbTiming {
+	"The month"
+	month: Int
+	"The day"
+	day: Int
+}
+
+"One reading of a station, with its date and, when asked for, its 30-year median and average."
+type AwdbDataValue {
+	"The timestamp of the data. Used only for DAILY and HOURLY durations."
+	date: String
+	"The month of the data value (1-12). Used only for MONTHLY and SEMIMONTHLY durations."
+	month: Int
+	"""
+	The half of month of the data value ('1' for first half, '2' for second half). Used only for SEMIMONTHLY
+	durations.
+	"""
+	monthPart: String
+	"""
+	The year of the data value. Used only for WATER_YEAR, CALENDAR_YEAR, MONTHLY, and SEMIMONTHLY durations.
+	"""
+	year: Int
+	"The date the data value was collected. Used only for SEMIMONTHLY durations."
+	collectionDate: String
+	"The data value"
+	value: Float
+	"The qc flag of the data value"
+	qcFlag: String
+	"The qa flag of the data value"
+	qaFlag: String
+	"The original data value"
+	origValue: Float
+	"The original qc flag of the data value"
+	origQcFlag: String
+	"The 30-year average"
+	average: Float
+	"The 30-year median"
+	median: Float
+}
+
+"The values that the service accepts for durationName."
+enum AwdbDurationName {
+	DAILY
+	HOURLY
+	SEMIMONTHLY
+	MONTHLY
+	CALENDAR_YEAR
+	WATER_YEAR
+}
+
+"The values that the service accepts for periodReference."
+enum AwdbPeriodReference {
+	START
+	END
+}
+
+"The values that the service accepts for centralTendency."
+enum AwdbCentralTendency {
+	NONE
+	ALL
+	MEDIAN
+	AVERAGE
+}

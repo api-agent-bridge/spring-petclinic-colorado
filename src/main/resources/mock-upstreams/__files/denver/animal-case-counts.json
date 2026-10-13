@@ -1,0 +1,179 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "fields": [
+    {
+      "name": "cases",
+      "type": "esriFieldTypeInteger",
+      "alias": "cases",
+      "sqlType": "sqlTypeInteger",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Summary",
+      "type": "esriFieldTypeString",
+      "alias": "Case Summary",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "cases": 3689,
+        "Case_Summary": "Animal Adoption/Hold Inquiry"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 1454,
+        "Case_Summary": "Lost my Pet"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 1161,
+        "Case_Summary": "Barking Dog"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 945,
+        "Case_Summary": "Pet Surrender"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 579,
+        "Case_Summary": "Loose Animal"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 516,
+        "Case_Summary": "Holding Stray Animal"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 387,
+        "Case_Summary": "Denver Animal Protection 720-913-2080"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 366,
+        "Case_Summary": "Injured Wildlife"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 259,
+        "Case_Summary": "Pet Redemption"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 226,
+        "Case_Summary": "Animal Excrement"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 225,
+        "Case_Summary": "Wildlife"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 212,
+        "Case_Summary": "Pet License/Micro Chip"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 155,
+        "Case_Summary": "Loose Dog (With owner)"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 145,
+        "Case_Summary": "Dangerous/Aggressive (Not a Bite)"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 119,
+        "Case_Summary": "Pet Food Manufacturing"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 114,
+        "Case_Summary": "Injured Domestic Animal"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 55,
+        "Case_Summary": "Dead Animal"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 44,
+        "Case_Summary": "Bite/Attack (Broken the skin)"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 35,
+        "Case_Summary": "Dog Parks"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 35,
+        "Case_Summary": "Too many animals"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 20,
+        "Case_Summary": "Animal Bite (non human)"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 19,
+        "Case_Summary": "Breeding Animals / Service Animals"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 12,
+        "Case_Summary": "Animal in Vehicle"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 12,
+        "Case_Summary": "Non-Service Animal Complaint"
+      }
+    },
+    {
+      "attributes": {
+        "cases": 11,
+        "Case_Summary": "Animal Complaint"
+      }
+    }
+  ]
+}

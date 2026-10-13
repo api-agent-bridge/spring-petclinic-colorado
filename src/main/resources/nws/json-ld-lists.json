@@ -1,0 +1,9 @@
+{
+ "NwsTafCollection": "items",
+ "NwsOfficeHeadlineCollection": "items",
+ "NwsRadarStationAlarmCollection": "items",
+ "NwsRadarQueue": "items",
+ "NwsTransmitterCollection": "items",
+ "NwsTextProductCollection": "items",
+ "NwsTextProductTypeCollection": "items"
+}

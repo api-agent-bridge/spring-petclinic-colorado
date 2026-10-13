@@ -111,10 +111,10 @@ class PetclinicGraphQlIntegrationTests {
 			.containsExactly("bird", "dog")
 			.path("dogs.totalPets")
 			.entity(Integer.class)
-			.isEqualTo(4)
+			.isEqualTo(5)
 			.path("dogs.pets[*].name")
 			.entityList(String.class)
-			.containsExactly("Rosy", "Jewel", "Mulligan", "Lucky")
+			.containsExactly("Rosy", "Jewel", "Mulligan", "Lucky", "Woofy")
 			.path("luckyDog.pets[*].id")
 			.entityList(String.class)
 			.containsExactly("12");
@@ -239,10 +239,10 @@ class PetclinicGraphQlIntegrationTests {
 			.execute()
 			.path("owners.totalOwners")
 			.entity(Integer.class)
-			.isEqualTo(10)
+			.isEqualTo(11)
 			.path("pets.totalPets")
 			.entity(Integer.class)
-			.isEqualTo(13);
+			.isEqualTo(14);
 	}
 
 }

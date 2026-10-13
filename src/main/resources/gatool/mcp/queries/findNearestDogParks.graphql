@@ -1,0 +1,16 @@
+# Finds the off-leash dog parks of the City and County of Denver nearest to an owner's address, within 5 km,
+# and returns them nearest first with their distance in metres, and whether they have shade and water.
+# findOwners gives the id of an owner. The list is empty when the owner lives outside Denver,
+# and the result is null if the owner can't be found for the passed in id.
+query FindNearestDogParks($ownerId: ID!) {
+  owner(id: $ownerId) {
+    nearestDogParks {
+      name
+      distanceInMetres
+      fenced
+      shade
+      water
+      condition
+    }
+  }
+}

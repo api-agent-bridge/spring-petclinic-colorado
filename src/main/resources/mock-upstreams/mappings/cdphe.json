@@ -1,0 +1,339 @@
+{
+  "mappings": [
+    {
+      "name": "CDPHE: unknown map name",
+      "priority": 1,
+      "request": {
+        "method": "POST",
+        "urlPathPattern": "/cdphe/arcgis/services/.*/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//MapName[text() != 'Layers']"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/fault-unknown-map-name.xml"
+      },
+      "metadata": {
+        "description": "ArcGIS Server answers a wrong map name with a SOAP fault and HTTP status 200, recorded on the animals map"
+      }
+    },
+    {
+      "name": "CDPHE animals: domestic animals",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"Specimen_Type LIKE 'Domestic Animal%' ESCAPE '\\'\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-domestic.xml"
+      },
+      "metadata": {
+        "description": "The 9 domestic animals: 6 cats with plague, 1 cat with tularemia and 2 dogs with rabies"
+      }
+    },
+    {
+      "name": "CDPHE animals: bats in Boulder County",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"UPPER(Species) LIKE '%BAT%' ESCAPE '\\' AND UPPER(County) = 'BOULDER'\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-bats-boulder.xml"
+      },
+      "metadata": {
+        "description": "The 5 rabid big brown bats of Boulder County"
+      }
+    },
+    {
+      "name": "CDPHE animals: every animal",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"1=1\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-all.xml"
+      },
+      "metadata": {
+        "description": "All 341 animals and mosquito pools of the 2017 map"
+      }
+    },
+    {
+      "name": "CDPHE animals: any other filter on domestic animals",
+      "priority": 3,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[contains(., \"'Domestic Animal%'\")]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-domestic.xml"
+      },
+      "metadata": {
+        "description": "The 9 domestic animals, whatever the other filters are"
+      }
+    },
+    {
+      "name": "CDPHE animals: any other filter on plague",
+      "priority": 3,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[contains(., \"Disease = 'Plague'\")]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-plague.xml"
+      },
+      "metadata": {
+        "description": "The 12 records with plague, whatever the other filters are"
+      }
+    },
+    {
+      "name": "CDPHE animals: any other filter on rabies",
+      "priority": 3,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[contains(., \"Disease = 'Rabies'\")]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-rabies.xml"
+      },
+      "metadata": {
+        "description": "The 165 rabid animals, whatever the other filters are"
+      }
+    },
+    {
+      "name": "CDPHE animals: any other request",
+      "priority": 5,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/DCEED/ZOONOTIC_SUMMARY_POSITIVE_ANIMALS_2017/MapServer"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/animals-none.xml"
+      },
+      "metadata": {
+        "description": "An answer without animals, recorded for the species unicorn"
+      }
+    },
+    {
+      "name": "CDPHE cases: Denver County, every year",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"diagnosis IN ('Rabies, Animal','Plague, Animal','Tularemia, Animal') AND metric = 'county' AND UPPER(category) = 'DENVER'\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-denver.xml"
+      },
+      "metadata": {
+        "description": "Rabies, plague and tularemia in animals in Denver County, 2016 to 2025"
+      }
+    },
+    {
+      "name": "CDPHE cases: rabies in Colorado per year",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"diagnosis IN ('Rabies, Animal') AND metric = 'state'\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-rabies-state.xml"
+      },
+      "metadata": {
+        "description": "Animals with rabies in the whole state, 2016 to 2025"
+      }
+    },
+    {
+      "name": "CDPHE cases: rabies per county in 2025",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"diagnosis IN ('Rabies, Animal') AND metric = 'county' AND onset_year >= 2025 AND onset_year <= 2025\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-rabies-2025-by-county.xml"
+      },
+      "metadata": {
+        "description": "Animals with rabies in each county in 2025"
+      }
+    },
+    {
+      "name": "CDPHE cases: plague per county in 2025",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"diagnosis IN ('Plague, Animal') AND metric = 'county' AND onset_year >= 2025 AND onset_year <= 2025\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-plague-2025-by-county.xml"
+      },
+      "metadata": {
+        "description": "Animals with plague in each county in 2025"
+      }
+    },
+    {
+      "name": "CDPHE cases: rabies per month in 2025",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[.=\"diagnosis IN ('Rabies, Animal') AND metric = 'onset month' AND onset_year >= 2025 AND onset_year <= 2025\"]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-rabies-2025-by-month.xml"
+      },
+      "metadata": {
+        "description": "Animals with rabies in each month of 2025"
+      }
+    },
+    {
+      "name": "CDPHE cases: any other request about Denver County",
+      "priority": 3,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer",
+        "bodyPatterns": [
+          {
+            "matchesXPath": "//WhereClause[contains(., \"UPPER(category) = 'DENVER'\")]"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-denver.xml"
+      },
+      "metadata": {
+        "description": "Every year and disease for Denver County, whatever the other filters are, so the answer can hold more rows than asked for"
+      }
+    },
+    {
+      "name": "CDPHE cases: any other request",
+      "priority": 5,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cdphe/arcgis/services/OPEN_DATA/cdphe_reportable_disease_dataset/MapServer"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/xml; charset=UTF-8"
+        },
+        "bodyFileName": "cdphe/cases-none.xml"
+      },
+      "metadata": {
+        "description": "An answer without counts, recorded for a county the dataset does not have"
+      }
+    }
+  ]
+}

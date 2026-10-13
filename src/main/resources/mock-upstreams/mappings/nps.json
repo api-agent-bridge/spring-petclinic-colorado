@@ -1,0 +1,202 @@
+{
+ "mappings": [
+  {
+   "name": "NPS npsParks",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/parks"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsParks.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1/parks?stateCode=CO"
+   }
+  },
+  {
+   "name": "NPS npsAlerts",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/alerts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsAlerts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1/alerts?stateCode=CO&limit=20"
+   }
+  },
+  {
+   "name": "NPS npsRoadEvents",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/roadevents"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsRoadEvents.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsWebcams",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/webcams"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsWebcams.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsThingsToDo",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/thingstodo"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsThingsToDo.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1/thingstodo?parkCode=romo"
+   }
+  },
+  {
+   "name": "NPS npsCampgrounds",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/campgrounds"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsCampgrounds.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsVisitorCenters",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/visitorcenters"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsVisitorCenters.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsFeesAndPasses",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/feespasses"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsFeesAndPasses.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsEvents",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/events"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsEvents.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsActivities",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/activities"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsActivities.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  },
+  {
+   "name": "NPS npsActivityParks",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/nps/api/v1/activities/parks"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "nps/npsActivityParks.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://developer.nps.gov/api/v1"
+   }
+  }
+ ]
+}

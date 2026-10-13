@@ -1,0 +1,76 @@
+{
+ "mappings": [
+  {
+   "name": "NRCS Air and Water Database awdbStations",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/awdb/services/v1/stations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "awdb/awdbStations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /services/v1/stations, recorded from https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/stations?stationTriplets=*:CO:SNTL, with the list cut from 118 to the first 20"
+   }
+  },
+  {
+   "name": "NRCS Air and Water Database awdbReferenceData",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/awdb/services/v1/reference-data"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "awdb/awdbReferenceData.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /services/v1/reference-data, recorded from https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/reference-data?referenceLists=elements,networks,durations"
+   }
+  },
+  {
+   "name": "NRCS Air and Water Database awdbForecasts",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/awdb/services/v1/forecasts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "awdb/awdbForecasts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /services/v1/forecasts, recorded from https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/forecasts?stationTriplets=06738000:CO:USGS&beginPublicationDate=2026-01-01&endPublicationDate=2026-06-30"
+   }
+  },
+  {
+   "name": "NRCS Air and Water Database awdbData",
+   "priority": 1,
+   "request": {
+    "method": "GET",
+    "urlPath": "/awdb/services/v1/data"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "awdb/awdbData.json"
+   },
+   "metadata": {
+    "description": "The answer of GET /services/v1/data, recorded from https://wcc.sc.egov.usda.gov/awdbRestApi/services/v1/data?stationTriplets=335:CO:SNTL&elements=WTEQ,SNWD&duration=DAILY&beginDate=2026-04-01&endDate=2026-04-07"
+   }
+  }
+ ]
+}

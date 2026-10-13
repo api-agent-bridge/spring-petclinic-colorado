@@ -1,5 +1,8 @@
 """
-Reads the Petclinic data. The fields mirror what the web pages show.
+Reads the Petclinic data, and public data about animals, pets, vets, weather, water and the outdoors from
+services of the City and County of Denver, the State of Colorado and the United States. The fields owners, owner,
+pets, vets and petTypes mirror what the web pages show. Each of the other fields starts with the service it
+reads, and the fields of each service are declared in a schema file of their own.
 An id identifies an object within its type, so an owner and a pet can have the same id.
 """
 type Query {
@@ -229,3 +232,9 @@ input AddVisitInput {
 
 "A calendar date without a time zone, in the ISO-8601 pattern YYYY-MM-DD, for example 2013-01-04."
 scalar Date @specifiedBy(url: "https://scalars.graphql.org/andimarek/local-date.html")
+
+"""
+A whole number of 64 bits, from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. The services use it for
+counts and keys that pass the 2,147,483,647 of Int.
+"""
+scalar Long

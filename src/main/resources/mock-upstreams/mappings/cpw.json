@@ -1,0 +1,63 @@
+{
+  "mappings": [
+    {
+      "name": "CPW species data: the layers",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/cpw/arcgis/rest/services/CPWSpeciesData/FeatureServer"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "cpw/service.json"
+      },
+      "metadata": {
+        "description": "The description of the service, recorded from https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWSpeciesData/FeatureServer?f=json and trimmed to the id and name of each of the 313 layers"
+      }
+    },
+    {
+      "name": "CPW species data: point query, boulder",
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cpw/arcgis/rest/services/CPWSpeciesData/FeatureServer/query",
+        "bodyPatterns": [
+          {
+            "matches": ".*geometry=-105\\.2705(%2C|,)40\\.015(&.*|$)"
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "cpw/point-boulder.json"
+      },
+      "metadata": {
+        "description": "Every layer asked about the point 40.015,-105.2705, recorded from https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWSpeciesData/FeatureServer/query."
+      }
+    },
+    {
+      "name": "CPW species data: point query, denver",
+      "priority": 5,
+      "request": {
+        "method": "POST",
+        "urlPath": "/cpw/arcgis/rest/services/CPWSpeciesData/FeatureServer/query"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "cpw/point-denver.json"
+      },
+      "metadata": {
+        "description": "Every layer asked about the point 39.73904,-104.990312, recorded from https://services5.arcgis.com/ttNGmDvKQA7oeDQ3/arcgis/rest/services/CPWSpeciesData/FeatureServer/query. Answers a point query anywhere else as well."
+      }
+    }
+  ]
+}

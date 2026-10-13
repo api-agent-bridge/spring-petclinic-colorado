@@ -1,0 +1,598 @@
+{
+ "mappings": [
+  {
+   "name": "iNaturalist inatObservations",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservations.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations?taxon_id=47144&place_id=205&order_by=observed_on&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservation",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservation.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/400469344, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationTaxonSummary",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/[^/]+/taxon_summary"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationTaxonSummary.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/400469344/taxon_summary, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationSpeciesCounts",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/species_counts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationSpeciesCounts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/species_counts?place_id=205&iconic_taxa=Mammalia&per_page=10, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationHistogram",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/histogram"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationHistogram.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/histogram?taxon_id=47144&place_id=205&interval=month_of_year, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationObservers",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/observers"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationObservers.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/observers?taxon_id=47144&place_id=34&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationIdentifiers",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/identifiers"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationIdentifiers.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/identifiers?taxon_id=47144&place_id=34&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatObservationPopularFieldValues",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/observations/popular_field_values"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatObservationPopularFieldValues.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/observations/popular_field_values?taxon_id=47144&place_id=34, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentifications",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentifications.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications?taxon_id=47144&place_id=205&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentification",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentification.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/899425971, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentificationCategories",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/categories"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentificationCategories.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/categories?taxon_id=47144&place_id=34, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentificationSpeciesCounts",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/species_counts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentificationSpeciesCounts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/species_counts?place_id=205&iconic_taxa=Mammalia&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentificationIdentifiers",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/identifiers"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentificationIdentifiers.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/identifiers?taxon_id=47144&place_id=34&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentificationObservers",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/observers"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentificationObservers.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/observers?taxon_id=47144&place_id=34&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatIdentificationRecentTaxa",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/recent_taxa"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatIdentificationRecentTaxa.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/recent_taxa?place_id=205&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatSimilarSpecies",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/identifications/similar_species"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatSimilarSpecies.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/identifications/similar_species?taxon_id=42051&place_id=34, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatTaxa",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/taxa"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatTaxa.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/taxa?q=coyote&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatTaxon",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/taxa/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatTaxon.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/taxa/47144, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatTaxonAutocomplete",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/taxa/autocomplete"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatTaxonAutocomplete.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/taxa/autocomplete?q=dog&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatControlledTerms",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/controlled_terms"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatControlledTerms.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/controlled_terms, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatControlledTermsForTaxon",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/controlled_terms/for_taxon"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatControlledTermsForTaxon.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/controlled_terms/for_taxon?taxon_id=1, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatPlace",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/places/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatPlace.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/places/205, with the GeoJSON shapes cut to a few points, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatPlaceAutocomplete",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/places/autocomplete"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatPlaceAutocomplete.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/places/autocomplete?q=Denver&per_page=5, with the GeoJSON shapes cut to a few points, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatPlacesNearby",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/places/nearby"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatPlacesNearby.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/places/nearby?nelat=39.75&nelng=-104.98&swlat=39.73&swlng=-105.0&per_page=5, with the GeoJSON shapes cut to a few points, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatProjects",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/projects"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatProjects.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/projects?q=Colorado&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatProject",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/projects/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatProject.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/projects/228057, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatProjectMembers",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/projects/[^/]+/members"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatProjectMembers.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/projects/228057/members?per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatProjectAutocomplete",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/projects/autocomplete"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatProjectAutocomplete.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/projects/autocomplete?q=Denver&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatSearch",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/search"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatSearch.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/search?q=coyote&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatUser",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/users/[^/]+"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatUser.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/users/10450811, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatUserProjects",
+   "priority": 3,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/users/[^/]+/projects"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatUserProjects.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/users/10450811/projects?per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatUserAutocomplete",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/users/autocomplete"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatUserAutocomplete.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/users/autocomplete?q=denver&per_page=5, with the logins and names of members replaced"
+   }
+  },
+  {
+   "name": "iNaturalist inatPosts",
+   "priority": 2,
+   "request": {
+    "method": "GET",
+    "urlPathPattern": "/inat/v1/posts"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "application/json"
+    },
+    "bodyFileName": "inat/inatPosts.json"
+   },
+   "metadata": {
+    "description": "The answer of GET https://api.inaturalist.org/v1/posts?project_id=66408&per_page=3, with the logins and names of members replaced"
+   }
+  }
+ ]
+}

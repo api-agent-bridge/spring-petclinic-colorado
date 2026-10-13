@@ -1,0 +1,68 @@
+{
+  "mappings": [
+    {
+      "name": "Census geocoder: 1437 Bannock St, Denver, CO",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/census/geocoder/locations/onelineaddress",
+        "queryParameters": {
+          "address": {
+            "equalTo": "1437 Bannock St, Denver, CO"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "census/1437-bannock-st-denver-co.json"
+      },
+      "metadata": {
+        "description": "The geocoder finds Dev2 Next's address, the City and County Building, and interpolates the point"
+      }
+    },
+    {
+      "name": "Census geocoder: 110 W. Liberty St., Madison",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/census/geocoder/locations/onelineaddress",
+        "queryParameters": {
+          "address": {
+            "equalTo": "110 W. Liberty St., Madison"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "census/110-w-liberty-st-madison.json"
+      },
+      "metadata": {
+        "description": "George Franklin's address without a state: the geocoder matches 110 LIBERTY ST in Madison, Connecticut"
+      }
+    },
+    {
+      "name": "Census geocoder: any other address",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/census/geocoder/locations/onelineaddress"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "census/1-nowhere-lane-denver-co.json"
+      },
+      "metadata": {
+        "description": "Recorded for 1 Nowhere Lane, Denver, CO: an address the geocoder cannot find comes back with status 200 and an empty list of matches. It answers every other address in mock mode"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+# Colorado Parks and Wildlife (CPW) publishes where its species live as one ArcGIS Online feature
+# service with 313 layers, one for each species and kind of area. These fields are written by
+# hand. The layers have names only, so the fields split each name into the species and the kind.
+
+extend type Query {
+	"""
+	The wildlife areas mapped by Colorado Parks and Wildlife (CPW) that contain a point in Colorado: the ranges of
+	species such as black bears, mountain lions, elk and rattlesnakes, and the human conflict areas where bears and
+	mountain lions meet people. These are range maps drawn by the state's biologists. The sightings that people
+	report are in the inat fields. Use it to answer whether a place, such as an owner's home or a trailhead, lies where
+	bears, mountain lions or rattlesnakes live, which matters for walking a dog or letting a cat outside.
+	Without species, the call asks all 313 layers of the service, which takes a few seconds and an answer of about
+	80 KB from CPW, and usually finds about 60 areas. Pass species to ask only the matching layers.
+	"""
+	cpwWildlifeAt(
+		"The latitude of the point, for example 40.015 for Boulder or 39.739 for downtown Denver."
+		latitude: Float!
+		"The longitude of the point, west of Greenwich, so negative in Colorado, for example -105.2705 for Boulder."
+		longitude: Float!
+		"Text that the species or the layer name contains, in upper or lower case, for example bear, mountain lion, rattlesnake or Human Conflict. Leave it out to ask every layer."
+		species: String
+	): [CpwWildlifeArea!]!
+
+	"""
+	The 313 layers of the Colorado Parks and Wildlife species data, one for each species and kind of area, such as
+	Black Bear Human Conflict Area, Elk Winter Range or Bald Eagle Nest Sites, sorted by species. Use it to find
+	which species and kinds of area CPW maps in Colorado.
+	"""
+	cpwWildlifeLayers(
+		"Text that the species or the layer name contains, in upper or lower case, for example bear or Winter Range. Leave it out for every layer."
+		species: String
+	): [CpwWildlifeLayer!]!
+}
+
+"""
+An area mapped by Colorado Parks and Wildlife that contains the point a query asked about, such as the human
+conflict area of black bears.
+"""
+type CpwWildlifeArea {
+	"The species or group of species, for example Black Bear, Mountain Lion or Prairie Rattlesnake And Western Rattlesnake."
+	species: String!
+	"""
+	The kind of area, for example Human Conflict Area, Overall Range, Winter Range, Migration Corridors or
+	Breeding Range. Null when the layer name does not end with a known kind.
+	"""
+	kind: String
+	"The name of the CPW layer, for example Black Bear Human Conflict Area."
+	layerName: String!
+	"The id of the layer in the CPW service."
+	layerId: Int!
+	"The code CPW gives the area within its layer, for example BBHCA for a black bear human conflict area. Null for some layers, such as Lynx Habitat."
+	activityCode: String
+}
+
+"A layer of the Colorado Parks and Wildlife species data, for one species and one kind of area."
+type CpwWildlifeLayer {
+	"The id of the layer in the CPW service."
+	layerId: Int!
+	"The name of the layer, for example Mountain Lion Human Conflict Area."
+	layerName: String!
+	"The species or group of species, for example Mountain Lion."
+	species: String!
+	"The kind of area, for example Human Conflict Area or Overall Range. Null when the layer name does not end with a known kind."
+	kind: String
+}

@@ -1,0 +1,174 @@
+{
+  "mappings": [
+    {
+      "name": "openFDA: events-dog-labrador-sarolaner",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "search": {
+            "equalTo": "animal.species:\"Dog\" AND animal.breed.breed_component:\"Labrador\" AND drug.active_ingredients.name:\"Sarolaner\""
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/events-dog-labrador-sarolaner.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'search': 'animal.species:\"Dog\" AND animal.breed.breed_component:\"Labrador\" AND drug.active_ingredients.name:\"Sarolaner\"', 'sort': 'original_receive_date:desc', 'limit': '10', 'skip': '0'}"
+      }
+    },
+    {
+      "name": "openFDA: counts-cat-reaction",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "search": {
+            "equalTo": "animal.species:\"Cat\""
+          },
+          "count": {
+            "equalTo": "reaction.veddra_term_name.exact"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/counts-cat-reaction.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'search': 'animal.species:\"Cat\"', 'count': 'reaction.veddra_term_name.exact', 'limit': '10'}"
+      }
+    },
+    {
+      "name": "openFDA: counts-dog-labrador-reaction",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "search": {
+            "equalTo": "animal.species:\"Dog\" AND animal.breed.breed_component:\"Labrador\""
+          },
+          "count": {
+            "equalTo": "reaction.veddra_term_name.exact"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/counts-dog-labrador-reaction.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'search': 'animal.species:\"Dog\" AND animal.breed.breed_component:\"Labrador\"', 'count': 'reaction.veddra_term_name.exact', 'limit': '10'}"
+      }
+    },
+    {
+      "name": "openFDA: counts-dog-vomiting-ingredient",
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "search": {
+            "equalTo": "animal.species:\"Dog\" AND reaction.veddra_term_name:\"Vomiting\""
+          },
+          "count": {
+            "equalTo": "drug.active_ingredients.name.exact"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/counts-dog-vomiting-ingredient.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'search': 'animal.species:\"Dog\" AND reaction.veddra_term_name:\"Vomiting\"', 'count': 'drug.active_ingredients.name.exact', 'limit': '10'}"
+      }
+    },
+    {
+      "name": "openFDA: events-dog",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "sort": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/events-dog.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'search': 'animal.species:\"Dog\"', 'sort': 'original_receive_date:desc', 'limit': '10', 'skip': '0'}. Answers every other search as well."
+      }
+    },
+    {
+      "name": "openFDA: counts-species",
+      "priority": 6,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "count": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/counts-species.json"
+      },
+      "metadata": {
+        "description": "Recorded from https://api.fda.gov/animalandveterinary/event.json with {'count': 'animal.species', 'limit': '10'}. Answers every other count as well."
+      }
+    },
+    {
+      "name": "openFDA: no match",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/openfda/animalandveterinary/event.json",
+        "queryParameters": {
+          "search": {
+            "contains": "Unicorn"
+          }
+        }
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "openfda/no-match.json"
+      },
+      "metadata": {
+        "description": "openFDA answers a search without a match with 404, recorded for the species Unicorn"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+# The geocoder of the US Census Bureau, which turns an address in the United States into
+# latitude and longitude. The field and its type are written by hand over its
+# onelineaddress operation.
+
+extend type Query {
+	"""
+	Finds an address in the United States with the US Census Bureau geocoder and returns its latitude and
+	longitude, best match first, for example 1437 Bannock St, Denver, CO. Use it to turn an owner's address, or any
+	other address, into the point that the weather, earthquake, wildlife and fuel station fields of other services
+	take. The list is empty when the geocoder cannot find the address. One call to the geocoder.
+	"""
+	censusGeocodeAddress(
+		"""
+		The address on one line, with the street, the city and the state, at most 100 characters, for example 1437
+		Bannock St, Denver, CO. Give the state: without it, 110 W. Liberty St., Madison matched an address in
+		Madison, Connecticut.
+		"""
+		address: String!
+	): [CensusAddressMatch!]!
+}
+
+"""
+An address that the US Census Bureau geocoder found, with its latitude and longitude. The geocoder places the
+point by interpolating along the range of house numbers of the street segment, so the point is an estimate
+within a few dozen metres.
+"""
+type CensusAddressMatch {
+	"The address as the geocoder understood it, in capitals, for example 1437 BANNOCK ST, DENVER, CO, 80202."
+	matchedAddress: String!
+	"The latitude of the address in degrees, for example 39.739040 in Denver."
+	latitude: Float!
+	"The longitude of the address in degrees, negative in the United States, for example -104.990312 in Denver."
+	longitude: Float!
+	"The city, in capitals."
+	city: String
+	"The two-letter code of the state, for example CO."
+	state: String
+	"The five-digit ZIP code."
+	zipCode: String
+	"The first house number of the street segment that the point was interpolated along, for example 1401."
+	fromHouseNumber: String
+	"The last house number of that street segment, for example 1499."
+	toHouseNumber: String
+}

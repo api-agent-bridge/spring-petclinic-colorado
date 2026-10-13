@@ -1,0 +1,207 @@
+{
+ "operations": [
+  {
+   "field": "awdbStations",
+   "path": "/services/v1/stations",
+   "arguments": [
+    {
+     "name": "stationTriplets",
+     "parameter": "stationTriplets",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "stationNames",
+     "parameter": "stationNames",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "dcoCodes",
+     "parameter": "dcoCodes",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "countyNames",
+     "parameter": "countyNames",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "elements",
+     "parameter": "elements",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "durations",
+     "parameter": "durations",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hucs",
+     "parameter": "hucs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnForecastPointMetadata",
+     "parameter": "returnForecastPointMetadata",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnReservoirMetadata",
+     "parameter": "returnReservoirMetadata",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnStationElements",
+     "parameter": "returnStationElements",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "activeOnly",
+     "parameter": "activeOnly",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "awdbReferenceData",
+   "path": "/services/v1/reference-data",
+   "arguments": [
+    {
+     "name": "referenceLists",
+     "parameter": "referenceLists",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "awdbForecasts",
+   "path": "/services/v1/forecasts",
+   "arguments": [
+    {
+     "name": "stationTriplets",
+     "parameter": "stationTriplets",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "elementCodes",
+     "parameter": "elementCodes",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "beginPublicationDate",
+     "parameter": "beginPublicationDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endPublicationDate",
+     "parameter": "endPublicationDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "exceedenceProbabilities",
+     "parameter": "exceedenceProbabilities",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "forecastPeriods",
+     "parameter": "forecastPeriods",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "awdbData",
+   "path": "/services/v1/data",
+   "arguments": [
+    {
+     "name": "stationTriplets",
+     "parameter": "stationTriplets",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "elements",
+     "parameter": "elements",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "duration",
+     "parameter": "duration",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "beginDate",
+     "parameter": "beginDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endDate",
+     "parameter": "endDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "insertOrUpdateBeginDate",
+     "parameter": "insertOrUpdateBeginDate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "periodRef",
+     "parameter": "periodRef",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "centralTendencyType",
+     "parameter": "centralTendencyType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnFlags",
+     "parameter": "returnFlags",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnOriginalValues",
+     "parameter": "returnOriginalValues",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "returnSuspectData",
+     "parameter": "returnSuspectData",
+     "in": "query",
+     "list": false
+    }
+   ]
+  }
+ ],
+ "mapFields": {
+  "AwdbForecastValue": [
+   "forecastValues"
+  ]
+ }
+}

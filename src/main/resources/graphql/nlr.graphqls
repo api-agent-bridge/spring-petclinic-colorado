@@ -1,0 +1,94 @@
+# The National Laboratory of the Rockies (NLR), the national laboratory in Golden, Colorado, formerly
+# the National Renewable Energy Laboratory (NREL), publishes the Alternative Fuel Stations API. This
+# field is written by hand.
+
+extend type Query {
+	"""
+	Electric vehicle chargers and other alternative fuel stations near a point, nearest first, from the
+	Alternative Fuel Stations API of the National Laboratory of the Rockies (NLR) in Golden, Colorado. Each station
+	has its address, opening hours, charging network, number of charging ports and distance in miles. Use it to find
+	where a visitor can charge an electric car near an address in Denver, or along the way to a national park. Only
+	open stations with public access are listed.
+	The search takes a point. To start from an address, find its latitude and longitude first.
+	"""
+	nlrFuelStationsNear(
+		"The latitude of the point, for example 39.73904 for the City and County Building in Denver."
+		latitude: Float!
+		"The longitude of the point, negative in Colorado, for example -104.990312."
+		longitude: Float!
+		"How far from the point to search, in miles. Leave it out for 5 miles."
+		radiusInMiles: Float! = 5
+		"The fuel. Leave it out for every fuel."
+		fuelType: NlrFuelType
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of stations on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): NlrFuelStationPage!
+}
+
+"One page of alternative fuel stations, nearest first."
+type NlrFuelStationPage {
+	"The stations on this page, nearest first."
+	stations: [NlrFuelStation!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same search and size."
+	totalPages: Int!
+	"The number of stations within the radius, counted across every page."
+	totalStations: Int!
+}
+
+"An alternative fuel station, such as an electric vehicle charger, from the NLR station locator."
+type NlrFuelStation {
+	id: ID!
+	"The name, for example CCD CHARGING CITY HALL 1."
+	name: String
+	"""
+	The code of the fuel: ELEC for electricity, E85 for ethanol, CNG and LNG for natural gas, LPG for propane, HY for
+	hydrogen, BD for biodiesel and RD for renewable diesel.
+	"""
+	fuelType: String
+	streetAddress: String
+	city: String
+	"The state, for example CO."
+	state: String
+	zip: String
+	latitude: Float
+	longitude: Float
+	"The distance from the point of the search, in miles."
+	distanceInMiles: Float
+	"When the station is open, for example 24 hours daily."
+	accessDaysTime: String
+	phone: String
+	"The charging network of an electric station, for example ChargePoint Network."
+	evNetwork: String
+	"The number of level 2 charging ports of an electric station."
+	evLevel2Ports: Int
+	"The number of DC fast charging ports of an electric station."
+	evDcFastPorts: Int
+	"The connectors of an electric station, for example J1772 or J1772COMBO."
+	evConnectorTypes: [String!]!
+	"How to find the station, for example Two on-street spots on 14th before Bannock on left side of street."
+	intersectionDirections: String
+	"The national park unit the station is in, or null for a station outside the national parks."
+	nationalParkUnit: String
+	"The day the station opened."
+	openDate: Date
+	"The day NLR last confirmed the station's details."
+	dateLastConfirmed: Date
+}
+
+"The fuels of the NLR alternative fuel station search."
+enum NlrFuelType {
+	"Electric vehicle charging."
+	ELECTRIC
+	"Ethanol, E85."
+	ETHANOL_E85
+	COMPRESSED_NATURAL_GAS
+	LIQUEFIED_NATURAL_GAS
+	PROPANE
+	HYDROGEN
+	BIODIESEL
+	RENEWABLE_DIESEL
+}

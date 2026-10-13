@@ -1,0 +1,22 @@
+{
+  "mappings": [
+    {
+      "name": "NLR: nearest stations",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPath": "/nlr/api/alt-fuel-stations/v1/nearest.json"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "nlr/nearest-city-and-county-building.json"
+      },
+      "metadata": {
+        "description": "The 10 electric stations nearest to the City and County Building in Denver, within 1 mile, recorded from https://developer.nlr.gov/api/alt-fuel-stations/v1/nearest.json with {'latitude': '39.73904', 'longitude': '-104.990312', 'radius': '1', 'fuel_type': 'ELEC', 'limit': '10'}. Answers every other search as well."
+      }
+    }
+  ]
+}

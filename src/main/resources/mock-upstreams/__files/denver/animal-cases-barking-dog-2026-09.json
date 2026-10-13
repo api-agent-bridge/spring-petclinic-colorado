@@ -1,0 +1,371 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Summary",
+      "type": "esriFieldTypeString",
+      "alias": "Case Summary",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Status",
+      "type": "esriFieldTypeString",
+      "alias": "Case Status",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Source",
+      "type": "esriFieldTypeString",
+      "alias": "Case Source",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Created_Date",
+      "type": "esriFieldTypeDate",
+      "alias": "Case Created Date",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Created_dttm",
+      "type": "esriFieldTypeString",
+      "alias": "Case Created dttm",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Closed_Date",
+      "type": "esriFieldTypeDate",
+      "alias": "Case Closed Date",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Closed_dttm",
+      "type": "esriFieldTypeString",
+      "alias": "Case Closed dttm",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Agency",
+      "type": "esriFieldTypeString",
+      "alias": "Agency",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Address_1",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Address 1",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Intersection_1",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Intersection 1",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Intersection_2",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Intersection 2",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Zip_Code",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Zip Code",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Council_District",
+      "type": "esriFieldTypeInteger",
+      "alias": "Council District",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Police_District",
+      "type": "esriFieldTypeInteger",
+      "alias": "Police District",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Latitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Latitude",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Longitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Longitude",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "exceededTransferLimit": true,
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 394713282,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Not Enough Info",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1790726400000,
+        "Case_Created_dttm": "9/30/2026 4:45:16 PM",
+        "Case_Closed_Date": 1790812800000,
+        "Case_Closed_dttm": "10/1/2026 8:27:14 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "3952 W Greenwood Pl",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80236-2427",
+        "Council_District": 2,
+        "Police_District": 4,
+        "Latitude": 39.65762472,
+        "Longitude": -105.03844959
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394712987,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1790726400000,
+        "Case_Created_dttm": "9/30/2026 5:30:10 PM",
+        "Case_Closed_Date": 1790812800000,
+        "Case_Closed_dttm": "10/1/2026 3:57:37 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "963 S Utica St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80219",
+        "Council_District": 3,
+        "Police_District": 4,
+        "Latitude": 39.69878771,
+        "Longitude": -105.04580575
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394712696,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Not Approved",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1790726400000,
+        "Case_Created_dttm": "9/30/2026 1:01:27 PM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 4:03:52 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "2601 N Pontiac St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80207",
+        "Council_District": 8,
+        "Police_District": 2,
+        "Latitude": 39.75493768,
+        "Longitude": -104.90606111
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394712262,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1790726400000,
+        "Case_Created_dttm": "9/30/2026 10:17:01 AM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 12:33:04 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "4613 S Quitman St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80236",
+        "Council_District": 2,
+        "Police_District": 4,
+        "Latitude": 39.63317569,
+        "Longitude": -105.04274995
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394712093,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1790726400000,
+        "Case_Created_dttm": "9/30/2026 12:07:28 PM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 12:58:40 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "2781 S Harrison St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80210",
+        "Council_District": 4,
+        "Police_District": 3,
+        "Latitude": 39.66566917,
+        "Longitude": -104.94208267
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394714862,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Answer Provided",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1790640000000,
+        "Case_Created_dttm": "9/29/2026 2:45:02 PM",
+        "Case_Closed_Date": 1790640000000,
+        "Case_Closed_dttm": "9/29/2026 2:47:49 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394714133,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Not Approved",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1790640000000,
+        "Case_Created_dttm": "9/29/2026 10:25:20 AM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 9:24:06 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "1754 S Sherman St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80210",
+        "Council_District": 7,
+        "Police_District": 3,
+        "Latitude": 39.68468098,
+        "Longitude": -104.98487158
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394714127,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Answer Provided",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1790640000000,
+        "Case_Created_dttm": "9/29/2026 10:30:13 AM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 9:25:36 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "14433 E 47th Ave",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80239",
+        "Council_District": 11,
+        "Police_District": 5,
+        "Latitude": 39.78056563,
+        "Longitude": -104.82427203
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394714107,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1790640000000,
+        "Case_Created_dttm": "9/29/2026 10:19:35 AM",
+        "Case_Closed_Date": 1790640000000,
+        "Case_Closed_dttm": "9/29/2026 1:22:45 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "4224 N Flanders St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80249",
+        "Council_District": 11,
+        "Police_District": 5,
+        "Latitude": 39.77523879,
+        "Longitude": -104.75668241
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394714026,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1790640000000,
+        "Case_Created_dttm": "9/29/2026 11:05:12 AM",
+        "Case_Closed_Date": 1790726400000,
+        "Case_Closed_dttm": "9/30/2026 9:36:00 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "1665 N Logan St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80203",
+        "Council_District": 10,
+        "Police_District": 6,
+        "Latitude": 39.74257792,
+        "Longitude": -104.98251379
+      }
+    }
+  ]
+}

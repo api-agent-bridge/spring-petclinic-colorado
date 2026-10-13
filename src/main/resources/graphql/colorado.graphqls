@@ -1,0 +1,213 @@
+# The State of Colorado's open data portal, data.colorado.gov, which runs on Socrata. These
+# fields are written by hand and read two datasets: the license register of the Department of
+# Regulatory Agencies (DORA), and the yearly reports of animal shelters and rescues to the Pet
+# Animal Care Facilities Act (PACFA) program of the Colorado Department of Agriculture.
+
+extend type Query {
+	"""
+	Veterinary licenses issued by the State of Colorado: veterinarians and veterinary technicians, with each
+	license's status, expiry date and any public disciplinary action, from the license register of the Colorado
+	Department of Regulatory Agencies (DORA). Use it to check whether a vet or a vet tech holds a license to practise
+	in Colorado, or to count the licensed vets of a city. One page at a time, sorted by last name.
+	The register holds about 20,000 veterinary rows. Narrow the list with the name, city, licenseType and status,
+	and to count licenses select only totalLicenses.
+	A license appears once for each disciplinary action, so a license with two actions comes back twice.
+	"""
+	coloradoVeterinaryLicenses(
+		"The start of the license holder's last name, in upper or lower case, for example Leary. Leave it out to match any name."
+		lastName: String
+		"The start of the license holder's first name, in upper or lower case, for example Helen. Leave it out to match any name."
+		firstName: String
+		"The city the license holder gave, in full, in upper or lower case, for example Denver or Boulder. Leave it out for every city."
+		city: String
+		"The kind of license. Leave it out for all four veterinary kinds."
+		licenseType: ColoradoVeterinaryLicenseType
+		"""
+		The status of the license, in full, in upper or lower case, for example Active, Expired, Revoked or Suspended.
+		Active leaves out the licenses with the status Active - With Conditions. Leave it out for every status.
+		"""
+		status: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of licenses on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): ColoradoVeterinaryLicensePage!
+
+	"""
+	The yearly report of one named animal shelter or rescue in Colorado, such as Denver Animal Protection or the Dumb
+	Friends League: how many dogs, cats and other animals it took in as strays, from owners or by transfer, and how
+	many it adopted out, returned to their owners, transferred or euthanized, from the Pet Animal Care Facilities Act
+	(PACFA) program of the Colorado Department of Agriculture. Sorted by facility name.
+	A year holds about 370 facilities, and each report has 153 counts. Narrow the list with the name, and select only
+	the animal groups and counts the question needs. For the whole state, use coloradoShelterTotals.
+	"""
+	coloradoShelterReports(
+		"The calendar year of the reports, from 2020 to 2025. Leave it out for the latest year."
+		year: Int
+		"Text that the facility name contains, in upper or lower case, for example Denver Animal Protection or Humane Society. Leave it out for every facility."
+		name: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"The number of reports on a page, from 1 to 50. A value outside that range is moved to the nearest limit."
+		size: Int! = 10
+	): ColoradoShelterReportPage!
+
+	"""
+	The statewide totals of the yearly reports of Colorado's animal shelters and rescues, all facilities added up in
+	one call: how many dogs, cats and other animals all Colorado shelters took in, adopted out, returned to their
+	owners, transferred and euthanized in a year, from the PACFA program of the Colorado Department of Agriculture.
+	The facilityName of the answer is null.
+	"""
+	coloradoShelterTotals(
+		"The calendar year, from 2020 to 2025. Leave it out for the latest year."
+		year: Int
+	): ColoradoShelterReport!
+}
+
+"One page of Colorado veterinary licenses."
+type ColoradoVeterinaryLicensePage {
+	"The licenses on this page, sorted by last name, first name and license number."
+	licenses: [ColoradoVeterinaryLicense!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of register rows that match the filters, counted across every page. A license with several disciplinary actions counts once for each."
+	totalLicenses: Int!
+}
+
+"""
+A license to practise veterinary medicine in Colorado, as the register of the Colorado Department of Regulatory
+Agencies (DORA) lists it. The address fields are the ones the license holder gave the state.
+"""
+type ColoradoVeterinaryLicense {
+	"The number of the license, for example 9457. The number is unique within its license type."
+	licenseNumber: String!
+	licenseType: ColoradoVeterinaryLicenseType!
+	firstName: String
+	middleName: String
+	lastName: String
+	city: String
+	"The state of the license holder's address, for example CO."
+	state: String
+	zipCode: String
+	"""
+	The status of the license, for example Active, Active - With Conditions, Expired, Inactive, Revoked,
+	Suspended, Surrendered or Voluntary Surrender.
+	"""
+	status: String
+	"The day the State of Colorado first issued the license."
+	firstIssued: Date
+	"The day the latest renewal took effect. It can lie a few weeks in the future, for a renewal booked ahead."
+	lastRenewed: Date
+	"The day the license expires unless it is renewed. Veterinary licenses expire on 31 October of even years."
+	expires: Date
+	"The degrees the license holder declared, for example Doctor of Veterinary Medicine."
+	degrees: [String!]!
+	"The specialty, for the few licenses that name one."
+	specialty: String
+	"The public disciplinary action of this row, or null for a row without one."
+	disciplinaryAction: ColoradoDisciplinaryAction
+	"The page of the state's license lookup that shows the current details of this license."
+	verificationUrl: String
+}
+
+"A public disciplinary action that the State of Colorado took on a veterinary license."
+type ColoradoDisciplinaryAction {
+	"The number of the case, for example 2019-6811."
+	caseNumber: String
+	"The kind of action, for example CLS Stipulation, CLS Letter of Admonition or CLS Revocation."
+	action: String
+	"The day the action took effect."
+	effectiveDate: Date
+	"The day a limited action ended, or null."
+	completeDate: Date
+}
+
+"The kinds of veterinary license in the Colorado register."
+enum ColoradoVeterinaryLicenseType {
+	"A veterinarian, VET in the register."
+	VETERINARIAN
+	"A veterinary technician, VT in the register."
+	VETERINARY_TECHNICIAN
+	"A veterinarian who teaches or researches at a university, AV in the register."
+	ACADEMIC_VETERINARIAN
+	"A veterinary technician with a provisional license, PVT in the register."
+	PROVISIONAL_VETERINARY_TECHNICIAN
+}
+
+"One page of yearly Colorado shelter and rescue reports."
+type ColoradoShelterReportPage {
+	"The reports on this page, sorted by facility name."
+	reports: [ColoradoShelterReport!]!
+	"The page that was returned, starting at 1."
+	page: Int!
+	"The number of pages available for the same filters and size."
+	totalPages: Int!
+	"The number of facilities that match the filters, counted across every page."
+	totalReports: Int!
+}
+
+"""
+The yearly report of a Colorado animal shelter or rescue to the PACFA program, or the totals of every facility.
+Each animal group has the same counts: the animals at the start of the year, how they came in, how they left, and
+the animals at the end of the year.
+"""
+type ColoradoShelterReport {
+	"The name of the shelter or rescue, for example Denver Animal Protection, or null for the statewide totals."
+	facilityName: String
+	"The calendar year the report covers."
+	year: Int!
+	adultDogs: ColoradoShelterAnimalCounts!
+	"Puppies."
+	juvenileDogs: ColoradoShelterAnimalCounts!
+	adultCats: ColoradoShelterAnimalCounts!
+	"Kittens."
+	juvenileCats: ColoradoShelterAnimalCounts!
+	birds: ColoradoShelterAnimalCounts!
+	"Small mammals, such as guinea pigs and hamsters."
+	smallMammals: ColoradoShelterAnimalCounts!
+	reptilesAndAmphibians: ColoradoShelterAnimalCounts!
+	rabbits: ColoradoShelterAnimalCounts!
+	"Other animals, such as fish and livestock."
+	otherAnimals: ColoradoShelterAnimalCounts!
+}
+
+"""
+What happened to one group of animals at a Colorado shelter or rescue over a year. A count is null where the
+facility left it empty.
+"""
+type ColoradoShelterAnimalCounts {
+	"Animals in the shelter on 1 January."
+	inShelterAtStart: Int
+	"Animals in foster care on 1 January."
+	inFosterCareAtStart: Int
+	"Strays taken in."
+	stray: Int
+	"Animals that their owners gave up."
+	ownerRelinquished: Int
+	"Animals taken over from another Colorado organisation."
+	transferredInFromColorado: Int
+	"Animals taken over from an organisation outside Colorado."
+	transferredInFromOutOfState: Int
+	"Animals taken in another way."
+	otherIntake: Int
+	"Animals adopted into a new home."
+	adopted: Int
+	"Animals returned to their owners."
+	returnedToOwner: Int
+	"Animals handed to another Colorado organisation."
+	transferredOutInColorado: Int
+	"Animals handed to an organisation outside Colorado."
+	transferredOutOfState: Int
+	"Animals that left in another way."
+	otherOutcome: Int
+	"Animals that died in care."
+	died: Int
+	euthanized: Int
+	missingOrStolen: Int
+	"Animals in the shelter on 31 December."
+	inShelterAtEnd: Int
+	"Animals in foster care on 31 December."
+	inFosterCareAtEnd: Int
+}

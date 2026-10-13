@@ -1,0 +1,1183 @@
+{
+ "operations": [
+  {
+   "field": "nwsAlerts",
+   "path": "/alerts",
+   "arguments": [
+    {
+     "name": "start",
+     "parameter": "start",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "end",
+     "parameter": "end",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "status",
+     "parameter": "status",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "messageType",
+     "parameter": "message_type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "event",
+     "parameter": "event",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "code",
+     "parameter": "code",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "area",
+     "parameter": "area",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "point",
+     "parameter": "point",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "region",
+     "parameter": "region",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "regionType",
+     "parameter": "region_type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "zone",
+     "parameter": "zone",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "urgency",
+     "parameter": "urgency",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "severity",
+     "parameter": "severity",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "certainty",
+     "parameter": "certainty",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cursor",
+     "parameter": "cursor",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsActiveAlerts",
+   "path": "/alerts/active",
+   "arguments": [
+    {
+     "name": "status",
+     "parameter": "status",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "messageType",
+     "parameter": "message_type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "event",
+     "parameter": "event",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "code",
+     "parameter": "code",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "area",
+     "parameter": "area",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "point",
+     "parameter": "point",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "region",
+     "parameter": "region",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "regionType",
+     "parameter": "region_type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "zone",
+     "parameter": "zone",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "urgency",
+     "parameter": "urgency",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "severity",
+     "parameter": "severity",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "certainty",
+     "parameter": "certainty",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsActiveAlertCounts",
+   "path": "/alerts/active/count",
+   "arguments": []
+  },
+  {
+   "field": "nwsActiveAlertsForZone",
+   "path": "/alerts/active/zone/{zoneId}",
+   "arguments": [
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsActiveAlertsForArea",
+   "path": "/alerts/active/area/{area}",
+   "arguments": [
+    {
+     "name": "area",
+     "parameter": "area",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsActiveAlertsForMarineRegion",
+   "path": "/alerts/active/region/{region}",
+   "arguments": [
+    {
+     "name": "region",
+     "parameter": "region",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsAlertTypes",
+   "path": "/alerts/types",
+   "arguments": []
+  },
+  {
+   "field": "nwsAlert",
+   "path": "/alerts/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsCenterWeatherServiceUnit",
+   "path": "/aviation/cwsus/{cwsuId}",
+   "arguments": [
+    {
+     "name": "cwsuId",
+     "parameter": "cwsuId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsCenterWeatherAdvisories",
+   "path": "/aviation/cwsus/{cwsuId}/cwas",
+   "arguments": [
+    {
+     "name": "cwsuId",
+     "parameter": "cwsuId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsSigmets",
+   "path": "/aviation/sigmets",
+   "arguments": [
+    {
+     "name": "start",
+     "parameter": "start",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "end",
+     "parameter": "end",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "date",
+     "parameter": "date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "atsu",
+     "parameter": "atsu",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sequence",
+     "parameter": "sequence",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsSigmetsOfAirTrafficServiceUnit",
+   "path": "/aviation/sigmets/{atsu}",
+   "arguments": [
+    {
+     "name": "atsu",
+     "parameter": "atsu",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsSigmetsOfAirTrafficServiceUnitOnDate",
+   "path": "/aviation/sigmets/{atsu}/{date}",
+   "arguments": [
+    {
+     "name": "atsu",
+     "parameter": "atsu",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "date",
+     "parameter": "date",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsSigmet",
+   "path": "/aviation/sigmets/{atsu}/{date}/{time}",
+   "arguments": [
+    {
+     "name": "atsu",
+     "parameter": "atsu",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "date",
+     "parameter": "date",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "time",
+     "parameter": "time",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsGlossary",
+   "path": "/glossary",
+   "arguments": []
+  },
+  {
+   "field": "nwsGridpointRawForecastData",
+   "path": "/gridpoints/{wfo}/{x},{y}",
+   "arguments": [
+    {
+     "name": "wfo",
+     "parameter": "wfo",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "x",
+     "parameter": "x",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "y",
+     "parameter": "y",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsGridpointForecast",
+   "path": "/gridpoints/{wfo}/{x},{y}/forecast",
+   "arguments": [
+    {
+     "name": "wfo",
+     "parameter": "wfo",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "x",
+     "parameter": "x",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "y",
+     "parameter": "y",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsGridpointHourlyForecast",
+   "path": "/gridpoints/{wfo}/{x},{y}/forecast/hourly",
+   "arguments": [
+    {
+     "name": "wfo",
+     "parameter": "wfo",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "x",
+     "parameter": "x",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "y",
+     "parameter": "y",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "units",
+     "parameter": "units",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsGridpointObservationStations",
+   "path": "/gridpoints/{wfo}/{x},{y}/stations",
+   "arguments": [
+    {
+     "name": "wfo",
+     "parameter": "wfo",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "x",
+     "parameter": "x",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "y",
+     "parameter": "y",
+     "in": "path",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsIconConditions",
+   "path": "/icons",
+   "arguments": []
+  },
+  {
+   "field": "nwsStationObservations",
+   "path": "/stations/{stationId}/observations",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "start",
+     "parameter": "start",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "end",
+     "parameter": "end",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cursor",
+     "parameter": "cursor",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsLatestStationObservation",
+   "path": "/stations/{stationId}/observations/latest",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "requireQc",
+     "parameter": "require_qc",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsStationObservationAtTime",
+   "path": "/stations/{stationId}/observations/{time}",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "time",
+     "parameter": "time",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTerminalAerodromeForecasts",
+   "path": "/stations/{stationId}/tafs",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsObservationStations",
+   "path": "/stations",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "state",
+     "parameter": "state",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cursor",
+     "parameter": "cursor",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsObservationStation",
+   "path": "/stations/{stationId}",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsOffice",
+   "path": "/offices/{officeId}",
+   "arguments": [
+    {
+     "name": "officeId",
+     "parameter": "officeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsOfficeBriefing",
+   "path": "/offices/{officeId}/briefing",
+   "arguments": [
+    {
+     "name": "officeId",
+     "parameter": "officeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsOfficeHeadline",
+   "path": "/offices/{officeId}/headlines/{headlineId}",
+   "arguments": [
+    {
+     "name": "officeId",
+     "parameter": "officeId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "headlineId",
+     "parameter": "headlineId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsOfficeHeadlines",
+   "path": "/offices/{officeId}/headlines",
+   "arguments": [
+    {
+     "name": "officeId",
+     "parameter": "officeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsOfficeWeatherStories",
+   "path": "/offices/{officeId}/weatherstories",
+   "arguments": [
+    {
+     "name": "officeId",
+     "parameter": "officeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsPoint",
+   "path": "/points/{latitude},{longitude}",
+   "arguments": [
+    {
+     "name": "latitude",
+     "parameter": "latitude",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "longitude",
+     "parameter": "longitude",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsRadarStations",
+   "path": "/radar/stations",
+   "arguments": [
+    {
+     "name": "stationType",
+     "parameter": "stationType",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reportingHost",
+     "parameter": "reportingHost",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "host",
+     "parameter": "host",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsRadarStation",
+   "path": "/radar/stations/{stationId}",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "reportingHost",
+     "parameter": "reportingHost",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "host",
+     "parameter": "host",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsRadarStationAlarms",
+   "path": "/radar/stations/{stationId}/alarms",
+   "arguments": [
+    {
+     "name": "stationId",
+     "parameter": "stationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsRadarQueue",
+   "path": "/radar/queues/{host}",
+   "arguments": [
+    {
+     "name": "host",
+     "parameter": "host",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "arrived",
+     "parameter": "arrived",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created",
+     "parameter": "created",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "published",
+     "parameter": "published",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "station",
+     "parameter": "station",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "feed",
+     "parameter": "feed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "resolution",
+     "parameter": "resolution",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsWeatherRadioTransmitters",
+   "path": "/radio",
+   "arguments": [
+    {
+     "name": "cursor",
+     "parameter": "cursor",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsWeatherRadioTransmitter",
+   "path": "/radio/{callSign}",
+   "arguments": [
+    {
+     "name": "callSign",
+     "parameter": "callSign",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTextProducts",
+   "path": "/products",
+   "arguments": [
+    {
+     "name": "location",
+     "parameter": "location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "start",
+     "parameter": "start",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "end",
+     "parameter": "end",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "office",
+     "parameter": "office",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "wmoid",
+     "parameter": "wmoid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsTextProductLocations",
+   "path": "/products/locations",
+   "arguments": []
+  },
+  {
+   "field": "nwsTextProductTypes",
+   "path": "/products/types",
+   "arguments": []
+  },
+  {
+   "field": "nwsTextProduct",
+   "path": "/products/{productId}",
+   "arguments": [
+    {
+     "name": "productId",
+     "parameter": "productId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTextProductsOfType",
+   "path": "/products/types/{typeId}",
+   "arguments": [
+    {
+     "name": "typeId",
+     "parameter": "typeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTextProductTypeLocations",
+   "path": "/products/types/{typeId}/locations",
+   "arguments": [
+    {
+     "name": "typeId",
+     "parameter": "typeId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTextProductTypesAtLocation",
+   "path": "/products/locations/{locationId}/types",
+   "arguments": [
+    {
+     "name": "locationId",
+     "parameter": "locationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsTextProductsOfTypeAtLocation",
+   "path": "/products/types/{typeId}/locations/{locationId}",
+   "arguments": [
+    {
+     "name": "typeId",
+     "parameter": "typeId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "locationId",
+     "parameter": "locationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsLatestTextProduct",
+   "path": "/products/types/{typeId}/locations/{locationId}/latest",
+   "arguments": [
+    {
+     "name": "typeId",
+     "parameter": "typeId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "locationId",
+     "parameter": "locationId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsZones",
+   "path": "/zones",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "area",
+     "parameter": "area",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "region",
+     "parameter": "region",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "point",
+     "parameter": "point",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "effective",
+     "parameter": "effective",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsZonesOfType",
+   "path": "/zones/{type}",
+   "arguments": [
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "area",
+     "parameter": "area",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "region",
+     "parameter": "region",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "point",
+     "parameter": "point",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "effective",
+     "parameter": "effective",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsZone",
+   "path": "/zones/{type}/{zoneId}",
+   "arguments": [
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "effective",
+     "parameter": "effective",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsZoneForecast",
+   "path": "/zones/{type}/{zoneId}/forecast",
+   "arguments": [
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsCountyWeatherRadioTransmitters",
+   "path": "/zones/{type}/{zoneId}/radio",
+   "arguments": [
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "nwsZoneObservations",
+   "path": "/zones/forecast/{zoneId}/observations",
+   "arguments": [
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "start",
+     "parameter": "start",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "end",
+     "parameter": "end",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  },
+  {
+   "field": "nwsZoneObservationStations",
+   "path": "/zones/forecast/{zoneId}/stations",
+   "arguments": [
+    {
+     "name": "zoneId",
+     "parameter": "zoneId",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "cursor",
+     "parameter": "cursor",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "limit"
+   }
+  }
+ ],
+ "mapFields": {
+  "NwsAlert": [
+   "parameters",
+   "eventCode"
+  ],
+  "NwsActiveAlertCounts": [
+   "regions",
+   "areas",
+   "zones"
+  ],
+  "NwsIconConditions": [
+   "icons"
+  ],
+  "NwsTextProductLocationCollection": [
+   "locations"
+  ]
+ }
+}

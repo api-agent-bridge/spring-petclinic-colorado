@@ -1,0 +1,371 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Summary",
+      "type": "esriFieldTypeString",
+      "alias": "Case Summary",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Status",
+      "type": "esriFieldTypeString",
+      "alias": "Case Status",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Source",
+      "type": "esriFieldTypeString",
+      "alias": "Case Source",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Created_Date",
+      "type": "esriFieldTypeDate",
+      "alias": "Case Created Date",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Created_dttm",
+      "type": "esriFieldTypeString",
+      "alias": "Case Created dttm",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Closed_Date",
+      "type": "esriFieldTypeDate",
+      "alias": "Case Closed Date",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Case_Closed_dttm",
+      "type": "esriFieldTypeString",
+      "alias": "Case Closed dttm",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Agency",
+      "type": "esriFieldTypeString",
+      "alias": "Agency",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Address_1",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Address 1",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Intersection_1",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Intersection 1",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Intersection_2",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Intersection 2",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Incident_Zip_Code",
+      "type": "esriFieldTypeString",
+      "alias": "Incident Zip Code",
+      "sqlType": "sqlTypeOther",
+      "length": 8000,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Council_District",
+      "type": "esriFieldTypeInteger",
+      "alias": "Council District",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Police_District",
+      "type": "esriFieldTypeInteger",
+      "alias": "Police District",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Latitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Latitude",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Longitude",
+      "type": "esriFieldTypeDouble",
+      "alias": "Longitude",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "exceededTransferLimit": true,
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 394701694,
+        "Case_Summary": "Animal Complaint",
+        "Case_Status": "New",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 9:35:10 PM",
+        "Case_Closed_Date": null,
+        "Case_Closed_dttm": null,
+        "Agency": "311",
+        "Incident_Address_1": "5103 N Wheeling St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80239-4053",
+        "Council_District": 11,
+        "Police_District": 5,
+        "Latitude": 39.79070195,
+        "Longitude": -104.83260457
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394701562,
+        "Case_Summary": "Denver Animal Protection 720-913-2080",
+        "Case_Status": "Closed - Transferred to External Agency",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 6:43:26 PM",
+        "Case_Closed_Date": 1791590400000,
+        "Case_Closed_dttm": "10/10/2026 6:43:26 PM",
+        "Agency": "Safety",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394701431,
+        "Case_Summary": "Denver Animal Protection 720-913-2080",
+        "Case_Status": "Closed - Transferred to External Agency",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 12:44:08 PM",
+        "Case_Closed_Date": 1791590400000,
+        "Case_Closed_dttm": "10/10/2026 12:44:08 PM",
+        "Agency": "Safety",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394701385,
+        "Case_Summary": "Denver Animal Protection 720-913-2080",
+        "Case_Status": "Closed - Transferred to External Agency",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 5:58:53 PM",
+        "Case_Closed_Date": 1791590400000,
+        "Case_Closed_dttm": "10/10/2026 5:58:53 PM",
+        "Agency": "Safety",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394701378,
+        "Case_Summary": "Animal Complaint",
+        "Case_Status": "New",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 10:55:08 AM",
+        "Case_Closed_Date": null,
+        "Case_Closed_dttm": null,
+        "Agency": "311",
+        "Incident_Address_1": "1550 S Vallejo St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80223-3527",
+        "Council_District": 7,
+        "Police_District": 4,
+        "Latitude": 39.68819064,
+        "Longitude": -105.01358261
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394701274,
+        "Case_Summary": "Animal Complaint",
+        "Case_Status": "New",
+        "Case_Source": "PocketGov",
+        "Case_Created_Date": 1791590400000,
+        "Case_Created_dttm": "10/10/2026 6:25:14 PM",
+        "Case_Closed_Date": null,
+        "Case_Closed_dttm": null,
+        "Agency": "311",
+        "Incident_Address_1": "1255 N Yates St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80204-1027",
+        "Council_District": 3,
+        "Police_District": 1,
+        "Latitude": 39.73595594,
+        "Longitude": -105.05117821
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394703027,
+        "Case_Summary": "Barking Dog",
+        "Case_Status": "Closed - Service Completed",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791504000000,
+        "Case_Created_dttm": "10/9/2026 10:15:30 AM",
+        "Case_Closed_Date": 1791504000000,
+        "Case_Closed_dttm": "10/9/2026 11:13:10 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": "2694 N Elmira St",
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": "80238",
+        "Council_District": 8,
+        "Police_District": 5,
+        "Latitude": 39.75552338,
+        "Longitude": -104.87230076
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394702995,
+        "Case_Summary": "Pet Surrender",
+        "Case_Status": "Closed - Answer Provided",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791504000000,
+        "Case_Created_dttm": "10/9/2026 10:08:32 AM",
+        "Case_Closed_Date": 1791504000000,
+        "Case_Closed_dttm": "10/9/2026 10:08:32 AM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394702957,
+        "Case_Summary": "Denver Animal Protection 720-913-2080",
+        "Case_Status": "Closed - Transferred to External Agency",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791504000000,
+        "Case_Created_dttm": "10/9/2026 6:26:50 PM",
+        "Case_Closed_Date": 1791504000000,
+        "Case_Closed_dttm": "10/9/2026 6:26:50 PM",
+        "Agency": "Safety",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 394702946,
+        "Case_Summary": "Pet Surrender",
+        "Case_Status": "Closed - Answer Provided",
+        "Case_Source": "Phone",
+        "Case_Created_Date": 1791504000000,
+        "Case_Created_dttm": "10/9/2026 4:04:54 PM",
+        "Case_Closed_Date": 1791504000000,
+        "Case_Closed_dttm": "10/9/2026 4:04:54 PM",
+        "Agency": "Public Health & Environment",
+        "Incident_Address_1": null,
+        "Incident_Intersection_1": null,
+        "Incident_Intersection_2": null,
+        "Incident_Zip_Code": null,
+        "Council_District": null,
+        "Police_District": null,
+        "Latitude": null,
+        "Longitude": null
+      }
+    }
+  ]
+}

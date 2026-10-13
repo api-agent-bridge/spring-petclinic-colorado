@@ -133,7 +133,7 @@
       "email": "read@example.com",
       "emailVerified": true,
       "firstName": "Read",
-      "lastName": "Oxx",
+      "lastName": "Next",
       "credentials": [
         {
           "type": "password",
@@ -148,7 +148,7 @@
       "email": "write@example.com",
       "emailVerified": true,
       "firstName": "Write",
-      "lastName": "Oxx",
+      "lastName": "Next",
       "credentials": [
         {
           "type": "password",

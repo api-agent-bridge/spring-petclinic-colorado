@@ -1,0 +1,6321 @@
+{
+ "operations": [
+  {
+   "field": "inatObservations",
+   "path": "/v1/observations",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatObservation",
+   "path": "/v1/observations/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatObservationTaxonSummary",
+   "path": "/v1/observations/{id}/taxon_summary",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatObservationSpeciesCounts",
+   "path": "/v1/observations/species_counts",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "include_ancestors",
+     "parameter": "include_ancestors",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatObservationHistogram",
+   "path": "/v1/observations/histogram",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "date_field",
+     "parameter": "date_field",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "interval",
+     "parameter": "interval",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatObservationObservers",
+   "path": "/v1/observations/observers",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatObservationIdentifiers",
+   "path": "/v1/observations/identifiers",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatObservationPopularFieldValues",
+   "path": "/v1/observations/popular_field_values",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "ttl",
+     "parameter": "ttl",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatIdentifications",
+   "path": "/v1/identifications",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatIdentification",
+   "path": "/v1/identifications/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatIdentificationCategories",
+   "path": "/v1/identifications/categories",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "page",
+     "parameter": "page",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "per_page",
+     "parameter": "per_page",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatIdentificationSpeciesCounts",
+   "path": "/v1/identifications/species_counts",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_of",
+     "parameter": "taxon_of",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatIdentificationIdentifiers",
+   "path": "/v1/identifications/identifiers",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatIdentificationObservers",
+   "path": "/v1/identifications/observers",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatIdentificationRecentTaxa",
+   "path": "/v1/identifications/recent_taxa",
+   "arguments": [
+    {
+     "name": "current_taxon",
+     "parameter": "current_taxon",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "own_observation",
+     "parameter": "own_observation",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_change",
+     "parameter": "is_change",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_active",
+     "parameter": "taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_taxon_active",
+     "parameter": "observation_taxon_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_rank",
+     "parameter": "observation_rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "current",
+     "parameter": "current",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "category",
+     "parameter": "category",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_taxon_id",
+     "parameter": "observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "iconic_taxon_id",
+     "parameter": "iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "observation_iconic_taxon_id",
+     "parameter": "observation_iconic_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_lrank",
+     "parameter": "observation_lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_hrank",
+     "parameter": "observation_hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_observation_taxon_id",
+     "parameter": "without_observation_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d1",
+     "parameter": "observation_created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_created_d2",
+     "parameter": "observation_created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d1",
+     "parameter": "observed_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_d2",
+     "parameter": "observed_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatSimilarSpecies",
+   "path": "/v1/identifications/similar_species",
+   "arguments": [
+    {
+     "name": "acc",
+     "parameter": "acc",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "captive",
+     "parameter": "captive",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "endemic",
+     "parameter": "endemic",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "geo",
+     "parameter": "geo",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_please",
+     "parameter": "id_please",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identified",
+     "parameter": "identified",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "introduced",
+     "parameter": "introduced",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "mappable",
+     "parameter": "mappable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "native",
+     "parameter": "native",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "out_of_range",
+     "parameter": "out_of_range",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "pcid",
+     "parameter": "pcid",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photos",
+     "parameter": "photos",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "popular",
+     "parameter": "popular",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sounds",
+     "parameter": "sounds",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_is_active",
+     "parameter": "taxon_is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "threatened",
+     "parameter": "threatened",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "verifiable",
+     "parameter": "verifiable",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "licensed",
+     "parameter": "licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "photo_licensed",
+     "parameter": "photo_licensed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "expected_nearby",
+     "parameter": "expected_nearby",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "license",
+     "parameter": "license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ofv_datatype",
+     "parameter": "ofv_datatype",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "photo_license",
+     "parameter": "photo_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "sound_license",
+     "parameter": "sound_license",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_taxon_id",
+     "parameter": "without_taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_name",
+     "parameter": "taxon_name",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_id",
+     "parameter": "user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "user_login",
+     "parameter": "user_login",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "ident_user_id",
+     "parameter": "ident_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "hour",
+     "parameter": "hour",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "day",
+     "parameter": "day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "month",
+     "parameter": "month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "year",
+     "parameter": "year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_day",
+     "parameter": "created_day",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_month",
+     "parameter": "created_month",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "created_year",
+     "parameter": "created_year",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id",
+     "parameter": "term_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_value_id",
+     "parameter": "term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "without_term_id",
+     "parameter": "without_term_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "without_term_value_id",
+     "parameter": "without_term_value_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "term_id_or_unknown",
+     "parameter": "term_id_or_unknown",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "annotation_user_id",
+     "parameter": "annotation_user_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "acc_above",
+     "parameter": "acc_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below",
+     "parameter": "acc_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "acc_below_or_unknown",
+     "parameter": "acc_below_or_unknown",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d1",
+     "parameter": "d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "d2",
+     "parameter": "d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d1",
+     "parameter": "created_d1",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_d2",
+     "parameter": "created_d2",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "created_on",
+     "parameter": "created_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observed_on",
+     "parameter": "observed_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "unobserved_by_user_id",
+     "parameter": "unobserved_by_user_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "apply_project_rules_for",
+     "parameter": "apply_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "cs",
+     "parameter": "cs",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csa",
+     "parameter": "csa",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "csi",
+     "parameter": "csi",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "geoprivacy",
+     "parameter": "geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "taxon_geoprivacy",
+     "parameter": "taxon_geoprivacy",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "obscuration",
+     "parameter": "obscuration",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "hrank",
+     "parameter": "hrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lrank",
+     "parameter": "lrank",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "iconic_taxa",
+     "parameter": "iconic_taxa",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "identifications",
+     "parameter": "identifications",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "list_id",
+     "parameter": "list_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_in_project",
+     "parameter": "not_in_project",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "not_matching_project_rules_for",
+     "parameter": "not_matching_project_rules_for",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "observation_accuracy_experiment_id",
+     "parameter": "observation_accuracy_experiment_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "fails_dqa_accurate",
+     "parameter": "fails_dqa_accurate",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_date",
+     "parameter": "fails_dqa_date",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_evidence",
+     "parameter": "fails_dqa_evidence",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_location",
+     "parameter": "fails_dqa_location",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_needs_id",
+     "parameter": "fails_dqa_needs_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_recent",
+     "parameter": "fails_dqa_recent",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_subject",
+     "parameter": "fails_dqa_subject",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "fails_dqa_wild",
+     "parameter": "fails_dqa_wild",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "search_on",
+     "parameter": "search_on",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "quality_grade",
+     "parameter": "quality_grade",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "updated_since",
+     "parameter": "updated_since",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "viewer_id",
+     "parameter": "viewer_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "reviewed",
+     "parameter": "reviewed",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatTaxa",
+   "path": "/v1/taxa",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_active",
+     "parameter": "is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "parent_id",
+     "parameter": "parent_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank_level",
+     "parameter": "rank_level",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_above",
+     "parameter": "id_above",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id_below",
+     "parameter": "id_below",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "only_id",
+     "parameter": "only_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "all_names",
+     "parameter": "all_names",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order",
+     "parameter": "order",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatTaxon",
+   "path": "/v1/taxa/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "rank_level",
+     "parameter": "rank_level",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatTaxonAutocomplete",
+   "path": "/v1/taxa/autocomplete",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "is_active",
+     "parameter": "is_active",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank",
+     "parameter": "rank",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "rank_level",
+     "parameter": "rank_level",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "all_names",
+     "parameter": "all_names",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatControlledTerms",
+   "path": "/v1/controlled_terms",
+   "arguments": []
+  },
+  {
+   "field": "inatControlledTermsForTaxon",
+   "path": "/v1/controlled_terms/for_taxon",
+   "arguments": [
+    {
+     "name": "taxon_id",
+     "parameter": "taxon_id",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatPlace",
+   "path": "/v1/places/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "admin_level",
+     "parameter": "admin_level",
+     "in": "query",
+     "list": true
+    }
+   ]
+  },
+  {
+   "field": "inatPlaceAutocomplete",
+   "path": "/v1/places/autocomplete",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatPlacesNearby",
+   "path": "/v1/places/nearby",
+   "arguments": [
+    {
+     "name": "nelat",
+     "parameter": "nelat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "nelng",
+     "parameter": "nelng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlat",
+     "parameter": "swlat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "swlng",
+     "parameter": "swlng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "name",
+     "parameter": "name",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatProjects",
+   "path": "/v1/projects",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "featured",
+     "parameter": "featured",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "noteworthy",
+     "parameter": "noteworthy",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "rule_details",
+     "parameter": "rule_details",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "member_id",
+     "parameter": "member_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "has_params",
+     "parameter": "has_params",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "has_posts",
+     "parameter": "has_posts",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "order_by",
+     "parameter": "order_by",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatProject",
+   "path": "/v1/projects/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "rule_details",
+     "parameter": "rule_details",
+     "in": "query",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatProjectMembers",
+   "path": "/v1/projects/{id}/members",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "role",
+     "parameter": "role",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "skip_counts",
+     "parameter": "skip_counts",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatProjectAutocomplete",
+   "path": "/v1/projects/autocomplete",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "not_id",
+     "parameter": "not_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "lat",
+     "parameter": "lat",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "lng",
+     "parameter": "lng",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "radius",
+     "parameter": "radius",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "featured",
+     "parameter": "featured",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "noteworthy",
+     "parameter": "noteworthy",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "site_id",
+     "parameter": "site_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "rule_details",
+     "parameter": "rule_details",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "type",
+     "parameter": "type",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "member_id",
+     "parameter": "member_id",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "has_params",
+     "parameter": "has_params",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "has_posts",
+     "parameter": "has_posts",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatSearch",
+   "path": "/v1/search",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "sources",
+     "parameter": "sources",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "place_id",
+     "parameter": "place_id",
+     "in": "query",
+     "list": true
+    },
+    {
+     "name": "include_taxon_ancestors",
+     "parameter": "include_taxon_ancestors",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "locale",
+     "parameter": "locale",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "preferred_place_id",
+     "parameter": "preferred_place_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatUser",
+   "path": "/v1/users/{id}",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    }
+   ]
+  },
+  {
+   "field": "inatUserProjects",
+   "path": "/v1/users/{id}/projects",
+   "arguments": [
+    {
+     "name": "id",
+     "parameter": "id",
+     "in": "path",
+     "list": false
+    },
+    {
+     "name": "rule_details",
+     "parameter": "rule_details",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "project_type",
+     "parameter": "project_type",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatUserAutocomplete",
+   "path": "/v1/users/autocomplete",
+   "arguments": [
+    {
+     "name": "q",
+     "parameter": "q",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "limit",
+    "size": "per_page"
+   }
+  },
+  {
+   "field": "inatPosts",
+   "path": "/v1/posts",
+   "arguments": [
+    {
+     "name": "login",
+     "parameter": "login",
+     "in": "query",
+     "list": false
+    },
+    {
+     "name": "project_id",
+     "parameter": "project_id",
+     "in": "query",
+     "list": false
+    }
+   ],
+   "paging": {
+    "style": "page",
+    "start": "page",
+    "size": "per_page"
+   }
+  }
+ ],
+ "mapFields": {
+  "InatHistogramPeriods": [
+   "month_of_year",
+   "year",
+   "month",
+   "week",
+   "day",
+   "hour",
+   "week_of_year"
+  ],
+  "InatPopularFieldValue": [
+   "month_of_year"
+  ]
+ }
+}

@@ -1,0 +1,4017 @@
+# iNaturalist (https://api.inaturalist.org/v1/docs/), the community science platform for sightings of animals,
+# plants and fungi. The fields and types below are generated from its Swagger document and from answers recorded
+# from the live API, with hand-written descriptions. Each field is one GET operation, and RestOperationFetcher
+# calls it with the operation table in inaturalist/operations.json.
+
+extend type Query {
+	# The iNaturalist observations: who saw which animal or plant, where and when.
+
+	"""
+	Sightings of animals, plants and fungi that iNaturalist members recorded with a photo or a sound at a place and
+	a time, for example the domestic dogs observed in Denver County (taxon_id 47144, place_id 205) or the coyotes
+	seen in Colorado (taxon_id 42051, place_id 34). Each observation names the species the community agreed on, the
+	date, the place and the photos, and its quality_grade is research when the community confirmed the species. A
+	pet is captive, so observations of dogs and cats stay casual.
+	An observation with every field is 15,000 to 30,000 tokens, because it carries every identification with the
+	full classification. Narrow the search with taxon_id, place_id, d1 and d2, and select only the fields the
+	question needs. To count observations, select only total_results with size 1. For the species seen at a place,
+	inatObservationSpeciesCounts answers in one call.
+	"""
+	inatObservations(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatObservationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatObservationPage
+
+	"""
+	One iNaturalist observation by its id, or several with the ids separated by commas, with every detail: the
+	identifications members added, the photos, the comments, the place and the date.
+	Observation Details
+	Given an ID, or an array of IDs in comma-delimited format, returns corresponding observations. A maximum of 200
+	results will be returned
+	"""
+	inatObservation(
+		"Must have this ID"
+		id: ID!
+	): InatObservationPage
+
+	"""
+	What iNaturalist knows about the species of one observation at the place where it was made: whether the species
+	is native or introduced there, its conservation status there, and a short summary from Wikipedia. For
+	observation 400469344, a domestic dog in Denver County, the species is introduced.
+	Observation Taxon Summary
+	Fetches information about this observation's taxon, within the context of this observation's location
+	"""
+	inatObservationTaxonSummary(
+		"ID of the record"
+		id: ID!
+	): InatObservationTaxonSummary
+
+	"""
+	Which species people see most often in a place, from the sightings that iNaturalist members photograph and
+	share: each species with the number of its observations, most observed first, for any search of observations. Use it for questions such as "which mammals are seen most often in Denver
+	County" (place_id 205, iconic_taxa Mammalia) or "which birds were seen in Colorado this year".
+	Observation Species Counts
+	Given zero to many of following parameters, returns leaf taxa associated with observations matching the search
+	criteria and the count of observations they are associated with, ordered by count descending. Leaf taxa are the
+	leaves of the taxonomic tree containing only the taxa associated with observations matching the search criteria.
+	"""
+	inatObservationSpeciesCounts(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+		"Include taxon ancestors in the response"
+		include_ancestors: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatSpeciesCountPage
+
+	"""
+	How many iNaturalist observations match a search in each month of the year, week of the year, hour, day, week or
+	month, as counts keyed by that period. Use it for questions about seasons, such as "in which month are coyotes
+	seen most in Colorado" (taxon_id 42051, place_id 34, interval month_of_year).
+	Observation Histogram
+	Given zero to many of following parameters, returns histogram data about observations matching the search
+	criteria
+	"""
+	inatObservationHistogram(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+		"The date to count by: observed for the day of the sighting, or created for the day it was uploaded."
+		date_field: InatDateField
+		"""
+		The length of a period: month_of_year or week_of_year for seasons, or year, month, week, day or hour for a time
+		line.
+		"""
+		interval: InatInterval
+	): InatObservationHistogram
+
+	"""
+	The iNaturalist members who made the most observations matching a search, each with the number of observations
+	and of distinct species they recorded, most active first.
+	Observation Observers
+	Given zero to many of following parameters, returns observers of observations matching the search criteria and
+	the count of observations and distinct taxa of rank species they have observed. A maximum of 500 results will be
+	returned
+	"""
+	inatObservationObservers(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatObserverCountPage
+
+	"""
+	The iNaturalist members who identified the most observations matching a search, each with the number of
+	observations they identified, most active first.
+	Observation Identifiers
+	Given zero to many of following parameters, returns identifiers of observations matching the search criteria and
+	the count of observations they have identified, ordered by count descending. A maximum of 500 results will be
+	returned
+	"""
+	inatObservationIdentifiers(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatUserCountPage
+
+	"""
+	The annotations members added most often to the observations matching a search, such as life stage, sex or alive
+	or dead, each with its count and a count for each month of the year.
+	Observation Popular Field Values
+	Given zero to many of following parameters, returns an array of relevant controlled terms values and a monthly
+	histogram
+	"""
+	inatObservationPopularFieldValues(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		Set the Cache-Control HTTP header with this value as max-age, in seconds. This means subsequent identical
+		requests will be cached on iNaturalist servers, and commonly within web browsers
+		"""
+		ttl: String
+	): InatPopularFieldValuePage
+
+	# The iNaturalist identifications: the species that members name for an observation, and who named them.
+
+	"""
+	Identifications on iNaturalist: the species a member named for an observation, with who named it, when, and
+	whether it agreed with the community, for example the identifications of domestic dogs in Denver County
+	(taxon_id 47144, place_id 205). Each identification carries its observation, so select only the fields the
+	question needs.
+	Identification Search
+	Given zero to many of following parameters, returns identifications matching the search criteria
+	"""
+	inatIdentifications(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatIdentificationPage
+
+	"""
+	One iNaturalist identification by its id, or several with the ids separated by commas, with the observation it
+	belongs to and the taxon it names.
+	Identification Details
+	Given an ID, or an array of IDs in comma-delimited format, returns corresponding identifications. A maximum of
+	30 results will be returned
+	"""
+	inatIdentification(
+		"Must have this ID"
+		id: ID!
+	): InatIdentificationPage
+
+	"""
+	How many iNaturalist identifications matching a search fall in each category: improving, supporting, leading or
+	maverick (one that disagrees with the community).
+	Identification Categories
+	Given zero to many of following parameters, return counts of the categories of identifications matching the
+	search criteria
+	"""
+	inatIdentificationCategories(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Pagination page number"
+		page: String
+		"Number of results to return in a page. The maximum value is generally 200 unless otherwise noted"
+		per_page: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+	): InatIdentificationCategoryPage
+
+	"""
+	The species named in the iNaturalist identifications matching a search, each with the number of identifications
+	that name it, most named first.
+	Identification Species Counts
+	Given zero to many of following parameters, returns leaf taxa associated with identifications matching the
+	search criteria and the count of identifications they are associated with, ordered by count descending. Leaf
+	taxa are the leaves of the taxonomic tree containing only the taxa associated with observations matching the
+	search criteria.
+	"""
+	inatIdentificationSpeciesCounts(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"Source of the taxon for counting"
+		taxon_of: InatTaxonOf
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatSpeciesCountPage
+
+	"""
+	The iNaturalist members who made the most identifications matching a search, each with their count, most active
+	first.
+	Identification Identifiers
+	Given zero to many of following parameters, returns creators of identifications matching the search criteria and
+	the count of matching identifications, ordered by count descending. A maximum of 500 results will be returned
+	"""
+	inatIdentificationIdentifiers(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatUserCountPage
+
+	"""
+	The iNaturalist members whose observations received the most identifications matching a search, each with their
+	count.
+	Identification Observers
+	Given zero to many of following parameters, returns creators of observations of identifications matching the
+	search criteria and the count of matching observations, ordered by count descending
+	"""
+	inatIdentificationObservers(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatUserCountPage
+
+	"""
+	The species most recently added to the iNaturalist identifications matching a search, each with the first
+	identification that named it, for questions such as "which species were identified in Denver County for the
+	first time lately".
+	Identification Recent Taxa
+	Returns an array of objects each containing an identification and a taxon. Returns IDs representing the earliest
+	occurrence of taxa associated with identifications in the filtered set of results
+	"""
+	inatIdentificationRecentTaxa(
+		"ID's taxon is the same it's observation's taxon"
+		current_taxon: Boolean
+		"ID was added by the observer"
+		own_observation: Boolean
+		"ID was created as a results of a taxon change"
+		is_change: Boolean
+		"ID's taxon is currently an active taxon"
+		taxon_active: Boolean
+		"Observation's taxon is currently an active taxon"
+		observation_taxon_active: Boolean
+		"Identification ID"
+		id: [Int!]
+		"ID's taxon must have this rank"
+		rank: [InatRank!]
+		"Observation's taxon must have this rank"
+		observation_rank: [InatRank!]
+		"Identifier must have this user ID"
+		user_id: [Int!]
+		"Identifier must have this login"
+		user_login: [String!]
+		"Most recent ID on a observation by a user"
+		current: String
+		"Type of identification"
+		category: [InatIdentificationCategoryName!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Observation must have this quality grade"
+		quality_grade: [InatQualityGrade!]
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Observation taxa must match the given taxa or their descendants"
+		observation_taxon_id: [String!]
+		"ID iconic taxon ID"
+		iconic_taxon_id: [String!]
+		"Observation iconic taxon ID"
+		observation_iconic_taxon_id: [String!]
+		"ID taxon must have this rank or higher"
+		lrank: InatRank
+		"ID taxon must have this rank or lower"
+		hrank: InatRank
+		"Observation taxon must have this rank or higher"
+		observation_lrank: InatRank
+		"Observation taxon must have this rank or lower"
+		observation_hrank: InatRank
+		"Exclude IDs of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Exclude IDs of observations of these taxa and their descendants"
+		without_observation_taxon_id: [String!]
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Observation created on or after this date"
+		observation_created_d1: String
+		"Observation created on or before this date"
+		observation_created_d2: String
+		"Observation observed on or after this date"
+		observed_d1: String
+		"Observation observed on or before this date"
+		observed_d2: String
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatIdentificationOrderBy
+		"Return only the record IDs"
+		only_id: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatRecentTaxonPage
+
+	"""
+	The species that iNaturalist members confuse with a given species, most often first, from observations
+	identified as one and then as the other. For the coyote in Colorado (taxon_id 42051, place_id 34) the red fox,
+	the mountain lion and the domestic dog come first, and it answers "what could I have mixed this animal up with".
+	Identification Similar Species
+	Returns species attached to IDs of observations of this taxon, or attached to observations identified as this
+	species, ordered by combined frequency descending. This will only return species in the same iconic taxon, and
+	will never return descendants of the chosen taxon
+	"""
+	inatSimilarSpecies(
+		"Whether or not positional accuracy / coordinate uncertainty has been specified"
+		acc: Boolean
+		"Captive or cultivated observations"
+		captive: Boolean
+		"Observations whose taxa are endemic to their location"
+		endemic: Boolean
+		"Observations that are georeferenced"
+		geo: Boolean
+		"""
+		Observations with the deprecated ID, Please! flag. Note that this will return observations, but that this
+		attribute is no longer used.
+		"""
+		id_please: Boolean
+		"Observations that have community identifications"
+		identified: Boolean
+		"Observations whose taxa are introduced in their location"
+		introduced: Boolean
+		"Observations that show on map tiles"
+		mappable: Boolean
+		"Observations whose taxa are native to their location"
+		native: Boolean
+		"Observations whose taxa are outside their known ranges"
+		out_of_range: Boolean
+		"""
+		Observations identified by the curator of a project. If the project_id parameter is also specified, this will
+		only consider observations identified by curators of the specified project(s)
+		"""
+		pcid: Boolean
+		"Observations with photos"
+		photos: Boolean
+		"Observations that have been favorited by at least one user"
+		popular: Boolean
+		"Observations with sounds"
+		sounds: Boolean
+		"Observations of active taxon concepts"
+		taxon_is_active: Boolean
+		"Observations whose taxa are threatened in their location"
+		threatened: Boolean
+		"""
+		Observations with a quality_grade of either needs_id or research. Equivalent to quality_grade=needs_id,research
+		"""
+		verifiable: Boolean
+		"License attribute of an observation must not be null"
+		licensed: Boolean
+		"License attribute of at least one photo of an observation must not be null"
+		photo_licensed: Boolean
+		"Observation taxon is expected nearby"
+		expected_nearby: Boolean
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Observation must have this license"
+		license: [String!]
+		"Must have an observation field value with this datatype"
+		ofv_datatype: [String!]
+		"Must have at least one photo with this license"
+		photo_license: [String!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [Int!]
+		"Must be added to the project this ID or slug"
+		project_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"Must be affiliated with the iNaturalist network website with this ID"
+		site_id: [String!]
+		"Must have at least one sound with this license"
+		sound_license: [String!]
+		"Exclude observations of these taxa and their descendants"
+		without_taxon_id: [String!]
+		"Taxon must have a scientific or common name matching this string"
+		taxon_name: [String!]
+		"User must have this ID or login"
+		user_id: [String!]
+		"User must have this login"
+		user_login: [String!]
+		"Observations identified by a particular user"
+		ident_user_id: Int
+		"Must be observed within this hour of the day"
+		hour: [String!]
+		"Must be observed within this day of the month"
+		day: [String!]
+		"Must be observed within this month"
+		month: [String!]
+		"Must be observed within this year"
+		year: [String!]
+		"Must be created within this day of the month"
+		created_day: [String!]
+		"Must be created within this month"
+		created_month: [String!]
+		"Must be created within this year"
+		created_year: [String!]
+		"Must have an annotation using this controlled term ID"
+		term_id: [Int!]
+		"Must have an annotation using this controlled value ID. Must be combined with the term_id parameter"
+		term_value_id: [Int!]
+		"Exclude observations with annotations using this controlled value ID."
+		without_term_id: Int
+		"""
+		Exclude observations with annotations using this controlled value ID. Must be combined with the term_id
+		parameter
+		"""
+		without_term_value_id: [Int!]
+		"""
+		Must be combined with the term_value_id or the without_term_value_id parameter. Must have an annotation using
+		this controlled term ID and associated term value IDs or be missing this annotation.
+		"""
+		term_id_or_unknown: [Int!]
+		"Must have an annotation created by this user"
+		annotation_user_id: [String!]
+		"Must have a positional accuracy above this value (meters)"
+		acc_above: String
+		"Must have a positional accuracy below this value (meters)"
+		acc_below: String
+		"Positional accuracy must be below this value (in meters) or be unknown"
+		acc_below_or_unknown: String
+		"Only observations made on or after this day, as YYYY-MM-DD."
+		d1: String
+		"Only observations made on or before this day, as YYYY-MM-DD."
+		d2: String
+		"Must be created at or after this time"
+		created_d1: String
+		"Must be created at or before this time"
+		created_d2: String
+		"Must be created on this date"
+		created_on: String
+		"Must be observed on this date"
+		observed_on: String
+		"Must not be of a taxon previously observed by this user"
+		unobserved_by_user_id: Int
+		"Must match the rules of the project with this ID or slug"
+		apply_project_rules_for: String
+		"""
+		Taxon must have this conservation status code. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		cs: String
+		"""
+		Taxon must have a conservation status from this authority. If the place_id parameter is also specified, this
+		will only consider statuses specific to that place
+		"""
+		csa: String
+		"""
+		Taxon must have this IUCN conservation status. If the place_id parameter is also specified, this will only
+		consider statuses specific to that place
+		"""
+		csi: [InatIucnStatus!]
+		"Must have this geoprivacy setting"
+		geoprivacy: [InatGeoprivacy!]
+		"""
+		Filter observations by the most conservative geoprivacy applied by a conservation status associated with one of
+		the taxa proposed in the current identifications.
+		"""
+		taxon_geoprivacy: [InatGeoprivacy!]
+		"Must have geoprivacy or taxon_geoprivacy fields matching these values"
+		obscuration: [InatObscuration!]
+		"Taxon must have this rank or lower"
+		hrank: InatRank
+		"Taxon must have this rank or higher"
+		lrank: InatRank
+		"Taxon must by within this iconic taxon"
+		iconic_taxa: [InatIconicTaxon!]
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Identifications must meet these criteria"
+		identifications: InatIdentificationAgreement
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		radius: String
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be within this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Taxon must be in the list with this ID"
+		list_id: Int
+		"Must not be in the project with this ID or slug"
+		not_in_project: String
+		"Must not match the rules of the project with this ID or slug"
+		not_matching_project_rules_for: String
+		"Must included in this observation accuracy experiment"
+		observation_accuracy_experiment_id: [Int!]
+		"Must be voted as not accurately depicting an organism or scene"
+		fails_dqa_accurate: Boolean
+		"Must be voted as not having an accurate date"
+		fails_dqa_date: Boolean
+		"Must be voted as not evidence of an organism"
+		fails_dqa_evidence: Boolean
+		"Must be voted as not having an accurate location"
+		fails_dqa_location: Boolean
+		"Must be voted as the community ID cannot be improved"
+		fails_dqa_needs_id: Boolean
+		"Must be voted as not recent evidence of an organism"
+		fails_dqa_recent: Boolean
+		"Must be voted as not having evidence related to a single subject"
+		fails_dqa_subject: Boolean
+		"Must be voted as not wild"
+		fails_dqa_wild: Boolean
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Properties to search on, when combined with q. Searches across all properties by default"
+		search_on: InatSearchOn
+		"Must have this quality grade"
+		quality_grade: InatQualityGrade
+		"Must be updated since this time"
+		updated_since: String
+		"See reviewed"
+		viewer_id: String
+		"Observations have been reviewed by the user with ID equal to the value of the viewer_id parameter"
+		reviewed: Boolean
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: Int
+	): InatSimilarSpeciesPage
+
+	# The iNaturalist taxa: the species and the groups above them, with their common names.
+
+	"""
+	Species and higher groups of living things on iNaturalist whose scientific or common name matches a text, with
+	their rank, their place in the classification and how often members observed them. Searching "coyote" finds
+	Canis latrans, taxon_id 42051.
+	Taxon Search
+	Given zero to many of following parameters, returns taxa matching the search criteria
+	"""
+	inatTaxa(
+		"The text to search for in the names, for example coyote."
+		q: String
+		"Taxon is active"
+		is_active: Boolean
+		"Comma-separated list of taxon IDs"
+		id: [Int!]
+		"Taxon's parent must have this ID"
+		parent_id: Int
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"""
+		Taxon must have this rank level. Some example values are 70 (kingdom), 60 (phylum), 50 (class), 40 (order), 30
+		(family), 20 (genus), 10 (species), 5 (subspecies)
+		"""
+		rank_level: Float
+		"Must have an ID above this value"
+		id_above: String
+		"Must have an ID below this value"
+		id_below: String
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"Return only the record IDs"
+		only_id: Boolean
+		"Include all taxon names in the response"
+		all_names: Boolean
+		"Sort order"
+		order: InatSortOrder
+		"Sort field"
+		order_by: InatTaxonOrderBy
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatTaxonPage
+
+	"""
+	One species or higher group on iNaturalist by its taxon id, or several with the ids separated by commas, with
+	its common name, its classification, a Wikipedia summary, its photos and its conservation statuses. The domestic
+	dog is 47144 and the domestic cat is 118552.
+	Taxon Details
+	Given an ID, or an array of IDs in comma-delimited format, returns corresponding taxa. A maximum of 30 results
+	will be returned
+	"""
+	inatTaxon(
+		"Must have this ID"
+		id: ID!
+		"""
+		Taxon must have this rank level. Some example values are 70 (kingdom), 60 (phylum), 50 (class), 40 (order), 30
+		(family), 20 (genus), 10 (species), 5 (subspecies)
+		"""
+		rank_level: Float
+	): InatTaxonPage
+
+	"""
+	Species and higher groups on iNaturalist whose name starts with a text, best match first, to turn a name such as
+	"dog" or "mule deer" into the taxon_id that the observation fields take.
+	Taxon Autocomplete
+	Given an string, returns taxa with names starting with the search term
+	"""
+	inatTaxonAutocomplete(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Taxon is active"
+		is_active: Boolean
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: [String!]
+		"Taxon must have this rank"
+		rank: [InatRank!]
+		"""
+		Taxon must have this rank level. Some example values are 70 (kingdom), 60 (phylum), 50 (class), 40 (order), 30
+		(family), 20 (genus), 10 (species), 5 (subspecies)
+		"""
+		rank_level: Float
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"Include all taxon names in the response"
+		all_names: Boolean
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatTaxonPage
+
+	"""
+	The annotations iNaturalist members can add to an observation, such as life stage, sex, or alive or dead, each
+	with its allowed values and their ids.
+	Terms Index
+	List all attribute controlled terms
+	"""
+	inatControlledTerms: InatControlledTermPage
+
+	"""
+	The annotations iNaturalist offers for one taxon. It matches only the taxa that a term names itself, so animals
+	(taxon_id 1) get alive or dead and life stage, while the domestic dog (47144) gets an empty list.
+	Terms for Taxon
+	Returns attribute controlled terms relevant to a taxon
+	"""
+	inatControlledTermsForTaxon(
+		"""
+		Only these taxa and the taxa below them, by taxon id: 47144 for the domestic dog, 118552 for the domestic cat,
+		42051 for the coyote. inatTaxonAutocomplete finds the id of a name.
+		"""
+		taxon_id: Int
+	): InatControlledTermPage
+
+	# The iNaturalist places, such as Colorado (place_id 34) and Denver County (place_id 205).
+
+	"""
+	One iNaturalist place by its id, or several with the ids separated by commas, with its name, its type, its
+	boundary as GeoJSON and the places it lies in. Colorado is 34 and Denver County is 205.
+	Place Details
+	Given an ID, or an array of IDs in comma-delimited format, returns corresponding places. A maximum of 500
+	results will be returned
+	"""
+	inatPlace(
+		"Must have this ID or slug"
+		id: ID!
+		"""
+		Admin level of a place, or an array of admin levels in comma-delimited format. Supported admin levels are: -10
+		(continent), 0 (country), 10 (state), 20 (county), 30 (town), 100 (park)
+		"""
+		admin_level: [String!]
+	): InatPlacePage
+
+	"""
+	iNaturalist places whose name starts with a text, to turn a name such as "Denver" into the place_id that the
+	observation fields take. The boundary of each place is large, so select only id and display_name unless the
+	question needs the shape.
+	Place Autocomplete
+	Given an string, returns places with names starting with the search term.
+	"""
+	inatPlaceAutocomplete(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Sort field"
+		order_by: InatPlaceOrderBy
+	): InatPlacePage
+
+	"""
+	The iNaturalist places inside a box of latitudes and longitudes, split into standard places that curators
+	approved and community places that members drew, such as parks and neighbourhoods around downtown Denver.
+	Nearby Places
+	Given an bounding box, and an optional name query, return standard iNaturalist curator approved and community
+	non-curated places nearby
+	"""
+	inatPlacesNearby(
+		"Must be nearby this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelat: Float
+		"Must be nearby this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		nelng: Float
+		"Must be nearby this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlat: Float
+		"Must be nearby this bounding box (*nelat, *nelng, *swlat, *swlng)"
+		swlng: Float
+		"Name must match this value"
+		name: String
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatNearbyPlaces
+
+	# The iNaturalist projects, which collect observations for a place, a group of species or an event.
+
+	"""
+	iNaturalist projects whose title matches a text, near a point or in a place, such as the yearly City Nature
+	Challenge for Denver and Boulder, with their description, place and rules.
+	Project Search
+	Given zero to many of following parameters, returns projects matching the search criteria
+	"""
+	inatProjects(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"""
+		Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius). Defaults to 500km
+		"""
+		radius: String
+		"Must be marked featured for the relevant site"
+		featured: Boolean
+		"Must be marked noteworthy for the relevant site"
+		noteworthy: Boolean
+		"""
+		Site ID that applies to featured and noteworthy. Defaults to the site of the authenticated user, or to the main
+		iNaturalist site https://www.inaturalist.org
+		"""
+		site_id: Int
+		"""
+		Return more information about project rules, for example return a full taxon object instead of simply an ID
+		"""
+		rule_details: Boolean
+		"Projects must be of this type"
+		type: [InatProjectSearchType!]
+		"Project must have member with this user ID"
+		member_id: Int
+		"Must have search parameter requirements"
+		has_params: Boolean
+		"Must have posts"
+		has_posts: Boolean
+		"Sort field"
+		order_by: InatProjectOrderBy
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatProjectPage
+
+	"""
+	One iNaturalist project by its id, or several with the ids separated by commas, with its description, its place
+	and the rules an observation must meet to belong to it. Project 228057 collects the biodiversity of the City and
+	County of Denver.
+	Project Details
+	Given an ID, or an array of IDs in comma-delimited format, returns corresponding projects. A maximum of 100
+	results will be returned
+	"""
+	inatProject(
+		"Must have this ID or slug"
+		id: ID!
+		"""
+		Return more information about project rules, for example return a full taxon object instead of simply an ID
+		"""
+		rule_details: Boolean
+	): InatProjectPage
+
+	"""
+	The members of one iNaturalist project, each with their role and the number of observations and species they
+	contributed.
+	Project Members
+	Given an ID, return members of the project
+	"""
+	inatProjectMembers(
+		"ID of the record"
+		id: ID!
+		"Membership role"
+		role: InatRole
+		"""
+		If counts are not needed, consider setting this to true to save on processing time, resulting in faster
+		responses
+		"""
+		skip_counts: Boolean
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatProjectMemberPage
+
+	"""
+	iNaturalist projects whose title starts with a text, to find the id of a project such as the Denver EcoFlora
+	Project.
+	Project Autocomplete
+	Given an string, returns projects with titles starting with the search term
+	"""
+	inatProjectAutocomplete(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Must have this ID"
+		id: [String!]
+		"Must not have this ID"
+		not_id: [String!]
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lat: Float
+		"Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius)"
+		lng: Float
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"""
+		Must be within a radius kilometer circle around this lat/lng (*lat, *lng, radius). Defaults to 500km
+		"""
+		radius: String
+		"Must be marked featured for the relevant site"
+		featured: Boolean
+		"Must be marked noteworthy for the relevant site"
+		noteworthy: Boolean
+		"""
+		Site ID that applies to featured and noteworthy. Defaults to the site of the authenticated user, or to the main
+		iNaturalist site https://www.inaturalist.org
+		"""
+		site_id: Int
+		"""
+		Return more information about project rules, for example return a full taxon object instead of simply an ID
+		"""
+		rule_details: Boolean
+		"Projects must be of this type"
+		type: [InatProjectSearchType!]
+		"Project must have member with this user ID"
+		member_id: Int
+		"Must have search parameter requirements"
+		has_params: Boolean
+		"Must have posts"
+		has_posts: Boolean
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatProjectPage
+
+	"""
+	One search across iNaturalist's taxa, places, projects and members by a text, best match first, with the kind of
+	each result in type. Use it when the question names something and the kind is unclear.
+	Site Search
+	Given zero to many of following parameters, returns object matching the search criteria
+	"""
+	inatSearch(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Must be of this type"
+		sources: [InatSearchSource!]
+		"""
+		Only within these places, by place id: 34 for Colorado, 205 for Denver County. inatPlaceAutocomplete finds the
+		id of a name.
+		"""
+		place_id: [String!]
+		"Include taxon ancestors in the response"
+		include_taxon_ancestors: Boolean
+		"Locale preference for taxon common names"
+		locale: String
+		"Place preference for regional taxon common names"
+		preferred_place_id: Int
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatSearchResultPage
+
+	# The iNaturalist members and their journal posts. Members choose a login and may add a name.
+
+	"""
+	One iNaturalist member by their id, with their login and the numbers of their observations, identifications and
+	species.
+	User Details
+	Given an ID, returns corresponding user
+	"""
+	inatUser(
+		"ID of the record"
+		id: ID!
+	): InatUserPage
+
+	"""
+	The iNaturalist projects that one member joined.
+	User Projects
+	Return projects as user has joined / followed
+	"""
+	inatUserProjects(
+		"ID of the record"
+		id: ID!
+		"""
+		Return more information about project rules, for example return a full taxon object instead of simply an ID
+		"""
+		rule_details: Boolean
+		"Specify the type of project to return"
+		project_type: InatProjectType
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatProjectPage
+
+	"""
+	iNaturalist members whose login or name starts with a text, to find the id of a member.
+	User Autocomplete
+	Given an string, returns users with names or logins starting with the search term
+	"""
+	inatUserAutocomplete(
+		"The text to search for, for example coyote or Denver."
+		q: String
+		"Only show users with memberships to this project"
+		project_id: Int
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): InatUserPage
+
+	"""
+	Journal posts on iNaturalist, written by a member or for a project, newest first, such as the news of the Denver
+	EcoFlora Project (project_id 66408). Without a member or a project it answers the news of the iNaturalist site.
+	Posts Search
+	Return journal posts from the iNaturalist site
+	"""
+	inatPosts(
+		"Return posts by this user"
+		login: String
+		"Return posts from this project"
+		project_id: Int
+		"The page to return, starting at 1. A value below 1 returns the first page."
+		page: Int! = 1
+		"""
+		The number of results on a page, from 1 to 50. A value outside that range is moved to the nearest limit.
+		"""
+		size: Int! = 10
+	): [InatPost]
+}
+
+"One page of iNaturalist observations, with the number of matches across all pages in total_results."
+type InatObservationPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatObservation]
+}
+
+"""
+A sighting that an iNaturalist member recorded: what they saw, where, when, with photos or sounds, and the
+identifications other members added. The species the community agreed on is in taxon, and quality_grade is
+research once the community confirmed it.
+"""
+type InatObservation {
+	annotations: [InatAnnotation]
+	id: Int
+	cached_votes_total: Int
+	"Whether the organism was captive or cultivated, as a pet or a garden plant is."
+	captive: Boolean
+	comments: [InatComment]
+	comments_count: Int
+	created_at: String
+	created_at_details: InatDateDetails
+	created_time_zone: String
+	description: String
+	faves_count: Int
+	geojson: InatPoint
+	"obscured or private when the observer hid the exact location."
+	geoprivacy: String
+	"""
+	obscured when the species is threatened and iNaturalist hides the exact location of every observation of it.
+	"""
+	taxon_geoprivacy: String
+	id_please: Boolean
+	identifications_count: Int
+	identifications_most_agree: Boolean
+	identifications_most_disagree: Boolean
+	identifications_some_agree: Boolean
+	license_code: String
+	"""
+	The latitude and longitude, as "lat,lng".
+	"""
+	location: String
+	"""
+	in the format "lat,lng"
+	"""
+	private_location: String
+	mappable: Boolean
+	non_owner_ids: [InatIdentification]
+	num_identification_agreements: Int
+	num_identification_disagreements: Int
+	"Whether the coordinates were moved to a random point near the real one."
+	obscured: Boolean
+	"The day of the sighting, as YYYY-MM-DD."
+	observed_on: String
+	observed_on_details: InatDateDetails
+	observed_on_string: String
+	observed_time_zone: String
+	ofvs: [InatObservationFieldValue]
+	out_of_range: Boolean
+	photos: [InatPhoto]
+	"The place as the observer's device or the observer described it."
+	place_guess: String
+	private_place_guess: String
+	place_ids: [Int]
+	private_place_ids: [Int]
+	positional_accuracy: Int
+	private_geojson: InatPoint
+	project_ids: [Int]
+	project_ids_with_curator_id: [Int]
+	project_ids_without_curator_id: [Int]
+	public_positional_accuracy: Int
+	"casual, needs_id, or research when the community agreed on the species."
+	quality_grade: String
+	reviewed_by: [Int]
+	site_id: Int
+	sounds: [InatSound]
+	"The name the observer gave when they recorded the observation."
+	species_guess: String
+	tags: [String]
+	taxon: InatTaxon
+	time_observed_at: String
+	time_zone_offset: String
+	updated_at: String
+	uri: String
+	user: InatUser
+	uuid: String
+	verifiable: Boolean
+	observation_photos: [InatObservationPhoto]
+	quality_metrics: [InatQualityMetric]
+	flags: [InatFlag]
+	community_taxon_id: Int
+	faves: [InatFave]
+	identifications: [InatIdentification]
+	oauth_application_id: Int
+	outlinks: [InatOutlink]
+	owners_identification_from_vision: Boolean
+	project_observations: [InatProjectObservation]
+	spam: Boolean
+	votes: [InatVote]
+	identification_disagreements_count: Int
+	ident_taxon_ids: [Int]
+	map_scale: Int
+	application: InatObservationApplication
+	community_taxon: InatTaxon
+	user_id: Int
+}
+
+"The annotations of an observation, as iNaturalist sends it."
+type InatAnnotation {
+	uuid: String
+	controlled_attribute_id: Int
+	controlled_value_id: Int
+	concatenated_attr_val: String
+	user: InatUser
+	user_id: Int
+	vote_score: Int
+	votes: [InatVote]
+}
+
+"An iNaturalist member, with the numbers of their observations, identifications and species."
+type InatUser {
+	created_at: String
+	id: Int
+	icon: String
+	icon_url: String
+	identifications_count: Int
+	journal_posts_count: Int
+	login: String
+	name: String
+	observations_count: Int
+	orcid: String
+	roles: [String]
+	site_id: Int
+	species_count: Int
+	spam: Boolean
+	suspended: Boolean
+	login_autocomplete: String
+	login_exact: String
+	name_autocomplete: String
+	activity_count: Int
+	annotated_observations_count: Int
+	universal_search_rank: Int
+	user_icon_url: String
+	medium_user_icon_url: String
+}
+
+"The votes of an annotation, as iNaturalist sends it."
+type InatVote {
+	id: Int
+	user_id: Int
+	vote_flag: Boolean
+	vote_scope: String
+	created_at: String
+}
+
+"The comments of an observation, as iNaturalist sends it."
+type InatComment {
+	id: Int
+	body: String
+	created_at: String
+	created_at_details: InatDateDetails
+	user: InatUser
+	flags: [InatFlag]
+	hidden: Boolean
+	moderator_actions: [InatModeratorAction]
+	uuid: String
+}
+
+"A date split into its parts, as iNaturalist sends it with each observation."
+type InatDateDetails {
+	date: String
+	day: Int
+	hour: Int
+	month: Int
+	week: Int
+	year: Int
+}
+
+"The flags of a comment, as iNaturalist sends it."
+type InatFlag {
+	id: Int
+	flag: String
+	comment: String
+	resolved: Boolean
+	user: InatUser
+	created_at: String
+	user_id: Int
+	resolver_id: Int
+	updated_at: String
+}
+
+"The moderator actions of a comment, as iNaturalist sends it."
+type InatModeratorAction {
+	id: Int
+	created_at: String
+	created_at_details: InatDateDetails
+	user: InatUser
+	action: String
+	reason: String
+}
+
+"A point as GeoJSON, with coordinates as longitude then latitude."
+type InatPoint {
+	type: String
+	"an array of [long, lat]"
+	coordinates: [Float]
+}
+
+"""
+The taxon one iNaturalist member named for an observation, with when and how it relates to the identifications
+of other members.
+"""
+type InatIdentification {
+	id: Int
+	body: String
+	created_at: String
+	created_at_details: InatDateDetails
+	user: InatUser
+	uuid: String
+	category: String
+	current: Boolean
+	own_observation: Boolean
+	vision: Boolean
+	disagreement: Boolean
+	previous_observation_taxon_id: Int
+	spam: Boolean
+	taxon_id: Int
+	hidden: Boolean
+	exemplar_identification: InatExemplarIdentification
+	taxon: InatTaxon
+	previous_observation_taxon: InatTaxon
+	observation_id: Int
+	updated_at: String
+	flags: [InatFlag]
+	taxon_change: InatIdentificationTaxonChange
+	moderator_actions: [InatModeratorAction]
+	current_taxon: Boolean
+	observation: InatObservation
+}
+
+"The exemplar identification of an identification, as iNaturalist sends it."
+type InatExemplarIdentification {
+	id: Int
+	created_at: String
+	cached_votes_total: Int
+	active: Boolean
+}
+
+"""
+A species or a higher group of living things on iNaturalist, such as Canis familiaris, the domestic dog, with
+its rank, its common name, its place in the classification and how often members observed it.
+"""
+type InatTaxon {
+	id: Int
+	rank: String
+	rank_level: Float
+	iconic_taxon_id: Int
+	ancestor_ids: [Int]
+	is_active: Boolean
+	min_species_taxon_id: Int
+	"The scientific name, for example Canis familiaris."
+	name: String
+	parent_id: Int
+	ancestry: String
+	min_species_ancestry: String
+	extinct: Boolean
+	provisional: Boolean
+	created_at: String
+	default_photo: InatPhoto
+	taxon_changes_count: Int
+	taxon_schemes_count: Int
+	"The number of observations of this taxon on iNaturalist, worldwide."
+	observations_count: Int
+	photos_locked: Boolean
+	universal_search_rank: Int
+	flag_counts: InatFlagCounts
+	atlas_id: Int
+	wikipedia_url: String
+	iconic_taxon_name: String
+	"The common name in English, for example Domestic Dog."
+	preferred_common_name: String
+	establishment_means: InatEstablishmentMeans
+	preferred_establishment_means: String
+	complete_species_count: Int
+	complete_rank: String
+	ancestors: [InatTaxon]
+	conservation_status: InatConservationStatus
+	endemic: Boolean
+	introduced: Boolean
+	native: Boolean
+	threatened: Boolean
+	"The first lines of the taxon's Wikipedia article."
+	wikipedia_summary: String
+	colors: [InatColor]
+	conservation_statuses: [InatConservationStatus]
+	names: [InatTaxonName]
+	place_ids: [Int]
+	listed_taxa: [InatListedTaxon]
+	taxon_photos: [InatTaxonPhoto]
+	matched_term: String
+	children: [InatTaxon]
+	listed_taxa_count: Int
+	vision: Boolean
+}
+
+"""
+A photo on iNaturalist, with its license and the attribution to show with it. The url points at a small version:
+replace square in it with small, medium, large or original for another size.
+"""
+type InatPhoto {
+	id: Int
+	license_code: String
+	attribution: String
+	url: String
+	original_dimensions: InatPhotoDimensions
+	attribution_name: String
+	square_url: String
+	medium_url: String
+	hidden: Boolean
+	flags: [InatFlag]
+	native_page_url: String
+	native_photo_id: String
+	type: String
+	small_url: String
+	large_url: String
+	original_url: String
+}
+
+"The original dimensions of a photo, as iNaturalist sends it."
+type InatPhotoDimensions {
+	height: Int
+	width: Int
+}
+
+"The flag counts of a taxon, as iNaturalist sends it."
+type InatFlagCounts {
+	resolved: Int
+	unresolved: Int
+}
+
+"The establishment means of a taxon, as iNaturalist sends it."
+type InatEstablishmentMeans {
+	id: Int
+	place_id: Int
+	establishment_means: String
+	place: InatPlace
+	occurrence_status_level: Int
+}
+
+"A place on iNaturalist, such as a state, a county, a city or a park, with its boundary."
+type InatPlace {
+	id: Int
+	name: String
+	display_name: String
+	ancestry: String
+	place_type_name: String
+	admin_level: Int
+	ancestor_place_ids: [Int]
+	bbox_area: Float
+	geometry_geojson: InatGeometry
+	"""
+	in the format "lat,lng"
+	"""
+	location: String
+	place_type: Int
+	uuid: String
+	slug: String
+	bounding_box_geojson: InatBoundingBox
+}
+
+"The ofvs of an observation, as iNaturalist sends it."
+type InatObservationFieldValue {
+	name: String
+	value: String
+}
+
+"The sounds of an observation, as iNaturalist sends it."
+type InatSound {
+	id: Int
+	attribution: String
+	license_code: String
+	file_url: String
+	file_content_type: String
+	flags: [InatFlag]
+	hidden: Boolean
+	moderator_actions: [InatModeratorAction]
+}
+
+"""
+How threatened a species is in a place, according to an authority such as NatureServe or the IUCN Red List.
+"""
+type InatConservationStatus {
+	"""
+	Identifier for the iNat source record associated with this status, retrievable via
+	https://www.inaturalist.org/sources/:id.json (this endpoint is not a part of our public API and is thus subject
+	to change or removal)
+	"""
+	source_id: Int
+	"Organization that declared this status"
+	authority: String
+	"""
+	Body of the status, often coded, particularly when the status comes from the IUCN or NatureServe. Consult the
+	authority and/or the status URL for details about the meanings of codes.
+	"""
+	status: String
+	"Human-readable name of the status if it was coded."
+	status_name: String
+	"""
+	Coded value representing the equivalent IUCN status. Mappings: NOT_EVALUATED = 0, DATA_DEFICIENT = 5,
+	LEAST_CONCERN = 10, NEAR_THREATENED = 20, VULNERABLE = 30, ENDANGERED = 40, CRITICALLY_ENDANGERED = 50,
+	EXTINCT_IN_THE_WILD = 60, EXTINCT = 70
+	"""
+	iucn: Int
+	"Default geoprivacy for observations of this taxon in the status's place."
+	geoprivacy: String
+	place_id: Int
+	place: InatPlace
+	id: Int
+	user_id: Int
+}
+
+"The observation photos of an observation, as iNaturalist sends it."
+type InatObservationPhoto {
+	id: Int
+	uuid: String
+	photo: InatPhoto
+	position: Int
+	photo_id: Int
+}
+
+"The quality metrics of an observation, as iNaturalist sends it."
+type InatQualityMetric {
+	id: Int
+	user_id: Int
+	metric: String
+	agree: Boolean
+	user: InatUser
+}
+
+"The faves of an observation, as iNaturalist sends it."
+type InatFave {
+	id: Int
+	votable_id: Int
+	created_at: String
+	user: InatUser
+}
+
+"The taxon change of an identification, as iNaturalist sends it."
+type InatIdentificationTaxonChange {
+	id: Int
+	type: String
+}
+
+"The outlinks of an observation, as iNaturalist sends it."
+type InatOutlink {
+	id: Int
+	source: String
+	url: String
+}
+
+"The project observations of an observation, as iNaturalist sends it."
+type InatProjectObservation {
+	id: Int
+	project_id: Int
+	observation_id: Int
+	curator_identification_id: Int
+	tracking_code: String
+	prefers_curator_coordinate_access: Boolean
+	uuid: String
+	project: InatProject
+	user_id: Int
+	preferences: InatProjectObservationPreferences
+	user: InatUser
+}
+
+"The application of an observation, as iNaturalist sends it."
+type InatObservationApplication {
+	id: Int
+	name: String
+	url: String
+	icon: String
+}
+
+"What iNaturalist knows about the species of an observation at the place where it was made."
+type InatObservationTaxonSummary {
+	listed_taxon: InatListedTaxon
+	wikipedia_summary: String
+}
+
+"A species on the checklist of a place, with whether it is native, introduced or endemic there."
+type InatListedTaxon {
+	id: Int
+	taxon_id: Int
+	list_id: Int
+	last_observation_id: Int
+	created_at: String
+	updated_at: String
+	place_id: Int
+	comments_count: Int
+	establishment_means: String
+	first_observation_id: Int
+	observations_count: Int
+	manually_added: Boolean
+	primary_listing: Boolean
+	establishment_means_label: String
+	establishment_means_description: String
+	place: InatPlace
+	occurrence_status_level: Int
+	list: InatTaxonList
+}
+
+"The answer of inatObservationSpeciesCounts, as iNaturalist sends it."
+type InatSpeciesCountPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatSpeciesCount]
+}
+
+"A species with the number of observations or identifications that match a search."
+type InatSpeciesCount {
+	count: Int
+	taxon: InatTaxon
+}
+
+"The colors of a taxon, as iNaturalist sends it."
+type InatColor {
+	id: Int
+	value: String
+}
+
+"""
+Counts of iNaturalist observations per period, keyed by the period: the month from 1 to 12, the week, the hour,
+or a date.
+"""
+type InatObservationHistogram {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: InatHistogramPeriods
+}
+
+"""
+The counts of an iNaturalist histogram, under the name of the interval that was asked for. Each entry has the
+period as its key and the number of observations as its value.
+"""
+type InatHistogramPeriods {
+	month_of_year: [InatPeriodCountEntry]
+	year: [InatPeriodCountEntry]
+	month: [InatPeriodCountEntry]
+	week: [InatPeriodCountEntry]
+	day: [InatPeriodCountEntry]
+	hour: [InatPeriodCountEntry]
+	week_of_year: [InatPeriodCountEntry]
+}
+
+"""
+The number of observations in one period: the key is the period, such as 4 for April with month_of_year or
+2026-09-01 with month, and the value is the count.
+"""
+type InatPeriodCountEntry {
+	"The key."
+	key: String
+	"The value."
+	value: Int
+}
+
+"The answer of inatObservationObservers, as iNaturalist sends it."
+type InatObserverCountPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatObserverCount]
+}
+
+"""
+An iNaturalist member with the numbers of observations and of distinct species they recorded among those that
+match a search.
+"""
+type InatObserverCount {
+	observation_count: Int
+	species_count: Int
+	user: InatUser
+	user_id: Int
+}
+
+"The answer of inatObservationIdentifiers, as iNaturalist sends it."
+type InatUserCountPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatUserCount]
+}
+
+"An iNaturalist member with the number of observations or identifications that match a search."
+type InatUserCount {
+	count: Int
+	user: InatUser
+	user_id: Int
+}
+
+"The answer of inatObservationPopularFieldValues, as iNaturalist sends it."
+type InatPopularFieldValuePage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatPopularFieldValue]
+}
+
+"The results of a popular field value page, as iNaturalist sends it."
+type InatPopularFieldValue {
+	count: Int
+	month_of_year: [InatPeriodCountEntry]
+	controlled_attribute: InatControlledTerm
+	controlled_value: InatControlledValue
+}
+
+"""
+An annotation that iNaturalist members can add to an observation, such as life stage, with its allowed values.
+"""
+type InatControlledTerm {
+	id: Int
+	ontology_uri: String
+	uri: String
+	is_value: Boolean
+	multivalued: Boolean
+	uuid: String
+	values: [InatControlledValue]
+	taxon_ids: [Int]
+	excepted_taxon_ids: [Int]
+	label: String
+}
+
+"One allowed value of an annotation, such as Adult for life stage."
+type InatControlledValue {
+	id: Int
+	ontology_uri: String
+	uri: String
+	blocking: Boolean
+	uuid: String
+	label: String
+	taxon_ids: [Int]
+	excepted_taxon_ids: [Int]
+	is_value: Boolean
+}
+
+"The answer of inatIdentifications, as iNaturalist sends it."
+type InatIdentificationPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatIdentification]
+}
+
+"""
+An iNaturalist project, which collects the observations of a place, a group of species, an event or a group of
+members.
+"""
+type InatProject {
+	id: Int
+	title: String
+	description: String
+	slug: String
+	hide_title: Boolean
+	project_type: String
+	place_id: Int
+	user_id: Int
+	admins: [InatProjectAdmin]
+	user_ids: [Int]
+	location: String
+	icon: String
+	icon_file_name: String
+	header_image_url: String
+	header_image_file_name: String
+	header_image_contain: Boolean
+	project_observation_fields: [InatProjectObservationField]
+	search_parameters: [InatProjectSearchParameter]
+	rule_preferences: [InatProjectRulePreference]
+	created_at: String
+	updated_at: String
+	prefers_user_trust: Boolean
+	observation_requirements_updated_at: String
+	latitude: String
+	longitude: String
+	is_umbrella: Boolean
+	is_new_style_project: Boolean
+	user: InatUser
+	hide_leaderboard: Boolean
+	is_delegated_umbrella: Boolean
+	membership_model: String
+	banner_color: String
+	project_observation_rules: [InatProjectObservationRule]
+	delegated_project_id: Int
+}
+
+"The preferences of a project observation, as iNaturalist sends it."
+type InatProjectObservationPreferences {
+	allows_curator_coordinate_access: Boolean
+}
+
+"The answer of inatIdentificationCategories, as iNaturalist sends it."
+type InatIdentificationCategoryPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatIdentificationCategory]
+}
+
+"The results of an identification category page, as iNaturalist sends it."
+type InatIdentificationCategory {
+	category: String
+	count: Int
+}
+
+"The answer of inatIdentificationRecentTaxa, as iNaturalist sends it."
+type InatRecentTaxonPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	all_results_available: Boolean
+	results: [InatRecentTaxon]
+}
+
+"The results of a recent taxon page, as iNaturalist sends it."
+type InatRecentTaxon {
+	taxon_id: Int
+	identification_id: Int
+	identification: InatIdentification
+	taxon: InatTaxon
+}
+
+"The names of a taxon, as iNaturalist sends it."
+type InatTaxonName {
+	name: String
+	locale: String
+	lexicon: String
+	position: Int
+	place_taxon_names: [InatTaxonNamePlaceTaxonName]
+	is_valid: Boolean
+	name_autocomplete: String
+	exact: String
+	exact_ci: String
+	name_ja: String
+	name_autocomplete_ja: String
+}
+
+"The place taxon names of a taxon name, as iNaturalist sends it."
+type InatTaxonNamePlaceTaxonName {
+	place_id: Int
+	position: Int
+}
+
+"The taxon photos of a taxon, as iNaturalist sends it."
+type InatTaxonPhoto {
+	taxon_id: Int
+	photo: InatPhoto
+	taxon: InatTaxon
+}
+
+"The answer of inatSimilarSpecies, as iNaturalist sends it."
+type InatSimilarSpeciesPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatSimilarSpecies]
+}
+
+"The results of a similar species page, as iNaturalist sends it."
+type InatSimilarSpecies {
+	taxon: InatTaxon
+	count: Int
+}
+
+"The answer of inatTaxa, as iNaturalist sends it."
+type InatTaxonPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatTaxon]
+}
+
+"The list of a listed taxon, as iNaturalist sends it."
+type InatTaxonList {
+	id: Int
+	title: String
+}
+
+"The answer of inatControlledTerms, as iNaturalist sends it."
+type InatControlledTermPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatControlledTerm]
+}
+
+"The answer of inatPlace, as iNaturalist sends it."
+type InatPlacePage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatPlace]
+}
+
+"A shape as GeoJSON, such as the boundary of a place."
+type InatGeometry {
+	type: String
+}
+
+"The bounding box geojson of a place, as iNaturalist sends it."
+type InatBoundingBox {
+	type: String
+	coordinates: [[[Float]]]
+}
+
+"The answer of inatPlacesNearby, as iNaturalist sends it."
+type InatNearbyPlaces {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: InatNearbyPlaceGroups
+}
+
+"The results of a nearby places, as iNaturalist sends it."
+type InatNearbyPlaceGroups {
+	standard: [InatPlace]
+	community: [InatPlace]
+}
+
+"The answer of inatProjects, as iNaturalist sends it."
+type InatProjectPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatProject]
+}
+
+"The admins of a project, as iNaturalist sends it."
+type InatProjectAdmin {
+	id: Int
+	user_id: Int
+	project_id: Int
+	role: String
+	user: InatUser
+}
+
+"The project observation fields of a project, as iNaturalist sends it."
+type InatProjectObservationField {
+	id: Int
+	required: Boolean
+	observation_field: InatObservationField
+	position: Int
+}
+
+"The observation field of a project observation field, as iNaturalist sends it."
+type InatObservationField {
+	id: Int
+	name: String
+	name_autocomplete: String
+	description: String
+	description_autocomplete: String
+	datatype: String
+	allowed_values: String
+	values_count: Int
+	users_count: Int
+}
+
+"The search parameters of a project, as iNaturalist sends it."
+type InatProjectSearchParameter {
+	field: String
+	"The value of the parameter, or the list of its values as text, for example [205] for a place_id."
+	value: String
+	value_keyword: String
+	value_number: [Int]
+	value_bool: Boolean
+}
+
+"The rule preferences of a project, as iNaturalist sends it."
+type InatProjectRulePreference {
+	field: String
+	value: String
+}
+
+"The project observation rules of a project, as iNaturalist sends it."
+type InatProjectObservationRule {
+	id: Int
+	operator: String
+	operand_type: String
+	operand_id: Int
+}
+
+"The answer of inatProjectMembers, as iNaturalist sends it."
+type InatProjectMemberPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatProjectMember]
+}
+
+"The results of a project member page, as iNaturalist sends it."
+type InatProjectMember {
+	id: Int
+	project_id: Int
+	created_at: String
+	updated_at: String
+	role: String
+	observations_count: Int
+	taxa_count: Int
+	user: InatUser
+	user_id: Int
+}
+
+"The answer of inatSearch, as iNaturalist sends it."
+type InatSearchResultPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatSearchResult]
+}
+
+"The results of a search result page, as iNaturalist sends it."
+type InatSearchResult {
+	score: Float
+	type: String
+	matches: [String]
+	record: InatSearchRecord
+}
+
+"The record of a search result, as iNaturalist sends it."
+type InatSearchRecord {
+	id: Int
+	rank: String
+	rank_level: Int
+	iconic_taxon_id: Int
+	ancestor_ids: [Int]
+	is_active: Boolean
+	min_species_taxon_id: Int
+	name: String
+	parent_id: Int
+	ancestry: String
+	min_species_ancestry: String
+	extinct: Boolean
+	provisional: Boolean
+	created_at: String
+	default_photo: InatPhoto
+	taxon_changes_count: Int
+	taxon_schemes_count: Int
+	observations_count: Int
+	photos_locked: Boolean
+	universal_search_rank: Int
+	flag_counts: InatFlagCounts
+	taxon_photos: [InatTaxonPhoto]
+	atlas_id: Int
+	complete_species_count: Int
+	wikipedia_url: String
+	matched_term: String
+	iconic_taxon_name: String
+	preferred_common_name: String
+	complete_rank: String
+}
+
+"The answer of inatUser, as iNaturalist sends it."
+type InatUserPage {
+	"The number of results across all pages."
+	total_results: Int
+	page: Int
+	"The number of results on this page."
+	per_page: Int
+	results: [InatUser]
+}
+
+"A journal post on iNaturalist, written by a member for their own journal or for a project."
+type InatPost {
+	id: Int
+	parent_id: Int
+	parent_type: String
+	user_id: Int
+	published_at: String
+	title: String
+	body: String
+	created_at: String
+	updated_at: String
+	uuid: String
+	user: InatUser
+	parent: InatPostParent
+}
+
+"The parent of a post, as iNaturalist sends it."
+type InatPostParent {
+	id: Int
+	title: String
+	icon_url: String
+}
+
+"The ranks of the classification of living things, from kingdom down to form."
+enum InatRank {
+	stateofmatter
+	kingdom
+	phylum
+	subphylum
+	superclass
+	class
+	subclass
+	superorder
+	order
+	suborder
+	infraorder
+	superfamily
+	epifamily
+	family
+	subfamily
+	supertribe
+	tribe
+	subtribe
+	genus
+	genushybrid
+	species
+	hybrid
+	subspecies
+	variety
+	form
+}
+
+"The categories of the IUCN Red List, from least concern (LC) to extinct (EX)."
+enum InatIucnStatus {
+	LC
+	NT
+	VU
+	EN
+	CR
+	EW
+	EX
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatGeoprivacy {
+	obscured
+	obscured_private
+	open
+	private
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatObscuration {
+	obscured
+	private
+	none
+}
+
+"""
+The broad groups iNaturalist sorts living things into, such as Mammalia for mammals, Aves for birds and Plantae
+for plants.
+"""
+enum InatIconicTaxon {
+	Actinopterygii
+	Animalia
+	Amphibia
+	Arachnida
+	Aves
+	Chromista
+	Fungi
+	Insecta
+	Mammalia
+	Mollusca
+	Reptilia
+	Plantae
+	Protozoa
+	unknown
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatIdentificationAgreement {
+	most_agree
+	most_disagree
+	some_agree
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatSearchOn {
+	names
+	tags
+	description
+	place
+}
+
+"""
+How far the community confirmed an observation: casual, needs_id, or research when it agreed on the species.
+"""
+enum InatQualityGrade {
+	casual
+	needs_id
+	research
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatSortOrder {
+	desc
+	asc
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatObservationOrderBy {
+	created_at
+	geo_score
+	id
+	observed_on
+	random
+	species_guess
+	updated_at
+	votes
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatDateField {
+	created
+	observed
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatInterval {
+	year
+	month
+	week
+	day
+	hour
+	month_of_year
+	week_of_year
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatIdentificationCategoryName {
+	improving
+	supporting
+	leading
+	maverick
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatIdentificationOrderBy {
+	created_at
+	id
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatTaxonOf {
+	identification
+	observation
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatTaxonOrderBy {
+	id
+	created_at
+	observations_count
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatPlaceOrderBy {
+	area
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatProjectSearchType {
+	collection
+	umbrella
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatProjectOrderBy {
+	recent_posts
+	created
+	updated
+	distance
+	featured
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatRole {
+	curator
+	manager
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatSearchSource {
+	places
+	projects
+	taxa
+	users
+}
+
+"The values iNaturalist accepts for one of its arguments."
+enum InatProjectType {
+	traditional
+	collection
+	umbrella
+}

@@ -1,0 +1,42 @@
+{
+  "result": {
+    "input": {
+      "address": {
+        "address": "110 W. Liberty St., Madison"
+      },
+      "benchmark": {
+        "isDefault": true,
+        "benchmarkDescription": "Public Address Ranges - Current Benchmark",
+        "id": "4",
+        "benchmarkName": "Public_AR_Current"
+      }
+    },
+    "addressMatches": [
+      {
+        "tigerLine": {
+          "side": "R",
+          "tigerLineId": "655675727"
+        },
+        "coordinates": {
+          "x": -72.576374893201,
+          "y": 41.273656356127
+        },
+        "addressComponents": {
+          "zip": "06443",
+          "streetName": "LIBERTY",
+          "preType": "",
+          "city": "MADISON",
+          "preDirection": "",
+          "suffixDirection": "",
+          "fromAddress": "82",
+          "state": "CT",
+          "suffixType": "ST",
+          "toAddress": "112",
+          "suffixQualifier": "",
+          "preQualifier": ""
+        },
+        "matchedAddress": "110 LIBERTY ST, MADISON, CT, 06443"
+      }
+    ]
+  }
+}

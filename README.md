@@ -85,6 +85,66 @@ A value that breaks a rule returns a `BAD_REQUEST` error that names the field, a
 
 A query or mutation may select up to 200 fields. The limit is the property `petclinic.graphql.max-query-complexity`.
 
+### External services
+
+The schema also reaches services outside Petclinic. Each one appears as ordinary fields, so a client cannot tell from a query which protocol sits behind it. `docs/external-apis.md` describes the services.
+
+| Fields | Service | Protocol | How the fields were made |
+| --- | --- | --- | --- |
+| `Owner.nearestDogParks`, `denverDogParks`, `denverAnimalServiceRequests`, `denverAnimalServiceRequestCounts`, `denverKennelLicenses` | Open data of the City and County of Denver: dog parks, 311 animal cases, kennel licenses | ArcGIS REST | By hand |
+| `censusGeocodeAddress` | US Census geocoder, also used by `nearestDogParks` | REST | By hand |
+| `coloradoVeterinaryLicenses`, `coloradoShelterReports`, `coloradoShelterTotals` | data.colorado.gov: the veterinary license register and the yearly shelter reports | Socrata REST | By hand |
+| `cdpheAnimalsTestedPositive`, `cdpheAnimalDiseaseCases` | Colorado Department of Public Health and Environment: animals with rabies, plague or tularemia | SOAP | By hand |
+| `cpwWildlifeAt`, `cpwWildlifeLayers` | Colorado Parks and Wildlife: species ranges and human conflict areas | ArcGIS REST | By hand |
+| `openFdaAnimalAdverseEvents`, `openFdaAnimalAdverseEventCounts` | openFDA: adverse drug events in animals | REST | By hand |
+| `usgsEarthquakes`, `usgsEarthquakeCount` | USGS earthquake catalogue | REST | By hand |
+| `nlrFuelStationsNear` | National Laboratory of the Rockies: alternative fuel stations | REST | By hand |
+| 54 `nws*` fields | National Weather Service: forecasts, observations, alerts | REST | Generated from its OpenAPI document |
+| 4 `awdb*` fields | NRCS Air and Water Database: snowpack and water supply forecasts | REST | Generated from its OpenAPI document |
+| 33 `inat*` fields | iNaturalist: sightings of species | REST | Generated from its Swagger file |
+| 11 `nps*` fields | National Park Service: parks, alerts, things to do | REST | Generated from its Swagger file |
+| 61 `dwr*` fields | Colorado Division of Water Resources: river flows, water rights, wells, dams, climate stations | REST | Generated from its HTML help pages |
+
+Each field name starts with its service. The fields of each service are declared in a schema file of their own in `src/main/resources/graphql`. A generated field is served by one fetcher that reads the request from an operation table, such as `nws/operations.json`.
+
+`Owner.nearestDogParks` finds the owner's address with the Census geocoder, asks Denver's dog park layer for the parks around it, and returns the nearest first. The sample owner Dev2 Next lives in Denver:
+
+```graphql
+{
+  owners(lastName: "Next") {
+    owners {
+      firstName
+      address
+      nearestDogParks { name distanceInMetres fenced shade water }
+    }
+  }
+}
+```
+
+The other sample owners live in Wisconsin, so the field returns an empty list for them without calling a service.
+
+Four services take a key from an environment variable. Each one also works without a key, up to a lower limit:
+
+| Variable | Service | Without it |
+| --- | --- | --- |
+| `NPS_API_KEY` | National Park Service, a free key from api.data.gov | `DEMO_KEY`, about ten calls |
+| `NLR_API_KEY` | Alternative fuel stations, a free key from developer.nlr.gov | `DEMO_KEY`, about ten calls an hour |
+| `OPENFDA_API_KEY` | openFDA | 1,000 calls a day |
+| `DWR_API_KEY` | Colorado Division of Water Resources | 1,000 calls a day |
+
+The application runs in two modes:
+
+- **Live** is the default. The fields call the real services.
+- **Mock** answers from responses recorded from the real services. Start it with the `mock` profile:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=mock
+```
+
+In mock mode a [WireMock](https://wiremock.org/) server starts on port 9091 inside the application, and the clients call it in place of the real URLs. The client code is the same in both modes. The recordings are in `src/main/resources/mock-upstreams`: `mappings` decides which request gets which answer, and `__files` holds the answers. Edit a file there to try a different answer, for example a slow one or a SOAP fault.
+
+<http://localhost:9091/__admin/requests> lists the calls the mock server received.
+
 ## Building a Container
 
 There is no `Dockerfile` in this project. You can build a container image (if you have a docker daemon) using the Spring Boot build plugin:
