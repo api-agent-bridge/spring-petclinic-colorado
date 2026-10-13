@@ -106,7 +106,7 @@ The agent has 60 seconds for each question, counted from the moment the model is
 
 ## The writes change the data
 
-Every model writes to the same app. After the first model, Harold Davis already lives in Antwerpen and Bobbie is already registered, so later models meet a `name: is already in use` error on question m3. The checks look at the calls, which stay the same, and the grid shows what each model does with the error. Restart the app before each run of `mutations.yaml`, and before `queries.yaml` if the writes ran first: a new dog changes the answer to "Which dogs are registered at the clinic?".
+Every model writes to the same app. After the first model, Harold Davis already lives at 1701 Wynkoop St and Bobbie is already registered, so later models meet a `name: is already in use` error on question m3. The checks look at the calls, which stay the same, and the grid shows what each model does with the error. Restart the app before each run of `mutations.yaml`, and before `queries.yaml` if the writes ran first: a new dog changes the answer to "Which dogs are registered at the clinic?".
 
 ## Files
 

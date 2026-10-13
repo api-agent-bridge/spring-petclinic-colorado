@@ -7,7 +7,7 @@
 # one because it asks for a delete that the tools cannot do.
 #
 # These questions change the data, and every model writes to the same app. After
-# the first model, Harold Davis already lives in Antwerpen and Bobbie is already
+# the first model, Harold Davis already lives at 1701 Wynkoop St and Bobbie is already
 # registered, so later models meet a "name: is already in use" error on question 3.
 # Restart the app before each run. See README.md.
 description: Petclinic write questions over MCP, local models
@@ -24,7 +24,7 @@ tests:
   - description: m1 register an owner
     vars:
       id: m1-add-owner
-      question: 'Register a new owner: Jan Peeters, Meir 1, Antwerpen, telephone 0471234567.'
+      question: 'Register a new owner: Jan Peeters, 100 W 14th Ave Pkwy, Denver, telephone 7205551234.'
     assert:
       - type: javascript
         value: file://assert-tools.mjs
@@ -32,12 +32,12 @@ tests:
         config:
           once: [addOwner]
           args:
-            addOwner: { firstName: Jan, lastName: Peeters, address: Meir 1, city: Antwerpen, telephone: '0471234567' }
+            addOwner: { firstName: Jan, lastName: Peeters, address: 100 W 14th Ave Pkwy, city: Denver, telephone: '7205551234' }
 
   - description: m2 update an address
     vars:
       id: m2-update-owner
-      question: Harold Davis moved to Groenplaats 5 in Antwerpen. Update the address.
+      question: Harold Davis moved to 1701 Wynkoop St in Denver. Update the address.
     assert:
       - type: javascript
         value: file://assert-tools.mjs
@@ -46,7 +46,7 @@ tests:
           called: [updateOwner]
           notCalled: [addOwner]
           args:
-            updateOwner: { id: 4, firstName: Harold, lastName: Davis, address: Groenplaats 5, city: Antwerpen, telephone: '6085553198' }
+            updateOwner: { id: 4, firstName: Harold, lastName: Davis, address: 1701 Wynkoop St, city: Denver, telephone: '6085553198' }
 
   - description: m3 register a pet
     vars:

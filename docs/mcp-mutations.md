@@ -6,15 +6,15 @@ Each question names the tools it needs. The tools come from the operation files 
 
 ## One write
 
-1. **Register a new owner: Jan Peeters, Meir 1, Antwerpen, telephone 0471234567.**
+1. **Register a new owner: Jan Peeters, 100 W 14th Ave Pkwy, Denver, telephone 7205551234.**
 
    Uses `addOwner`. Answer: the id of the new owner, 11 on a freshly started app. Every call of `addOwner` registers one more owner, so a retry after a timeout registers a second Jan Peeters.
 
 ## A lookup, then one write
 
-2. **Harold Davis moved to Groenplaats 5 in Antwerpen. Update the address.**
+2. **Harold Davis moved to 1701 Wynkoop St in Denver. Update the address.**
 
-   Uses `findOwners` with the first name Harold and the last name Davis, then `getOwnerDetails`, then `updateOwner`. Answer: owner 4 now lives at Groenplaats 5, Antwerpen. `updateOwner` replaces every field, so the agent first reads the telephone (6085553198) with `getOwnerDetails` and sends it back as it is. Calling it again with the same input leaves the owner unchanged.
+   Uses `findOwners` with the first name Harold and the last name Davis, then `getOwnerDetails`, then `updateOwner`. Answer: owner 4 now lives at 1701 Wynkoop St, Denver. `updateOwner` replaces every field, so the agent first reads the telephone (6085553198) with `getOwnerDetails` and sends it back as it is. Calling it again with the same input leaves the owner unchanged.
 
 3. **Register a dog called Bobbie, born on 1 May 2020, for Jean Coleman.**
 
