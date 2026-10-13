@@ -29,6 +29,7 @@ ext.springJavaformatCheckstyleVersion = "0.0.47"
 ext.webjarsLocatorLiteVersion = "1.1.3"
 ext.webjarsFontawesomeVersion = "4.7.0"
 ext.webjarsBootstrapVersion = "5.3.8"
+ext.springAiVersion = "2.0.1"
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-cache'
@@ -37,6 +38,8 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
   implementation 'org.springframework.boot:spring-boot-starter-webmvc'
   implementation 'io.gatool:gatool-mcp-spring-boot-starter:0.1.0'
+  implementation 'io.gatool:gatool-in-process-spring-boot-starter:0.1.0'
+  implementation "org.springframework.ai:spring-ai-starter-model-ollama:${springAiVersion}"
   implementation 'org.springframework.boot:spring-boot-starter-validation'
   implementation 'javax.cache:cache-api'
   implementation 'jakarta.xml.bind:jakarta.xml.bind-api'

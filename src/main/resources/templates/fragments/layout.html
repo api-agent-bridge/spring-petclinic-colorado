@@ -83,6 +83,67 @@
 
   <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
 
+  <div class="chat">
+    <div class="chat-panel" id="chat-panel" hidden>
+      <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+      <form class="chat-form" id="chat-form" th:action="@{/chat}">
+        <input class="chat-input" id="chat-input" type="text" autocomplete="off" aria-label="Question"
+          placeholder="Ask about owners, pets, visits and vets">
+        <button class="chat-send" type="submit" aria-label="Send"><span class="fa fa-paper-plane"></span></button>
+      </form>
+    </div>
+    <button class="chat-toggle" id="chat-toggle" type="button" aria-label="Chat" aria-controls="chat-panel"
+      aria-expanded="false"><span class="fa fa-comments"></span></button>
+  </div>
+
+  <script>
+    (() => {
+      const toggle = document.getElementById('chat-toggle');
+      const panel = document.getElementById('chat-panel');
+      const form = document.getElementById('chat-form');
+      const input = document.getElementById('chat-input');
+      const messages = document.getElementById('chat-messages');
+
+      // textContent shows the text as it is, so HTML in a question or an answer stays text
+      function show(text, author) {
+        const message = document.createElement('div');
+        message.className = 'chat-message chat-' + author;
+        message.textContent = text;
+        messages.appendChild(message);
+        messages.scrollTop = messages.scrollHeight;
+        return message;
+      }
+
+      toggle.addEventListener('click', () => {
+        panel.hidden = !panel.hidden;
+        toggle.setAttribute('aria-expanded', String(!panel.hidden));
+        if (!panel.hidden) {
+          input.focus();
+        }
+      });
+
+      // Enter in the text field submits the form
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) {
+          return;
+        }
+        input.value = '';
+        show(question, 'user');
+        const answer = show('...', 'assistant');
+        try {
+          const response = await fetch(form.action, { method: 'POST', body: question });
+          answer.textContent = response.ok ? await response.text()
+            : 'The assistant could not answer (HTTP ' + response.status + ').';
+        } catch (error) {
+          answer.textContent = 'The assistant could not be reached.';
+        }
+        messages.scrollTop = messages.scrollHeight;
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
