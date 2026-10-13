@@ -8,7 +8,7 @@ This fork of [Spring Petclinic](https://github.com/spring-projects/spring-petcli
 | [`step-2-gatool-petclinic`](../../tree/step-2-gatool-petclinic) | GATool, serving the GraphQL API as MCP tools generated from the schema |
 | [`step-3-curatedOperations`](../../tree/step-3-curatedOperations) | Curated GATool operations in place of the generated tools |
 | [`step-4-automatedEval`](../../tree/step-4-automatedEval) | promptfoo evals that ask local Ollama models questions through the MCP tools, and check their answers and tool calls |
-| [`step-5-dogZones`](../../tree/step-5-dogZones) | The off-leash dog zones nearest to an owner, from the City of Antwerp's SOAP services, and a mock mode that answers from recorded responses |
+| [`step-5-inProcessTools`](../../tree/step-5-inProcessTools) | The curated operations as Spring AI tools inside the application, and a chat in the web pages that answers with them through a model in Ollama |
 | [`step-6-security`](../../tree/step-6-security) | The MCP endpoint secured as an OAuth 2.1 resource server, with tokens from Keycloak |
 | [`step-6b-security`](../../tree/step-6b-security) | The tests of the web pages, running again with the MCP endpoint secured |
 | [`step-7-dynamicTools`](../../tree/step-7-dynamicTools) | GATool's three dynamic tools (`searchSchema`, `introspectType` and `executeGraphql`) in place of the curated ones, with an embedding model in Ollama to search the schema |
