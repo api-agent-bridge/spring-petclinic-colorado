@@ -12,7 +12,7 @@ This fork of [Spring Petclinic](https://github.com/spring-projects/spring-petcli
 | [`step-6-security`](../../tree/step-6-security) | The MCP endpoint secured as an OAuth 2.1 resource server, with tokens from Keycloak |
 | [`step-6b-security`](../../tree/step-6b-security) | The tests of the web pages, running again with the MCP endpoint secured |
 | [`step-7-dynamicTools`](../../tree/step-7-dynamicTools) | GATool's three dynamic tools (`searchSchema`, `introspectType` and `executeGraphql`) in place of the curated ones, with an embedding model in Ollama to search the schema |
-| [`step-8-largeSchema`](../../tree/step-8-largeSchema) | A large schema with public data on medicines, food safety alerts, prices and species, from EMA, the Belgian medicines database, RASFF, Eurostat and GBIF. MCP calls without a token are allowed on this branch, for the demo |
+| [`step-8-largeSchema`](../../tree/step-8-largeSchema) | A large schema with public data from Denver, Colorado and US services, such as dog parks, weather, wildlife and water, and a mock mode that answers from recorded responses. MCP calls without a token are allowed on this branch, for the demo |
 
 ---
 
