@@ -56,16 +56,16 @@ class PetclinicGraphQlMutationControllerTests {
 
 	private static final String ADD_OWNER = """
 			mutation($firstName: String!, $telephone: String!) {
-			  addOwner(input: {firstName: $firstName, lastName: "Peeters", address: "Grote Markt 1",
-			      city: "Antwerpen", telephone: $telephone}) {
+			  addOwner(input: {firstName: $firstName, lastName: "Peeters", address: "200 E Colfax Ave",
+			      city: "Denver", telephone: $telephone}) {
 			    id firstName lastName address city telephone pets { name }
 			  }
 			}""";
 
 	private static final String UPDATE_OWNER = """
 			mutation($id: ID!) {
-			  updateOwner(input: {id: $id, firstName: "George", lastName: "Franklin", address: "Meir 50",
-			      city: "Antwerpen", telephone: "0400000001"}) {
+			  updateOwner(input: {id: $id, firstName: "George", lastName: "Franklin", address: "1701 Wynkoop St",
+			      city: "Denver", telephone: "7205550001"}) {
 			    id address city telephone pets { name }
 			  }
 			}""";
@@ -172,7 +172,7 @@ class PetclinicGraphQlMutationControllerTests {
 	void addOwnerSavesTheOwnerAndReturnsItWithItsId() {
 		this.graphQl.document(ADD_OWNER)
 			.variable("firstName", "Lotte")
-			.variable("telephone", "0400000001")
+			.variable("telephone", "7205550001")
 			.execute()
 			.path("addOwner.id")
 			.entity(String.class)
@@ -182,7 +182,7 @@ class PetclinicGraphQlMutationControllerTests {
 			.isEqualTo("Lotte")
 			.path("addOwner.city")
 			.entity(String.class)
-			.isEqualTo("Antwerpen")
+			.isEqualTo("Denver")
 			.path("addOwner.pets")
 			.entityList(Object.class)
 			.hasSize(0);
@@ -207,10 +207,10 @@ class PetclinicGraphQlMutationControllerTests {
 			.execute()
 			.path("updateOwner.address")
 			.entity(String.class)
-			.isEqualTo("Meir 50")
+			.isEqualTo("1701 Wynkoop St")
 			.path("updateOwner.telephone")
 			.entity(String.class)
-			.isEqualTo("0400000001")
+			.isEqualTo("7205550001")
 			.path("updateOwner.pets[*].name")
 			.entityList(String.class)
 			.containsExactly("Leo");

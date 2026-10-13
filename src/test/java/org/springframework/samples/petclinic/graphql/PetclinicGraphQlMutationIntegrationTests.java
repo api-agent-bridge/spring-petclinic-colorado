@@ -46,8 +46,8 @@ class PetclinicGraphQlMutationIntegrationTests {
 	void addOwnerCanBeReadBack() {
 		String id = this.graphQl.document("""
 				mutation {
-				  addOwner(input: {firstName: "Lotte", lastName: "Peeters", address: "Grote Markt 1",
-				      city: "Antwerpen", telephone: "0400000001"}) { id }
+				  addOwner(input: {firstName: "Lotte", lastName: "Peeters", address: "200 E Colfax Ave",
+				      city: "Denver", telephone: "7205550001"}) { id }
 				}""").execute().path("addOwner.id").entity(String.class).get();
 
 		this.graphQl.document("query($id: ID!) { owner(id: $id) { firstName lastName address city telephone } }")
@@ -58,25 +58,25 @@ class PetclinicGraphQlMutationIntegrationTests {
 			.isEqualTo("Peeters")
 			.path("owner.city")
 			.entity(String.class)
-			.isEqualTo("Antwerpen");
+			.isEqualTo("Denver");
 	}
 
 	@Test
 	void updateOwnerReplacesTheDetails() {
 		this.graphQl.document("""
 				mutation {
-				  updateOwner(input: {id: 10, firstName: "Carlos", lastName: "Estaban", address: "Meir 50",
-				      city: "Antwerpen", telephone: "0400000002"}) { id address }
-				}""").execute().path("updateOwner.address").entity(String.class).isEqualTo("Meir 50");
+				  updateOwner(input: {id: 10, firstName: "Carlos", lastName: "Estaban", address: "1701 Wynkoop St",
+				      city: "Denver", telephone: "7205550002"}) { id address }
+				}""").execute().path("updateOwner.address").entity(String.class).isEqualTo("1701 Wynkoop St");
 
 		this.graphQl.document("{ owner(id: 10) { address city telephone pets { name } } }")
 			.execute()
 			.path("owner.city")
 			.entity(String.class)
-			.isEqualTo("Antwerpen")
+			.isEqualTo("Denver")
 			.path("owner.telephone")
 			.entity(String.class)
-			.isEqualTo("0400000002")
+			.isEqualTo("7205550002")
 			.path("owner.pets[*].name")
 			.entityList(String.class)
 			.containsExactly("Lucky", "Sly");
