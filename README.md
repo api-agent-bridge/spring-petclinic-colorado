@@ -10,7 +10,7 @@ This fork of [Spring Petclinic](https://github.com/spring-projects/spring-petcli
 | [`step-4-automatedEval`](../../tree/step-4-automatedEval) | promptfoo evals that ask local Ollama models questions through the MCP tools, and check their answers and tool calls |
 | [`step-5-inProcessTools`](../../tree/step-5-inProcessTools) | The curated operations as Spring AI tools inside the application, and a chat in the web pages that answers with them through a model in Ollama |
 | [`step-6-security`](../../tree/step-6-security) | The MCP endpoint secured as an OAuth 2.1 resource server, with tokens from Keycloak |
-| [`step-6b-security`](../../tree/step-6b-security) | The tests of the web pages, running again with the MCP endpoint secured |
+| [`step-6b-security`](../../tree/step-6b-security) | The MCP endpoint secured alone, so the web pages, the chat and their tests work again without a token |
 | [`step-7-dynamicTools`](../../tree/step-7-dynamicTools) | GATool's three dynamic tools (`searchSchema`, `introspectType` and `executeGraphql`) in place of the curated ones, with an embedding model in Ollama to search the schema |
 | [`step-8-largeSchema`](../../tree/step-8-largeSchema) | A large schema with public data from Denver, Colorado and US services, such as dog parks, weather, wildlife and water, and a mock mode that answers from recorded responses. MCP calls without a token are allowed on this branch, for the demo |
 
