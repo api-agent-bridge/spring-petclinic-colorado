@@ -26,6 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
+import org.springframework.context.annotation.Import;
+import org.springframework.samples.petclinic.OpenWebSecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.aot.DisabledInAotMode;
@@ -41,6 +43,7 @@ import java.util.Optional;
  * @author Colin But
  * @author Wick Dynex
  */
+@Import(OpenWebSecurityConfiguration.class)
 @WebMvcTest(VisitController.class)
 @DisabledInNativeImage
 @DisabledInAotMode

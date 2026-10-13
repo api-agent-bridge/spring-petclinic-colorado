@@ -24,7 +24,10 @@ import java.util.Map;
 
 import io.gatool.boot.autoconfigure.GAToolAutoConfiguration;
 import io.gatool.boot.mcp.autoconfigure.GAToolMcpAutoConfiguration;
+import io.gatool.boot.mcp.autoconfigure.GAToolMcpSecurityAutoConfiguration;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.Import;
+import org.springframework.samples.petclinic.OpenWebSecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -50,6 +53,7 @@ import org.springframework.http.ResponseEntity;
  * @author Alex Lutz
  */
 // NOT Waiting https://github.com/spring-projects/spring-boot/issues/5574
+@Import(OpenWebSecurityConfiguration.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT,
 		properties = { "spring.web.error.include-message=ALWAYS", "management.endpoints.access.default=none" })
 @AutoConfigureTestRestTemplate
@@ -95,9 +99,10 @@ class CrashControllerIntegrationTests {
 				"This application has no explicit mapping for");
 	}
 
-	@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
-			DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
-			GraphQlAutoConfiguration.class, GAToolAutoConfiguration.class, GAToolMcpAutoConfiguration.class })
+	@SpringBootApplication(
+			exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class,
+					HibernateJpaAutoConfiguration.class, GraphQlAutoConfiguration.class, GAToolAutoConfiguration.class,
+					GAToolMcpAutoConfiguration.class, GAToolMcpSecurityAutoConfiguration.class })
 	static class TestConfiguration {
 
 	}

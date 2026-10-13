@@ -25,7 +25,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+// The client of this test keeps no cookies, so Tomcat would put the session id into the
+// URL of the redirect after a post, which Spring Security's firewall rejects
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
+		properties = "server.servlet.session.tracking-modes=cookie")
 public class PetClinicConcurrencyTests {
 
 	@LocalServerPort

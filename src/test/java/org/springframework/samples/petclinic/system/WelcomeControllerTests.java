@@ -18,6 +18,8 @@ package org.springframework.samples.petclinic.system;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledInNativeImage;
+import org.springframework.context.annotation.Import;
+import org.springframework.samples.petclinic.OpenWebSecurityConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.aot.DisabledInAotMode;
@@ -27,6 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+@Import(OpenWebSecurityConfiguration.class)
 @WebMvcTest(WelcomeController.class)
 @DisabledInNativeImage
 @DisabledInAotMode
