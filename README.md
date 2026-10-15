@@ -1,5 +1,7 @@
 # GATool demo: Spring Petclinic behind GraphQL and MCP
 
+This demo was presented at [dev2next 2026](https://www.dev2next.com/) in Lone Tree, Colorado, on October 15, 2026.
+
 This fork of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic) demos GATool, which serves a GraphQL API to AI agents as MCP tools. `main` is the original Spring Petclinic, and this section is its only change. The demo is built up on the branches below, and each branch adds to the one before it:
 
 | Branch | What it adds |
